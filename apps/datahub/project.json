@@ -17,7 +17,21 @@
         "tsConfig": "apps/datahub/tsconfig.app.json",
         "assets": ["apps/datahub/src/favicon.ico", "apps/datahub/src/assets"],
         "styles": ["apps/datahub/src/styles.css"],
-        "scripts": []
+        "scripts": [],
+        "preserveSymlinks": true,
+        "allowedCommonJsDependencies": [
+          "duration-relativetimeformat",
+          "papaparse",
+          "xlsx",
+          "chroma-js",
+          "@rgrove/parse-xml",
+          "@messageformat/core",
+          "rbush",
+          "@camptocamp/ogc-client",
+          "pbf",
+          "alasql",
+          "moment"
+        ]
       },
       "configurations": {
         "production": {
