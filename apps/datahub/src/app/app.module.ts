@@ -1,4 +1,4 @@
-import { isDevMode, NgModule } from '@angular/core';
+import { importProvidersFrom, isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -6,6 +6,7 @@ import { appRoutes } from './app.routes';
 import {
   DefaultRouterModule,
   EmbeddedTranslateLoader,
+  FeatureAuthModule,
   FeatureCatalogModule,
   FeatureSearchModule,
   provideRepositoryUrl,
@@ -56,7 +57,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       recordRouteComponent: DatasetPageComponent,
     }),
   ],
-  providers: [provideRepositoryUrl(() => '/geonetwork/srv/api')],
+  providers: [
+    importProvidersFrom(FeatureAuthModule),
+    provideRepositoryUrl(() => '/geonetwork/srv/api'),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
