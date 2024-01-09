@@ -8,6 +8,7 @@ import {
   EmbeddedTranslateLoader,
   FeatureCatalogModule,
   FeatureSearchModule,
+  provideRepositoryUrl,
   TRANSLATE_DEFAULT_CONFIG,
   UiWidgetsModule,
 } from 'geonetwork-ui';
@@ -55,7 +56,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       recordRouteComponent: DatasetPageComponent,
     }),
   ],
-  providers: [],
+  providers: [provideRepositoryUrl(() => '/geonetwork/srv/api')],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
