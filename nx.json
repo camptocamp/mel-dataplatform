@@ -62,7 +62,12 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
-      "style": "css"
+      "style": "css",
+      "changeDetection": "OnPush",
+      "standalone": false,
+      "inlineStyle": true,
+      "skipTests": true,
+      "nameAndDirectoryFormat": "as-provided"
     }
   },
   "nxCloudAccessToken": "OTI0ZWMyZDQtZDgxZC00YzY2LTlmZjAtYWI5ZTAyMTVmN2U4fHJlYWQtd3JpdGU="
