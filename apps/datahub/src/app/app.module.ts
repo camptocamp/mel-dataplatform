@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -9,6 +9,10 @@ import {
   UiWidgetsModule,
 } from 'geonetwork-ui';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +27,19 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
         useClass: EmbeddedTranslateLoader,
       },
     }),
+    StoreModule.forRoot(
+      {},
+      {
+        metaReducers: [],
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictStateImmutability: true,
+        },
+      }
+    ),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent],
