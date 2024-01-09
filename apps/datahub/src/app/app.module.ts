@@ -2,7 +2,6 @@ import { importProvidersFrom, isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { appRoutes } from './app.routes';
 import {
   DefaultRouterModule,
   EmbeddedTranslateLoader,
@@ -10,6 +9,7 @@ import {
   FeatureCatalogModule,
   FeatureSearchModule,
   provideRepositoryUrl,
+  RouterService,
   TRANSLATE_DEFAULT_CONFIG,
   UiWidgetsModule,
 } from 'geonetwork-ui';
@@ -21,6 +21,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SearchPageComponent } from './search/search-page/search-page.component';
 import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRouterService } from './app.router.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +31,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UiWidgetsModule,
     FeatureSearchModule,
     FeatureCatalogModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot([], {
+      initialNavigation: 'enabledBlocking',
+      scrollPositionRestoration: 'enabled',
+    }),
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
