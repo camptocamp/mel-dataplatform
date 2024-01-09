@@ -66,7 +66,22 @@ import { MatIconModule } from '@angular/material/icon';
   providers: [
     importProvidersFrom(FeatureAuthModule),
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
+    { provide: RouterService, useClass: AppRouterService },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(translate: TranslateService) {
+    translate.setDefaultLang('fr');
+    translate.use('fr');
+
+    ThemeService.applyCssVariables(
+      '#E30513',
+      '#007A80',
+      '#212029',
+      'white',
+      'Lato',
+      'Montserrat'
+    );
+  }
+}
