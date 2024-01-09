@@ -22,6 +22,7 @@ import { SearchPageComponent } from './search/search-page/search-page.component'
 import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRouterService } from './app.router.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,7 @@ import { AppRouterService } from './app.router.service';
     UiWidgetsModule,
     FeatureSearchModule,
     FeatureCatalogModule,
+    MatIconModule,
     RouterModule.forRoot([], {
       initialNavigation: 'enabledBlocking',
       scrollPositionRestoration: 'enabled',
