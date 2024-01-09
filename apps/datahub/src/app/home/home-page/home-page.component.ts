@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'mel-datahub-search-page',
-  providers: [],
-  templateUrl: './search-page.component.html',
+  selector: 'mel-datahub-home-page',
+  templateUrl: './home-page.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchPageComponent {}
+export class HomePageComponent {}
