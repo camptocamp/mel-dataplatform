@@ -3,3 +3,9 @@
 @tailwind utilities;
 
 @import 'geonetwork-ui/style.css';
+
+@layer components {
+  .mel-page-title {
+    @apply text-black text-5xl font-extrabold font-title;
+  }
+}
