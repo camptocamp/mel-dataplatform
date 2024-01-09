@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -6,8 +6,10 @@ import { appRoutes } from './app.routes';
 import {
   DefaultRouterModule,
   EmbeddedTranslateLoader,
+  FeatureCatalogModule,
+  FeatureSearchModule,
   TRANSLATE_DEFAULT_CONFIG,
-  UiWidgetsModule
+  UiWidgetsModule,
 } from 'geonetwork-ui';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
@@ -16,12 +18,16 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SearchPageComponent } from './search/search-page/search-page.component';
 import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     UiWidgetsModule,
+    FeatureSearchModule,
+    FeatureCatalogModule,
     RouterModule.forRoot(appRoutes),
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
@@ -48,7 +54,6 @@ import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.compon
       searchRouteComponent: SearchPageComponent,
       recordRouteComponent: DatasetPageComponent,
     }),
-
   ],
   providers: [],
   bootstrap: [AppComponent],
