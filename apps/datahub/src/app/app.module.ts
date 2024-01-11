@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router'
 import { AppComponent } from './app.component'
 import {
   DefaultRouterModule,
-  EmbeddedTranslateLoader,
   FeatureAuthModule,
   FeatureCatalogModule,
   FeatureSearchModule,
@@ -34,6 +33,7 @@ import { HomePageComponent } from './home/home-page/home-page.component'
 import { AppRouterService } from './app.router.service'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { MatIconModule } from '@angular/material/icon'
+import { MelEmbeddedTranslateLoader } from './common/embedded.translate.loader'
 
 @NgModule({
   declarations: [
@@ -60,7 +60,7 @@ import { MatIconModule } from '@angular/material/icon'
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
         provide: TranslateLoader,
-        useClass: EmbeddedTranslateLoader,
+        useClass: MelEmbeddedTranslateLoader,
       },
     }),
     StoreModule.forRoot(
