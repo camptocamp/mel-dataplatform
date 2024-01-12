@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterFacade, SearchService } from 'geonetwork-ui';
-import { CatalogRecord } from 'geonetwork-ui/src/libs/common/domain/src/lib/record';
-import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/search';
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { RouterFacade, SearchService } from 'geonetwork-ui'
+import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
 
 @Component({
   selector: 'mel-datahub-search-header',
@@ -16,9 +16,9 @@ export class SearchHeaderComponent {
   ) {}
 
   onFuzzySearchSelection(record: CatalogRecord) {
-    this.routerFacade.goToMetadata(record);
+    this.routerFacade.goToMetadata(record)
   }
   clearSearchAndSort(sort: SortByField | string): void {
-    this.searchService.setSortAndFilters({}, sort as SortByField);
+    this.searchService.setSortAndFilters({}, sort as SortByField)
   }
 }
