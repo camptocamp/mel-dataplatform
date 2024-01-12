@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve datahub",
+    "start": "nx serve mel-datahub",
     "format": "nx format:write",
     "format:check": "nx format:check",
     "i18n:extract": "ngx-translate-extract -s --fi '  ' --input ./apps --output ./apps/datahub/src/assets/i18n/{en_MEL,fr_MEL}.json --clean --format json && npm run format:write"

@@ -34,4 +34,4 @@ jobs:
         run: npm i -f
 
       - name: Run tests
-        run: npx nx e2e datahub-e2e
+        run: npx nx e2e mel-datahub-e2e

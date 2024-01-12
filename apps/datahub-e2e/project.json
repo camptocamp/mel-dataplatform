@@ -1,5 +1,5 @@
 {
-  "name": "datahub-e2e",
+  "name": "mel-datahub-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/datahub-e2e/src",
@@ -9,14 +9,14 @@
       "options": {
         "cypressConfig": "apps/datahub-e2e/cypress.config.ts",
         "testingType": "e2e",
-        "devServerTarget": "datahub:serve:development"
+        "devServerTarget": "mel-datahub:serve:development"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "datahub:serve:production"
+          "devServerTarget": "mel-datahub:serve:production"
         },
         "ci": {
-          "devServerTarget": "datahub:serve-static"
+          "devServerTarget": "mel-datahub:serve-static"
         }
       }
     },
@@ -26,5 +26,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["datahub"]
+  "implicitDependencies": ["mel-datahub"]
 }
