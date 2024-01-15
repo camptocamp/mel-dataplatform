@@ -8,6 +8,7 @@ import {
   FeatureAuthModule,
   FeatureCatalogModule,
   FeatureSearchModule,
+  provideGn4,
   provideRepositoryUrl,
   RouterService,
   ThemeService,
@@ -33,7 +34,6 @@ import { HomePageComponent } from './home/home-page/home-page.component'
 import { AppRouterService } from './app.router.service'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { MatIconModule } from '@angular/material/icon'
-import { provideGn4 } from 'geonetwork-ui/libs/api/repository/src/lib/gn4'
 
 @NgModule({
   declarations: [
