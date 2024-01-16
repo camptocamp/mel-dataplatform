@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import {
   FIELDS_BRIEF,
@@ -9,11 +9,12 @@ import {
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/record'
 
 @Component({
-  selector: 'mel-datahub-last-created',
-  templateUrl: './last-created.component.html',
-  styleUrl: './last-created.component.css',
+  selector: 'mel-datahub-results-list',
+  templateUrl: './results-list.component.html',
+  styleUrl: './results-list.component.css',
 })
-export class LastCreatedComponent implements OnInit {
+export class ResultsListComponent implements OnInit {
+  @Input() favoritesOnly = false
   constructor(
     protected searchFacade: SearchFacade,
     private routerFacade: RouterFacade,
@@ -21,6 +22,7 @@ export class LastCreatedComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (this.favoritesOnly) this.searchFacade.setFavoritesOnly(true)
     this.searchFacade
       .setConfigRequestFields([...FIELDS_BRIEF, 'createDate', 'changeDate'])
       .setPageSize(10)

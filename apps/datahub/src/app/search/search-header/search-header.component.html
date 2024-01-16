@@ -2,7 +2,9 @@
   <div class="pt-[68px] container mx-auto">
     <h1 class="flex mel-page-title" translate="">mel.datahub.search.title</h1>
     <div class="h-32" gnUiSearchStateContainer="headerSearch">
-      <mel-datahub-favorites></mel-datahub-favorites>
+      <mel-datahub-results-list
+        [favoritesOnly]="true"
+      ></mel-datahub-results-list>
     </div>
   </div>
 </div>

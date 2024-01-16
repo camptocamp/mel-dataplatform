@@ -34,8 +34,7 @@ import { AppRouterService } from './app.router.service'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { MatIconModule } from '@angular/material/icon'
 import { MelEmbeddedTranslateLoader } from './common/embedded.translate.loader'
-import { LastCreatedComponent } from './home/last-created/last-created.component'
-import { FavoritesComponent } from './search/favorites/favorites.component'
+import { ResultsListComponent } from './common/results-list/results-list.component'
 
 @NgModule({
   declarations: [
@@ -46,8 +45,7 @@ import { FavoritesComponent } from './search/favorites/favorites.component'
     HeaderComponent,
     HomePageComponent,
     HomeHeaderComponent,
-    LastCreatedComponent,
-    FavoritesComponent,
+    ResultsListComponent,
   ],
   imports: [
     BrowserModule,
