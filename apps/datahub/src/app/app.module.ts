@@ -35,6 +35,7 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { MatIconModule } from '@angular/material/icon'
 import { MelEmbeddedTranslateLoader } from './common/embedded.translate.loader'
 import { LastCreatedComponent } from './home/last-created/last-created.component'
+import { FavoritesComponent } from './search/favorites/favorites.component'
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { LastCreatedComponent } from './home/last-created/last-created.component
     HomePageComponent,
     HomeHeaderComponent,
     LastCreatedComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
