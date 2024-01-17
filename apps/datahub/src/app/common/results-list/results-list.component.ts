@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import {
   FIELDS_BRIEF,
@@ -6,7 +6,7 @@ import {
   SearchFacade,
   SearchState,
 } from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/record'
+import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
 @Component({
   selector: 'mel-datahub-results-list',
