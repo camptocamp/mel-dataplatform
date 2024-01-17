@@ -1,38 +1,39 @@
-import { importProvidersFrom, isDevMode, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { importProvidersFrom, isDevMode, NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
+import { RouterModule } from '@angular/router'
+import { AppComponent } from './app.component'
 import {
   DefaultRouterModule,
   EmbeddedTranslateLoader,
   FeatureAuthModule,
   FeatureCatalogModule,
   FeatureSearchModule,
+  provideGn4,
   provideRepositoryUrl,
   RouterService,
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
   UiWidgetsModule,
-} from 'geonetwork-ui';
+} from 'geonetwork-ui'
 import {
   TranslateLoader,
   TranslateModule,
   TranslateService,
-} from '@ngx-translate/core';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { SearchPageComponent } from './search/search-page/search-page.component';
-import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component';
-import { SearchHeaderComponent } from './search/search-header/search-header.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SearchResultsComponent } from './search/search-results/search-results.component';
-import { HeaderComponent } from './common/header/header.component';
-import { HomePageComponent } from './home/home-page/home-page.component';
-import { AppRouterService } from './app.router.service';
-import { HomeHeaderComponent } from './home/home-header/home-header.component';
-import { MatIconModule } from '@angular/material/icon';
+} from '@ngx-translate/core'
+import { StoreModule } from '@ngrx/store'
+import { EffectsModule } from '@ngrx/effects'
+import { StoreRouterConnectingModule } from '@ngrx/router-store'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { SearchPageComponent } from './search/search-page/search-page.component'
+import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component'
+import { SearchHeaderComponent } from './search/search-header/search-header.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { SearchResultsComponent } from './search/search-results/search-results.component'
+import { HeaderComponent } from './common/header/header.component'
+import { HomePageComponent } from './home/home-page/home-page.component'
+import { AppRouterService } from './app.router.service'
+import { HomeHeaderComponent } from './home/home-header/home-header.component'
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   providers: [
     importProvidersFrom(FeatureAuthModule),
+    provideGn4(),
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
     { provide: RouterService, useClass: AppRouterService },
   ],
@@ -90,8 +92,8 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AppModule {
   constructor(translate: TranslateService) {
-    translate.setDefaultLang('fr');
-    translate.use('fr');
+    translate.setDefaultLang('fr')
+    translate.use('fr')
 
     ThemeService.applyCssVariables(
       '#E30513',
@@ -100,6 +102,6 @@ export class AppModule {
       'white',
       'Lato',
       'Montserrat'
-    );
+    )
   }
 }

@@ -1,10 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
-import {
-  MetadataQualityDisplay,
-  RouterFacade,
-  SearchFacade,
-} from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/src/libs/common/domain/src/lib/record'
+import { RouterFacade, SearchFacade } from 'geonetwork-ui'
+import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
 @Component({
   selector: 'mel-datahub-search-results',
@@ -14,17 +10,6 @@ import { CatalogRecord } from 'geonetwork-ui/src/libs/common/domain/src/lib/reco
 })
 export class SearchResultsComponent implements OnInit {
   isQualitySortable = true
-  metadataQualityDisplay = {
-    widget: true,
-    title: true,
-    description: true,
-    contact: true,
-    keywords: true,
-    legalConstraints: true,
-    topic: true,
-    updateFrequency: true,
-    organisation: true,
-  } as MetadataQualityDisplay
 
   constructor(
     private searchRouter: RouterFacade,
