@@ -39,6 +39,9 @@ import { ResultsListComponent } from './common/results-list/results-list.compone
 import { ResultsListItemComponent } from './common/results-list-item/results-list-item.component'
 import { ResultsListCarouselComponent } from './common/results-list/results-list-carousel/results-list-carousel.component'
 import { ResultsListGridComponent } from './common/results-list/results-list-grid/results-list-grid.component'
+import { ResultsCardFavoriteComponent } from './common/results-list-item/results-card-favorite/results-card-favorite.component'
+import { ResultsCardLastCreatedComponent } from './common/results-list-item/results-card-last-created/results-card-last-created.component'
+import { ResultsCardSearchComponent } from './common/results-list-item/results-card-search/results-card-search.component'
 
 @NgModule({
   declarations: [
@@ -50,9 +53,12 @@ import { ResultsListGridComponent } from './common/results-list/results-list-gri
     HomePageComponent,
     HomeHeaderComponent,
     ResultsListComponent,
-    ResultsListItemComponent,
     ResultsListCarouselComponent,
     ResultsListGridComponent,
+    ResultsListItemComponent,
+    ResultsCardFavoriteComponent,
+    ResultsCardLastCreatedComponent,
+    ResultsCardSearchComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,10 +4,10 @@
       *ngFor="let record of searchFacade.results$ | async"
       [style]="'height: 24em;'"
     >
-      <mel-datahub-results-list-item
+      <mel-datahub-results-card-search
         [record]="record"
-        (mdSelect)="mdSelect.emit($event)"
-      ></mel-datahub-results-list-item>
+        (mdSelect)="onMetadataSelection($event)"
+      ></mel-datahub-results-card-search>
     </div>
   </div>
 </div>

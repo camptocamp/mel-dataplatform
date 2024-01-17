@@ -18,8 +18,4 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit() {
     this.searchFacade.setResultsLayout('CARD')
   }
-
-  onMetadataSelection(metadata: CatalogRecord): void {
-    this.searchRouter.goToMetadata(metadata)
-  }
 }

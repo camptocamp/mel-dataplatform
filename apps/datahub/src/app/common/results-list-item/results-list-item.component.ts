@@ -3,8 +3,7 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/record'
 
 @Component({
   selector: 'mel-datahub-results-list-item',
-  templateUrl: './results-list-item.component.html',
-  styleUrl: './results-list-item.component.css',
+  template: '',
 })
 export class ResultsListItemComponent {
   @Input() record: CatalogRecord

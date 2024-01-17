@@ -15,7 +15,6 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/record'
 export class ResultsListComponent implements OnInit {
   @Input() favoritesOnly = false
   @Input() numberOfResults = 10
-  @Output() mdSelect = new EventEmitter<CatalogRecord>()
 
   constructor(
     protected searchFacade: SearchFacade,
@@ -29,5 +28,9 @@ export class ResultsListComponent implements OnInit {
       .setConfigRequestFields([...FIELDS_BRIEF, 'createDate', 'changeDate'])
       .setPageSize(this.numberOfResults)
       .setSortBy(['desc', 'createDate'])
+  }
+
+  onMetadataSelection(metadata: CatalogRecord): void {
+    this.routerFacade.goToMetadata(metadata)
   }
 }

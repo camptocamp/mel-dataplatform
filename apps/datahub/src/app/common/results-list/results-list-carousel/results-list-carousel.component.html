@@ -1,13 +1,19 @@
 <div class="relative">
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+  <div class="flex gap-4 p-4">
     <div
       *ngFor="let record of searchFacade.results$ | async"
-      [style]="'height: 24em;'"
+      [style]="'height: 12em;'"
     >
-      <mel-datahub-results-list-item
+      <mel-datahub-results-card-last-created
+        *ngIf="!favoritesOnly"
         [record]="record"
-        (mdSelect)="mdSelect.emit($event)"
-      ></mel-datahub-results-list-item>
+        (mdSelect)="onMetadataSelection($event)"
+      ></mel-datahub-results-card-last-created>
+      <mel-datahub-results-card-favorite
+        *ngIf="favoritesOnly"
+        [record]="record"
+        (mdSelect)="onMetadataSelection($event)"
+      ></mel-datahub-results-card-favorite>
     </div>
   </div>
 </div>
