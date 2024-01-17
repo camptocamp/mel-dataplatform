@@ -37,6 +37,8 @@ import { MatIconModule } from '@angular/material/icon'
 import { MelEmbeddedTranslateLoader } from './common/embedded.translate.loader'
 import { ResultsListComponent } from './common/results-list/results-list.component'
 import { ResultsListItemComponent } from './common/results-list-item/results-list-item.component'
+import { ResultsListCarouselComponent } from './common/results-list/results-list-carousel/results-list-carousel.component'
+import { ResultsListGridComponent } from './common/results-list/results-list-grid/results-list-grid.component'
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { ResultsListItemComponent } from './common/results-list-item/results-lis
     HomeHeaderComponent,
     ResultsListComponent,
     ResultsListItemComponent,
+    ResultsListCarouselComponent,
+    ResultsListGridComponent,
   ],
   imports: [
     BrowserModule,

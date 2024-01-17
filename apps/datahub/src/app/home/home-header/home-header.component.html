@@ -10,8 +10,10 @@
         [autoFocus]="true"
       ></gn-ui-fuzzy-search>
     </div>
-    <div class="h-32" gnUiSearchStateContainer="headerHome">
-      <mel-datahub-results-list></mel-datahub-results-list>
+    <div class="h-64" gnUiSearchStateContainer="headerHome">
+      <mel-datahub-results-list-carousel
+        [numberOfResults]="6"
+      ></mel-datahub-results-list-carousel>
     </div>
   </div>
 </div>

@@ -3,9 +3,10 @@
     <gn-ui-results-hits></gn-ui-results-hits>
   </div>
   <div class="mt-8">
-    <mel-datahub-results-list
+    <mel-datahub-results-list-grid
+      [numberOfResults]="18"
       (mdSelect)="onMetadataSelection($event)"
-    ></mel-datahub-results-list>
+    ></mel-datahub-results-list-grid>
     <!-- <gn-ui-results-list-container
       showMore="button"
       [metadataQualityDisplay]="true"

@@ -10,11 +10,11 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/record'
 
 @Component({
   selector: 'mel-datahub-results-list',
-  templateUrl: './results-list.component.html',
-  styleUrl: './results-list.component.css',
+  template: '',
 })
 export class ResultsListComponent implements OnInit {
   @Input() favoritesOnly = false
+  @Input() numberOfResults = 10
   @Output() mdSelect = new EventEmitter<CatalogRecord>()
 
   constructor(
@@ -27,7 +27,7 @@ export class ResultsListComponent implements OnInit {
     if (this.favoritesOnly) this.searchFacade.setFavoritesOnly(true)
     this.searchFacade
       .setConfigRequestFields([...FIELDS_BRIEF, 'createDate', 'changeDate'])
-      .setPageSize(10)
+      .setPageSize(this.numberOfResults)
       .setSortBy(['desc', 'createDate'])
   }
 }
