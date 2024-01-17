@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve datahub",
-    "format:write": "nx format:write",
+    "format": "nx format:write",
     "format:check": "nx format:check",
     "i18n:extract": "ngx-translate-extract -s --fi '  ' --input ./apps --output ./apps/datahub/src/assets/i18n/{en_MEL,fr_MEL}.json --clean --format json && npm run format:write"
   },
@@ -31,7 +31,7 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@nx/angular": "17.2.8",
-    "geonetwork-ui": "^2.2.0-dev.c15a456d",
+    "geonetwork-ui": "^2.2.0-dev.f866474c",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.0"
