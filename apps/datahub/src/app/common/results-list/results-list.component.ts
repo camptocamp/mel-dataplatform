@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Store } from '@ngrx/store'
 import {
   FIELDS_BRIEF,
@@ -15,6 +15,8 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/record'
 })
 export class ResultsListComponent implements OnInit {
   @Input() favoritesOnly = false
+  @Output() mdSelect = new EventEmitter<CatalogRecord>()
+
   constructor(
     protected searchFacade: SearchFacade,
     private routerFacade: RouterFacade,
@@ -27,9 +29,5 @@ export class ResultsListComponent implements OnInit {
       .setConfigRequestFields([...FIELDS_BRIEF, 'createDate', 'changeDate'])
       .setPageSize(10)
       .setSortBy(['desc', 'createDate'])
-  }
-
-  onMetadataSelection(metadata: CatalogRecord): void {
-    this.routerFacade.goToMetadata(metadata)
   }
 }

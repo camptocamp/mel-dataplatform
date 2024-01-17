@@ -12,6 +12,7 @@ import {
   RouterService,
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
+  UiElementsModule,
   UiWidgetsModule,
 } from 'geonetwork-ui'
 import {
@@ -35,6 +36,7 @@ import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { MatIconModule } from '@angular/material/icon'
 import { MelEmbeddedTranslateLoader } from './common/embedded.translate.loader'
 import { ResultsListComponent } from './common/results-list/results-list.component'
+import { ResultsListItemComponent } from './common/results-list-item/results-list-item.component'
 
 @NgModule({
   declarations: [
@@ -46,11 +48,13 @@ import { ResultsListComponent } from './common/results-list/results-list.compone
     HomePageComponent,
     HomeHeaderComponent,
     ResultsListComponent,
+    ResultsListItemComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     UiWidgetsModule,
+    UiElementsModule,
     FeatureSearchModule,
     FeatureCatalogModule,
     MatIconModule,
