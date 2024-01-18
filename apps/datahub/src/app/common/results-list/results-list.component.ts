@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import {
   FIELDS_BRIEF,
-  FavoritesService,
   RouterFacade,
   SearchFacade,
   SearchState,

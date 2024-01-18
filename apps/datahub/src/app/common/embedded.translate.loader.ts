@@ -7,7 +7,7 @@ import fr from 'node_modules/geonetwork-ui/translations/fr.json'
 import { dropEmptyTranslations } from 'geonetwork-ui'
 
 export class MelEmbeddedTranslateLoader implements TranslateLoader {
-  getTranslation(lang: string): Observable<any> {
+  getTranslation(lang: string): Observable<Record<string, string>> {
     const langs = { en: { ...en, ...en_MEL }, fr: { ...fr, ...fr_MEL } }
     const translations = langs[lang.substring(0, 2)]
     return of(translations).pipe(map(dropEmptyTranslations))
