@@ -1,9 +1,10 @@
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ResultsListComponent } from '../results-list.component'
 
 @Component({
   selector: 'mel-datahub-results-list-grid',
   templateUrl: './results-list-grid.component.html',
-  styleUrl: './results-list-grid.component.css',
+  styles: ``,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResultsListGridComponent extends ResultsListComponent {}
