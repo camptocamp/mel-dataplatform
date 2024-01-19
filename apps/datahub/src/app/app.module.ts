@@ -12,6 +12,7 @@ import {
   RouterService,
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
+  UiElementsModule,
   UiWidgetsModule,
 } from 'geonetwork-ui'
 import {
@@ -34,6 +35,13 @@ import { AppRouterService } from './app.router.service'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { MatIconModule } from '@angular/material/icon'
 import { MelEmbeddedTranslateLoader } from './common/embedded.translate.loader'
+import { ResultsListComponent } from './common/results-list/results-list.component'
+import { ResultsListItemComponent } from './common/results-list-item/results-list-item.component'
+import { ResultsListCarouselComponent } from './common/results-list/results-list-carousel/results-list-carousel.component'
+import { ResultsListGridComponent } from './common/results-list/results-list-grid/results-list-grid.component'
+import { ResultsCardFavoriteComponent } from './common/results-list-item/results-card-favorite/results-card-favorite.component'
+import { ResultsCardLastCreatedComponent } from './common/results-list-item/results-card-last-created/results-card-last-created.component'
+import { ResultsCardSearchComponent } from './common/results-list-item/results-card-search/results-card-search.component'
 
 @NgModule({
   declarations: [
@@ -44,11 +52,19 @@ import { MelEmbeddedTranslateLoader } from './common/embedded.translate.loader'
     HeaderComponent,
     HomePageComponent,
     HomeHeaderComponent,
+    ResultsListComponent,
+    ResultsListCarouselComponent,
+    ResultsListGridComponent,
+    ResultsListItemComponent,
+    ResultsCardFavoriteComponent,
+    ResultsCardLastCreatedComponent,
+    ResultsCardSearchComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     UiWidgetsModule,
+    UiElementsModule,
     FeatureSearchModule,
     FeatureCatalogModule,
     MatIconModule,

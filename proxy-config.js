@@ -1,6 +1,6 @@
 module.exports = {
   '/geonetwork': {
-    target: 'https://mel.integration.apps.gs-fr-prod.camptocamp.com/',
+    target: 'http://localhost:8080/',
     secure: true,
     logLevel: 'debug',
     changeOrigin: true,
@@ -36,4 +36,4 @@ module.exports = {
       'sec-orgname': 'myOrg',
     },
   },
-};
+}

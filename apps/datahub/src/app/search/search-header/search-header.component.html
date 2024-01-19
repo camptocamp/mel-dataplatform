@@ -1,6 +1,11 @@
 <div class="bg-beige">
   <div class="pt-[68px] container mx-auto">
     <h1 class="flex mel-page-title" translate="">mel.datahub.search.title</h1>
-    <div class="h-32"></div>
+    <div class="h-64" gnUiSearchStateContainer="headerSearch">
+      <mel-datahub-results-list-carousel
+        [numberOfResults]="10"
+        [favoritesOnly]="true"
+      ></mel-datahub-results-list-carousel>
+    </div>
   </div>
 </div>

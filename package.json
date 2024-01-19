@@ -29,7 +29,6 @@
     "@ngrx/router-store": "~17.0.0",
     "@ngrx/store": "~17.0.0",
     "@ngx-translate/core": "^15.0.0",
-    "@ngx-translate/http-loader": "^8.0.0",
     "@nx/angular": "17.2.8",
     "geonetwork-ui": "^2.2.0-dev.f866474c",
     "rxjs": "~7.8.0",
@@ -79,5 +78,10 @@
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.2.2"
+  },
+  "overrides": {
+    "geonetwork-ui": {
+      "@ngx-translate/core": "^15.0.0"
+    }
   }
 }

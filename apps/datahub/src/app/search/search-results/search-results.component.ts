@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
-import { RouterFacade, SearchFacade } from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 
 @Component({
   selector: 'mel-datahub-search-results',
@@ -8,18 +6,4 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/re
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchResultsComponent implements OnInit {
-  isQualitySortable = true
-
-  constructor(
-    private searchRouter: RouterFacade,
-    private searchFacade: SearchFacade
-  ) {}
-  ngOnInit() {
-    this.searchFacade.setResultsLayout('CARD')
-  }
-
-  onMetadataSelection(metadata: CatalogRecord): void {
-    this.searchRouter.goToMetadata(metadata)
-  }
-}
+export class SearchResultsComponent {}
