@@ -2,11 +2,10 @@
   <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
     @for (record of searchFacade.results$ | async; track
     record.uniqueIdentifier) {
-    <mel-datahub-results-card-search
+    <mel-datahub-results-card-last-created
       [style]="'height: 24em;'"
       [record]="record"
-      (mdSelect)="onMetadataSelection($event)"
-    ></mel-datahub-results-card-search>
+    ></mel-datahub-results-card-last-created>
     }
   </div>
 </div>

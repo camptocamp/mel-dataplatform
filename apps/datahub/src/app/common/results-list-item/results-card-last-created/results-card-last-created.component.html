@@ -1,15 +1,43 @@
-<div
-  class="h-full border bg-blue-200 rounded-sm overflow-hidden transition duration-200 transform hover:scale-105 hover:bg-gray-50 border-gray-300 hover:border-primary hover:text-primary"
->
-  <a [title]="record.abstract" (click)="mdSelect.emit(record)">
+<div>
+  <a
+    [title]="record.abstract"
+    (click)="mdSelect.emit(record)"
+    class="bg-white group flex flex-col justify-between h-40 pt-5 pb-6 px-7 rounded border border-black filter overflow-hidden"
+  >
     <div class="flex flex-col min-h-full cursor-pointer">
-      <div class="grow p-4">
-        <h1 class="title-font text-lg font-medium mb-3 clamp-2">
+      <div class="grow py-4">
+        <h1 class="title-font text-lg font-medium mb-3 line-clamp-1">
           {{ record.title }}
         </h1>
-        <p class="leading-relaxed text-sm text-gray-700 clamp-3">
-          {{ record.abstract }}
-        </p>
+      </div>
+      <div class="flex flex-row">
+        <div class="flex flex-col basis-2/3">
+          <div class="flex basis-1/3">
+            <div>{{ creationDate }}</div>
+          </div>
+          <div class="flex basis-2/3 overflow-hidden">
+            <div *ngIf="record.keywords?.length">
+              <div class="sm:pb-4 sm:pr-16">
+                <gn-ui-badge
+                  class="inline-block mr-2 mb-2 lowercase truncate"
+                  (click)="onKeywordClick(keyword)"
+                  [clickable]="true"
+                  *ngFor="let keyword of record.keywords.slice(0, 2)"
+                  >{{ keyword }}</gn-ui-badge
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-[80px] h-[80px] basis-1/3">
+          <gn-ui-thumbnail
+            class="relative h-1/4 w-1/4"
+            [thumbnailUrl]="
+              'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ05rFNWBfdbJncZA2x2miO4PpEB_kw_3jRxwZoFrzPCLSFjXnd'
+            "
+            fit="contain"
+          ></gn-ui-thumbnail>
+        </div>
       </div>
     </div>
   </a>
