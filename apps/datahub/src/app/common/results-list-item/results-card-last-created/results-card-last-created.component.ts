@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  OnInit,
   Output,
 } from '@angular/core'
 import { ResultsListItemComponent } from '../results-list-item.component'
@@ -13,15 +12,8 @@ import { ResultsListItemComponent } from '../results-list-item.component'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ResultsCardLastCreatedComponent
-  extends ResultsListItemComponent
-  implements OnInit
-{
+export class ResultsCardLastCreatedComponent extends ResultsListItemComponent {
   @Output() keyword = new EventEmitter<string>()
-  ngOnInit(): void {
-    console.log(this.record)
-    console.log('creationDate', this.creationDate)
-  }
 
   get shownOrganization() {
     return this.record?.ownerOrganization

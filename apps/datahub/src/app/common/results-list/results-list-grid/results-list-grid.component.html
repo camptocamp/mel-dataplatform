@@ -5,6 +5,8 @@
     <mel-datahub-results-card-last-created
       [style]="'height: 24em;'"
       [record]="record"
+      (keyword)="onInfoKeywordClick($event)"
+      (mdSelect)="onMetadataSelection($event)"
     ></mel-datahub-results-card-last-created>
     }
   </div>
