@@ -6,7 +6,15 @@
 
 ## Start the app
 
-To start the development server run `nx serve datahub`. Open your browser and navigate to http://localhost:4200/. Happy coding!
+To start the development server run `npm start` or `nx serve datahub`. Open your browser and navigate to http://localhost:4200/. Happy coding!
+
+## E2e tests
+
+The e2e tests can be run using the `support-services` from geonetwork-ui in the background.
+
+Simply run `docker compose up -d` within your checked out https://github.com/geonetwork/geonetwork-ui/tree/main/support-services folder. The CI uses the same docker backend and data.
+
+Then run `npm run e2e:datahub` or `npm run e2e:datahub-dev` (if you want to run and watch them in a browser).
 
 ## Generate code
 
