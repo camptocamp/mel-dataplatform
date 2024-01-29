@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: geonetwork/geonetwork-ui
           path: './geonetwork-ui'
@@ -31,7 +31,7 @@ jobs:
         run: sudo docker-compose -f geonetwork-ui/support-services/docker-compose.yml up -d init
 
       - name: Install dependencies
-        run: npm i -f
+        run: npm i
 
       - name: Run tests
         run: npx nx e2e mel-datahub-e2e
