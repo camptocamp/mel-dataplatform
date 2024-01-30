@@ -1,12 +1,46 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+import { ErrorType, MdViewFacade } from 'geonetwork-ui'
+import { BehaviorSubject, combineLatest, map } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-dataset-page',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './dataset-page.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DatasetPageComponent {}
+export class DatasetPageComponent {
+  displayMap$ = combineLatest([
+    this.facade.mapApiLinks$,
+    this.facade.geoDataLinks$,
+  ]).pipe(
+    map(
+      ([mapLinks, geoDataLinks]) =>
+        mapLinks?.length > 0 || geoDataLinks?.length > 0
+    )
+  )
+  displayData$ = combineLatest([
+    this.facade.dataLinks$,
+    this.facade.geoDataLinks$,
+  ]).pipe(
+    map(
+      ([dataLinks, geoDataLinks]) =>
+        dataLinks?.length > 0 || geoDataLinks?.length > 0
+    )
+  )
+  displayApi$ = this.facade.apiLinks$.pipe(map((links) => links?.length > 0))
+  displayRelated$ = this.facade.related$.pipe(
+    map((records) => records?.length > 0)
+  )
+  errorTypes = ErrorType
+  selectedTabIndex$ = new BehaviorSubject(0)
+
+  constructor(public facade: MdViewFacade, private route: ActivatedRoute) {}
+
+  onTabIndexChange(index: number): void {
+    this.selectedTabIndex$.next(index)
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'))
+    }, 0)
+  }
+}
