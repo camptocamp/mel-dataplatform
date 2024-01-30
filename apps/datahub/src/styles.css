@@ -8,4 +8,8 @@
   .mel-page-title {
     @apply text-black text-5xl font-extrabold font-title;
   }
+
+  .mel-badge-button {
+    @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-primary border border-primary text-sm leading-none hover:border-primary-dark hover:text-gray-8 hover:bg-primary-dark cursor-pointer transition-colors;
+  }
 }

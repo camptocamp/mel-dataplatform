@@ -23,7 +23,8 @@ export class ResultsCardLastCreatedComponent extends ResultsListItemComponent {
     return this.record?.recordCreated?.toLocaleDateString('fr')
   }
 
-  onKeywordClick(keyword: string) {
+  onKeywordClick(keyword: string, event: Event) {
+    event.stopPropagation()
     this.keyword.emit(keyword)
   }
 }
