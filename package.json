@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nx serve mel-datahub",
     "format": "nx format:write",
-    "format:check": "nx format:check",    
+    "format:check": "nx format:check",
     "lint:all": "nx run-many --target=lint",
     "e2e:all": "nx run-many --target=e2e",
     "e2e:datahub": "nx e2e mel-datahub-e2e",
