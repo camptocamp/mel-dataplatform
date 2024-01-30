@@ -6,6 +6,7 @@ import {
   DefaultRouterModule,
   FeatureAuthModule,
   FeatureCatalogModule,
+  FeatureRecordModule,
   FeatureSearchModule,
   provideGn4,
   provideRepositoryUrl,
@@ -13,6 +14,7 @@ import {
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
   UiElementsModule,
+  UiLayoutModule,
   UiWidgetsModule,
 } from 'geonetwork-ui'
 import {
@@ -22,7 +24,6 @@ import {
 } from '@ngx-translate/core'
 import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
-import { StoreRouterConnectingModule } from '@ngrx/router-store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { SearchPageComponent } from './search/search-page/search-page.component'
 import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component'
@@ -42,6 +43,8 @@ import { ResultsListGridComponent } from './common/results-list/results-list-gri
 import { ResultsCardFavoriteComponent } from './common/results-list-item/results-card-favorite/results-card-favorite.component'
 import { ResultsCardLastCreatedComponent } from './common/results-list-item/results-card-last-created/results-card-last-created.component'
 import { ResultsCardSearchComponent } from './common/results-list-item/results-card-search/results-card-search.component'
+import { MatTabsModule } from '@angular/material/tabs'
+import { DatasetApisComponent } from './dataset/dataset-apis.component'
 
 @NgModule({
   declarations: [
@@ -59,19 +62,20 @@ import { ResultsCardSearchComponent } from './common/results-list-item/results-c
     ResultsCardFavoriteComponent,
     ResultsCardLastCreatedComponent,
     ResultsCardSearchComponent,
+    DatasetPageComponent,
+    DatasetApisComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     UiWidgetsModule,
     UiElementsModule,
+    UiLayoutModule,
     FeatureSearchModule,
     FeatureCatalogModule,
+    FeatureRecordModule,
     MatIconModule,
-    RouterModule.forRoot([], {
-      initialNavigation: 'enabledBlocking',
-      scrollPositionRestoration: 'enabled',
-    }),
+    MatTabsModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
@@ -84,14 +88,17 @@ import { ResultsCardSearchComponent } from './common/results-list-item/results-c
       {
         metaReducers: [],
         runtimeChecks: {
-          strictActionImmutability: true,
-          strictStateImmutability: true,
+          strictActionImmutability: false,
+          strictStateImmutability: false,
         },
       }
     ),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
+    RouterModule.forRoot([], {
+      initialNavigation: 'enabledBlocking',
+      scrollPositionRestoration: 'enabled',
+    }),
     DefaultRouterModule.forRoot({
       searchStateId: 'mainSearch',
       searchRouteComponent: SearchPageComponent,
