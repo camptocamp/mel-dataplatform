@@ -9,7 +9,7 @@
     </div>
     <!-- TODO: create corresponding UI component -->
     <div>
-      <div>mel.dataset.informations</div>
+      <div translate="">mel.dataset.informations</div>
       <div>{{ (facade.metadata$ | async).recordUpdated }}</div>
       <div>{{ (facade.metadata$ | async).keywords }}</div>
       <div>{{ (facade.metadata$ | async).themes }}</div>
@@ -117,19 +117,17 @@
     <div class="container-lg mx-auto h-[1096px] sm:h-96"></div>
   </div>
 </div>
-} }
-<div
-  class="mt-12 p-4 max-w-[600px] m-auto text-[13px]"
-  *ngIf="facade.error$ | async as error"
->
+} } @else {
+<div class="mt-12 p-4 max-w-[600px] m-auto text-[13px]">
+  @if((facade.error$ | async).notFound) {
   <gn-ui-search-results-error
-    *ngIf="error.notFound"
     [type]="errorTypes.RECORD_NOT_FOUND"
     [recordId]="(facade.metadata$ | async).uniqueIdentifier"
   ></gn-ui-search-results-error>
+  } @else if((facade.error$ | async).otherError) {}
   <gn-ui-search-results-error
-    *ngIf="error.otherError"
     [type]="errorTypes.RECEIVED_ERROR"
-    [error]="error.otherError"
+    [error]="(facade.error$ | async).otherError"
   ></gn-ui-search-results-error>
 </div>
+}

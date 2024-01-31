@@ -1,5 +1,8 @@
 {
   "mel.common.header.title": "Data platform",
   "mel.datahub.home.title": "Métropole Européenne Lille",
-  "mel.datahub.search.title": "Catalogue de jeux de données"
+  "mel.datahub.search.title": "Catalogue de jeux de données",
+  "record.metadata.api": "",
+  "record.metadata.api.form.closeButton": "",
+  "record.metadata.api.form.title": ""
 }

@@ -10,7 +10,7 @@
     "e2e:all": "nx run-many --target=e2e",
     "e2e:datahub": "nx e2e mel-datahub-e2e",
     "e2e:datahub-dev": "nx e2e mel-datahub-e2e --watch",
-    "i18n:extract": "ngx-translate-extract -s --fi '  ' --input ./apps --output ./apps/datahub/src/assets/i18n/{en_MEL,fr_MEL}.json --clean --format json && npm run format:write"
+    "i18n:extract": "ngx-translate-extract -s --fi '  ' --input ./apps --output ./apps/datahub/src/assets/i18n/{en_MEL,fr_MEL}.json --clean --format json && npm run format"
   },
   "private": true,
   "dependencies": {

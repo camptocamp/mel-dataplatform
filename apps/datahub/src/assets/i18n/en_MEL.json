@@ -1,5 +1,8 @@
 {
   "mel.common.header.title": "",
   "mel.datahub.home.title": "",
-  "mel.datahub.search.title": ""
+  "mel.datahub.search.title": "",
+  "record.metadata.api": "",
+  "record.metadata.api.form.closeButton": "",
+  "record.metadata.api.form.title": ""
 }
