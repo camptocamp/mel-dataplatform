@@ -4,6 +4,7 @@ import {
   FIELDS_BRIEF,
   RouterFacade,
   SearchFacade,
+  SearchService,
   SearchState,
 } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
@@ -17,9 +18,10 @@ export class ResultsListComponent implements OnInit {
   @Input() numberOfResults = 10
 
   constructor(
+    public searchService: SearchService,
     protected searchFacade: SearchFacade,
-    private routerFacade: RouterFacade,
-    private store: Store<SearchState>
+    public routerFacade: RouterFacade,
+    public store: Store<SearchState>
   ) {}
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class ResultsListComponent implements OnInit {
       .setConfigRequestFields([...FIELDS_BRIEF, 'createDate', 'changeDate'])
       .setPageSize(this.numberOfResults)
       .setSortBy(['desc', 'createDate'])
+  }
+
+  onInfoKeywordClick(keyword: string) {
+    this.routerFacade.updateSearch({ q: keyword })
   }
 
   onMetadataSelection(metadata: CatalogRecord): void {

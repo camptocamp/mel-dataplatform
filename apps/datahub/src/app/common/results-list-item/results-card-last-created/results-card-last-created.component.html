@@ -1,37 +1,37 @@
-<div>
-  <a
-    [title]="record.abstract"
-    (click)="mdSelect.emit(record)"
-    class="bg-gray-8 group flex flex-col justify-between relative h-40 p-[18px] [w-330px] rounded border border-gray-6 filter overflow-hidden"
-  >
-    <h1 class="font-bold text-[17px] line-clamp-2">
-      {{ record.title }}
-    </h1>
+<a
+  [title]="record.abstract"
+  (click)="mdSelect.emit(record)"
+  class="bg-gray-8 group flex flex-col justify-between relative h-40 p-[18px] w-[330px] rounded border border-gray-6 filter overflow-hidden cursor-pointer"
+>
+  <h1 class="font-bold text-[17px] line-clamp-2">
+    {{ record.title }}
+  </h1>
 
-    <div class="flex flex-col justify-between w-[calc(100%-80px)]">
-      <!-- <div *ngIf="creationDate" class="text-sm mb-[10px] leading-none">{{ creationDate }}</div> -->
-      <div class="text-sm mb-[10px] leading-none">25/01/2024</div>
-
-      <div class="flex gap-1" *ngIf="record.keywords?.length">
-        <button
-          type="button"
-          [attr.aria-label]="keyword"
-          [title]="keyword"
-          class="mel-badge-button truncate"
-          (click)="onKeywordClick(keyword, $event)"
-          *ngFor="let keyword of record.keywords.slice(0, 2)"
-        >
-          {{ keyword }}
-        </button>
-      </div>
+  <div class="flex flex-col justify-between w-[calc(100%-80px)]">
+    @if(creationDate){
+    <div class="text-sm mb-[10px] leading-none">{{ creationDate }}</div>
+    } @if(record.keywords?.length) {
+    <div class="flex gap-1">
+      @for(keyword of record.keywords.slice(0, 2); track
+      record.uniqueIdentifier) {
+      <button
+        type="button"
+        [attr.aria-label]="keyword"
+        [title]="keyword"
+        class="mel-badge-button truncate"
+        (click)="onKeywordClick(keyword, $event)"
+      >
+        {{ keyword }}
+      </button>
+      }
     </div>
+    }
+  </div>
 
-    <gn-ui-thumbnail
-      class="absolute right-[10px] bottom-[10px] w-[80px] h-[80px]"
-      [thumbnailUrl]="
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAS1BMVEXgQAbfNwDvnX/xqI/ztJ3fMwD1v632ybr2yrv64treLADdJQDul3jvmXv//fz99fP76uT42tD41cn1xbTyrJTvoIPzt6LdGgDxqpH0X70FAAABe0lEQVR4nO3dSUpDURBA0Z/GNPbGGN3/So3gRAQVQeS+f84Cirrzgppu7+73D4fDbrt93Jyt3x1XHyx/7Wn1reP6B06bn9h+sp8eny/fXHxt8XvfTP5jV9fT5mIa2WI5g8LT8IVrhW0K+xT2KexT2Kew71x4HL5wpbBNYZ/CPoV9CvsU9insU9insE9hn8I+hX0K+xT2KexT2PdWuPjvJf7UuXCpsE1hn8I+hX0K+xT2KexT2KewT2Gfwj6FfQr7FPYp7FPYp7BPYZ/CvlkUPg1fOIObKIVtCvsU9insU9insE9hn8I+hX0K+xT2KexT2KewT2Gfwj6FfQr7FPbNovBl+MLx/8wojFPYp7BPYZ/CPoV9CvsU9insU9insE9hn8I+hX0K+xT2KeybReFp+MKNwjaFfQr7FPYp7FPYp7BPYZ/CPoV9CvsU9insU9insE9hn8I+hX2zKNwqbFPYp7BPYZ/CPoV9CvsU9s2j8GoxssubaX+9HNnN7hXkYxS97b4eqQAAAABJRU5ErkJggg=='
-      "
-      fit="contain"
-    ></gn-ui-thumbnail>
-  </a>
-</div>
+  @if(shownOrganization?.logoUrl?.href){<gn-ui-thumbnail
+    class="absolute right-[10px] bottom-[10px] w-[80px] h-[80px]"
+    [thumbnailUrl]="shownOrganization?.logoUrl?.href"
+    fit="contain"
+  ></gn-ui-thumbnail
+  >}
+</a>
