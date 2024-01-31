@@ -22,11 +22,10 @@ describe('datahub-e2e', () => {
       cy.get('mel-datahub-results-card-last-created').first().as('firstResult')
     })
     it('should open the dataset page in the same application on click', () => {
-      const urlRegex = /http:\/\/[^\/]+:\d+\/dataset/
+      const urlRegex = /http:\/\/[^/]+:\d+\/dataset/
       cy.get('@firstResult').click()
       cy.url().should('match', urlRegex)
       cy.get('mel-datahub-dataset-page').should('be.visible')
-      cy.get('p').contains('dataset-page works!')
     })
   })
 })
