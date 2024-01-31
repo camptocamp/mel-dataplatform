@@ -18,10 +18,10 @@ export class ResultsListComponent implements OnInit {
   @Input() numberOfResults = 10
 
   constructor(
-    public searchService: SearchService,
+    protected searchService: SearchService,
     protected searchFacade: SearchFacade,
-    public routerFacade: RouterFacade,
-    public store: Store<SearchState>
+    protected routerFacade: RouterFacade,
+    protected store: Store<SearchState>
   ) {}
 
   ngOnInit() {
