@@ -44,7 +44,7 @@ import { ResultsCardFavoriteComponent } from './common/results-list-item/results
 import { ResultsCardLastCreatedComponent } from './common/results-list-item/results-card-last-created/results-card-last-created.component'
 import { ResultsCardSearchComponent } from './common/results-list-item/results-card-search/results-card-search.component'
 import { MatTabsModule } from '@angular/material/tabs'
-import { DatasetApisComponent } from './dataset/dataset-apis.component'
+import { DatasetApisComponent } from './dataset/dataset-apis/dataset-apis.component'
 
 @NgModule({
   declarations: [
