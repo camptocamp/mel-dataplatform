@@ -39,5 +39,18 @@ describe('datahub-e2e', () => {
       cy.url().should('match', urlRegex)
       cy.get('mel-datahub-dataset-page').should('be.visible')
     })
+    it('should filter the search by clicked keyword', () => {
+      const urlRegex = /http:\/\/[^\/]+:\d+\/search\?q=.+/
+      cy.get('@firstResult')
+        .find('.mel-badge-button')
+        .first()
+        .as('firstKeyWord')
+        .should('have.text', ' Usage des sols ')
+
+      cy.get('@firstKeyWord').click()
+      cy.url().should('match', urlRegex)
+
+      cy.get('mel-datahub-results-card-search').should('be.visible')
+    })
   })
 })
