@@ -1,16 +1,60 @@
-<div
-  class="h-full border bg-white rounded-sm overflow-hidden transition duration-200 transform hover:scale-105 hover:bg-gray-50 border-gray-300 hover:border-primary hover:text-primary"
+<a
+  [title]="record.abstract"
+  (click)="mdSelect.emit(record)"
+  class="bg-gray-8 group flex flex-col gap-[16px] relative h-[270px] py-[12px] px-[16px] w-[410px] rounded border border-gray-6 filter hover:drop-shadow-lg"
 >
-  <a [title]="record.abstract" (click)="mdSelect.emit(record)">
-    <div class="flex flex-col min-h-full cursor-pointer">
-      <div class="grow p-4">
-        <h1 class="title-font text-lg font-medium mb-3 clamp-2">
-          {{ record.title }}
-        </h1>
-        <p class="leading-relaxed text-sm text-gray-700 clamp-3">
-          {{ record.abstract }}
-        </p>
+  <div class="flex flex-col h-[72px] justify-between shrink-0">
+    <h1 class="font-extrabold text-[17px] line-clamp-2 leading-5">
+      {{ record.title }}
+    </h1>
+
+    <div class="flex flex-col justify-between">
+      <div class="flex gap-1" *ngIf="record.keywords?.length">
+        <button
+          type="button"
+          [attr.aria-label]="keyword"
+          [title]="keyword"
+          class="mel-badge-button truncate"
+          (click)="onKeywordClick(keyword, $event)"
+          *ngFor="let keyword of record.keywords.slice(0, 2)"
+        >
+          {{ keyword }}
+        </button>
       </div>
     </div>
-  </a>
-</div>
+  </div>
+  <div class="flex flex-col justify-between grow">
+    <div class="line-clamp-3 text-[15px] text-gray-2">
+      {{ record.abstract }}
+    </div>
+
+    <div class="flex flex-col text-gray-1 gap-[3px] relative">
+      <div class="text-[12px] font-semibold">
+        <span
+          >{{ 'record.metadata.localisation' | translate }} : This is a
+          Localisation</span
+        >
+      </div>
+
+      <div class="text-[12px] font-semibold">
+        <span
+          >{{ 'record.metadata.producteur' | translate }} :
+          {{ shownOrganization.name }}</span
+        >
+      </div>
+      <div class="flex gap-1 font-semibold">
+        <div class="text-[12px] font-semibold">
+          <span>{{ 'record.metadata.quality' | translate }} : </span>
+        </div>
+        <mel-datahub-mel-datahub-metadata-quality
+          [metadata]="record"
+          [metadataQualityDisplay]="true"
+          [smaller]="true"
+        ></mel-datahub-mel-datahub-metadata-quality>
+        <gn-ui-favorite-star
+          class="absolute right-0 bottom-0"
+        ></gn-ui-favorite-star>
+      </div>
+    </div>
+  </div>
+</a>
