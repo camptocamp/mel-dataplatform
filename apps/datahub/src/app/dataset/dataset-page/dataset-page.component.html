@@ -1,1 +1,137 @@
-<p>dataset-page works!</p>
+@if ((facade.error$ | async) === null) {
+<div class="container-lg px-4 mb-9 mt-8 sm:mb-16 sm:mt-10 lg:mx-auto">
+  @if ((facade.isPresent$ | async) === true) {
+  <div class="grid gap-8 grid-cols-1 sm:gap-6 sm:grid-cols-3">
+    <!-- TODO: create corresponding UI component -->
+    <div class="sm:col-span-2">
+      <div class="sm:block mb-4">{{ (facade.metadata$ | async).title }}</div>
+      <div class="sm:block">{{ (facade.metadata$ | async).abstract }}</div>
+    </div>
+    <!-- TODO: create corresponding UI component -->
+    <div>
+      <div translate="">mel.dataset.informations</div>
+      <div>{{ (facade.metadata$ | async).recordUpdated }}</div>
+      <div>{{ (facade.metadata$ | async).keywords }}</div>
+      <div>{{ (facade.metadata$ | async).themes }}</div>
+      <div>{{ (facade.metadata$ | async).licenses }}</div>
+      <div>{{ (facade.metadata$ | async).ownerOrganization?.name }}</div>
+    </div>
+  </div>
+  }
+</div>
+@if ((displayMap$ | async) || (displayData$ | async)) {
+<!-- TODO: try to adapt tab layout to fit MEL -->
+<div style="height: 612px">
+  <div class="pt-8 overflow-visible sm:pt-5" style="height: 512px">
+    <div class="container-lg px-4 lg:mx-auto">
+      <div>
+        <div
+          class="text-[28px] text-title font-title transform sm:translate-y-10"
+          translate
+        >
+          mel.record.metadata.preview
+        </div>
+        <mat-tab-group
+          (selectedIndexChange)="onTabIndexChange($event)"
+          [selectedIndex]="(displayMap$ | async) ? 0 : 1"
+          animationDuration="200ms"
+          mat-stretch-tabs="false"
+          mat-align-tabs="start"
+        >
+          <mat-tab [disabled]="(displayMap$ | async) === false">
+            <ng-template mat-tab-label>
+              <span class="tab-header-label sm:ml-32" translate
+                >mel.record.tab.map</span
+              >
+            </ng-template>
+            @if(displayMap$ | async) {
+            <div class="block" style="height: 500px">
+              <gn-ui-map-view></gn-ui-map-view>
+            </div>
+            }
+          </mat-tab>
+          <mat-tab [disabled]="(displayData$ | async) === false">
+            <ng-template mat-tab-label>
+              <span class="tab-header-label" translate
+                >mel.record.tab.data</span
+              >
+            </ng-template>
+            @if(displayData$ | async) {
+            <div class="block">
+              <gn-ui-data-view mode="table"></gn-ui-data-view>
+            </div>
+            }
+          </mat-tab>
+          <mat-tab [disabled]="(displayData$ | async) === false">
+            <ng-template mat-tab-label>
+              <span class="tab-header-label" translate
+                >mel.record.tab.chart</span
+              >
+            </ng-template>
+            @if(displayData$ | async) {
+            <div class="block">
+              <gn-ui-data-view mode="chart"></gn-ui-data-view>
+            </div>
+            }
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
+} @if((selectedTabIndex$ | async) === 2) {
+<!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
+<gn-ui-data-view-share></gn-ui-data-view-share>
+}
+<div class="lg:mx-auto">
+  @if(displayApi$ | async) {
+  <div class="block mt-6">
+    <!-- TODO: create corresponding components, uses GN-UI components for now -->
+    <mel-datahub-dataset-apis></mel-datahub-dataset-apis>
+  </div>
+  }
+</div>
+@if(displayRelated$ | async) {
+<!-- TODO: create corresponding UI component-->
+<div>
+  <div>
+    <div class="h-48 overflow-visible">
+      <div class="container-lg px-4 lg:mx-auto">
+        <div>
+          <p
+            class="font-title text-[28px] text-title font-medium mt-6 sm:mt-10 mb-4 text-center sm:text-left"
+            translate
+          >
+            mel.record.metadata.related
+          </p>
+          <div
+            class="mb-4 flex flex-wrap gap-6 justify-center sm:justify-start"
+          >
+            <gn-ui-related-record-card
+              *ngFor="let record of facade.related$ | async"
+              [record]="record"
+            >
+            </gn-ui-related-record-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-primary">
+    <div class="container-lg mx-auto h-[1096px] sm:h-96"></div>
+  </div>
+</div>
+} } @else {
+<div class="mt-12 p-4 max-w-[600px] m-auto text-[13px]">
+  @if((facade.error$ | async).notFound) {
+  <gn-ui-search-results-error
+    [type]="errorTypes.RECORD_NOT_FOUND"
+    [recordId]="(facade.metadata$ | async).uniqueIdentifier"
+  ></gn-ui-search-results-error>
+  } @else if((facade.error$ | async).otherError) {}
+  <gn-ui-search-results-error
+    [type]="errorTypes.RECEIVED_ERROR"
+    [error]="(facade.error$ | async).otherError"
+  ></gn-ui-search-results-error>
+</div>
+}
