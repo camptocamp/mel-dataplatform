@@ -2,7 +2,13 @@
   "mel.common.header.title": "",
   "mel.datahub.home.title": "",
   "mel.datahub.search.title": "",
-  "record.metadata.api": "",
-  "record.metadata.api.form.closeButton": "",
-  "record.metadata.api.form.title": ""
+  "mel.dataset.informations": "",
+  "mel.record.metadata.api": "",
+  "mel.record.metadata.api.form.closeButton": "",
+  "mel.record.metadata.api.form.title": "",
+  "mel.record.metadata.preview": "",
+  "mel.record.metadata.related": "",
+  "mel.record.tab.chart": "",
+  "mel.record.tab.data": "",
+  "mel.record.tab.map": ""
 }

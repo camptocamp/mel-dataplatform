@@ -29,7 +29,7 @@
           class="text-[28px] text-title font-title transform sm:translate-y-10"
           translate
         >
-          record.metadata.preview
+          mel.record.metadata.preview
         </div>
         <mat-tab-group
           (selectedIndexChange)="onTabIndexChange($event)"
@@ -41,7 +41,7 @@
           <mat-tab [disabled]="(displayMap$ | async) === false">
             <ng-template mat-tab-label>
               <span class="tab-header-label sm:ml-32" translate
-                >record.tab.map</span
+                >mel.record.tab.map</span
               >
             </ng-template>
             @if(displayMap$ | async) {
@@ -52,7 +52,9 @@
           </mat-tab>
           <mat-tab [disabled]="(displayData$ | async) === false">
             <ng-template mat-tab-label>
-              <span class="tab-header-label" translate>record.tab.data</span>
+              <span class="tab-header-label" translate
+                >mel.record.tab.data</span
+              >
             </ng-template>
             @if(displayData$ | async) {
             <div class="block">
@@ -62,7 +64,9 @@
           </mat-tab>
           <mat-tab [disabled]="(displayData$ | async) === false">
             <ng-template mat-tab-label>
-              <span class="tab-header-label" translate>record.tab.chart</span>
+              <span class="tab-header-label" translate
+                >mel.record.tab.chart</span
+              >
             </ng-template>
             @if(displayData$ | async) {
             <div class="block">
@@ -98,7 +102,7 @@
             class="font-title text-[28px] text-title font-medium mt-6 sm:mt-10 mb-4 text-center sm:text-left"
             translate
           >
-            record.metadata.related
+            mel.record.metadata.related
           </p>
           <div
             class="mb-4 flex flex-wrap gap-6 justify-center sm:justify-start"
