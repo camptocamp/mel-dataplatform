@@ -1,7 +1,7 @@
 <a
-  [title]="record.abstract"
+  [title]="record.title"
   (click)="mdSelect.emit(record)"
-  class="bg-gray-8 group flex flex-col justify-between relative h-40 p-[16px] w-[330px] rounded border border-gray-6 filter overflow-hidden cursor-pointer"
+  class="bg-gray-8 group flex flex-col justify-between relative h-40 p-[16px] w-[330px] rounded border border-gray-6 filter overflow-hidden cursor-pointer hover:drop-shadow-lg"
 >
   <h1 class="font-bold text-[17px] line-clamp-2">
     {{ record.title }}
