@@ -8,4 +8,24 @@ describe('datahub-e2e', () => {
     cy.get('gn-ui-fuzzy-search').should('be.visible')
     cy.get('gn-ui-autocomplete').should('have.length.gt', 0)
   })
+  it('should display results card last created', () => {
+    cy.get('mel-datahub-results-card-last-created').should('be.visible')
+    cy.get('mel-datahub-results-card-last-created').should('have.length.gt', 0)
+    cy.get('mel-datahub-results-card-last-created').as('lastCreatedCard')
+
+    cy.get('@lastCreatedCard').find('h1').should('be.visible')
+    cy.get('@lastCreatedCard').find('.mel-badge-button').should('be.visible')
+  })
+
+  describe('interactions with dataset', () => {
+    beforeEach(() => {
+      cy.get('mel-datahub-results-card-last-created').first().as('firstResult')
+    })
+    it('should open the dataset page in the same application on click', () => {
+      const urlRegex = /http:\/\/[^/]+:\d+\/dataset/
+      cy.get('@firstResult').click()
+      cy.url().should('match', urlRegex)
+      cy.get('mel-datahub-dataset-page').should('be.visible')
+    })
+  })
 })

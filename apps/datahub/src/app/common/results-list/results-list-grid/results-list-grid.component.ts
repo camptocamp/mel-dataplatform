@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ResultsListComponent } from '../results-list.component'
-
 @Component({
   selector: 'mel-datahub-results-list-grid',
   templateUrl: './results-list-grid.component.html',
