@@ -14,13 +14,4 @@ import { Store } from '@ngrx/store'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ResultsListCarouselComponent extends ResultsListComponent {
-  constructor(
-    protected override searchFacade: SearchFacade,
-    public override routerFacade: RouterFacade,
-    public override store: Store<SearchState>,
-    public override searchService: SearchService
-  ) {
-    super(searchFacade, routerFacade, store, searchService)
-  }
-}
+export class ResultsListCarouselComponent extends ResultsListComponent {}
