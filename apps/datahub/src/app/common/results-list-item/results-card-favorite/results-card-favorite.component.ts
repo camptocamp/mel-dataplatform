@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Output,
-} from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ResultsListItemComponent } from '../results-list-item.component'
 
 @Component({
