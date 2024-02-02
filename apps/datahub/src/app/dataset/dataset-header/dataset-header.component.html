@@ -1,0 +1,37 @@
+<div class="py-16 grid gap-8 grid-cols-1 sm:gap-6 sm:grid-cols-3">
+  <div class="sm:pl-72 sm:col-span-2">
+    <div class="flex justify-end gap-2">
+      <mel-datahub-button-primary
+        [label]="'mel.dataset.favorite' | translate"
+        [icon]="'heart'"
+      ></mel-datahub-button-primary>
+      <mel-datahub-button-primary
+        [label]="'mel.dataset.download' | translate"
+        [icon]="'download'"
+      ></mel-datahub-button-primary>
+      <mel-datahub-button-primary
+        [label]="'mel.dataset.api' | translate"
+        [icon]="'api'"
+        (click)="scrollTo('api')"
+      ></mel-datahub-button-primary>
+    </div>
+    <h1 class="mel-page-title sm:block my-4 -ml-20">
+      {{ metadata.title }}
+    </h1>
+    <h2 class="text-2xl font-title" translate>mel.dataset.abstract</h2>
+    <div class="my-6 sm:block">{{ metadata.abstract }}</div>
+    <mel-datahub-button-primary
+      [label]="'mel.dataset.more' | translate"
+      [icon]="'arrow'"
+    ></mel-datahub-button-primary>
+  </div>
+  <!-- TODO: create corresponding UI component -->
+  <div class="overflow-hidden">
+    <div translate="">mel.dataset.informations</div>
+    <div>{{ metadata.recordUpdated }}</div>
+    <div>{{ metadata.keywords }}</div>
+    <div>{{ metadata.themes }}</div>
+    <div>{{ metadata.licenses }}</div>
+    <div>{{ metadata.ownerOrganization?.name }}</div>
+  </div>
+</div>

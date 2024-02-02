@@ -1,29 +1,18 @@
 @if ((facade.error$ | async) === null) {
-<div class="container-lg px-4 mb-9 mt-8 sm:mb-16 sm:mt-10 lg:mx-auto">
+<div class="bg-beige mb-9 sm:mb-16">
   @if ((facade.isPresent$ | async) === true) {
-  <div class="grid gap-8 grid-cols-1 sm:gap-6 sm:grid-cols-3">
-    <!-- TODO: create corresponding UI component -->
-    <div class="sm:col-span-2">
-      <div class="sm:block mb-4">{{ (facade.metadata$ | async).title }}</div>
-      <div class="sm:block">{{ (facade.metadata$ | async).abstract }}</div>
-    </div>
-    <!-- TODO: create corresponding UI component -->
-    <div>
-      <div translate="">mel.dataset.informations</div>
-      <div>{{ (facade.metadata$ | async).recordUpdated }}</div>
-      <div>{{ (facade.metadata$ | async).keywords }}</div>
-      <div>{{ (facade.metadata$ | async).themes }}</div>
-      <div>{{ (facade.metadata$ | async).licenses }}</div>
-      <div>{{ (facade.metadata$ | async).ownerOrganization?.name }}</div>
-    </div>
-  </div>
+
+  <mel-datahub-dataset-header
+    [metadata]="facade.metadata$ | async"
+  ></mel-datahub-dataset-header>
+
   }
 </div>
 @if ((displayMap$ | async) || (displayData$ | async)) {
 <!-- TODO: try to adapt tab layout to fit MEL -->
 <div style="height: 612px">
   <div class="pt-8 overflow-visible sm:pt-5" style="height: 512px">
-    <div class="container-lg px-4 lg:mx-auto">
+    <div class="mel-container-lg px-4 lg:mx-auto">
       <div>
         <div
           class="text-[28px] text-title font-title transform sm:translate-y-10"
@@ -85,7 +74,7 @@
 }
 <div class="lg:mx-auto">
   @if(displayApi$ | async) {
-  <div class="block mt-6">
+  <div id="api" class="block mt-6">
     <!-- TODO: create corresponding components, uses GN-UI components for now -->
     <mel-datahub-dataset-apis></mel-datahub-dataset-apis>
   </div>
@@ -96,7 +85,7 @@
 <div>
   <div>
     <div class="h-48 overflow-visible">
-      <div class="container-lg px-4 lg:mx-auto">
+      <div class="mel-container-lg px-4 lg:mx-auto">
         <div>
           <p
             class="font-title text-[28px] text-title font-medium mt-6 sm:mt-10 mb-4 text-center sm:text-left"
@@ -118,7 +107,7 @@
     </div>
   </div>
   <div class="bg-primary">
-    <div class="container-lg mx-auto h-[1096px] sm:h-96"></div>
+    <div class="mel-container-lg mx-auto h-[1096px] sm:h-96"></div>
   </div>
 </div>
 } } @else {
