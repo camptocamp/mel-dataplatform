@@ -48,6 +48,7 @@ import { DatasetApisComponent } from './dataset/dataset-apis/dataset-apis.compon
 import { MelDatahubMetadataQualityComponent } from './common/metadata-quality/mel-datahub-metadata-quality.component'
 import { DatasetHeaderComponent } from './dataset/dataset-header/dataset-header.component'
 import { ButtonPrimaryComponent } from './common/button-primary/button-primary.component'
+import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-downloads.component'
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { ButtonPrimaryComponent } from './common/button-primary/button-primary.c
     MelDatahubMetadataQualityComponent,
     DatasetHeaderComponent,
     ButtonPrimaryComponent,
+    DatasetDownloadsComponent,
   ],
   imports: [
     BrowserModule,

@@ -72,6 +72,14 @@
 <!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
 <gn-ui-data-view-share></gn-ui-data-view-share>
 }
+<div class="mel-container-lg lg:mx-auto">
+  @if(displayDownload$ | async) {
+  <div id="download" class="block mt-6">
+    <!-- TODO: create corresponding components, uses GN-UI components for now -->
+    <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
+  </div>
+  }
+</div>
 <div class="lg:mx-auto">
   @if(displayApi$ | async) {
   <div id="api" class="block mt-6">
