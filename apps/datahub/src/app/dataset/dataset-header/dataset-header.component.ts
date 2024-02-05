@@ -12,6 +12,11 @@ import {
 })
 export class DatasetHeaderComponent {
   @Input() metadata: Partial<DatasetRecord | ServiceRecord>
+  @Input() incomplete: boolean
+
+  fieldReady(propName: string) {
+    return !this.incomplete || propName in this.metadata
+  }
 
   getScrollElement(id: string) {
     return !!document.getElementById(id)

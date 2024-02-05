@@ -4,6 +4,7 @@
 
   <mel-datahub-dataset-header
     [metadata]="facade.metadata$ | async"
+    [incomplete]="facade.isIncomplete$ | async"
   ></mel-datahub-dataset-header>
 
   }

@@ -23,7 +23,12 @@
       {{ metadata.title }}
     </h1>
     <h2 class="text-2xl font-title" translate>mel.dataset.abstract</h2>
-    <div class="my-6 sm:block">{{ metadata.abstract }}</div>
+    <gn-ui-content-ghost
+      ghostClass="h-32"
+      [showContent]="fieldReady('abstract')"
+    >
+      <div class="my-6 sm:block">{{ metadata.abstract }}</div>
+    </gn-ui-content-ghost>
     <mel-datahub-button-primary
       [label]="'mel.dataset.more' | translate"
       [icon]="'arrow'"
