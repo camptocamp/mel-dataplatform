@@ -7,6 +7,7 @@
   "mel.dataset.download": "Télécharger",
   "mel.dataset.favorite": "Favoris",
   "mel.dataset.informations": "Informations",
+  "mel.dataset.less": "Reduire",
   "mel.dataset.more": "En savoir plus",
   "mel.record.metadata.api": "API",
   "mel.record.metadata.api.form.closeButton": "Fermer",

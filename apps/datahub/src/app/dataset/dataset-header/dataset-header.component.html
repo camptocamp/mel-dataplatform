@@ -22,17 +22,19 @@
     <h1 class="mel-page-title sm:block my-4 -ml-20">
       {{ metadata.title }}
     </h1>
-    <h2 class="text-2xl font-title" translate>mel.dataset.abstract</h2>
+    @if(metadata.abstract){
+    <h2 class="text-2xl font-title mb-6" translate>mel.dataset.abstract</h2>
     <gn-ui-content-ghost
       ghostClass="h-32"
       [showContent]="fieldReady('abstract')"
     >
-      <div class="my-6 sm:block">{{ metadata.abstract }}</div>
+      <mel-datahub-max-lines [maxLines]="3"
+        ><div class="sm:block">
+          {{ metadata.abstract }}
+        </div></mel-datahub-max-lines
+      >
     </gn-ui-content-ghost>
-    <mel-datahub-button-primary
-      [label]="'mel.dataset.more' | translate"
-      [icon]="'arrow'"
-    ></mel-datahub-button-primary>
+    }
   </div>
   <!-- TODO: create corresponding UI component -->
   <div class="overflow-hidden">

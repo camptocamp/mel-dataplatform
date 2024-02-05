@@ -1,0 +1,19 @@
+<div
+  #container
+  class="max-lines overflow-hidden transition-[max-height] duration-300 mb-8"
+  [ngClass]="
+    isExpanded || !showToggleButton
+      ? 'ease-in'
+      : 'ease-out bg-gradient-to-b from-black to-beige text-transparent bg-clip-text'
+  "
+  [style.maxHeight]="maxHeight"
+>
+  <ng-content></ng-content>
+</div>
+@if(showToggleButton){
+<mel-datahub-button-primary
+  [label]="(isExpanded ? 'mel.dataset.less' : 'mel.dataset.more') | translate"
+  [icon]="isExpanded ? 'arrow-up' : 'arrow'"
+  (click)="toggleDisplay()"
+></mel-datahub-button-primary>
+}

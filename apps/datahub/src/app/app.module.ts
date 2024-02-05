@@ -49,6 +49,7 @@ import { MelDatahubMetadataQualityComponent } from './common/metadata-quality/me
 import { DatasetHeaderComponent } from './dataset/dataset-header/dataset-header.component'
 import { ButtonPrimaryComponent } from './common/button-primary/button-primary.component'
 import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-downloads.component'
+import { MaxLinesComponent } from './common/max-lines/max-lines.component'
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-d
     DatasetHeaderComponent,
     ButtonPrimaryComponent,
     DatasetDownloadsComponent,
+    MaxLinesComponent,
   ],
   imports: [
     BrowserModule,
