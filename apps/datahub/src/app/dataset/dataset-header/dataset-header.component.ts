@@ -13,6 +13,10 @@ import {
 export class DatasetHeaderComponent {
   @Input() metadata: Partial<DatasetRecord | ServiceRecord>
 
+  getScrollElement(id: string) {
+    return !!document.getElementById(id)
+  }
+
   scrollTo(id: string) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
   }

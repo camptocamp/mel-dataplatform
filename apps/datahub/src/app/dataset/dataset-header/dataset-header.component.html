@@ -5,16 +5,19 @@
         [label]="'mel.dataset.favorite' | translate"
         [icon]="'heart'"
       ></mel-datahub-button-primary>
+      @if(getScrollElement('download')){
       <mel-datahub-button-primary
         [label]="'mel.dataset.download' | translate"
         [icon]="'download'"
         (click)="scrollTo('download')"
       ></mel-datahub-button-primary>
+      } @if(getScrollElement('api')){
       <mel-datahub-button-primary
         [label]="'mel.dataset.api' | translate"
         [icon]="'api'"
         (click)="scrollTo('api')"
       ></mel-datahub-button-primary>
+      }
     </div>
     <h1 class="mel-page-title sm:block my-4 -ml-20">
       {{ metadata.title }}
