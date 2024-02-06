@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 export class ButtonPrimaryComponent {
   @Input() label: string
   @Input() set icon(fileName: string) {
-    this.src = `/assets/${fileName}.svg`
+    this.src = `/assets/icons/${fileName}.svg`
     this.placeholder = fileName
   }
   src: string
