@@ -93,6 +93,16 @@
         "buildTarget": "mel-datahub:build",
         "staticFilePath": "dist/apps/datahub/browser"
       }
+    },
+    "docker-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx build mel-datahub --base-href='/plateforme/'",
+          "docker build --build-arg APP_NAME=plateforme -f ./tools/docker/Dockerfile . -t ghcr.io/camptocamp/mel-dataplatform/datahub:latest"
+        ],
+        "parallel": false
+      }
     }
   }
 }
