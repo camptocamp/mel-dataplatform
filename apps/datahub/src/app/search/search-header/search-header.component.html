@@ -4,6 +4,9 @@
     <div class="h-64" gnUiSearchStateContainer="headerSearch">
       <mel-datahub-results-list-carousel
         [numberOfResults]="10"
+        [favoritesOnly]="
+          (favoritesService.myFavoritesUuid$ | async)?.length > 0
+        "
       ></mel-datahub-results-list-carousel>
     </div>
   </div>

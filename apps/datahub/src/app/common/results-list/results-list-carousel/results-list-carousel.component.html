@@ -1,8 +1,7 @@
 <div class="relative">
   <div class="flex gap-4 p-4">
     @for (record of searchFacade.results$ | async; track
-    record.uniqueIdentifier) { @if (true) {
-    <!-- if favoritesOnly -->
+    record?.uniqueIdentifier) { @if (favoritesOnlyValue) {
     <mel-datahub-results-card-favorite
       [style]="'height: 12em;'"
       [record]="record"

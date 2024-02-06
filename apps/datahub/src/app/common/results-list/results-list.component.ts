@@ -14,7 +14,11 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/re
   template: '',
 })
 export class ResultsListComponent implements OnInit {
-  @Input() favoritesOnly = false
+  @Input() set favoritesOnly(value: boolean) {
+    this.favoritesOnlyValue = value
+    this.searchFacade.setFavoritesOnly(value)
+  }
+  favoritesOnlyValue: boolean
   @Input() numberOfResults = 10
 
   constructor(
@@ -25,7 +29,6 @@ export class ResultsListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.favoritesOnly) this.searchFacade.setFavoritesOnly(true)
     this.searchFacade
       .setConfigRequestFields([...FIELDS_BRIEF, 'createDate', 'changeDate'])
       .setPageSize(this.numberOfResults)
