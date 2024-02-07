@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import {
+  CatalogRecord,
   DatasetRecord,
   ServiceRecord,
 } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
@@ -11,7 +12,11 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatasetHeaderComponent {
-  @Input() metadata: Partial<DatasetRecord | ServiceRecord>
+  @Input() set metadata(value: Partial<DatasetRecord | ServiceRecord>) {
+    this.record = value as CatalogRecord
+  }
+  record: CatalogRecord
+
   @Input() incomplete: boolean
 
   fieldReady(propName: string) {

@@ -12,6 +12,7 @@ export class ButtonPrimaryComponent {
     this.src = `/assets/icons/${fileName}.svg`
     this.placeholder = fileName
   }
+  @Input() disabled = false
   src: string
   placeholder: string
 }

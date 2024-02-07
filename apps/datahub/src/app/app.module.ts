@@ -50,7 +50,8 @@ import { DatasetHeaderComponent } from './dataset/dataset-header/dataset-header.
 import { ButtonPrimaryComponent } from './common/button-primary/button-primary.component'
 import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-downloads.component'
 import { MaxLinesComponent } from './common/max-lines/max-lines.component'
-import { FavoriteHeartComponent } from './common/favorite-heart/favorite-heart.component'
+import { FavoriteHeartComponent } from './common/favorites/favorite-heart/favorite-heart.component'
+import { HeartToggleComponent } from './common/favorites/heart-toggle/heart-toggle.component'
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { FavoriteHeartComponent } from './common/favorite-heart/favorite-heart.c
     DatasetDownloadsComponent,
     MaxLinesComponent,
     FavoriteHeartComponent,
+    HeartToggleComponent,
   ],
   imports: [
     BrowserModule,
