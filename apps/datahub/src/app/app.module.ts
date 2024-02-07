@@ -49,9 +49,9 @@ import { MelDatahubMetadataQualityComponent } from './common/metadata-quality/me
 import { DatasetHeaderComponent } from './dataset/dataset-header/dataset-header.component'
 import { ButtonPrimaryComponent } from './common/button-primary/button-primary.component'
 import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-downloads.component'
-import { MaxLinesComponent } from './common/max-lines/max-lines.component'
 import { FavoriteHeartComponent } from './common/favorites/favorite-heart/favorite-heart.component'
 import { HeartToggleComponent } from './common/favorites/heart-toggle/heart-toggle.component'
+import { TextExpandComponent } from './common/text-expand/text-expand.component'
 
 @NgModule({
   declarations: [
@@ -75,9 +75,9 @@ import { HeartToggleComponent } from './common/favorites/heart-toggle/heart-togg
     DatasetHeaderComponent,
     ButtonPrimaryComponent,
     DatasetDownloadsComponent,
-    MaxLinesComponent,
     FavoriteHeartComponent,
     HeartToggleComponent,
+    TextExpandComponent,
   ],
   imports: [
     BrowserModule,
