@@ -1,5 +1,5 @@
+@if(metadataQualityDisplay){
 <div
-  *ngIf="metadataQualityDisplay"
   class="flex metadata-quality"
   (mouseenter)="showMenu()"
   (mouseleave)="hideMenu()"
@@ -14,7 +14,7 @@
     <span class="text-[12px] font-bold">{{
       (qualityScore / 10).toFixed(1)
     }}</span>
-    <img class="info-icon" [src]="'/assets/info.svg'" [alt]="'info'" />
+    <img [src]="'/assets/info.svg'" [alt]="'info'" />
   </div>
 
   <div
@@ -22,10 +22,11 @@
     [class]="isMenuShown ? 'block' : 'hidden'"
   >
     <div class="mb-4 font-bold" translate>record.metadata.quality.details</div>
-    <gn-ui-metadata-quality-item
-      *ngFor="let e of items"
+    @for(e of items; track e.name){<gn-ui-metadata-quality-item
       [name]="e.name"
       [value]="e.value"
-    ></gn-ui-metadata-quality-item>
+    ></gn-ui-metadata-quality-item
+    >}
   </div>
 </div>
+}

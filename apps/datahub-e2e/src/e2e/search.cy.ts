@@ -8,6 +8,37 @@ describe('datahub-e2e', () => {
     cy.get('gn-ui-results-hits-number').should('contain', 12)
   })
 
+  // If not logged in or no favorites exists
+  it('should display record results in last created cards', () => {
+    cy.get('mel-datahub-results-card-last-created')
+      .eq(0)
+      .find('h1')
+      .should(
+        'have.text',
+        ' Cartographie des sols agricoles de la plaine du Rhône '
+      )
+
+    cy.get('mel-datahub-results-card-last-created')
+      .find('h1')
+      .should('be.visible')
+
+    cy.get('mel-datahub-results-card-last-created')
+      .find('.mel-badge-button')
+      .should('be.visible')
+  })
+
+  describe('interactions with dataset', () => {
+    beforeEach(() => {
+      cy.get('mel-datahub-results-card-last-created').first().as('firstResult')
+    })
+    it('should open the dataset page in the same application on click', () => {
+      const urlRegex = /http:\/\/[^/]+:\d+\/dataset/
+      cy.get('@firstResult').click()
+      cy.url().should('match', urlRegex)
+      cy.get('mel-datahub-dataset-page').should('be.visible')
+    })
+  })
+
   // ********************
   // TODO: This can be activated and tested when we will be able to add favorites
 
