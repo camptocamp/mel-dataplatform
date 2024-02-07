@@ -29,9 +29,10 @@
     >
       <mel-datahub-text-expand [maxLines]="3"
         ><div class="sm:block">
-          {{ record.abstract }}
-        </div></mel-datahub-text-expand
-      >
+          <gn-ui-markdown-parser
+            [textContent]="record.abstract"
+          ></gn-ui-markdown-parser></div
+      ></mel-datahub-text-expand>
     </gn-ui-content-ghost>
     }
   </div>
