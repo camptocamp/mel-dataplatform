@@ -2,42 +2,13 @@ describe('datasets', () => {
   describe('when not logged in', () => {
     beforeEach(() => cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4'))
 
-    it('should display the title', () => {
-      cy.get('.mel-page-title').should('be.visible')
-      cy.get('.mel-page-title').should('have.text', ' Alpenkonvention ')
-    })
-
-    it('should display the abstract in collapsed mode applying gradient', () => {
-      cy.get('mel-datahub-max-lines').should('be.visible')
-      cy.get('mel-datahub-max-lines')
-        .find('mel-datahub-button-primary')
-        .should('have.text', ' En savoir plus ')
-      cy.get('mel-datahub-max-lines')
-        .find('mel-datahub-button-primary')
-        .find('img')
-        .should('have.attr', 'src', '/assets/icons/arrow.svg')
-      cy.get('mel-datahub-max-lines')
-        .find('.bg-gradient-to-b')
-        .should('have.css', 'max-height', '72px')
-    })
-
-    it('should display the abstract in expanded mode without gradient', () => {
-      cy.get('mel-datahub-max-lines').should('be.visible')
-      cy.get('mel-datahub-max-lines').find('mel-datahub-button-primary').click()
-      cy.get('mel-datahub-max-lines')
-        .find('mel-datahub-button-primary')
-        .should('have.text', ' Reduire ')
-      cy.get('mel-datahub-max-lines')
-        .find('mel-datahub-button-primary')
-        .find('img')
-        .should('have.attr', 'src', '/assets/icons/arrow-up.svg')
-      cy.get('mel-datahub-max-lines')
-        .find('.bg-gradient-to-b')
-        .should('not.exist')
-      cy.get('mel-datahub-max-lines')
-        .find('.ease-in')
-        .should('have.css', 'max-height')
-        .and('satisfy', (maxHeight) => parseInt(maxHeight, 10) > 110)
+    it('should display the favorite button disabled', () => {
+      cy.get('mel-datahub-button-primary')
+        .eq(0)
+        .find('button')
+        .as('favoriteButton')
+      cy.get('@favoriteButton').should('be.disabled')
+      cy.get('@favoriteButton').should('have.class', 'bg-primary-light')
     })
 
     it('should scroll to download section (all the way down)', () => {
@@ -61,10 +32,51 @@ describe('datasets', () => {
         expect(scrollPosition).to.be.greaterThan(900)
       })
     })
+
+    it('should display the title', () => {
+      cy.get('.mel-page-title').should('be.visible')
+      cy.get('.mel-page-title').should('have.text', ' Alpenkonvention ')
+    })
+
+    it('should display the abstract in collapsed mode applying gradient', () => {
+      cy.get('mel-datahub-text-expand').should('be.visible')
+      cy.get('mel-datahub-text-expand')
+        .find('mel-datahub-button-primary')
+        .should('have.text', ' En savoir plus ')
+      cy.get('mel-datahub-text-expand')
+        .find('mel-datahub-button-primary')
+        .find('img')
+        .should('have.attr', 'src', '/assets/icons/arrow.svg')
+      cy.get('mel-datahub-text-expand')
+        .find('.bg-gradient-to-b')
+        .should('have.css', 'max-height', '72px')
+    })
+
+    it('should display the abstract in expanded mode without gradient', () => {
+      cy.get('mel-datahub-text-expand').should('be.visible')
+      cy.get('mel-datahub-text-expand')
+        .find('mel-datahub-button-primary')
+        .click()
+      cy.get('mel-datahub-text-expand')
+        .find('mel-datahub-button-primary')
+        .should('have.text', ' Reduire ')
+      cy.get('mel-datahub-text-expand')
+        .find('mel-datahub-button-primary')
+        .find('img')
+        .should('have.attr', 'src', '/assets/icons/arrow-up.svg')
+      cy.get('mel-datahub-text-expand')
+        .find('.bg-gradient-to-b')
+        .should('not.exist')
+      cy.get('mel-datahub-text-expand')
+        .find('.ease-in')
+        .should('have.css', 'max-height')
+        .and('satisfy', (maxHeight) => parseInt(maxHeight, 10) > 110)
+    })
   })
   describe('when logged in', () => {
     beforeEach(() => {
       cy.login()
+      cy.clearFavorites()
       cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4')
     })
     it('should toggle the favorite button', () => {
