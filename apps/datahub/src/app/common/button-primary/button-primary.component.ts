@@ -9,10 +9,12 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 export class ButtonPrimaryComponent {
   @Input() label: string
   @Input() set icon(fileName: string) {
-    this.src = `/assets/icons/${fileName}.svg`
-    this.placeholder = fileName
+    if (fileName) {
+      this.src = `/assets/icons/${fileName}.svg`
+      this.placeholder = fileName
+    }
   }
   @Input() disabled = false
-  src: string
-  placeholder: string
+  src?: string
+  placeholder?: string
 }

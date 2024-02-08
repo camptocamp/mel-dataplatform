@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 // ***********************************************
-// This example commands.js shows you how to
+// This example commands.ts shows you how to
 // create various custom commands and overwrite
 // existing commands.
 //
@@ -14,9 +14,9 @@
 declare namespace Cypress {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Chainable<Subject> {
-    login(username?: string, password?: string, redirect?: boolean): void
+    login(username?: string, password?: string, redirect?: boolean)
     signOut(): void
-    clearFavorites(): void
+    clearFavorites()
   }
 }
 
