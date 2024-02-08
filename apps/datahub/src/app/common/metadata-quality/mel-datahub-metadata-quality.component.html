@@ -1,0 +1,32 @@
+@if(metadataQualityDisplay){
+<div
+  class="flex metadata-quality"
+  (mouseenter)="showMenu()"
+  (mouseleave)="hideMenu()"
+>
+  <div class="flex gap-1 items-center">
+    <div class="flex h-[8px] w-[56px] bg-gray-6 rounded-t-lg rounded-b-lg">
+      <div
+        [style.width.%]="qualityScore"
+        class="flex bg-primary transition-width duration-500 ease-in-out rounded-t-md rounded-b-md shadow-xl"
+      ></div>
+    </div>
+    <span class="text-[12px] font-bold">{{
+      (qualityScore / 10).toFixed(1)
+    }}</span>
+    <img [src]="'/assets/info.svg'" [alt]="'info'" />
+  </div>
+
+  <div
+    class="absolute z-10 bg-white border border-black border-opacity-35 rounded-lg shadow-lg p-5 whitespace-nowrap"
+    [class]="isMenuShown ? 'block' : 'hidden'"
+  >
+    <div class="mb-4 font-bold" translate>record.metadata.quality.details</div>
+    @for(e of items; track e.name){<gn-ui-metadata-quality-item
+      [name]="e.name"
+      [value]="e.value"
+    ></gn-ui-metadata-quality-item
+    >}
+  </div>
+</div>
+}

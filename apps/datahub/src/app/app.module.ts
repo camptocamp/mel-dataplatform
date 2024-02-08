@@ -45,6 +45,7 @@ import { ResultsCardLastCreatedComponent } from './common/results-list-item/resu
 import { ResultsCardSearchComponent } from './common/results-list-item/results-card-search/results-card-search.component'
 import { MatTabsModule } from '@angular/material/tabs'
 import { DatasetApisComponent } from './dataset/dataset-apis/dataset-apis.component'
+import { MelDatahubMetadataQualityComponent } from './common/metadata-quality/mel-datahub-metadata-quality.component'
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { DatasetApisComponent } from './dataset/dataset-apis/dataset-apis.compon
     ResultsCardSearchComponent,
     DatasetPageComponent,
     DatasetApisComponent,
+    MelDatahubMetadataQualityComponent,
   ],
   imports: [
     BrowserModule,

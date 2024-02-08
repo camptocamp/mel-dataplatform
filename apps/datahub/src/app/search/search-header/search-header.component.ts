@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { RouterFacade, SearchService } from 'geonetwork-ui'
+import { FavoritesService, RouterFacade, SearchService } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
 
@@ -12,7 +12,8 @@ import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/sear
 export class SearchHeaderComponent {
   constructor(
     public routerFacade: RouterFacade,
-    private searchService: SearchService
+    private searchService: SearchService,
+    public favoritesService: FavoritesService
   ) {}
 
   onFuzzySearchSelection(record: CatalogRecord) {
