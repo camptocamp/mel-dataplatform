@@ -1,7 +1,7 @@
 <a
   [title]="record.abstract"
   (click)="mdSelect.emit(record)"
-  class="bg-gray-8 group flex flex-col gap-[16px] relative h-[270px] py-[12px] px-[16px] w-[410px] rounded border border-gray-6 filter hover:drop-shadow-lg"
+  class="bg-gray-8 group flex flex-col gap-[16px] h-[270px] py-[12px] px-[16px] max-w-[410px] rounded border border-gray-6 filter hover:drop-shadow-lg"
 >
   <div class="flex flex-col h-[72px] justify-between shrink-0">
     <h1 class="font-extrabold text-[17px] line-clamp-2 leading-5">
@@ -28,32 +28,34 @@
       {{ record.abstract }}
     </div>
 
-    <div class="flex flex-col text-gray-1 gap-[3px] relative">
+    <div class="flex flex-col text-gray-1 gap-[3px]">
       <div class="text-[12px] font-semibold">
         <span
-          >{{ 'record.metadata.localisation' | translate }} : This is a
+          >{{ 'mel.record.metadata.localisation' | translate }} : This is a
           Localisation</span
         >
       </div>
 
       <div class="text-[12px] font-semibold">
         <span
-          >{{ 'record.metadata.producteur' | translate }} :
+          >{{ 'mel.record.metadata.producteur' | translate }} :
           {{ shownOrganization.name }}</span
         >
       </div>
       <div class="flex gap-1 font-semibold">
         <div class="text-[12px] font-semibold">
-          <span>{{ 'record.metadata.quality' | translate }} : </span>
+          <span>{{ 'mel.record.metadata.quality' | translate }} : </span>
         </div>
-        <mel-datahub-mel-datahub-metadata-quality
-          [metadata]="record"
-          [metadataQualityDisplay]="true"
-          [smaller]="true"
-        ></mel-datahub-mel-datahub-metadata-quality>
-        <gn-ui-favorite-star
-          class="absolute right-0 bottom-0"
-        ></gn-ui-favorite-star>
+        <div class="flex grow justify-between relative">
+          <mel-datahub-mel-datahub-metadata-quality
+            [metadata]="record"
+            [metadataQualityDisplay]="true"
+            [smaller]="true"
+          ></mel-datahub-mel-datahub-metadata-quality>
+          <gn-ui-favorite-star
+            class="absolute right-0 bottom-0"
+          ></gn-ui-favorite-star>
+        </div>
       </div>
     </div>
   </div>
