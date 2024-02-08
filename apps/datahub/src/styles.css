@@ -18,3 +18,10 @@
     @apply bg-gray-8 flex flex-col justify-between w-[330px] rounded-lg border border-gray-6 filter cursor-pointer hover:drop-shadow-lg;
   }
 }
+.tippy-box a {
+  @apply text-primary;
+  text-decoration: underline;
+}
+.tippy-box a:hover {
+  @apply text-primary-dark;
+}
