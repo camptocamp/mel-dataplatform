@@ -20,6 +20,7 @@
         [title]="keyword"
         class="mel-badge-button truncate"
         (click)="onKeywordClick(keyword, $event)"
+        (keyup.enter)="$event.stopPropagation()"
       >
         {{ keyword }}</button
       >}
