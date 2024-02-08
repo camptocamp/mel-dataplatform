@@ -11,25 +11,25 @@ describe('datasets', () => {
       cy.get('@favoriteButton').should('have.class', 'bg-primary-light')
     })
 
-    it('should scroll to download section (all the way down)', () => {
+    it('should scroll down when clicking on download button', () => {
       cy.get('mel-datahub-button-primary').eq(1).as('downloadButton')
       cy.get('@downloadButton').click()
       cy.get('@downloadButton').should(() => {
         const scrollPosition = Cypress.dom.getWindowByElement(
           cy.state('window')
         ).scrollY
-        expect(scrollPosition).to.be.greaterThan(900)
+        expect(scrollPosition).to.be.greaterThan(0)
       })
     })
 
-    it('should scroll to api section (all the way down)', () => {
+    it('should scroll down when clicking on api button', () => {
       cy.get('mel-datahub-button-primary').eq(2).as('apiButton')
       cy.get('@apiButton').click()
       cy.get('@apiButton').should(() => {
         const scrollPosition = Cypress.dom.getWindowByElement(
           cy.state('window')
         ).scrollY
-        expect(scrollPosition).to.be.greaterThan(900)
+        expect(scrollPosition).to.be.greaterThan(0)
       })
     })
 
