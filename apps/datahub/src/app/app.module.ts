@@ -8,6 +8,7 @@ import {
   FeatureCatalogModule,
   FeatureRecordModule,
   FeatureSearchModule,
+  LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
   RouterService,
@@ -123,6 +124,10 @@ import { TextExpandComponent } from './common/text-expand/text-expand.component'
     importProvidersFrom(FeatureAuthModule),
     provideGn4(),
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
+    {
+      provide: LOGIN_URL,
+      useFactory: () => '${current_url}?login',
+    },
     { provide: RouterService, useClass: AppRouterService },
   ],
   bootstrap: [AppComponent],
