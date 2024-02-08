@@ -14,22 +14,77 @@
 declare namespace Cypress {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Chainable<Subject> {
-    login(email: string, password: string): void;
+    login(username?: string, password?: string, redirect?: boolean)
+    signOut(): void
+    clearFavorites()
   }
 }
 
-// -- This is a parent command --
-Cypress.Commands.add('login', (email, password) => {
-  console.log('Custom command example: Login', email, password);
-});
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+Cypress.Commands.add(
+  'login',
+  (username = 'admin', password = 'admin', redirect = false) => {
+    // first request to get the XSRF cookie
+    cy.request({
+      method: 'GET',
+      url: '/geonetwork/srv/api/me',
+      headers: {
+        Accept: 'application/json',
+      },
+    })
+    cy.getCookie('XSRF-TOKEN').then((xsrfTokenCookie) => {
+      cy.request({
+        method: 'POST',
+        url: '/geonetwork/signin',
+        body: `username=${username}&password=${password}&_csrf=${xsrfTokenCookie.value}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        followRedirect: false,
+      })
+    })
+    if (redirect) return cy.visit('/')
+    else return cy.window()
+  }
+)
+
+Cypress.Commands.add('signOut', () => {
+  cy.visit('/geonetwork/srv/eng/catalog.search#/home')
+  cy.get('a[title="User details"]').click()
+  cy.get('a[title="Sign out"]').click()
+})
+
+/**
+ * This will most likely fail if the user is not logged in!
+ */
+Cypress.Commands.add('clearFavorites', () => {
+  cy.request({
+    url: '/geonetwork/srv/api/me',
+    headers: { accept: 'application/json' },
+  })
+    .its('body')
+    .its('id')
+    .as('myId')
+
+  cy.window().then(function () {
+    cy.request({
+      url: `/geonetwork/srv/api/userselections/0/${this.myId}`,
+      headers: { accept: 'application/json' },
+    })
+      .its('body')
+      .as('favoritesId')
+  })
+
+  return cy
+    .getCookie('XSRF-TOKEN')
+    .its('value')
+    .then(function (token) {
+      const favoritesId = this.favoritesId || []
+      cy.request({
+        url: `/geonetwork/srv/api/userselections/0/${
+          this.myId
+        }?uuid=${favoritesId.join('&uuid=')}`,
+        method: 'DELETE',
+        headers: { accept: 'application/json', 'X-XSRF-TOKEN': token },
+      })
+    })
+})

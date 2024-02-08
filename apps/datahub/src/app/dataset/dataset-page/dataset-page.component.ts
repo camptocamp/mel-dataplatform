@@ -28,6 +28,9 @@ export class DatasetPageComponent {
         dataLinks?.length > 0 || geoDataLinks?.length > 0
     )
   )
+  displayDownload$ = this.facade.downloadLinks$.pipe(
+    map((links) => links?.length > 0)
+  )
   displayApi$ = this.facade.apiLinks$.pipe(map((links) => links?.length > 0))
   displayRelated$ = this.facade.related$.pipe(
     map((records) => records?.length > 0)
