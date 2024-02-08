@@ -39,7 +39,7 @@ export class ResultsListComponent implements OnInit, OnDestroy {
       .setSortBy(['desc', 'createDate'])
     this.myFavoritesSubscription =
       this.favoritesService.myFavoritesUuid$.subscribe(() => {
-        if (this.favoritesOnly) this.searchFacade.setFavoritesOnly(true)
+        if (this.favoritesOnlyValue) this.searchFacade.setFavoritesOnly(true)
       })
   }
 
