@@ -10,7 +10,7 @@ export class ButtonPrimaryComponent {
   @Input() label: string
   @Input() set icon(fileName: string) {
     if (fileName) {
-      this.src = `/assets/icons/${fileName}.svg`
+      this.src = `assets/icons/${fileName}.svg`
       this.placeholder = fileName
     }
   }
