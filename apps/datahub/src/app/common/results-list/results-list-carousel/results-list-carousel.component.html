@@ -1,20 +1,23 @@
-<div class="relative">
-  <div class="flex gap-4 p-4">
+<!-- if input number of cards -- width changes -->
+<div class="flex justify-center">
+  <mel-datahub-custom-carousel
+    containerClass="gap-4 py-10"
+    stepsContainerClass=""
+    [numberOfDisplayedCards]="numberOfDisplayedCards"
+  >
     @for (record of searchFacade.results$ | async; track
     record?.uniqueIdentifier) { @if (favoritesOnlyValue) {
     <mel-datahub-results-card-favorite
-      [style]="'height: 12em;'"
       [record]="record"
       (mdSelect)="onMetadataSelection($event)"
       (keyword)="onInfoKeywordClick($event)"
     ></mel-datahub-results-card-favorite>
     } @else {
     <mel-datahub-results-card-last-created
-      [style]="'height: 12em;'"
       [record]="record"
       (mdSelect)="onMetadataSelection($event)"
       (keyword)="onInfoKeywordClick($event)"
     ></mel-datahub-results-card-last-created>
     } }
-  </div>
+  </mel-datahub-custom-carousel>
 </div>

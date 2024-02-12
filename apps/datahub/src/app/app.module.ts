@@ -54,6 +54,7 @@ import { FavoriteHeartComponent } from './common/favorites/favorite-heart/favori
 import { HeartToggleComponent } from './common/favorites/heart-toggle/heart-toggle.component'
 import { TextExpandComponent } from './common/text-expand/text-expand.component'
 import { MelDatahubFooterComponent } from './common/footer/mel-datahub-footer.component'
+import { CustomCarouselComponent } from './common/custom-carousel/custom-carousel.component'
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { MelDatahubFooterComponent } from './common/footer/mel-datahub-footer.co
     HeartToggleComponent,
     TextExpandComponent,
     MelDatahubFooterComponent,
+    CustomCarouselComponent,
   ],
   imports: [
     BrowserModule,

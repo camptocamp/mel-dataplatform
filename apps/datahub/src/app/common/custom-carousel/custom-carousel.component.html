@@ -1,0 +1,42 @@
+<!-- <div class="flex justify-between max-w-[1148px] gap-8"> -->
+<div class="flex justify-between gap-8" [style]="{ maxWidth: outerWidth }">
+  <button
+    type="button"
+    [attr.aria-label]="'carousel-arrow-left'"
+    title="carousel-arrow-left"
+    class=""
+    (click)="scrollToStep(selectedStep - 1)"
+  >
+    <img src="assets/icons/carousel-arrow-left.svg" alt="arrow-left" />
+  </button>
+
+  <!-- <div #carouselOverflowContainer class="overflow-hidden marker max-w-[1024px]"> -->
+  <div
+    #carouselOverflowContainer
+    class="overflow-hidden marker"
+    [style]="{ maxWidth: innerWidth }"
+  >
+    <div class="carousel-container flex flex-row" [ngClass]="containerClass">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    [attr.aria-label]="'carousel-arrow-right'"
+    title="carousel-arrow-right"
+    class=""
+    (click)="scrollToStep(selectedStep + 1)"
+  >
+    <img src="assets/icons/carousel-arrow-right.svg" alt="arrow-right" />
+  </button>
+</div>
+
+<div class="flex justify-center gap-3" [ngClass]="stepsContainerClass">
+  <button
+    *ngFor="let step of steps; let i = index"
+    class="mel-carousel-step-dot"
+    (click)="scrollToStep(i)"
+    [ngClass]="selectedStep === i ? 'bg-primary' : 'bg-transparent'"
+  ></button>
+</div>
