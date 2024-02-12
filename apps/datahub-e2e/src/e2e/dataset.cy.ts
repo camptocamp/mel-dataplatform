@@ -8,7 +8,11 @@ describe('datasets', () => {
         .find('button')
         .as('favoriteButton')
       cy.get('@favoriteButton').should('be.disabled')
-      cy.get('@favoriteButton').should('have.class', 'bg-primary-light')
+      cy.get('@favoriteButton').should(
+        'have.css',
+        'background-color',
+        'rgb(250, 206, 210)'
+      )
     })
 
     it('should scroll down when clicking on download button', () => {
