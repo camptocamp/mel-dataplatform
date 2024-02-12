@@ -1,10 +1,6 @@
-<button
-  class="h-11 flex justify-center items-center gap-2 text-white text-[15px] font-extrabold leading-[18px] py-2 px-[18px] rounded border"
-  [class]="disabled ? 'bg-primary-light' : 'bg-primary hover:bg-primary-dark'"
-  [disabled]="disabled"
->
+<button [class]="[extraClass]" [disabled]="disabled">
   {{ label }}
   @if(src){
-  <img [src]="src" [alt]="placeholder" />
+  <img [src]="src" [alt]="placeholder" [class]="imageClass" />
   }
 </button>

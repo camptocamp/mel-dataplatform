@@ -8,6 +8,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 })
 export class ButtonPrimaryComponent {
   @Input() label: string
+  @Input() extraClass?: string
+  @Input() imageClass?: string
   @Input() set icon(fileName: string) {
     if (fileName) {
       this.src = `assets/icons/${fileName}.svg`

@@ -46,15 +46,18 @@
         <div class="text-[12px] font-semibold">
           <span>{{ 'mel.record.metadata.quality' | translate }} : </span>
         </div>
-        <div class="flex grow justify-between relative">
+        <div class="flex grow justify-between relative items-center">
           <mel-datahub-mel-datahub-metadata-quality
             [metadata]="record"
             [metadataQualityDisplay]="true"
             [smaller]="true"
           ></mel-datahub-mel-datahub-metadata-quality>
-          <gn-ui-favorite-star
-            class="absolute right-0 bottom-0"
-          ></gn-ui-favorite-star>
+          <mel-datahub-favorite-heart
+            [record]="record"
+            class="relative shrink lg:absolute right-0 bottom-[4px]"
+            extraClass="mel-secondary-button"
+            imageClass="smaller-icon"
+          ></mel-datahub-favorite-heart>
         </div>
       </div>
     </div>

@@ -2,4 +2,6 @@
   [toggled]="isFavorite$ | async"
   (newValue)="toggleFavorite($event)"
   [disabled]="loading || (isAnonymous$ | async)"
+  [extraClass]="extraClass"
+  [imageClass]="imageClass"
 ></mel-datahub-heart-toggle>

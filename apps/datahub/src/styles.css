@@ -17,6 +17,21 @@
   .mel-card {
     @apply bg-gray-8 flex flex-col justify-between w-[330px] rounded-lg border border-gray-6 filter cursor-pointer hover:drop-shadow-lg;
   }
+  .mel-primary-button {
+    @apply h-11 flex justify-center items-center gap-2 text-white text-[15px] font-extrabold leading-[18px] py-2 px-[18px] rounded border bg-primary hover:bg-primary-dark;
+  }
+  .mel-primary-button:disabled {
+    @apply bg-primary-light;
+  }
+  .mel-secondary-button {
+    @apply flex justify-center items-center gap-2 text-white text-[12px] font-normal leading-[14px] px-3 py-1 rounded-3xl border bg-gray-4  hover:bg-gray-2;
+  }
+  .mel-secondary-button:disabled {
+    @apply bg-gray-7;
+  }
+  .smaller-icon {
+    @apply w-4 h-4;
+  }
 }
 .tippy-box a {
   @apply text-primary;
