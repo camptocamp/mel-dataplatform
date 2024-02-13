@@ -1,23 +1,27 @@
-<!-- if input number of cards -- width changes -->
 <div class="flex justify-center">
-  <mel-datahub-custom-carousel
-    containerClass="gap-4 py-10"
-    stepsContainerClass=""
-    [numberOfDisplayedCards]="numberOfDisplayedCards"
+  <gn-ui-content-ghost
+    ghostClass="h-[252px] w-[1124px]"
+    [showContent]="resultsReady"
   >
-    @for (record of searchFacade.results$ | async; track
-    record?.uniqueIdentifier) { @if (favoritesOnlyValue) {
-    <mel-datahub-results-card-favorite
-      [record]="record"
-      (mdSelect)="onMetadataSelection($event)"
-      (keyword)="onInfoKeywordClick($event)"
-    ></mel-datahub-results-card-favorite>
-    } @else {
-    <mel-datahub-results-card-last-created
-      [record]="record"
-      (mdSelect)="onMetadataSelection($event)"
-      (keyword)="onInfoKeywordClick($event)"
-    ></mel-datahub-results-card-last-created>
-    } }
-  </mel-datahub-custom-carousel>
+    <mel-datahub-custom-carousel
+      containerClass="gap-4 py-10"
+      stepsContainerClass=""
+      [numberOfDisplayedCards]="numberOfDisplayedCards"
+    >
+      @for (record of searchFacade.results$ | async; track
+      record?.uniqueIdentifier) { @if (favoritesOnlyValue) {
+      <mel-datahub-results-card-favorite
+        [record]="record"
+        (mdSelect)="onMetadataSelection($event)"
+        (keyword)="onInfoKeywordClick($event)"
+      ></mel-datahub-results-card-favorite>
+      } @else {
+      <mel-datahub-results-card-last-created
+        [record]="record"
+        (mdSelect)="onMetadataSelection($event)"
+        (keyword)="onInfoKeywordClick($event)"
+      ></mel-datahub-results-card-last-created>
+      } }
+    </mel-datahub-custom-carousel>
+  </gn-ui-content-ghost>
 </div>
