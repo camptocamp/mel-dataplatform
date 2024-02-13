@@ -1,5 +1,4 @@
 <a
-  [title]="record.abstract"
   [tabIndex]="0"
   (click)="mdSelect.emit(record)"
   (keyup.enter)="mdSelect.emit(record)"
@@ -33,9 +32,11 @@
       {{ record.abstract }}
     </div>
 
-    <div class="flex flex-col text-gray-1 gap-[3px]">
+    <div class="flex flex-col text-gray-1 gap-[3px] w-9/12">
       <div class="text-[12px] font-semibold">
         <span
+          class="line-clamp-1 text-ellipsis"
+          [title]="'This is a Localisation'"
           >{{ 'mel.record.metadata.localisation' | translate }} : This is a
           Localisation</span
         >
@@ -43,6 +44,8 @@
 
       <div class="text-[12px] font-semibold">
         <span
+          class="line-clamp-1 text-ellipsis"
+          [title]="shownOrganization.name"
           >{{ 'mel.record.metadata.producteur' | translate }} :
           {{ shownOrganization.name }}</span
         >
@@ -59,7 +62,7 @@
           ></mel-datahub-mel-datahub-metadata-quality>
           <mel-datahub-favorite-heart
             [record]="record"
-            class="relative shrink lg:absolute right-0 bottom-[4px]"
+            class="relative shrink lg:absolute -right-[92px] bottom-[4px]"
             buttonClass="mel-secondary-button"
             imageClass="smaller-icon"
           ></mel-datahub-favorite-heart>
