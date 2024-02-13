@@ -1,10 +1,11 @@
 <div class="relative">
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-[30px]">
+  <div class="flex justify-center flex-wrap gap-6">
     @for (record of searchFacade.results$ | async; track
     record.uniqueIdentifier) {
     <mel-datahub-results-card-search
       [record]="record"
       (mdSelect)="onMetadataSelection($event)"
+      (keyword)="onInfoKeywordClick($event)"
     ></mel-datahub-results-card-search>
     }
   </div>

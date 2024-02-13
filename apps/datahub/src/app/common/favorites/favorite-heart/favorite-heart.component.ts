@@ -18,6 +18,6 @@ export class FavoriteHeartComponent extends FavoriteStarComponent {
   @ViewChild(HeartToggleComponent, { read: ElementRef })
   override starToggleRef: ElementRef
 
-  @Input() extraClass?: string
+  @Input() buttonClass?: string
   @Input() imageClass?: string
 }

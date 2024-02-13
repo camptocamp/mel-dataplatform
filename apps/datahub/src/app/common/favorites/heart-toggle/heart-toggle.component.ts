@@ -16,7 +16,7 @@ import { propagateToDocumentOnly } from 'geonetwork-ui'
 export class HeartToggleComponent {
   @Input() toggled!: boolean
   @Input() disabled = false
-  @Input() extraClass?: string
+  @Input() buttonClass?: string
   @Input() imageClass?: string
   @Output() newValue = new EventEmitter<boolean>()
 

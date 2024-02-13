@@ -1,7 +1,9 @@
 <a
   [title]="record.abstract"
+  [tabIndex]="0"
   (click)="mdSelect.emit(record)"
-  class="bg-gray-8 group flex flex-col gap-[16px] h-[270px] py-[12px] px-[16px] max-w-[410px] rounded border border-gray-6 filter hover:drop-shadow-lg"
+  (keyup.enter)="mdSelect.emit(record)"
+  class="mel-card gap-[16px] h-[270px] p-4 w-[410px]"
 >
   <div class="flex flex-col h-[72px] justify-between shrink-0">
     <h1 class="font-extrabold text-[17px] line-clamp-2 leading-5">
@@ -9,18 +11,21 @@
     </h1>
 
     <div class="flex flex-col justify-between">
-      <div class="flex gap-1" *ngIf="record.keywords?.length">
-        <button
+      @if(record.keywords?.length) {
+      <div class="flex gap-1">
+        @for(keyword of record.keywords.slice(0, 2); track
+        record?.uniqueIdentifier){<button
           type="button"
           [attr.aria-label]="keyword"
           [title]="keyword"
           class="mel-badge-button truncate"
           (click)="onKeywordClick(keyword, $event)"
-          *ngFor="let keyword of record.keywords.slice(0, 2)"
+          (keyup.enter)="$event.stopPropagation()"
         >
-          {{ keyword }}
-        </button>
+          {{ keyword }}</button
+        >}
       </div>
+      }
     </div>
   </div>
   <div class="flex flex-col justify-between grow">
@@ -55,7 +60,7 @@
           <mel-datahub-favorite-heart
             [record]="record"
             class="relative shrink lg:absolute right-0 bottom-[4px]"
-            extraClass="mel-secondary-button"
+            buttonClass="mel-secondary-button"
             imageClass="smaller-icon"
           ></mel-datahub-favorite-heart>
         </div>
