@@ -2,9 +2,9 @@
   [tabIndex]="0"
   (click)="mdSelect.emit(record)"
   (keyup.enter)="mdSelect.emit(record)"
-  class="mel-card gap-[16px] h-[270px] p-4 w-[410px]"
+  class="mel-card gap-3 h-[270px] p-4"
 >
-  <div class="flex flex-col h-[72px] justify-between shrink-0">
+  <div class="flex flex-col h-[78px] justify-between shrink-0">
     <h1 class="font-extrabold text-[17px] line-clamp-2 leading-5">
       {{ record.title }}
     </h1>
@@ -31,42 +31,41 @@
     <div class="line-clamp-3 text-[15px] text-gray-2">
       {{ record.abstract }}
     </div>
-
-    <div class="flex flex-col text-gray-1 gap-[3px] w-9/12">
-      <div class="text-[12px] font-semibold">
-        <span
-          class="line-clamp-1 text-ellipsis"
-          [title]="'This is a Localisation'"
-          >{{ 'mel.record.metadata.localisation' | translate }} : This is a
-          Localisation</span
-        >
-      </div>
-
-      <div class="text-[12px] font-semibold">
-        <span
-          class="line-clamp-1 text-ellipsis"
-          [title]="shownOrganization.name"
-          >{{ 'mel.record.metadata.producteur' | translate }} :
-          {{ shownOrganization.name }}</span
-        >
-      </div>
-      <div class="flex gap-1 font-semibold">
-        <div class="text-[12px] font-semibold">
-          <span>{{ 'mel.record.metadata.quality' | translate }} : </span>
+    <div class="flex justify-between gap-1 font-semibold">
+      <div class="flex flex-col text-gray-1 gap-[3px] w-9/12">
+        <div class="text-[12px] font-semibold truncate">
+          <span [title]="'This is a Localisation'"
+            >{{ 'mel.record.metadata.localisation' | translate }} : This is a
+            Localisation</span
+          >
         </div>
-        <div class="flex grow justify-between relative items-center">
-          <mel-datahub-mel-datahub-metadata-quality
-            [metadata]="record"
-            [metadataQualityDisplay]="true"
-            [smaller]="true"
-          ></mel-datahub-mel-datahub-metadata-quality>
-          <mel-datahub-favorite-heart
-            [record]="record"
-            class="relative shrink lg:absolute -right-[92px] bottom-[4px]"
-            buttonClass="mel-secondary-button"
-            imageClass="smaller-icon"
-          ></mel-datahub-favorite-heart>
+
+        <div class="text-[12px] font-semibold truncate">
+          <span [title]="shownOrganization.name"
+            >{{ 'mel.record.metadata.producteur' | translate }} :
+            {{ shownOrganization.name }}</span
+          >
         </div>
+        <div class="flex gap-1 font-semibold">
+          <div class="text-[12px] font-semibold">
+            <span>{{ 'mel.record.metadata.quality' | translate }} : </span>
+          </div>
+          <div class="flex justify-between relative items-center">
+            <mel-datahub-mel-datahub-metadata-quality
+              [metadata]="record"
+              [metadataQualityDisplay]="true"
+              [smaller]="true"
+            ></mel-datahub-mel-datahub-metadata-quality>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col justify-end">
+        <mel-datahub-favorite-heart
+          [record]="record"
+          class="mb-1"
+          buttonClass="mel-secondary-button"
+          imageClass="smaller-icon"
+        ></mel-datahub-favorite-heart>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <div class="relative">
-  <div class="flex justify-center flex-wrap gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     @for (record of searchFacade.results$ | async; track
     record.uniqueIdentifier) {
     <mel-datahub-results-card-search
