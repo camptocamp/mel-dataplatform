@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'mel-datahub-button-primary',
-  templateUrl: './button-primary.component.html',
+  selector: 'mel-datahub-button',
+  templateUrl: './button.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

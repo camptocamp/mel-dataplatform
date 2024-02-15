@@ -5,17 +5,17 @@
         [record]="record"
       ></mel-datahub-favorite-heart>
       @if(getScrollElement('download')){
-      <mel-datahub-button-primary
+      <mel-datahub-button
         [label]="'mel.dataset.download' | translate"
         [icon]="'download'"
         (click)="scrollTo('download')"
-      ></mel-datahub-button-primary>
+      ></mel-datahub-button>
       } @if(getScrollElement('api')){
-      <mel-datahub-button-primary
+      <mel-datahub-button
         [label]="'mel.dataset.api' | translate"
         [icon]="'api'"
         (click)="scrollTo('api')"
-      ></mel-datahub-button-primary>
+      ></mel-datahub-button>
       }
     </div>
     <h1 class="mel-page-title sm:block my-4 -ml-20">
