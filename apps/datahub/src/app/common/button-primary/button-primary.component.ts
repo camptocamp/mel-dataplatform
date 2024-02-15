@@ -8,15 +8,18 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 })
 export class ButtonComponent {
   @Input() label: string
-  @Input() buttonClass?: string
-  @Input() imageClass?: string
   @Input() set icon(fileName: string) {
     if (fileName) {
       this.src = `assets/icons/${fileName}.svg`
       this.placeholder = fileName
     }
   }
-  @Input() disabled = false
   src?: string
   placeholder?: string
+  @Input() set buttonClass(value: string) {
+    if (value) this.btnClass = value
+  }
+  btnClass = 'mel-primary-button'
+  @Input() imageClass?: string
+  @Input() disabled = false
 }
