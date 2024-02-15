@@ -13,7 +13,7 @@
 <!-- TODO: try to adapt tab layout to fit MEL -->
 <div style="height: 612px">
   <div class="pt-8 overflow-visible sm:pt-5" style="height: 512px">
-    <div class="mel-container-lg px-4 lg:mx-auto">
+    <div class="mel-container-lg">
       <div>
         <div
           class="text-[28px] text-title font-title transform sm:translate-y-10"
@@ -73,7 +73,7 @@
 <!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
 <gn-ui-data-view-share></gn-ui-data-view-share>
 }
-<div class="mel-container-lg lg:mx-auto">
+<div class="mel-container-lg">
   @if(displayDownload$ | async) {
   <div id="download" class="block mt-6">
     <!-- TODO: create corresponding components, uses GN-UI components for now -->
@@ -94,7 +94,7 @@
 <div>
   <div>
     <div class="h-48 overflow-visible">
-      <div class="mel-container-lg px-4 lg:mx-auto">
+      <div class="mel-container-lg">
         <div>
           <p
             class="font-title text-[28px] text-title font-medium mt-6 sm:mt-10 mb-4 text-center sm:text-left"
@@ -116,7 +116,7 @@
     </div>
   </div>
   <div class="bg-primary">
-    <div class="mel-container-lg mx-auto h-[1096px] sm:h-96"></div>
+    <div class="mel-container-lg h-[1096px] sm:h-96"></div>
   </div>
 </div>
 } } @else {
