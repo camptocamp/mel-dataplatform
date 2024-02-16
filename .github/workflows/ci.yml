@@ -81,7 +81,7 @@ jobs:
           repository: geonetwork/geonetwork-ui
           path: 'backend/geonetwork-ui'
       - name: Build the gn-ui backend
-        run: cd backend/geonetwork-ui/support-services && sudo docker-compose down -v && sudo docker-compose up -d init
+        run: sudo docker-compose -f backend/geonetwork-ui/support-services/docker-compose.yml up -d init
 
       - name: Install dependencies
         run: npm i
