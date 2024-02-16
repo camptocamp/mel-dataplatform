@@ -1,6 +1,5 @@
 <div class="mel-grid-container-dataset py-16">
-  <div class="sm:col-span-1"></div>
-  <div class="md:col-span-6 lg:col-span-8">
+  <div class="md:col-start-2 lg:col-start-2 md:col-span-6 lg:col-span-8">
     <div class="flex justify-end gap-2">
       <mel-datahub-favorite-heart
         [record]="record"
@@ -19,7 +18,9 @@
       ></mel-datahub-button>
       }
     </div>
-    <h1 class="mel-page-title sm:block my-4 sm:-ml-20">
+    <h1
+      class="mel-page-title sm:block my-4 sm:-ml-20 sm:mr-10 md:mr-20 lg:mr-44"
+    >
       {{ record.title }}
     </h1>
     @if(record.abstract){
