@@ -9,12 +9,13 @@
 
   }
 </div>
-@if ((displayMap$ | async) || (displayData$ | async)) {
-<!-- TODO: try to adapt tab layout to fit MEL -->
-<div style="height: 612px">
-  <div class="pt-8 overflow-visible sm:pt-5" style="height: 512px">
-    <div class="mel-container-lg">
-      <div>
+<div class="mel-grid-container-dataset">
+  <div class="sm:col-span-1"></div>
+  <div class="sm:col-span-8">
+    @if ((displayMap$ | async) || (displayData$ | async)) {
+    <!-- TODO: try to adapt tab layout to fit MEL -->
+    <div style="height: 612px">
+      <div class="pt-8 overflow-visible sm:pt-5" style="height: 512px">
         <div
           class="text-[28px] text-title font-title transform sm:translate-y-10"
           translate
@@ -67,59 +68,52 @@
         </mat-tab-group>
       </div>
     </div>
-  </div>
-</div>
-} @if((selectedTabIndex$ | async) === 2) {
-<!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
-<gn-ui-data-view-share></gn-ui-data-view-share>
-}
-<div class="mel-container-lg">
-  @if(displayDownload$ | async) {
-  <div id="download" class="block mt-6">
-    <!-- TODO: create corresponding components, uses GN-UI components for now -->
-    <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
-  </div>
-  }
-</div>
-<div class="lg:mx-auto">
-  @if(displayApi$ | async) {
-  <div id="api" class="block mt-6">
-    <!-- TODO: create corresponding components, uses GN-UI components for now -->
-    <mel-datahub-dataset-apis></mel-datahub-dataset-apis>
-  </div>
-  }
-</div>
-@if(displayRelated$ | async) {
-<!-- TODO: create corresponding UI component-->
-<div>
-  <div>
-    <div class="h-48 overflow-visible">
-      <div class="mel-container-lg">
-        <div>
-          <p
-            class="font-title text-[28px] text-title font-medium mt-6 sm:mt-10 mb-4 text-center sm:text-left"
-            translate
-          >
-            mel.record.metadata.related
-          </p>
-          <div
-            class="mb-4 flex flex-wrap gap-6 justify-center sm:justify-start"
-          >
-            <gn-ui-related-record-card
-              *ngFor="let record of facade.related$ | async"
-              [record]="record"
+    } @if((selectedTabIndex$ | async) === 2) {
+    <!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
+    <gn-ui-data-view-share></gn-ui-data-view-share>
+    } @if(displayDownload$ | async) {
+    <div id="download" class="block mt-6">
+      <!-- TODO: create corresponding components, uses GN-UI components for now -->
+      <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
+    </div>
+    }
+    <div class="lg:mx-auto">
+      @if(displayApi$ | async) {
+      <div id="api" class="block mt-6">
+        <!-- TODO: create corresponding components, uses GN-UI components for now -->
+        <mel-datahub-dataset-apis></mel-datahub-dataset-apis>
+      </div>
+      }
+    </div>
+    @if(displayRelated$ | async) {
+    <!-- TODO: create corresponding UI component-->
+    <div>
+      <div>
+        <div class="h-48 overflow-visible">
+          <div>
+            <p
+              class="font-title text-[28px] text-title font-medium mt-6 sm:mt-10 mb-4 text-center sm:text-left"
+              translate
             >
-            </gn-ui-related-record-card>
+              mel.record.metadata.related
+            </p>
+            <div
+              class="mb-4 flex flex-wrap gap-6 justify-center sm:justify-start"
+            >
+              <gn-ui-related-record-card
+                *ngFor="let record of facade.related$ | async"
+                [record]="record"
+              >
+              </gn-ui-related-record-card>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="bg-primary">
-    <div class="mel-container-lg h-[1096px] sm:h-96"></div>
+    }
   </div>
 </div>
-} } @else {
+} @else {
 <div class="mt-12 p-4 max-w-[600px] m-auto text-[13px]">
   @if((facade.error$ | async).notFound) {
   <gn-ui-search-results-error
