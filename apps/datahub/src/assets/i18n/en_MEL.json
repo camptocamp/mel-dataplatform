@@ -1,4 +1,16 @@
 {
+  "mel.common.footer.accessibility": "Accessibility : partially conform to 55%",
+  "mel.common.footer.contact": "Contact us",
+  "mel.common.footer.follow": "Follow us !",
+  "mel.common.footer.legal": "Legal mentions",
+  "mel.common.footer.logo.financeUE": "",
+  "mel.common.footer.logo.franceRelance": "",
+  "mel.common.footer.newletter.signup": "Sign up to the newsletter",
+  "mel.common.footer.news": "Last news",
+  "mel.common.footer.newsletter.inform": "Subscribe to the newsletter and stay informed of MEL's last news !",
+  "mel.common.footer.plan": "Sitemap",
+  "mel.common.footer.recruitment": "Recruitment",
+  "mel.common.footer.social": "Social medias",
   "mel.common.header.title": "",
   "mel.datahub.home.title": "",
   "mel.datahub.search.title": "",
@@ -16,5 +28,7 @@
   "mel.record.metadata.related": "",
   "mel.record.tab.chart": "",
   "mel.record.tab.data": "",
-  "mel.record.tab.map": ""
+  "mel.record.tab.map": "",
+  "record.metadata.quality": "",
+  "record.metadata.quality.details": ""
 }
