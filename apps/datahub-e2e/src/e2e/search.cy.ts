@@ -5,7 +5,7 @@ describe('datahub-e2e', () => {
     cy.get('.mel-page-title').should('be.visible')
   })
   it('should display the number of result hits', () => {
-    cy.get('gn-ui-results-hits-number').should('contain', 12)
+    cy.get('gn-ui-results-hits-number').should('contain', 14)
   })
 
   // If not logged in or no favorites exists
@@ -15,7 +15,7 @@ describe('datahub-e2e', () => {
       .find('h1')
       .should(
         'have.text',
-        ' Cartographie des sols agricoles de la plaine du Rhône '
+        ' Metadata for E2E testing purpose. (this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut) '
       )
 
     cy.get('mel-datahub-results-card-last-created')
