@@ -53,6 +53,7 @@ import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-d
 import { FavoriteHeartComponent } from './common/favorites/favorite-heart/favorite-heart.component'
 import { HeartToggleComponent } from './common/favorites/heart-toggle/heart-toggle.component'
 import { TextExpandComponent } from './common/text-expand/text-expand.component'
+import { MelDatahubFooterComponent } from './common/footer/mel-datahub-footer.component'
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { TextExpandComponent } from './common/text-expand/text-expand.component'
     FavoriteHeartComponent,
     HeartToggleComponent,
     TextExpandComponent,
+    MelDatahubFooterComponent,
   ],
   imports: [
     BrowserModule,
