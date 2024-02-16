@@ -7,6 +7,9 @@ describe('datahub-e2e', () => {
   it('should display the number of result hits', () => {
     cy.get('gn-ui-results-hits-number').should('contain', 14)
   })
+  it('should display the footer', () => {
+    cy.get('mel-datahub-footer').should('be.visible')
+  })
 
   // If not logged in or no favorites exists
   it('should display record results in last created cards', () => {

@@ -1,4 +1,16 @@
 {
+  "mel.common.footer.accessibility": "Accessibilité : partiellement conforme à 55%",
+  "mel.common.footer.contact": "Contactez-nous",
+  "mel.common.footer.follow": "Suivez-nous !",
+  "mel.common.footer.legal": "Mentions légales",
+  "mel.common.footer.logo.financeUE": "Financé par l'Union européenne",
+  "mel.common.footer.logo.franceRelance": "France Relance",
+  "mel.common.footer.newletter.signup": "S'inscrire à l'infolettre",
+  "mel.common.footer.news": "Actualités",
+  "mel.common.footer.newsletter.inform": "Restez informés de l'actualité de la MEL en vous inscrivant à l'infolettre !",
+  "mel.common.footer.plan": "Plan du site",
+  "mel.common.footer.recruitment": "Recrutement",
+  "mel.common.footer.social": "Réseaux sociaux",
   "mel.common.header.title": "Data platform",
   "mel.datahub.home.title": "Métropole Européenne Lille",
   "mel.datahub.search.title": "Catalogue de jeux de données",
@@ -16,5 +28,7 @@
   "mel.record.metadata.related": "Jeux de données similaires",
   "mel.record.tab.chart": "Analyse",
   "mel.record.tab.data": "Tableau",
-  "mel.record.tab.map": "Cartographie"
+  "mel.record.tab.map": "Cartographie",
+  "record.metadata.quality": "",
+  "record.metadata.quality.details": ""
 }

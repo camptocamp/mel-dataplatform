@@ -72,6 +72,10 @@ describe('datasets', () => {
         .should('have.css', 'max-height')
         .and('satisfy', (maxHeight) => parseInt(maxHeight, 10) > 110)
     })
+
+    it('should display the footer', () => {
+      cy.get('mel-datahub-footer').should('be.visible')
+    })
   })
   describe('when logged in', () => {
     beforeEach(() => {
