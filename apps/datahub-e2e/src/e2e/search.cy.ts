@@ -65,7 +65,7 @@ describe('datahub-e2e', () => {
         .should('be.visible')
 
       cy.get('mel-datahub-results-card-favorite')
-        .find('mel-datahub-mel-datahub-metadata-quality')
+        .find('mel-datahub-metadata-quality')
         .should('be.visible')
     })
 

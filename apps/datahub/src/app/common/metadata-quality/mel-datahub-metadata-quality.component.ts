@@ -9,7 +9,7 @@ import { MetadataQualityComponent } from 'geonetwork-ui'
 import tippy from 'tippy.js'
 
 @Component({
-  selector: 'mel-datahub-mel-datahub-metadata-quality',
+  selector: 'mel-datahub-metadata-quality',
   templateUrl: './mel-datahub-metadata-quality.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
