@@ -1,21 +1,15 @@
-<!-- <div class="flex justify-between max-w-[1148px] gap-8"> -->
-<div class="flex justify-between gap-8" [style]="{ maxWidth: outerWidth }">
+<div class="flex justify-between gap-16">
   <button
     type="button"
     [attr.aria-label]="'carousel-arrow-left'"
     title="carousel-arrow-left"
-    [class]="selectedStep === 0 ? 'hidden' : 'block'"
+    [class]="selectedStep === 0 ? 'invisible' : 'block'"
     (click)="scrollToStep(selectedStep - 1)"
   >
     <img src="assets/icons/carousel-arrow-left.svg" alt="arrow-left" />
   </button>
 
-  <!-- <div #carouselOverflowContainer class="overflow-hidden marker max-w-[1024px]"> -->
-  <div
-    #carouselOverflowContainer
-    class="overflow-hidden marker"
-    [style]="{ maxWidth: innerWidth }"
-  >
+  <div #carouselOverflowContainer class="overflow-hidden marker w-full">
     <div class="carousel-container flex flex-row" [ngClass]="containerClass">
       <ng-content></ng-content>
     </div>
@@ -25,7 +19,7 @@
     type="button"
     [attr.aria-label]="'carousel-arrow-right'"
     title="carousel-arrow-right"
-    [class]="selectedStep === steps.length - 1 ? 'hidden' : 'block'"
+    [class]="selectedStep === steps.length - 1 ? 'invisible' : 'block'"
     (click)="scrollToStep(selectedStep + 1)"
   >
     <img src="assets/icons/carousel-arrow-right.svg" alt="arrow-right" />

@@ -18,7 +18,6 @@ export class ResultsListCarouselComponent
   extends ResultsListComponent
   implements OnInit, OnDestroy
 {
-  @Input() numberOfDisplayedCards?: number = 3
   resultsSubscription: Subscription
 
   resultsReady = false

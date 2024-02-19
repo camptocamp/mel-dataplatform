@@ -1,12 +1,12 @@
 <div class="flex justify-center">
   <gn-ui-content-ghost
-    ghostClass="h-[252px] w-[1124px]"
+    ghostClass="h-[252px]"
+    class="container"
     [showContent]="resultsReady"
   >
     <mel-datahub-custom-carousel
       containerClass="gap-4 py-10"
       stepsContainerClass=""
-      [numberOfDisplayedCards]="numberOfDisplayedCards"
     >
       @for (record of searchFacade.results$ | async; track
       record?.uniqueIdentifier) { @if (favoritesOnlyValue) {

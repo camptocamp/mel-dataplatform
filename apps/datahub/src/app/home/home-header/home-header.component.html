@@ -1,5 +1,5 @@
 <div class="bg-beige">
-  <div class="pt-[139px]">
+  <div class="pt-[139px] container mx-auto">
     <h1 class="flex justify-center mel-page-title" translate="">
       mel.datahub.home.title
     </h1>
@@ -10,7 +10,7 @@
         [autoFocus]="true"
       ></gn-ui-fuzzy-search>
     </div>
-    <div class="h-64" gnUiSearchStateContainer="headerHome">
+    <div class="h-64 lg:w-[77%] mx-auto" gnUiSearchStateContainer="headerHome">
       <mel-datahub-results-list-carousel
         [numberOfResults]="6"
         [favoritesOnly]="false"
