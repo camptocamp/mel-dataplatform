@@ -2,9 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  OnDestroy,
   OnInit,
 } from '@angular/core'
 import { ResultsListComponent } from '../results-list.component'
+import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-results-list-carousel',
@@ -14,17 +16,24 @@ import { ResultsListComponent } from '../results-list.component'
 })
 export class ResultsListCarouselComponent
   extends ResultsListComponent
-  implements OnInit
+  implements OnInit, OnDestroy
 {
   @Input() numberOfDisplayedCards?: number = 3
+  resultsSubscription: Subscription
 
   resultsReady = false
 
   override ngOnInit(): void {
-    // unsubscribe?
-    this.searchFacade.results$.subscribe((results) => {
-      if (results.length > 0) this.resultsReady = true
-      // this.changeDetector.detectChanges()
-    })
+    super.ngOnInit()
+    this.resultsSubscription = this.searchFacade.results$.subscribe(
+      (results) => {
+        if (results.length > 0) this.resultsReady = true
+      }
+    )
+  }
+
+  override ngOnDestroy(): void {
+    super.ngOnDestroy()
+    this.resultsSubscription.unsubscribe()
   }
 }
