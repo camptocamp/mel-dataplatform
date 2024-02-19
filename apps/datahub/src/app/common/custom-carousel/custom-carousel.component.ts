@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   Input,
@@ -14,7 +15,7 @@ import { CarouselComponent } from 'geonetwork-ui'
 })
 export class CustomCarouselComponent
   extends CarouselComponent
-  implements OnInit
+  implements OnInit, AfterViewInit
 {
   @Input() numberOfDisplayedCards: number
 
@@ -24,5 +25,10 @@ export class CustomCarouselComponent
   ngOnInit(): void {
     this.outerWidth = `${this.numberOfDisplayedCards * 383}px`
     this.innerWidth = `${this.numberOfDisplayedCards * 342}px`
+  }
+
+  override ngAfterViewInit(): void {
+    super.ngAfterViewInit()
+    this.emblaApi.reInit({ align: 'start' })
   }
 }
