@@ -39,6 +39,13 @@
     @apply w-3 h-3 rounded-full border border-gray-1 bg-transparent;
   }
 }
+.tippy-box[data-theme~='data-platform'] {
+  background-color: rgba(0, 0, 0, 0);
+}
+.tippy-box[data-theme~='data-platform'][data-placement^='bottom']
+  > .tippy-arrow::before {
+  border-bottom-color: rgba(0, 0, 0, 0);
+}
 .tippy-box a {
   @apply text-primary;
   text-decoration: underline;
