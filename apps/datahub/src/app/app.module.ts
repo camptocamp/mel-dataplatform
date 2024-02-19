@@ -48,7 +48,7 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { DatasetApisComponent } from './dataset/dataset-apis/dataset-apis.component'
 import { MelDatahubMetadataQualityComponent } from './common/metadata-quality/mel-datahub-metadata-quality.component'
 import { DatasetHeaderComponent } from './dataset/dataset-header/dataset-header.component'
-import { ButtonPrimaryComponent } from './common/button-primary/button-primary.component'
+import { ButtonComponent } from './common/button/button.component'
 import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-downloads.component'
 import { FavoriteHeartComponent } from './common/favorites/favorite-heart/favorite-heart.component'
 import { HeartToggleComponent } from './common/favorites/heart-toggle/heart-toggle.component'
@@ -75,7 +75,7 @@ import { MelDatahubFooterComponent } from './common/footer/mel-datahub-footer.co
     DatasetApisComponent,
     MelDatahubMetadataQualityComponent,
     DatasetHeaderComponent,
-    ButtonPrimaryComponent,
+    ButtonComponent,
     DatasetDownloadsComponent,
     FavoriteHeartComponent,
     HeartToggleComponent,

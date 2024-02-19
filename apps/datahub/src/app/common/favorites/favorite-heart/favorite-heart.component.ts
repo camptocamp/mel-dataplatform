@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  Input,
   ViewChild,
 } from '@angular/core'
 import { FavoriteStarComponent } from 'geonetwork-ui'
@@ -16,4 +17,7 @@ import { HeartToggleComponent } from '../heart-toggle/heart-toggle.component'
 export class FavoriteHeartComponent extends FavoriteStarComponent {
   @ViewChild(HeartToggleComponent, { read: ElementRef })
   override starToggleRef: ElementRef
+
+  @Input() buttonClass?: string
+  @Input() imageClass?: string
 }

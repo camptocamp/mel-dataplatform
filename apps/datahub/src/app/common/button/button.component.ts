@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 
 @Component({
-  selector: 'mel-datahub-button-primary',
-  templateUrl: './button-primary.component.html',
+  selector: 'mel-datahub-button',
+  templateUrl: './button.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonPrimaryComponent {
+export class ButtonComponent {
   @Input() label: string
   @Input() set icon(fileName: string) {
     if (fileName) {
@@ -14,7 +14,12 @@ export class ButtonPrimaryComponent {
       this.placeholder = fileName
     }
   }
-  @Input() disabled = false
   src?: string
   placeholder?: string
+  @Input() set buttonClass(value: string) {
+    if (value) this.btnClass = value
+  }
+  btnClass = 'mel-primary-button'
+  @Input() imageClass?: string
+  @Input() disabled = false
 }

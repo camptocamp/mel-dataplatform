@@ -11,9 +11,9 @@
   <ng-content></ng-content>
 </div>
 @if(showToggleButton){
-<mel-datahub-button-primary
+<mel-datahub-button
   [label]="(isExpanded ? 'mel.dataset.less' : 'mel.dataset.more') | translate"
   [icon]="isExpanded ? 'arrow-up' : 'arrow'"
   (click)="toggleDisplay()"
-></mel-datahub-button-primary>
+></mel-datahub-button>
 }
