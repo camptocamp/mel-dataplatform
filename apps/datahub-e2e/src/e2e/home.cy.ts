@@ -28,10 +28,22 @@ describe('datahub-e2e', () => {
     })
   })
   describe('custom carousel', () => {
-    it('should display a carousel with last created card in it', () => {
-      cy.get('mel-datahub-custom-carousel').find(
+    it('should display a carousel that loops through last created cards', () => {
+      cy.get('mel-datahub-custom-carousel', { timeout: 30000 }).find(
         'mel-datahub-results-card-last-created'
       )
+      cy.get('mel-datahub-custom-carousel')
+        .find('[title="carousel-arrow-right"]')
+        .click()
+
+      cy.get('mel-datahub-custom-carousel')
+        .find('h1')
+        .eq(2)
+        .should(
+          'have.text',
+          ' Cartographie des sols agricoles de la plaine du Rhône '
+        )
+        .should('be.visible')
     })
   })
   describe('footer', () => {
