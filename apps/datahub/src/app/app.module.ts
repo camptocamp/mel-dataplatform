@@ -15,6 +15,7 @@ import {
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
   UiElementsModule,
+  UiInputsModule,
   UiLayoutModule,
   UiWidgetsModule,
 } from 'geonetwork-ui'
@@ -61,6 +62,7 @@ import { MelAutocompleteComponent } from './common/autocomplete/autocomplete.com
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { SearchFormComponent } from './search/search-form/search-form.component'
+import { SearchFiltersComponent } from './search/search-filters/search-filters.component'
 
 @NgModule({
   declarations: [
@@ -93,6 +95,7 @@ import { SearchFormComponent } from './search/search-form/search-form.component'
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
     SearchFormComponent,
+    SearchFiltersComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +103,7 @@ import { SearchFormComponent } from './search/search-form/search-form.component'
     UiWidgetsModule,
     UiElementsModule,
     UiLayoutModule,
+    UiInputsModule,
     FeatureSearchModule,
     FeatureCatalogModule,
     FeatureRecordModule,

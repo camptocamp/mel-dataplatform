@@ -6,24 +6,7 @@
     <p class="text-[17px] mb-10" translate="">
       mel.datahub.search.form.description
     </p>
-    <div class="flex gap-2">
-      <mel-datahub-button
-        [label]="'mel.datahub.search.filter.theme' | translate"
-        [icon]="'arrow-down'"
-      ></mel-datahub-button>
-      <mel-datahub-button
-        [label]="'mel.datahub.search.filter.organisation' | translate"
-        [icon]="'arrow-down'"
-      ></mel-datahub-button>
-      <mel-datahub-button
-        [label]="'mel.datahub.search.filter.date' | translate"
-        [icon]="'arrow-down'"
-      ></mel-datahub-button>
-      <mel-datahub-button
-        [label]="'mel.datahub.search.filter.status' | translate"
-        [icon]="'arrow-down'"
-      ></mel-datahub-button>
-    </div>
+    <mel-datahub-search-filters></mel-datahub-search-filters>
   </div>
   <div class="flex flex-col justify-end relative">
     <gn-ui-fuzzy-search
