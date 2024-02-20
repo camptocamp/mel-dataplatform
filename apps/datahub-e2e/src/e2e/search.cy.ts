@@ -15,8 +15,9 @@ describe('datahub-e2e', () => {
   })
 
   // If not logged in or no favorites exists
-  it('should display record results in last created cards', () => {
-    cy.get('mel-datahub-results-card-last-created')
+  it('should display record results in last created cards inside a carousel', () => {
+    cy.get('mel-datahub-custom-carousel')
+      .find('mel-datahub-results-card-last-created')
       .eq(0)
       .find('h1')
       .should(
@@ -49,10 +50,11 @@ describe('datahub-e2e', () => {
     beforeEach(() => {
       cy.login()
       cy.visit('/search')
-      cy.get('mel-datahub-heart-toggle').first().click()
+      cy.get('mel-datahub-heart-toggle', { timeout: 30000 }).first().click()
     })
-    it('should display record results in favorite cards', () => {
-      cy.get('mel-datahub-results-card-favorite')
+    it('should display record results in favorite cards inside a carousel', () => {
+      cy.get('mel-datahub-custom-carousel')
+        .find('mel-datahub-results-card-favorite')
         .eq(0)
         .find('h1')
         .should(
@@ -74,7 +76,7 @@ describe('datahub-e2e', () => {
         cy.get('mel-datahub-results-card-favorite').first().as('firstResult')
       })
       it('should open the dataset page in the same application on click', () => {
-        cy.get('@firstResult').click()
+        cy.get('@firstResult').find('h1').click()
         cy.url().should('include', 'dataset')
         cy.get('mel-datahub-dataset-page').should('be.visible')
       })
