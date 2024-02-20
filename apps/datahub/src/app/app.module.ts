@@ -60,6 +60,7 @@ import { MelFuzzySearchComponent } from './common/fuzzy-search/fuzzy-search.comp
 import { MelAutocompleteComponent } from './common/autocomplete/autocomplete.component'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { SearchFormComponent } from './search/search-form/search-form.component'
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'
     DatasetInformationComponent,
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
+    SearchFormComponent,
   ],
   imports: [
     BrowserModule,
