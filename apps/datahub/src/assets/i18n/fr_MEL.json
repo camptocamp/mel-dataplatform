@@ -31,6 +31,8 @@
   "mel.dataset.share": "Partager ce contenu :",
   "mel.dataset.territories": "Territoires :",
   "mel.dataset.updatedOn": "Mise à jour le",
+  "mel.homepage.public.datasets": "Derniers jeux de données publiés",
+  "mel.homepage.visit.catalog": "Voir le catalogue de données",
   "mel.record.metadata.api": "API",
   "mel.record.metadata.api.form.closeButton": "Fermer",
   "mel.record.metadata.api.form.title": "Générer une URL personnalisée",
