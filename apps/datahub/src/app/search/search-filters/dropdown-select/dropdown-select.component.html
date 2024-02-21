@@ -1,19 +1,16 @@
-<mel-datahub-button
-  [label]="title"
-  [icon]="'arrow-down'"
+<button
+  class="mel-primary-button"
   [attr.aria-owns]="id"
   (click)="openOverlay()"
   (keydown)="handleTriggerKeydown($event)"
   cdkOverlayOrigin
   #overlayOrigin="cdkOverlayOrigin"
 >
+  {{ title }}
   <div class="grow flex items-center mr-2 gap-2 overflow-hidden">
-    <div class="text-left font-medium truncate py-1">
-      {{ title }}
-    </div>
     <div
       *ngIf="hasSelectedChoices"
-      class="shrink-0 rounded-full text-white bg-primary-opacity-25 font-bold text-[12px] w-5 h-5 flex items-center justify-center mr-1 selected-count"
+      class="shrink-0 rounded-full text-primary bg-white font-bold text-[12px] w-5 h-5 flex items-center justify-center mr-1 selected-count"
     >
       {{ selected['length'] }}
     </div>
@@ -27,11 +24,11 @@
       close
     </mat-icon>
   </button>
-  <mat-icon class="material-symbols-outlined shrink-0 opacity-40">
+  <mat-icon class="material-symbols-outlined shrink-0">
     <ng-container *ngIf="overlayOpen">expand_less</ng-container>
     <ng-container *ngIf="!overlayOpen">expand_more</ng-container>
   </mat-icon>
-</mel-datahub-button>
+</button>
 
 <ng-template
   cdkConnectedOverlay
