@@ -1,24 +1,7 @@
 <div class="flex gap-2">
-  <gn-ui-filter-dropdown
+  <mel-datahub-search-filter-dropdown
     *ngFor="let filter of searchConfig; let i = index"
-    class="w-full"
     [fieldName]="filter.fieldName"
     [title]="filter.title | translate"
-  ></gn-ui-filter-dropdown>
-  <!-- <mel-datahub-button
-    [label]="'mel.datahub.search.filter.theme' | translate"
-    [icon]="'arrow-down'"
-  ></mel-datahub-button>
-  <mel-datahub-button
-    [label]="'mel.datahub.search.filter.organisation' | translate"
-    [icon]="'arrow-down'"
-  ></mel-datahub-button>
-  <mel-datahub-button
-    [label]="'mel.datahub.search.filter.date' | translate"
-    [icon]="'arrow-down'"
-  ></mel-datahub-button>
-  <mel-datahub-button
-    [label]="'mel.datahub.search.filter.status' | translate"
-    [icon]="'arrow-down'"
-  ></mel-datahub-button> -->
+  ></mel-datahub-search-filter-dropdown>
 </div>

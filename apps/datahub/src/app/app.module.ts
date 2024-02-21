@@ -63,6 +63,10 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { SearchFormComponent } from './search/search-form/search-form.component'
 import { SearchFiltersComponent } from './search/search-filters/search-filters.component'
+import { SearchFilterDropdownComponent } from './search/search-filters/search-filter-dropdown/search-filter-dropdown.component'
+import { DropdownSelectComponent } from './search/search-filters/dropdown-select/dropdown-select.component'
+import { OverlayModule } from '@angular/cdk/overlay'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -96,6 +100,8 @@ import { SearchFiltersComponent } from './search/search-filters/search-filters.c
     MelAutocompleteComponent,
     SearchFormComponent,
     SearchFiltersComponent,
+    SearchFilterDropdownComponent,
+    DropdownSelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,6 +116,8 @@ import { SearchFiltersComponent } from './search/search-filters/search-filters.c
     MatAutocompleteModule,
     MatIconModule,
     MatTabsModule,
+    OverlayModule,
+    FormsModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
