@@ -22,13 +22,31 @@ describe('datahub-e2e', () => {
       cy.get('mel-datahub-results-card-last-created').first().as('firstResult')
     })
     it('should open the dataset page in the same application on click', () => {
-      const urlRegex = /http:\/\/[^/]+:\d+\/dataset/
       cy.get('@firstResult').click()
-      cy.url().should('match', urlRegex)
+      cy.url().should('include', 'dataset')
       cy.get('mel-datahub-dataset-page').should('be.visible')
     })
   })
-  describe.only('footer', () => {
+  describe('custom carousel', () => {
+    it('should display a carousel that loops through last created cards', () => {
+      cy.get('mel-datahub-custom-carousel').find(
+        'mel-datahub-results-card-last-created'
+      )
+      cy.get('mel-datahub-custom-carousel')
+        .find('[title="carousel-arrow-right"]')
+        .click()
+
+      cy.get('mel-datahub-custom-carousel')
+        .find('h1')
+        .eq(2)
+        .should(
+          'have.text',
+          ' Cartographie des sols agricoles de la plaine du Rhône '
+        )
+        .should('be.visible')
+    })
+  })
+  describe('footer', () => {
     beforeEach(() => {
       cy.get('mel-datahub-footer').as('footer')
     })

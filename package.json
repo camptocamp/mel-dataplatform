@@ -36,6 +36,7 @@
     "@vendure/ngx-translate-extract": "^9.0.3",
     "geonetwork-ui": "^2.2.0-dev.80d7a273",
     "rxjs": "~7.8.0",
+    "tippy.js": "^6.3.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.0"
   },

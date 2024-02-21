@@ -1,20 +1,27 @@
-<div class="relative">
-  <div class="flex gap-4 p-4">
-    @for (record of searchFacade.results$ | async; track
-    record?.uniqueIdentifier) { @if (favoritesOnlyValue) {
-    <mel-datahub-results-card-favorite
-      [style]="'height: 12em;'"
-      [record]="record"
-      (mdSelect)="onMetadataSelection($event)"
-      (keyword)="onInfoKeywordClick($event)"
-    ></mel-datahub-results-card-favorite>
-    } @else {
-    <mel-datahub-results-card-last-created
-      [style]="'height: 12em;'"
-      [record]="record"
-      (mdSelect)="onMetadataSelection($event)"
-      (keyword)="onInfoKeywordClick($event)"
-    ></mel-datahub-results-card-last-created>
-    } }
-  </div>
+<div class="flex justify-center">
+  <gn-ui-content-ghost
+    ghostClass="h-[252px]"
+    class="container"
+    [showContent]="resultsReady"
+  >
+    <mel-datahub-custom-carousel
+      containerClass="gap-4 py-10"
+      stepsContainerClass=""
+    >
+      @for (record of searchFacade.results$ | async; track
+      record?.uniqueIdentifier) { @if (favoritesOnlyValue) {
+      <mel-datahub-results-card-favorite
+        [record]="record"
+        (mdSelect)="onMetadataSelection($event)"
+        (keyword)="onInfoKeywordClick($event)"
+      ></mel-datahub-results-card-favorite>
+      } @else {
+      <mel-datahub-results-card-last-created
+        [record]="record"
+        (mdSelect)="onMetadataSelection($event)"
+        (keyword)="onInfoKeywordClick($event)"
+      ></mel-datahub-results-card-last-created>
+      } }
+    </mel-datahub-custom-carousel>
+  </gn-ui-content-ghost>
 </div>

@@ -1,8 +1,10 @@
 @if(metadataQualityDisplay){
 <div
+  id="metadata-quality-indicator"
   class="flex metadata-quality"
   (mouseenter)="showMenu()"
   (mouseleave)="hideMenu()"
+  #metadataQualityIndicator
 >
   <div class="flex gap-1 items-center">
     <div class="flex h-[8px] w-[56px] bg-gray-6 rounded-t-lg rounded-b-lg">
@@ -17,18 +19,19 @@
     <img [src]="'assets/icons/info.svg'" [alt]="'info'" />
   </div>
 
-  <div
-    class="absolute z-10 bg-white border border-black border-opacity-35 rounded-lg shadow-lg p-5 whitespace-nowrap"
-    [class]="isMenuShown ? 'block' : 'hidden'"
-  >
-    <div class="mb-4 font-bold" translate>
-      mel.record.metadata.quality.details
+  <div style="display: none" #metadataQualityDetails>
+    <div
+      class="text-black bg-white border border-black border-opacity-35 rounded-lg shadow-lg p-5 whitespace-nowrap"
+    >
+      <div class="mb-4 font-bold" translate>
+        mel.record.metadata.quality.details
+      </div>
+      @for(e of items; track e.name){<gn-ui-metadata-quality-item
+        [name]="e.name"
+        [value]="e.value"
+      ></gn-ui-metadata-quality-item
+      >}
     </div>
-    @for(e of items; track e.name){<gn-ui-metadata-quality-item
-      [name]="e.name"
-      [value]="e.value"
-    ></gn-ui-metadata-quality-item
-    >}
   </div>
 </div>
 }
