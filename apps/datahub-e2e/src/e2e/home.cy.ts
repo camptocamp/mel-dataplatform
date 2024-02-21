@@ -29,7 +29,7 @@ describe('datahub-e2e', () => {
   })
   describe('custom carousel', () => {
     it('should display a carousel that loops through last created cards', () => {
-      cy.get('mel-datahub-custom-carousel', { timeout: 30000 }).find(
+      cy.get('mel-datahub-custom-carousel').find(
         'mel-datahub-results-card-last-created'
       )
       cy.get('mel-datahub-custom-carousel')

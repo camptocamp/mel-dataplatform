@@ -1,9 +1,9 @@
-<div class="flex justify-between gap-16">
+<div class="flex justify-between gap-4 sm:gap-16">
   <button
     type="button"
     [attr.aria-label]="'carousel-arrow-left'"
     title="carousel-arrow-left"
-    [class]="selectedStep === 0 ? 'invisible' : 'block'"
+    [class]="selectedStep === 0 ? 'invisible' : 'block hover:drop-shadow-lg'"
     (click)="scrollToStep(selectedStep - 1)"
   >
     <img src="assets/icons/carousel-arrow-left.svg" alt="arrow-left" />
@@ -19,7 +19,11 @@
     type="button"
     [attr.aria-label]="'carousel-arrow-right'"
     title="carousel-arrow-right"
-    [class]="selectedStep === steps.length - 1 ? 'invisible' : 'block'"
+    [class]="
+      selectedStep === steps.length - 1
+        ? 'invisible'
+        : 'block hover:drop-shadow-lg'
+    "
     (click)="scrollToStep(selectedStep + 1)"
   >
     <img src="assets/icons/carousel-arrow-right.svg" alt="arrow-right" />

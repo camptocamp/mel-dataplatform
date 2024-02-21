@@ -46,6 +46,18 @@
   > .tippy-arrow::before {
   border-bottom-color: rgba(0, 0, 0, 0);
 }
+.tippy-box[data-theme~='data-platform'][data-placement^='top']
+  .tippy-arrow::before {
+  border-top-color: rgba(0, 0, 0, 0);
+}
+.tippy-box[data-theme~='data-platform'][data-placement^='left']
+  .tippy-arrow::before {
+  border-left-color: rgba(0, 0, 0, 0);
+}
+.tippy-box[data-theme~='data-platform'][data-placement^='right']
+  .tippy-arrow::before {
+  border-right-color: rgba(0, 0, 0, 0);
+}
 .tippy-box a {
   @apply text-primary;
   text-decoration: underline;

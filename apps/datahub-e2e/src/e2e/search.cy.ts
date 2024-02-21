@@ -50,7 +50,7 @@ describe('datahub-e2e', () => {
     beforeEach(() => {
       cy.login()
       cy.visit('/search')
-      cy.get('mel-datahub-heart-toggle', { timeout: 30000 }).first().click()
+      cy.get('mel-datahub-heart-toggle').first().click()
     })
     it('should display record results in favorite cards inside a carousel', () => {
       cy.get('mel-datahub-custom-carousel')
