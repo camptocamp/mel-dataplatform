@@ -44,5 +44,7 @@
   "mel.record.metadata.related": "Jeux de données similaires",
   "mel.record.tab.chart": "Analyse",
   "mel.record.tab.data": "Tableau",
-  "mel.record.tab.map": "Cartographie"
+  "mel.record.tab.map": "Cartographie",
+  "mel.search.autocomplete.error": "Les suggestions ne peuvent pas être récupérées",
+  "mel.search.field.any.placeholder": "Rechercher un jeu de données"
 }

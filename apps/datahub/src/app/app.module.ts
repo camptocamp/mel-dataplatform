@@ -56,6 +56,10 @@ import { TextExpandComponent } from './common/text-expand/text-expand.component'
 import { MelDatahubFooterComponent } from './common/footer/mel-datahub-footer.component'
 import { CustomCarouselComponent } from './common/custom-carousel/custom-carousel.component'
 import { DatasetInformationComponent } from './dataset/dataset-information/dataset-information.component'
+import { MelFuzzySearchComponent } from './common/fuzzy-search/fuzzy-search.component'
+import { MelAutocompleteComponent } from './common/autocomplete/autocomplete.component'
+import { ReactiveFormsModule } from '@angular/forms'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
 @NgModule({
   declarations: [
@@ -85,6 +89,8 @@ import { DatasetInformationComponent } from './dataset/dataset-information/datas
     MelDatahubFooterComponent,
     CustomCarouselComponent,
     DatasetInformationComponent,
+    MelFuzzySearchComponent,
+    MelAutocompleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +101,7 @@ import { DatasetInformationComponent } from './dataset/dataset-information/datas
     FeatureSearchModule,
     FeatureCatalogModule,
     FeatureRecordModule,
+    MatAutocompleteModule,
     MatIconModule,
     MatTabsModule,
     TranslateModule.forRoot({
@@ -104,6 +111,7 @@ import { DatasetInformationComponent } from './dataset/dataset-information/datas
         useClass: MelEmbeddedTranslateLoader,
       },
     }),
+    ReactiveFormsModule,
     StoreModule.forRoot(
       {},
       {
