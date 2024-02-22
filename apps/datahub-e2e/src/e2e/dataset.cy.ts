@@ -107,7 +107,8 @@ describe('datasets', () => {
         cy.get('@mainInfo')
           .children('div')
           .eq(4)
-          .find('div')
+          .find('span')
+          .eq(1)
           .should('have.text', 'Bundesamt für Raumentwicklung')
       })
 
