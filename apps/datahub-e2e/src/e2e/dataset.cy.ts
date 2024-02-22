@@ -53,6 +53,77 @@ describe('datasets', () => {
         .should('have.css', 'max-height', '72px')
     })
 
+    describe('Information block', () => {
+      beforeEach(() =>
+        cy
+          .get('mel-datahub-dataset-information')
+          .children('div')
+          .first()
+          .children('div')
+          .eq(1)
+          .as('mainInfo')
+      )
+      it('should display the information block', () => {
+        cy.get('mel-datahub-dataset-information').should('be.visible')
+      })
+
+      it('should display the update date', () => {
+        cy.get('@mainInfo')
+          .first()
+          .find('div')
+          .first()
+          .find('span')
+          .should('have.text', 'Mise à jour le')
+      })
+
+      it('should display the categories btns', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(1)
+          .find('div')
+          .children('button')
+          .should('have.length.gt', 0)
+      })
+
+      it('should display the territories', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(2)
+          .find('div')
+          .children('button')
+          .should('have.length.gt', 0)
+      })
+
+      it('should display the licenses', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(3)
+          .children('span')
+          .eq(1)
+          .should('have.length.gt', 0)
+      })
+
+      it('should display the producer', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(4)
+          .find('div')
+          .should('have.text', 'Bundesamt für Raumentwicklung')
+      })
+
+      it('should display the social media share btns', () => {
+        cy.get('mel-datahub-dataset-information')
+          .children('div')
+          .first()
+          .children('div')
+          .eq(2)
+          .children('div')
+          .first()
+          .find('a')
+          .should('have.length', 4)
+      })
+    })
+
     it('should display the abstract in expanded mode without gradient', () => {
       cy.get('mel-datahub-text-expand').should('be.visible')
       cy.get('mel-datahub-text-expand').find('mel-datahub-button').click()
@@ -76,21 +147,21 @@ describe('datasets', () => {
       cy.get('mel-datahub-footer').should('be.visible')
     })
   })
-  describe('when logged in', () => {
-    beforeEach(() => {
-      cy.login()
-      cy.clearFavorites()
-      cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4')
-    })
-    it('should toggle the favorite button', () => {
-      cy.get('mel-datahub-button').eq(0).as('favoriteButton')
-      cy.get('@favoriteButton')
-        .find('img')
-        .should('have.attr', 'src', 'assets/icons/heart.svg')
-      cy.get('@favoriteButton').click()
-      cy.get('@favoriteButton')
-        .find('img')
-        .should('have.attr', 'src', 'assets/icons/heart-filled.svg')
-    })
+})
+describe('when logged in', () => {
+  beforeEach(() => {
+    cy.login()
+    cy.clearFavorites()
+    cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4')
+  })
+  it('should toggle the favorite button', () => {
+    cy.get('mel-datahub-button').eq(0).as('favoriteButton')
+    cy.get('@favoriteButton')
+      .find('img')
+      .should('have.attr', 'src', 'assets/icons/heart.svg')
+    cy.get('@favoriteButton').click()
+    cy.get('@favoriteButton')
+      .find('img')
+      .should('have.attr', 'src', 'assets/icons/heart-filled.svg')
   })
 })
