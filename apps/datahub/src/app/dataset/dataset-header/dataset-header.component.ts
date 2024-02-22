@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { RouterFacade } from 'geonetwork-ui'
 import {
   CatalogRecord,
   DatasetRecord,
@@ -19,6 +20,8 @@ export class DatasetHeaderComponent {
 
   @Input() incomplete: boolean
 
+  constructor(protected routerFacade: RouterFacade) {}
+
   fieldReady(propName: string) {
     return !this.incomplete || propName in this.metadata
   }
@@ -29,5 +32,9 @@ export class DatasetHeaderComponent {
 
   scrollTo(id: string) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
+  }
+
+  onInfoKeywordClick(keyword: string) {
+    this.routerFacade.updateSearch({ q: keyword })
   }
 }
