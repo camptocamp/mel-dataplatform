@@ -9,13 +9,22 @@
     @apply text-black text-5xl font-extrabold font-title;
   }
   .mel-badge-button {
-    @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-primary border border-primary text-sm leading-none hover:border-primary-dark hover:text-gray-8 hover:bg-primary-dark cursor-pointer transition-colors;
+    @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-sm leading-none hover:text-gray-8 cursor-pointer transition-colors;
   }
+  .mel-badge-button-primary {
+    @apply mel-badge-button text-primary border border-primary hover:border-primary-dark hover:bg-primary-dark;
+  }
+  .mel-badge-button-secondary {
+    @apply mel-badge-button text-secondary border border-secondary hover:border-secondary-dark hover:bg-secondary-dark;
+  }
+  /* .mel-badge-blue-button {
+    @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-secondary border border-secondary text-sm leading-none hover:border-secondary-dark hover:text-gray-8 hover:bg-secondary-dark cursor-pointer transition-colors;
+  } */
   .mel-container-lg {
     @apply max-w-[1320px] mx-auto px-4;
   }
   .mel-grid-container-dataset {
-    @apply grid gap-8 grid-cols-1 md:grid-cols-12 mx-2 pb-64 sm:ml-24 md:mr-0 sm:gap-6;
+    @apply grid gap-8 grid-cols-1 md:grid-cols-12 mx-2 sm:ml-24 md:mr-0 sm:gap-6;
   }
   .mel-card {
     @apply bg-gray-8 flex flex-col justify-between rounded-lg border border-gray-6 filter cursor-pointer hover:drop-shadow-lg;
@@ -57,6 +66,9 @@
 .tippy-box[data-theme~='data-platform'][data-placement^='right']
   .tippy-arrow::before {
   border-right-color: rgba(0, 0, 0, 0);
+  .mel-social-media-button {
+    @apply inline-flex items-center justify-center w-10 h-10 bg-primary rounded-full cursor-pointer;
+  }
 }
 .tippy-box a {
   @apply text-primary;
