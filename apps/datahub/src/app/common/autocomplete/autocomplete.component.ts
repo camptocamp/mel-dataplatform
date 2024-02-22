@@ -18,10 +18,8 @@ export class MelAutocompleteComponent extends AutocompleteComponent {
     this.inputRef.nativeElement.focus()
     this.triggerRef.closePanel()
   }
-  override handleEnter(eventTarget: any) {
-    if (!this.cancelEnter) {
-      this.inputSubmitted.emit(eventTarget.value)
-      this.triggerRef.closePanel()
-    }
+  handleEnterFromEvent(event: Event) {
+    const inputValue = (event.target as HTMLInputElement).value
+    this.handleEnter(inputValue)
   }
 }
