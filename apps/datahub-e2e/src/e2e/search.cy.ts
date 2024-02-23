@@ -5,7 +5,7 @@ describe('datahub-e2e', () => {
     cy.get('.mel-page-title').should('be.visible')
   })
   it('should display the number of result hits', () => {
-    cy.get('gn-ui-results-hits-number').should('contain', 14)
+    cy.get('[data-cy="searchResults"]').should('contain', 14)
   })
   it('should display the footer', () => {
     cy.get('mel-datahub-footer').should('be.visible')

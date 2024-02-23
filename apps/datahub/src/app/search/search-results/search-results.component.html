@@ -5,6 +5,7 @@
     [showContent]="(searchFacade.results$ | async).length > 0"
   >
     <div
+      data-cy="searchResults"
       class="px-2 pb-2.5 text-gray-5 text-xs font-semibold"
       translate
       [translateParams]="{ hits: searchFacade.resultsHits$ | async }"
