@@ -54,4 +54,8 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   onMetadataSelection(metadata: CatalogRecord): void {
     this.routerFacade.goToMetadata(metadata)
   }
+
+  onShowMore() {
+    this.searchFacade.scroll()
+  }
 }

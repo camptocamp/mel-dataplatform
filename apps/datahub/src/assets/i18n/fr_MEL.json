@@ -21,6 +21,7 @@
   "mel.datahub.search.filters.topic": "Thématique",
   "mel.datahub.search.form.description": "Vous pouvez utiliser la barre de recherche où les différents filtres situés ci-dessous pour trouver un jeu de données plus rapidement.",
   "mel.datahub.search.form.title": "Trouver un jeu de données",
+  "mel.datahub.search.showMore": "Plus de résultats...",
   "mel.datahub.search.title": "Catalogue de jeux de données",
   "mel.dataset.abstract": "Description",
   "mel.dataset.api": "API",
