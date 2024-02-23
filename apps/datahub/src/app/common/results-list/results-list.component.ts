@@ -22,7 +22,8 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   }
   favoritesOnlyValue: boolean
   @Input() numberOfResults = 10
-  myFavoritesSubscription: Subscription
+  subscriptions: Subscription
+  resultsReady = false
 
   constructor(
     protected searchService: SearchService,
@@ -37,14 +38,20 @@ export class ResultsListComponent implements OnInit, OnDestroy {
       .setConfigRequestFields([...FIELDS_BRIEF, 'createDate', 'changeDate'])
       .setPageSize(this.numberOfResults)
       .setSortBy(['desc', 'createDate'])
-    this.myFavoritesSubscription =
-      this.favoritesService.myFavoritesUuid$.subscribe(() => {
+    this.subscriptions = this.favoritesService.myFavoritesUuid$.subscribe(
+      () => {
         if (this.favoritesOnlyValue) this.searchFacade.setFavoritesOnly(true)
+      }
+    )
+    this.subscriptions.add(
+      this.searchFacade.results$.subscribe((results) => {
+        if (results.length > 0) this.resultsReady = true
       })
+    )
   }
 
   ngOnDestroy() {
-    this.myFavoritesSubscription.unsubscribe()
+    this.subscriptions.unsubscribe()
   }
 
   onInfoKeywordClick(keyword: string) {
