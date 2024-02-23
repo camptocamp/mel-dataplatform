@@ -1,7 +1,8 @@
 <div class="flex flex-wrap xl:flex-nowrap gap-2">
+  @for(filter of searchConfig; track filter.fieldName) {
   <mel-datahub-search-filter-dropdown
-    *ngFor="let filter of searchConfig; let i = index"
     [fieldName]="filter.fieldName"
     [title]="filter.title | translate"
   ></mel-datahub-search-filter-dropdown>
+  }
 </div>

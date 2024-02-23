@@ -15,21 +15,20 @@
       [numberOfResults]="18"
     ></mel-datahub-results-list-grid>
     <div class="flex justify-center mt-8">
-      <ng-container
-        *ngIf="
-          (searchFacade.isLoading$ | async) === false &&
-          (searchFacade.isEndOfResults$ | async) === false
-        "
-      >
+      @if((searchFacade.isLoading$ | async) === false &&
+      (searchFacade.isEndOfResults$ | async) === false){
+      <ng-container>
         <button class="mel-primary-button" (click)="onShowMore()">
           <span class="uppercase tracking-widest" translate
             >mel.datahub.search.showMore</span
           >
         </button>
       </ng-container>
-      <ng-container *ngIf="(searchFacade.isLoading$ | async) === true">
+      } @else if((searchFacade.isLoading$ | async) === true){
+      <ng-container>
         <gn-ui-spinning-loader></gn-ui-spinning-loader>
       </ng-container>
+      }
     </div>
   </gn-ui-content-ghost>
 </div>
