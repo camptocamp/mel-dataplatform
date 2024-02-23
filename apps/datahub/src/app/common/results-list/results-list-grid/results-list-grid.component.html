@@ -4,6 +4,13 @@
     class="container"
     [showContent]="resultsReady"
   >
+    <div
+      class="px-2 pb-2.5 text-gray-5 text-xs font-semibold"
+      translate
+      [translateParams]="{ hits: searchFacade.resultsHits$ | async }"
+    >
+      mel.datahub.search.hits.found
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       @for (record of searchFacade.results$ | async; track
       record.uniqueIdentifier) {
