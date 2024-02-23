@@ -23,7 +23,6 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   favoritesOnlyValue: boolean
   @Input() numberOfResults = 10
   subscriptions: Subscription
-  resultsReady = false
 
   constructor(
     protected searchService: SearchService,
@@ -43,11 +42,6 @@ export class ResultsListComponent implements OnInit, OnDestroy {
         if (this.favoritesOnlyValue) this.searchFacade.setFavoritesOnly(true)
       }
     )
-    this.subscriptions.add(
-      this.searchFacade.results$.subscribe((results) => {
-        if (results.length > 0) this.resultsReady = true
-      })
-    )
   }
 
   ngOnDestroy() {
@@ -60,9 +54,5 @@ export class ResultsListComponent implements OnInit, OnDestroy {
 
   onMetadataSelection(metadata: CatalogRecord): void {
     this.routerFacade.goToMetadata(metadata)
-  }
-
-  onShowMore() {
-    this.searchFacade.scroll()
   }
 }

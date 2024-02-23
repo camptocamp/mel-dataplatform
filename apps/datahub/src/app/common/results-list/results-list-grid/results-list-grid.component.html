@@ -1,32 +1,10 @@
-<div class="relative">
-  <gn-ui-content-ghost
-    ghostClass="h-96"
-    class="container"
-    [showContent]="resultsReady"
-  >
-    <div
-      class="px-2 pb-2.5 text-gray-5 text-xs font-semibold"
-      translate
-      [translateParams]="{ hits: searchFacade.resultsHits$ | async }"
-    >
-      mel.datahub.search.hits.found
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      @for (record of searchFacade.results$ | async; track
-      record.uniqueIdentifier) {
-      <mel-datahub-results-card-search
-        [record]="record"
-        (mdSelect)="onMetadataSelection($event)"
-        (keyword)="onInfoKeywordClick($event)"
-      ></mel-datahub-results-card-search>
-      }
-    </div>
-    <div class="flex justify-center mt-8">
-      <button class="mel-primary-button" (click)="onShowMore()">
-        <span class="uppercase tracking-widest" translate
-          >mel.datahub.search.showMore</span
-        >
-      </button>
-    </div>
-  </gn-ui-content-ghost>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  @for (record of searchFacade.results$ | async; track record.uniqueIdentifier)
+  {
+  <mel-datahub-results-card-search
+    [record]="record"
+    (mdSelect)="onMetadataSelection($event)"
+    (keyword)="onInfoKeywordClick($event)"
+  ></mel-datahub-results-card-search>
+  }
 </div>

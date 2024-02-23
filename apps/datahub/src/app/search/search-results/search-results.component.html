@@ -1,3 +1,25 @@
-<mel-datahub-results-list-grid
-  [numberOfResults]="18"
-></mel-datahub-results-list-grid>
+<div class="relative">
+  <gn-ui-content-ghost
+    ghostClass="h-96"
+    class="container"
+    [showContent]="(searchFacade.results$ | async).length > 0"
+  >
+    <div
+      class="px-2 pb-2.5 text-gray-5 text-xs font-semibold"
+      translate
+      [translateParams]="{ hits: searchFacade.resultsHits$ | async }"
+    >
+      mel.datahub.search.hits.found
+    </div>
+    <mel-datahub-results-list-grid
+      [numberOfResults]="18"
+    ></mel-datahub-results-list-grid>
+    <div class="flex justify-center mt-8">
+      <button class="mel-primary-button" (click)="onShowMore()">
+        <span class="uppercase tracking-widest" translate
+          >mel.datahub.search.showMore</span
+        >
+      </button>
+    </div>
+  </gn-ui-content-ghost>
+</div>
