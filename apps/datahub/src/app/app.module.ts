@@ -63,8 +63,8 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { SearchFormComponent } from './search/search-form/search-form.component'
 import { SearchFiltersComponent } from './search/search-filters/search-filters.component'
-import { SearchFilterDropdownComponent } from './search/search-filters/search-filter-dropdown/search-filter-dropdown.component'
-import { DropdownSelectComponent } from './search/search-filters/dropdown-select/dropdown-select.component'
+import { MelFilterDropdownComponent } from './search/search-filters/filter-dropdown/filter-dropdown.component'
+import { MelDropdownMultiselectComponent } from './search/search-filters/dropdown-multiselect/dropdown-multiselect.component'
 import { OverlayModule } from '@angular/cdk/overlay'
 import { FormsModule } from '@angular/forms'
 
@@ -100,8 +100,8 @@ import { FormsModule } from '@angular/forms'
     MelAutocompleteComponent,
     SearchFormComponent,
     SearchFiltersComponent,
-    SearchFilterDropdownComponent,
-    DropdownSelectComponent,
+    MelFilterDropdownComponent,
+    MelDropdownMultiselectComponent,
   ],
   imports: [
     BrowserModule,
