@@ -13,6 +13,7 @@
   "mel.common.footer.social": "Social medias",
   "mel.common.header.title": "Data platform",
   "mel.datahub.home.title": "Métropole Européenne de Lille",
+  "mel.datahub.search.clear": "",
   "mel.datahub.search.title": "dataset catalog",
   "mel.dataset.abstract": "Abstract",
   "mel.dataset.api": "API",
@@ -31,6 +32,8 @@
   "mel.dataset.share": "Share this content :",
   "mel.dataset.territories": "Territories :",
   "mel.dataset.updatedOn": "Updated on",
+  "mel.homepage.public.datasets": "",
+  "mel.homepage.visit.catalog": "",
   "mel.record.metadata.api": "API",
   "mel.record.metadata.api.form.closeButton": "Close",
   "mel.record.metadata.api.form.title": "Generate a custom URL",
@@ -42,5 +45,7 @@
   "mel.record.metadata.related": "Similar records",
   "mel.record.tab.chart": "Analysis",
   "mel.record.tab.data": "Table",
-  "mel.record.tab.map": "Map"
+  "mel.record.tab.map": "Map",
+  "mel.search.autocomplete.error": "",
+  "mel.search.field.any.placeholder": ""
 }
