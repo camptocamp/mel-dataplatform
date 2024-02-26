@@ -20,4 +20,6 @@ export class FavoriteHeartComponent extends FavoriteStarComponent {
 
   @Input() buttonClass?: string
   @Input() imageClass?: string
+  @Input() label?: string
+  @Input() iconSuffix? = ''
 }

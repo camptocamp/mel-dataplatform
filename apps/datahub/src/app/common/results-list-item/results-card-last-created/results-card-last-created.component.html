@@ -3,13 +3,13 @@
   [tabIndex]="0"
   (click)="mdSelect.emit(record)"
   (keyup.enter)="mdSelect.emit(record)"
-  class="mel-card w-[330px] group relative h-40 p-4 overflow-hidden"
+  class="mel-card w-[330px] group relative h-40 p-4 overflow-hidden flex flex-col gap-4"
 >
   <h1 class="font-bold text-[17px] line-clamp-2">
     {{ record.title }}
   </h1>
 
-  <div class="flex flex-col justify-between w-[calc(100%-80px)]">
+  <div class="flex flex-col justify-between w-[calc(100%-80px)] flex-grow">
     @if(creationDate){
     <div class="text-sm mb-[10px] leading-none">{{ creationDate }}</div>
     } @if(record.keywords?.length) {

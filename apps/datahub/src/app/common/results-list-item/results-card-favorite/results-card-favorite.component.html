@@ -4,10 +4,17 @@
   (click)="mdSelect.emit(record)"
   (keyup.enter)="mdSelect.emit(record)"
   class="mel-card w-[330px] group gap-[9px] h-[110px] py-3 px-4 z-0"
-  ><div class="flex justify-between">
-    <h1 class="font-bold text-[17px] line-clamp-1">
+  ><div class="flex justify-between gap-3">
+    <h1 class="flex-shrink font-bold text-[17px] line-clamp-1">
       {{ record.title }}
     </h1>
+    <div class="flex-shrink-0 w-6 h-6">
+      <mel-datahub-favorite-heart
+        [record]="record"
+        buttonClass="bg-transparent"
+        iconSuffix="-red"
+      ></mel-datahub-favorite-heart>
+    </div>
   </div>
 
   <div class="flex flex-col justify-between">
