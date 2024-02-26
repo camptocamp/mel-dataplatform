@@ -1,0 +1,111 @@
+<div class="flex flex-col border-l-[1px] border-gray-5 pt-12 pb-8 pl-8 pr-20">
+  <div class="pb-6 gap-1">
+    <div class="inline-flex bg-primary h-1 w-16"></div>
+    <div class="text-2xl font-title" translate="">mel.dataset.informations</div>
+  </div>
+  <div class="flex flex-col gap-8 border-b-[1px] border-gray-3 pb-6">
+    @if(lastUpdate){
+    <div class="flex flex-row gap-2">
+      <span class="font-semibold" translate="">mel.dataset.updatedOn</span>
+      <div class="text-primary font-semibold">{{ lastUpdate }}</div>
+    </div>
+    } @if(record.keywords?.length) {
+    <div class="flex flex-col gap-2">
+      <span class="font-semibold" translate="">mel.dataset.categories</span>
+      <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
+        @for(keyword of record.keywords; track record.uniqueIdentifier) {
+        <button
+          type="button"
+          [attr.aria-label]="keyword"
+          [title]="keyword"
+          (click)="onKeywordClick(keyword, $event)"
+          class="mel-badge-button-primary truncate"
+        >
+          {{ keyword }}
+        </button>
+        }
+      </div>
+    </div>
+    }
+    <!-- TODO: add an if condition when the territories field will be available -->
+    <div class="flex flex-col gap-2">
+      <span class="font-semibold" translate="">mel.dataset.territories</span>
+      <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
+        <button
+          type="button"
+          aria-label="Lille"
+          title="Lille"
+          class="mel-badge-button-secondary truncate"
+        >
+          Lille
+        </button>
+        <button
+          type="button"
+          aria-label="Hauts-de-France"
+          title="Hauts-de-France"
+          class="mel-badge-button-secondary truncate"
+        >
+          Hauts-de-France
+        </button>
+      </div>
+    </div>
+    @if(record.licenses?.length) {
+    <div class="inline-block break-normal font-semibold">
+      <span class="mr-1" translate="">mel.dataset.licenses</span>
+      <span>
+        {{ record.licenses[0].text }}
+      </span>
+    </div>
+    } @if(record.ownerOrganization) {
+    <div class="inline-block break-normal font-semibold">
+      <span class="mr-1" translate="">mel.dataset.owner</span>
+      <span>{{ record.ownerOrganization?.name }}</span>
+    </div>
+    }
+  </div>
+  <div class="flex flex-col gap-2 pt-4">
+    <span class="font-semibold" translate="">mel.dataset.share</span>
+    <div class="flex flex-row gap-4 flex-wrap">
+      <a
+        class="mel-social-media-button"
+        href="https://twitter.com/MetropoleLille/"
+        target="_blank"
+      >
+        <img
+          class="h-6"
+          src="{{ iconsUrl }}twitter.svg"
+          [alt]="'mel.dataset.logo.twitter' | translate"
+      /></a>
+      <a
+        class="mel-social-media-button"
+        href="https://www.facebook.com/metropoledelille/"
+        target="_blank"
+      >
+        <img
+          class="h-6 mr-0.5"
+          src="{{ iconsUrl }}facebook.svg"
+          [alt]="'mel.dataset.logo.facebook' | translate"
+      /></a>
+      <a
+        class="mel-social-media-button"
+        href="https://fr.linkedin.com/company/metropoledelille/"
+        target="_blank"
+      >
+        <img
+          class="h-4"
+          src="{{ iconsUrl }}linkedin.svg"
+          [alt]="'mel.dataset.logo.linkedin' | translate"
+      /></a>
+      <a
+        class="mel-social-media-button"
+        href="mailto: opendata@lillemetropole.fr"
+        target="_blank"
+      >
+        <img
+          class="h-6"
+          src="{{ iconsUrl }}email.svg"
+          [alt]="'mel.dataset.logo.email' | translate"
+      /></a>
+    </div>
+  </div>
+</div>

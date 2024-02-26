@@ -1,5 +1,5 @@
-<div class="mel-grid-container-dataset py-16">
-  <div class="md:col-start-2 lg:col-start-2 md:col-span-6 lg:col-span-8">
+<div class="mel-grid-container-dataset">
+  <div class="md:col-start-2 lg:col-start-2 md:col-span-6 lg:col-span-8 py-16">
     <div class="flex justify-end gap-2">
       <mel-datahub-favorite-heart
         [record]="record"
@@ -38,13 +38,10 @@
     </gn-ui-content-ghost>
     }
   </div>
-  <!-- TODO: create corresponding UI component -->
   <div class="md:col-span-5 lg:col-span-3 overflow-hidden">
-    <div translate="">mel.dataset.informations</div>
-    <div>{{ record.recordUpdated }}</div>
-    <div>{{ record.keywords }}</div>
-    <div>{{ record.themes }}</div>
-    <div>{{ record.licenses }}</div>
-    <div>{{ record.ownerOrganization?.name }}</div>
+    <mel-datahub-dataset-information
+      [record]="record"
+      (keyword)="onInfoKeywordClick($event)"
+    ></mel-datahub-dataset-information>
   </div>
 </div>
