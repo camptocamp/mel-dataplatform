@@ -2,23 +2,23 @@
   <input
     #searchInput
     type="text"
-    class="appearance-none focus:outline-white focus:outline-2 focus:outline-dotted focus:outline-offset-2 leading-tight w-full text-black shadow-xl focus:shadow-[0_0_24px_0_rgba(21,40,184,0.09)] border border-gray-4 px-4 py-3 placeholder:text-black"
+    class="appearance-none focus:outline-white focus:outline-2 focus:outline-dotted focus:outline-offset-2 leading-tight w-full text-black focus:shadow-[0_0_24px_0_rgba(21,40,184,0.09)] border border-gray-4 px-4 py-3 placeholder:text-black"
     [placeholder]="placeholder"
     [formControl]="control"
     [matAutocomplete]="auto"
-    (keyup.enter)="handleEnterFromEvent($event)"
+    (keyup.enter)="handleEnter(searchInput.value)"
   />
   <div class="flex w-10 h-full absolute right-0 top-0">
     <div class="h-[28px] w-[1px] bg-gray-2 my-auto"></div>
     <button
       type="button"
-      class="text-primary-lightest hover:text-primary transition-all duration-100 clear-btn absolute right-[46px] top-[16px]"
+      class="w-10 h-full text-primary-lightest hover:text-primary hover:shadow-xl transition-all duration-100 clear-btn absolute right-[40px]"
       *ngIf="searchInput.value"
-      aria-label="Clear"
+      [ariaLabel]="'mel.datahub.search.clear' | translate"
       (click)="clear()"
     >
       <svg
-        class="hover:shadow-md"
+        class="mx-auto"
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -36,7 +36,7 @@
     </button>
     <button
       type="button"
-      class="text-primary hover:text-primary-darkest border-gray-300 hover:border-gray-500 absolute transition-all duration-100 search-btn inset-y-0 right-0 p-3 bg-transparent my-auto"
+      class="text-primary hover:text-primary-darkest hover:shadow-xl border-gray-300 hover:border-gray-500 absolute transition-all duration-100 search-btn inset-y-0 right-0 p-3 bg-transparent my-auto"
       aria-label="Trigger search"
       (click)="handleClickSearch()"
     >

@@ -13,6 +13,7 @@
   "mel.common.footer.social": "Réseaux sociaux",
   "mel.common.header.title": "Data platform",
   "mel.datahub.home.title": "Métropole Européenne Lille",
+  "mel.datahub.search.clear": "Effacer",
   "mel.datahub.search.title": "Catalogue de jeux de données",
   "mel.dataset.abstract": "Description",
   "mel.dataset.api": "API",
