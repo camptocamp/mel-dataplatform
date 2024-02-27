@@ -5,11 +5,11 @@
   (keyup.enter)="mdSelect.emit(record)"
   class="mel-card w-[330px] group relative h-40 p-4 overflow-hidden flex flex-col gap-4"
 >
-  <h1 class="font-bold text-[17px] line-clamp-2">
+  <h1 class="font-bold text-[17px] line-clamp-2 basis-1/2">
     {{ record.title }}
   </h1>
 
-  <div class="flex flex-col justify-between w-[calc(100%-80px)] flex-grow">
+  <div class="flex flex-col justify-between w-[calc(100%-80px)] basis-1/2">
     @if(creationDate){
     <div class="text-sm mb-[10px] leading-none">{{ creationDate }}</div>
     } @if(record.keywords?.length) {
@@ -20,7 +20,7 @@
         type="button"
         [attr.aria-label]="keyword"
         [title]="keyword"
-        class="mel-badge-button truncate"
+        class="mel-badge-button mel-badge-button-primary truncate"
         (click)="onKeywordClick(keyword, $event)"
         (keyup.enter)="$event.stopPropagation()"
       >
