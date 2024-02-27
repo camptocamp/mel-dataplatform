@@ -2,7 +2,7 @@
   <gn-ui-content-ghost
     ghostClass="h-[212px]"
     class="container"
-    [showContent]="(searchFacade.results$ | async).length > 0"
+    [showContent]="(searchFacade.isLoading$ | async) === false"
   >
     <mel-datahub-custom-carousel
       containerClass="gap-4 pt-4 pb-6"

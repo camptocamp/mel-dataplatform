@@ -2,7 +2,7 @@
   <gn-ui-content-ghost
     ghostClass="h-96"
     class="container"
-    [showContent]="(searchFacade.results$ | async).length > 0"
+    [showContent]="(searchFacade.isLoading$ | async) === false"
   >
     <div
       data-cy="searchResults"
