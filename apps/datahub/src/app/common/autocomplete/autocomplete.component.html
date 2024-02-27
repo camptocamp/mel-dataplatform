@@ -2,7 +2,7 @@
   <input
     #searchInput
     type="text"
-    class="appearance-none focus:border-2 leading-tight w-full text-black focus:shadow-[0_0_24px_0_rgba(21,40,184,0.09)] border border-gray-4 px-4 py-3 placeholder:text-black"
+    class="h-11 box-border outline-none focus:rounded-none appearance-none focus:border-2 leading-tight w-full text-black focus:shadow-[0_0_24px_0_rgba(21,40,184,0.09)] border border-gray-4 px-4 py-3 placeholder:text-black"
     [placeholder]="placeholder"
     [formControl]="control"
     [matAutocomplete]="auto"
@@ -12,7 +12,7 @@
     <div class="h-[28px] w-[1px] bg-gray-2 my-auto"></div>
     <button
       type="button"
-      class="flex items-center text-primary hover:text-black transition-all duration-100 clear-btn absolute inset-y-0 right-[48px] p-3"
+      class="flex items-center text-primary hover:text-primary-dark transition-all duration-100 clear-btn absolute inset-y-0 right-[48px] p-3"
       *ngIf="searchInput.value"
       [ariaLabel]="'mel.datahub.search.clear' | translate"
       (click)="clear()"
@@ -21,7 +21,7 @@
     </button>
     <button
       type="button"
-      class="text-primary hover:text-black border-gray-300 hover:border-gray-500 absolute transition-all duration-100 search-btn inset-y-0 right-0 p-3 bg-transparent my-auto"
+      class="text-primary hover:text-primary-dark border-gray-300 hover:border-gray-500 absolute transition-all duration-100 search-btn inset-y-0 right-0 p-3 bg-transparent my-auto"
       aria-label="Trigger search"
       (click)="handleClickSearch()"
     >
