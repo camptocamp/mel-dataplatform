@@ -5,14 +5,14 @@
     </h1>
     <div class="flex justify-center pt-8 pb-24 relative">
       <mel-datahub-fuzzy-search
-        class="w-[645px] text-[17px] pointer-events-auto"
+        class="mel-fuzzy-search"
         (itemSelected)="onFuzzySearchSelection($event)"
         [autoFocus]="true"
       ></mel-datahub-fuzzy-search>
     </div>
     <div class="max-w-[1182px] mx-auto" gnUiSearchStateContainer="headerHome">
       <div class="sm:ml-16">
-        <div class="inline-flex bg-primary h-1 w-16"></div>
+        <div class="mel-title-line"></div>
         <div class="text-2xl font-title" translate="">
           mel.homepage.public.datasets
         </div>
