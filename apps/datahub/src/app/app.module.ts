@@ -71,6 +71,7 @@ import { MelApiCardComponent } from './dataset/dataset-apis/api-card/api-card.co
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MelDownloadsListComponent } from './dataset/dataset-downloads/downloads-list/downloads-list.component'
 import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-item/download-item.component'
+import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/dataset-visualisation.component'
 
 @NgModule({
   declarations: [
@@ -109,6 +110,7 @@ import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-i
     MelApiCardComponent,
     MelDownloadsListComponent,
     MelDownloadItemComponent,
+    DatasetVisualisationComponent,
   ],
   imports: [
     BrowserModule,

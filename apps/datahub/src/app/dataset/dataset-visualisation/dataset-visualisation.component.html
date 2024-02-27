@@ -1,0 +1,64 @@
+<div style="height: 612px">
+    <div
+      class="flex flex-col gap-12 pt-8 overflow-visible sm:pt-5"
+      style="height: 512px"
+    >
+      <div class="flex flex-col">
+        <div class="pb-6 gap-1">
+          <div class="inline-flex bg-primary h-1 w-16"></div>
+          <div class="text-2xl font-title" translate="">mel.record.metadata.preview</div>
+        </div>
+        <span
+          >Vous pouvez choisir différentes visualisation afin d’apprécier le
+          jeu données. “Cartographie” vous présente les données sous forme de
+          Pin Map, “Tableau” vous permet de consulter les données sous forme
+          brute et “Analyse” vous donne la possibilité de jongler entre
+          différentes Dataviz.</span
+        >
+      </div>
+      <mat-tab-group
+        (selectedIndexChange)="onTabIndexChange($event)"
+        [selectedIndex]="displayMap ? 0 : 1"
+        animationDuration="200ms"
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+      >
+        <mat-tab [disabled]="!displayMap">
+          <ng-template mat-tab-label>
+            <span class="tab-header-label sm:ml-32" translate
+              >mel.record.tab.map</span
+            >
+          </ng-template>
+          @if(displayMap) {
+          <div class="block" style="height: 500px">
+            <gn-ui-map-view></gn-ui-map-view>
+          </div>
+          }
+        </mat-tab>
+        <mat-tab [disabled]="!displayData">
+          <ng-template mat-tab-label>
+            <span class="tab-header-label" translate
+              >mel.record.tab.data</span
+            >
+          </ng-template>
+          @if(displayData) {
+          <div class="block">
+            <gn-ui-data-view mode="table"></gn-ui-data-view>
+          </div>
+          }
+        </mat-tab>
+        <mat-tab [disabled]="!displayData">
+          <ng-template mat-tab-label>
+            <span class="tab-header-label" translate
+              >mel.record.tab.chart</span
+            >
+          </ng-template>
+          @if(displayData) {
+          <div class="block">
+            <gn-ui-data-view mode="chart"></gn-ui-data-view>
+          </div>
+          }
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
