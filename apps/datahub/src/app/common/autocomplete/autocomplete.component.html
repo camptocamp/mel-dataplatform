@@ -2,49 +2,30 @@
   <input
     #searchInput
     type="text"
-    class="appearance-none focus:outline-white focus:outline-2 focus:outline-dotted focus:outline-offset-2 leading-tight w-full text-black focus:shadow-[0_0_24px_0_rgba(21,40,184,0.09)] border border-gray-4 px-4 py-3 placeholder:text-black"
+    class="appearance-none focus:border-2 leading-tight w-full text-black focus:shadow-[0_0_24px_0_rgba(21,40,184,0.09)] border border-gray-4 px-4 py-3 placeholder:text-black"
     [placeholder]="placeholder"
     [formControl]="control"
     [matAutocomplete]="auto"
     (keyup.enter)="handleEnter(searchInput.value)"
   />
-  <div class="flex w-10 h-full absolute right-0 top-0">
+  <div class="flex w-12 h-full absolute right-0 top-0">
     <div class="h-[28px] w-[1px] bg-gray-2 my-auto"></div>
     <button
       type="button"
-      class="w-10 h-full text-primary-lightest hover:text-primary hover:shadow-xl transition-all duration-100 clear-btn absolute right-[40px]"
+      class="flex items-center text-primary hover:text-black transition-all duration-100 clear-btn absolute inset-y-0 right-[48px] p-3"
       *ngIf="searchInput.value"
       [ariaLabel]="'mel.datahub.search.clear' | translate"
       (click)="clear()"
     >
-      <svg
-        class="mx-auto"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M14.364 1.6374L8 8.00136M1.63604 14.3653L8 8.00136M8 8.00136L1.63604 1.6374M8 8.00136L14.364 14.3653"
-          stroke="#E30513"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+      <mat-icon class="material-symbols-outlined">close</mat-icon>
     </button>
     <button
       type="button"
-      class="text-primary hover:text-primary-darkest hover:shadow-xl border-gray-300 hover:border-gray-500 absolute transition-all duration-100 search-btn inset-y-0 right-0 p-3 bg-transparent my-auto"
+      class="text-primary hover:text-black border-gray-300 hover:border-gray-500 absolute transition-all duration-100 search-btn inset-y-0 right-0 p-3 bg-transparent my-auto"
       aria-label="Trigger search"
       (click)="handleClickSearch()"
     >
-      <img
-        [src]="'assets/icons/search.svg'"
-        alt="magnifying-glass"
-        class="w-4 h-4"
-      />
+      <mat-icon class="material-symbols-outlined">search</mat-icon>
     </button>
   </div>
 
