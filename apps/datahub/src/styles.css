@@ -50,6 +50,9 @@
   .mel-social-media-button {
     @apply inline-flex items-center justify-center w-10 h-10 bg-primary rounded-full cursor-pointer hover:bg-primary-dark;
   }
+  .mel-fuzzy-search {
+    @apply w-[645px] text-[17px] pointer-events-auto;
+  }
 }
 .tippy-box[data-theme~='data-platform'] {
   background-color: rgba(0, 0, 0, 0);
