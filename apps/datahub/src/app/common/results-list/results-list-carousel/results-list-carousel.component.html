@@ -1,11 +1,11 @@
 <div class="flex justify-center">
   <gn-ui-content-ghost
-    ghostClass="h-[252px]"
+    ghostClass="h-[212px]"
     class="container"
     [showContent]="resultsReady"
   >
     <mel-datahub-custom-carousel
-      containerClass="gap-4 py-10"
+      containerClass="gap-4 pt-4 pb-6"
       stepsContainerClass=""
     >
       @for (record of searchFacade.results$ | async; track

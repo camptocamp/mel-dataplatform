@@ -5,8 +5,8 @@ describe('datahub-e2e', () => {
     cy.get('.mel-page-title').should('be.visible')
   })
   it('should display the search bar and placeholder', () => {
-    cy.get('gn-ui-fuzzy-search').should('be.visible')
-    cy.get('gn-ui-autocomplete').should('have.length.gt', 0)
+    cy.get('mel-datahub-fuzzy-search').should('be.visible')
+    cy.get('mel-datahub-autocomplete').should('have.length.gt', 0)
   })
   it('should display results card last created', () => {
     cy.get('mel-datahub-results-card-last-created').should('be.visible')

@@ -1,0 +1,11 @@
+<mel-datahub-autocomplete
+  [placeholder]="'mel.search.field.any.placeholder' | translate"
+  [displayWithFn]="displayWithFn"
+  [action]="autoCompleteAction"
+  (itemSelected)="handleItemSelection($event)"
+  (inputSubmitted)="handleInputSubmission($event)"
+  (inputCleared)="handleInputCleared()"
+  [value]="searchInputValue$ | async"
+  [clearOnSelection]="true"
+  [autoFocus]="autoFocus"
+></mel-datahub-autocomplete>

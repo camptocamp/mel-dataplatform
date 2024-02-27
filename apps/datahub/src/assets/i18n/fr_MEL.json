@@ -13,6 +13,7 @@
   "mel.common.footer.social": "Réseaux sociaux",
   "mel.common.header.title": "Data platform",
   "mel.datahub.home.title": "Métropole Européenne Lille",
+  "mel.datahub.search.clear": "Effacer",
   "mel.datahub.search.title": "Catalogue de jeux de données",
   "mel.dataset.abstract": "Description",
   "mel.dataset.api": "API",
@@ -31,6 +32,8 @@
   "mel.dataset.share": "Partager ce contenu :",
   "mel.dataset.territories": "Territoires :",
   "mel.dataset.updatedOn": "Mise à jour le",
+  "mel.homepage.public.datasets": "Derniers jeux de données publiés",
+  "mel.homepage.visit.catalog": "Voir le catalogue de données",
   "mel.record.metadata.api": "API",
   "mel.record.metadata.api.form.closeButton": "Fermer",
   "mel.record.metadata.api.form.title": "Générer une URL personnalisée",
@@ -42,5 +45,7 @@
   "mel.record.metadata.related": "Jeux de données similaires",
   "mel.record.tab.chart": "Analyse",
   "mel.record.tab.data": "Tableau",
-  "mel.record.tab.map": "Cartographie"
+  "mel.record.tab.map": "Cartographie",
+  "mel.search.autocomplete.error": "Les suggestions ne peuvent pas être récupérées",
+  "mel.search.field.any.placeholder": "Rechercher un jeu de données"
 }

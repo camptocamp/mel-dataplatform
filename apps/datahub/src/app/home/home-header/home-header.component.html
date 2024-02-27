@@ -1,23 +1,34 @@
 <div class="bg-beige">
-  <div class="pt-[139px] container mx-auto">
+  <div class="p-4 py-6 md:py-20 lg:p-36 container mx-auto">
     <h1 class="flex justify-center mel-page-title" translate="">
       mel.datahub.home.title
     </h1>
-    <div class="flex justify-center p-8 relative">
-      <gn-ui-fuzzy-search
+    <div class="flex justify-center pt-8 pb-24 relative">
+      <mel-datahub-fuzzy-search
         class="w-[645px] text-[17px] pointer-events-auto"
         (itemSelected)="onFuzzySearchSelection($event)"
         [autoFocus]="true"
-      ></gn-ui-fuzzy-search>
+      ></mel-datahub-fuzzy-search>
     </div>
-    <div
-      class="h-64 max-w-[1182px] mx-auto"
-      gnUiSearchStateContainer="headerHome"
-    >
+    <div class="max-w-[1182px] mx-auto" gnUiSearchStateContainer="headerHome">
+      <div class="sm:ml-16">
+        <div class="inline-flex bg-primary h-1 w-16"></div>
+        <div class="text-2xl font-title" translate="">
+          mel.homepage.public.datasets
+        </div>
+      </div>
       <mel-datahub-results-list-carousel
         [numberOfResults]="6"
         [favoritesOnly]="false"
       ></mel-datahub-results-list-carousel>
+    </div>
+    <div class="flex justify-end mt-4">
+      <a routerLink="/search">
+        <mel-datahub-button
+          [label]="'mel.homepage.visit.catalog' | translate"
+          [icon]="'arrow'"
+        ></mel-datahub-button>
+      </a>
     </div>
   </div>
 </div>
