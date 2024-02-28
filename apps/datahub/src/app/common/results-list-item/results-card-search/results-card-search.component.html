@@ -2,7 +2,7 @@
   [tabIndex]="0"
   (click)="mdSelect.emit(record)"
   (keyup.enter)="mdSelect.emit(record)"
-  class="mel-card gap-3 h-[270px] p-4"
+  class="mel-card gap-3 h-[242px] p-4"
 >
   <div class="flex flex-col h-[78px] justify-between shrink-0">
     <h1 class="font-extrabold text-[17px] line-clamp-2 leading-5">
@@ -17,7 +17,7 @@
           type="button"
           [attr.aria-label]="keyword"
           [title]="keyword"
-          class="mel-badge-button mel-badge-button-primary truncate"
+          class="mel-badge-button-primary truncate"
           (click)="onKeywordClick(keyword, $event)"
           (keyup.enter)="$event.stopPropagation()"
         >
