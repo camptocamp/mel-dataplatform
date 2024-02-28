@@ -21,7 +21,7 @@ describe('search', () => {
     it('should display record results in last created cards inside a carousel', () => {
       cy.get('mel-datahub-custom-carousel')
         .find('mel-datahub-results-card-last-created')
-        .eq(0)
+        .first()
         .find('h1')
         .should(
           'have.text',
@@ -60,7 +60,7 @@ describe('search', () => {
       it('should display record results in favorite cards inside a carousel', () => {
         cy.get('mel-datahub-custom-carousel')
           .find('mel-datahub-results-card-favorite')
-          .eq(0)
+          .first()
           .find('h1')
           .should(
             'have.text',
@@ -112,12 +112,12 @@ describe('search', () => {
       cy.get('mel-datahub-results-list-grid').should('be.visible')
     })
     it('should filter the results when selecting a filter value (topic)', () => {
-      cy.get('@filters').eq(0).click()
+      cy.get('@filters').first().click()
       getFilterOptions()
-      cy.get('@options').eq(0).click()
+      cy.get('@options').first().click()
       cy.get('@result-cards').should('have.length', 2)
       cy.get('@result-cards')
-        .eq(0)
+        .first()
         .find('h1')
         .should('have.text', ' Alpenkonvention ')
       cy.get('@result-cards')
@@ -131,7 +131,7 @@ describe('search', () => {
     it('should filter the results when selecting multiple filter values (producer)', () => {
       cy.get('@filters').eq(1).click()
       getFilterOptions()
-      cy.get('@options').eq(0).click()
+      cy.get('@options').first().click()
       cy.get('@options').eq(1).click()
       cy.get('@options').eq(2).click()
       cy.get('mel-datahub-results-card-search').should('have.length', 3)
@@ -143,7 +143,7 @@ describe('search', () => {
         .click()
       cy.get('@result-cards').should('have.length', 1)
       cy.get('@result-cards')
-        .eq(0)
+        .first()
         .find('h1')
         .should('have.text', ' Accroches vélos MEL ')
     })
@@ -158,7 +158,7 @@ describe('search', () => {
       cy.get('@options').eq(12).click()
       cy.get('@result-cards').should('have.length', 1)
       cy.get('@result-cards')
-        .eq(0)
+        .first()
         .find('h1')
         .should('have.text', ' Accroches vélos MEL ')
     })

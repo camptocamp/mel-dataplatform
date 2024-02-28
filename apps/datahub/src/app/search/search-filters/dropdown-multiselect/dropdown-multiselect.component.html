@@ -1,5 +1,5 @@
 <button
-  class="mel-primary-button"
+  class="mel-primary-button rounded-none"
   [attr.aria-owns]="id"
   (click)="openOverlay()"
   (keydown)="handleTriggerKeydown($event)"
@@ -48,7 +48,7 @@
   (detach)="closeOverlay()"
 >
   <div
-    class="bg-white border border-gray-300 rounded shadow-lg py-2 w-full overflow-x-hidden overflow-y-auto overlay-container"
+    class="bg-white border border-gray-300 shadow-lg py-2 w-full overflow-x-hidden overflow-y-auto overlay-container"
     [style.max-height]="overlayMaxHeight"
     [style.width]="'300px'"
     role="listbox"
@@ -60,7 +60,7 @@
     #overlayContainer
   >
     <div
-      class="border border-gray-300 rounded mb-2 mx-2 min-h-[44px] flex flex-row flex-wrap p-2 focus-within:rounded focus-within:border-2 focus-within:border-primary"
+      class="border border-gray-300 mb-2 mx-2 min-h-[44px] flex flex-row flex-wrap p-2 focus-within:border-2 focus-within:border-primary"
     >
       @for(selected of selectedChoices; track selected.value){
       <button
