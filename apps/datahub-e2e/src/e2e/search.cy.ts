@@ -54,6 +54,7 @@ describe('search', () => {
     describe('User logged in', () => {
       beforeEach(() => {
         cy.login()
+        cy.clearFavorites()
         cy.visit('/search')
         cy.get('mel-datahub-heart-toggle').first().click()
       })
