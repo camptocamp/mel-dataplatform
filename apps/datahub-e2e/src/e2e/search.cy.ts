@@ -33,7 +33,7 @@ describe('search', () => {
         .should('be.visible')
 
       cy.get('mel-datahub-results-card-last-created')
-        .find('.mel-badge-button')
+        .find('.mel-badge-button-primary')
         .should('be.visible')
     })
 
@@ -54,6 +54,7 @@ describe('search', () => {
     describe('User logged in', () => {
       beforeEach(() => {
         cy.login()
+        cy.clearFavorites()
         cy.visit('/search')
         cy.get('mel-datahub-heart-toggle').first().click()
       })
@@ -68,7 +69,7 @@ describe('search', () => {
           )
 
         cy.get('mel-datahub-results-card-favorite')
-          .find('.mel-badge-button')
+          .find('.mel-badge-button-primary')
           .should('be.visible')
 
         cy.get('mel-datahub-results-card-favorite')

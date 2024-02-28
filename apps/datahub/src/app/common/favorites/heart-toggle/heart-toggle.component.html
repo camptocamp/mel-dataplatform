@@ -1,6 +1,6 @@
 <mel-datahub-button
-  [label]="'mel.dataset.favorite' | translate"
-  [icon]="toggled ? 'heart-filled' : 'heart'"
+  [label]="label | translate"
+  [icon]="toggled ? 'heart-filled' + iconSuffix : 'heart' + iconSuffix"
   [disabled]="disabled"
   (click)="toggle($event)"
   [buttonClass]="buttonClass"

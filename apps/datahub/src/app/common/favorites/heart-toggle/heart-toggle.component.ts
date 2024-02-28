@@ -18,6 +18,8 @@ export class HeartToggleComponent {
   @Input() disabled = false
   @Input() buttonClass?: string
   @Input() imageClass?: string
+  @Input() label?: string
+  @Input() iconSuffix? = ''
   @Output() newValue = new EventEmitter<boolean>()
 
   toggle(event: Event) {

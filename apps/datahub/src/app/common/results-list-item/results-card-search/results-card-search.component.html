@@ -2,7 +2,7 @@
   [tabIndex]="0"
   (click)="mdSelect.emit(record)"
   (keyup.enter)="mdSelect.emit(record)"
-  class="mel-card gap-3 h-[270px] p-4"
+  class="mel-card gap-3 h-[242px] p-4"
 >
   <div class="flex flex-col h-[78px] justify-between shrink-0">
     <h1 class="font-extrabold text-[17px] line-clamp-2 leading-5">
@@ -17,7 +17,7 @@
           type="button"
           [attr.aria-label]="keyword"
           [title]="keyword"
-          class="mel-badge-button truncate"
+          class="mel-badge-button-primary truncate"
           (click)="onKeywordClick(keyword, $event)"
           (keyup.enter)="$event.stopPropagation()"
         >
@@ -33,13 +33,6 @@
     </div>
     <div class="flex justify-between gap-1 font-semibold">
       <div class="flex flex-col text-gray-1 gap-[3px] w-9/12">
-        <div class="text-[12px] font-semibold truncate">
-          <span [title]="'This is a Localisation'"
-            >{{ 'mel.record.metadata.localisation' | translate }} : This is a
-            Localisation</span
-          >
-        </div>
-
         <div class="text-[12px] font-semibold truncate">
           <span [title]="shownOrganization.name"
             >{{ 'mel.record.metadata.producteur' | translate }} :
@@ -65,6 +58,7 @@
           class="mb-1"
           buttonClass="mel-secondary-button"
           imageClass="smaller-icon"
+          [label]="'mel.dataset.favorite'"
         ></mel-datahub-favorite-heart>
       </div>
     </div>

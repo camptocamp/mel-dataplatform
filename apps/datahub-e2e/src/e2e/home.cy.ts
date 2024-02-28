@@ -26,7 +26,9 @@ describe('home', () => {
       cy.get('mel-datahub-results-card-last-created').as('lastCreatedCard')
 
       cy.get('@lastCreatedCard').find('h1').should('be.visible')
-      cy.get('@lastCreatedCard').find('.mel-badge-button').should('be.visible')
+      cy.get('@lastCreatedCard')
+        .find('.mel-badge-button-primary')
+        .should('be.visible')
     })
     it('should display a carousel that loops through last created cards', () => {
       cy.get('mel-datahub-custom-carousel').find(
