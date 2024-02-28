@@ -1,33 +1,33 @@
-describe('datahub-e2e', () => {
+describe('home', () => {
   beforeEach(() => cy.visit('/home'))
 
-  it('should display the title', () => {
-    cy.get('.mel-page-title').should('be.visible')
-  })
-  it('should display the search bar and placeholder', () => {
-    cy.get('mel-datahub-fuzzy-search').should('be.visible')
-    cy.get('mel-datahub-autocomplete').should('have.length.gt', 0)
-  })
-  it('should display results card last created', () => {
-    cy.get('mel-datahub-results-card-last-created').should('be.visible')
-    cy.get('mel-datahub-results-card-last-created').should('have.length.gt', 0)
-    cy.get('mel-datahub-results-card-last-created').as('lastCreatedCard')
-
-    cy.get('@lastCreatedCard').find('h1').should('be.visible')
-    cy.get('@lastCreatedCard').find('.mel-badge-button').should('be.visible')
-  })
-
-  describe('interactions with dataset', () => {
-    beforeEach(() => {
-      cy.get('mel-datahub-results-card-last-created').first().as('firstResult')
+  describe('home header search', () => {
+    it('should display the title', () => {
+      cy.get('.mel-page-title').should('be.visible')
     })
-    it('should open the dataset page in the same application on click', () => {
-      cy.get('@firstResult').click()
-      cy.url().should('include', 'dataset')
-      cy.get('mel-datahub-dataset-page').should('be.visible')
+    it('should display the search bar and placeholder', () => {
+      cy.get('mel-datahub-fuzzy-search').should('be.visible')
+      cy.get('mel-datahub-autocomplete').should('have.length.gt', 0)
+    })
+    it('should navigate to search and display results when executing a search', () => {
+      cy.get('mel-datahub-fuzzy-search').type('test{enter}')
+      cy.url().should('include', 'search')
+      cy.get('mel-datahub-results-card-search').should('have.length.gt', 0)
     })
   })
-  describe('custom carousel', () => {
+
+  describe('home header carousel', () => {
+    it('should display results card last created', () => {
+      cy.get('mel-datahub-results-card-last-created').should('be.visible')
+      cy.get('mel-datahub-results-card-last-created').should(
+        'have.length.gt',
+        0
+      )
+      cy.get('mel-datahub-results-card-last-created').as('lastCreatedCard')
+
+      cy.get('@lastCreatedCard').find('h1').should('be.visible')
+      cy.get('@lastCreatedCard').find('.mel-badge-button').should('be.visible')
+    })
     it('should display a carousel that loops through last created cards', () => {
       cy.get('mel-datahub-custom-carousel').find(
         'mel-datahub-results-card-last-created'
@@ -45,7 +45,20 @@ describe('datahub-e2e', () => {
         )
         .should('be.visible')
     })
+    describe('interactions with dataset', () => {
+      beforeEach(() => {
+        cy.get('mel-datahub-results-card-last-created')
+          .first()
+          .as('firstResult')
+      })
+      it('should open the dataset page in the same application on click', () => {
+        cy.get('@firstResult').click()
+        cy.url().should('include', 'dataset')
+        cy.get('mel-datahub-dataset-page').should('be.visible')
+      })
+    })
   })
+
   describe('footer', () => {
     beforeEach(() => {
       cy.get('mel-datahub-footer').as('footer')

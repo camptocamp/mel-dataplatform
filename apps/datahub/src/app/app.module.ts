@@ -15,6 +15,7 @@ import {
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
   UiElementsModule,
+  UiInputsModule,
   UiLayoutModule,
   UiWidgetsModule,
 } from 'geonetwork-ui'
@@ -60,6 +61,12 @@ import { MelFuzzySearchComponent } from './common/fuzzy-search/fuzzy-search.comp
 import { MelAutocompleteComponent } from './common/autocomplete/autocomplete.component'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { SearchFormComponent } from './search/search-form/search-form.component'
+import { SearchFiltersComponent } from './search/search-filters/search-filters.component'
+import { MelFilterDropdownComponent } from './search/search-filters/filter-dropdown/filter-dropdown.component'
+import { MelDropdownMultiselectComponent } from './search/search-filters/dropdown-multiselect/dropdown-multiselect.component'
+import { OverlayModule } from '@angular/cdk/overlay'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -91,6 +98,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'
     DatasetInformationComponent,
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
+    SearchFormComponent,
+    SearchFiltersComponent,
+    MelFilterDropdownComponent,
+    MelDropdownMultiselectComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,12 +109,15 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'
     UiWidgetsModule,
     UiElementsModule,
     UiLayoutModule,
+    UiInputsModule,
     FeatureSearchModule,
     FeatureCatalogModule,
     FeatureRecordModule,
     MatAutocompleteModule,
     MatIconModule,
     MatTabsModule,
+    OverlayModule,
+    FormsModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
