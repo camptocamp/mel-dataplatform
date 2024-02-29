@@ -10,15 +10,16 @@
   />
   <div class="flex w-12 h-full absolute right-0 top-0">
     <div class="h-[28px] w-[1px] bg-gray-2 my-auto"></div>
+    @if(searchInput.value) {
     <button
       type="button"
       class="flex items-center text-primary hover:text-primary-dark transition-all duration-100 clear-btn absolute inset-y-0 right-[48px] p-3"
-      *ngIf="searchInput.value"
       [ariaLabel]="'mel.datahub.search.clear' | translate"
       (click)="clear()"
     >
       <mat-icon class="material-symbols-outlined">close</mat-icon>
     </button>
+    }
     <button
       type="button"
       class="text-primary hover:text-primary-dark border-gray-300 hover:border-gray-500 absolute transition-all duration-100 search-btn inset-y-0 right-0 p-3 bg-transparent my-auto"
@@ -29,9 +30,9 @@
     </button>
   </div>
 
+  @if(error){
   <gn-ui-popup-alert
-    *ngIf="error"
-    class="absolute mt-2 w-full top-[100%] left-0"
+    class="absolute mt-2 w-full top-[100%] left-0 z-50"
     icon="error_outline"
     position="top"
     type="warning"
@@ -39,17 +40,16 @@
     <span translate>mel.search.autocomplete.error</span>
     {{ error }}
   </gn-ui-popup-alert>
+  }
 </div>
 <mat-autocomplete
   #auto="matAutocomplete"
   (optionSelected)="handleSelection($event)"
   [displayWith]="displayWithFn"
 >
-  <mat-option
-    *ngFor="let suggestion of suggestions$ | async"
-    [value]="suggestion"
-    class="p-2 suggestion"
-  >
+  @for(suggestion of suggestions$ | async; track $index){
+  <mat-option [value]="suggestion" class="p-2 suggestion">
     {{ displayWithFn(suggestion) }}
   </mat-option>
+  }
 </mat-autocomplete>
