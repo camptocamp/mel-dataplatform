@@ -1,6 +1,19 @@
 <div class="bg-beige">
-  <div class="pt-[68px] container mx-auto">
-    <h1 class="flex mel-page-title" translate="">mel.datahub.search.title</h1>
+  <div class="pt-[68px] mel-container-lg mx-auto">
+    <div class="px-5">
+      <h1 class="flex mel-page-title md:mb-12" translate="">
+        mel.datahub.search.title
+      </h1>
+
+      <div class="mel-title-line"></div>
+      <div class="text-2xl font-title" translate="">
+        {{
+          (favoritesService.myFavoritesUuid$ | async)?.length > 0
+            ? 'mel.searchpage.subtitle.favorites'
+            : 'mel.homepage.public.datasets'
+        }}
+      </div>
+    </div>
     <div class="h-64" gnUiSearchStateContainer="headerSearch">
       <mel-datahub-results-list-carousel
         [numberOfResults]="10"

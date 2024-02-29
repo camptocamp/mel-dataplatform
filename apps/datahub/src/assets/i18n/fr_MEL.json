@@ -46,7 +46,6 @@
   "mel.record.metadata.api": "API",
   "mel.record.metadata.api.form.closeButton": "Fermer",
   "mel.record.metadata.api.form.title": "Générer une URL personnalisée",
-  "mel.record.metadata.localisation": "Localisation",
   "mel.record.metadata.preview": "Visualisation",
   "mel.record.metadata.producteur": "Producteur",
   "mel.record.metadata.quality": "Qualité des métadonnées",
@@ -56,5 +55,6 @@
   "mel.record.tab.data": "Tableau",
   "mel.record.tab.map": "Cartographie",
   "mel.search.autocomplete.error": "Les suggestions ne peuvent pas être récupérées",
-  "mel.search.field.any.placeholder": "Rechercher un jeu de données"
+  "mel.search.field.any.placeholder": "Rechercher un jeu de données",
+  "mel.searchpage.subtitle.favorites": "Jeux de données suivis"
 }

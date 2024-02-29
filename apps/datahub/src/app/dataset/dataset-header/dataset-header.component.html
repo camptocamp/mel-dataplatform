@@ -3,7 +3,7 @@
     <div class="flex justify-end gap-2">
       <mel-datahub-favorite-heart
         [record]="record"
-        [label]="'mel.dataset.favorite'"
+        [label]="'mel.dataset.favorite' | translate"
       ></mel-datahub-favorite-heart>
       @if(getScrollElement('download')){
       <mel-datahub-button
