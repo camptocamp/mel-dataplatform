@@ -3,7 +3,7 @@
   @if ((facade.isPresent$ | async) === true) {
 
   <mel-datahub-dataset-header
-    [metadata]="facade.metadata$ | async"
+    [record]="facade.metadata$ | async"
     [incomplete]="facade.isIncomplete$ | async"
   ></mel-datahub-dataset-header>
 
