@@ -8,7 +8,7 @@
       <div class="mel-title-line"></div>
       <div class="text-2xl font-title">
         {{
-          (favoritesService.myFavoritesUuid$ | async)?.length > 0
+          (hasFavorites$ | async)
             ? ('mel.searchpage.subtitle.favorites' | translate)
             : ('mel.homepage.public.datasets' | translate)
         }}
@@ -17,9 +17,7 @@
     <div class="h-64" gnUiSearchStateContainer="headerSearch">
       <mel-datahub-results-list-carousel
         [numberOfResults]="10"
-        [favoritesOnly]="
-          (favoritesService.myFavoritesUuid$ | async)?.length > 0
-        "
+        [favoritesOnly]="hasFavorites$ | async"
       ></mel-datahub-results-list-carousel>
     </div>
   </div>
