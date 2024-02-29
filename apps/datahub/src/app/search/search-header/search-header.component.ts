@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { FavoritesService, RouterFacade, SearchService } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
+import { map } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-search-header',
@@ -16,6 +17,9 @@ export class SearchHeaderComponent {
     public favoritesService: FavoritesService
   ) {}
 
+  hasFavorites$ = this.favoritesService.myFavoritesUuid$.pipe(
+    map((favorites) => favorites.length > 0)
+  )
   onFuzzySearchSelection(record: CatalogRecord) {
     this.routerFacade.goToMetadata(record)
   }

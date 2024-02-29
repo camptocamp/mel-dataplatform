@@ -18,6 +18,13 @@ describe('search', () => {
 
   describe('search header carousel', () => {
     // If not logged in or no favorites exists
+
+    it('shold display the correct subtitle', () => {
+      cy.get('mel-datahub-search-header')
+        .find('.font-title')
+        .first()
+        .should('have.text', ' Derniers jeux de données publiés ')
+    })
     it('should display record results in last created cards inside a carousel', () => {
       cy.get('mel-datahub-custom-carousel')
         .find('mel-datahub-results-card-last-created')
@@ -57,6 +64,13 @@ describe('search', () => {
         cy.clearFavorites()
         cy.visit('/search')
         cy.get('mel-datahub-heart-toggle').first().click()
+      })
+
+      it('shold display the correct subtitle', () => {
+        cy.get('mel-datahub-search-header')
+          .find('.font-title')
+          .first()
+          .should('have.text', ' Jeux de données suivis ')
       })
       it('should display record results in favorite cards inside a carousel', () => {
         cy.get('mel-datahub-custom-carousel')
