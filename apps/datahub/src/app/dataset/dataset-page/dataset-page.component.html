@@ -3,7 +3,7 @@
   @if ((facade.isPresent$ | async) === true) {
 
   <mel-datahub-dataset-header
-    [metadata]="facade.metadata$ | async"
+    [record]="facade.metadata$ | async"
     [incomplete]="facade.isIncomplete$ | async"
   ></mel-datahub-dataset-header>
 
@@ -99,11 +99,11 @@
             <div
               class="mb-4 flex flex-wrap gap-6 justify-center sm:justify-start"
             >
-              <gn-ui-related-record-card
-                *ngFor="let record of facade.related$ | async"
-                [record]="record"
-              >
+              @for(record of facade.related$ | async; track
+              record.uniqueIdentifier){
+              <gn-ui-related-record-card [record]="record">
               </gn-ui-related-record-card>
+              }
             </div>
           </div>
         </div>

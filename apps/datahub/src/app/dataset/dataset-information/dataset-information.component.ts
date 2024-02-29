@@ -15,7 +15,7 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/re
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatasetInformationComponent {
-  @Input() record: CatalogRecord
+  @Input() record: Partial<CatalogRecord>
   iconsUrl = 'assets/icons/'
   @Output() keyword = new EventEmitter<string>()
 

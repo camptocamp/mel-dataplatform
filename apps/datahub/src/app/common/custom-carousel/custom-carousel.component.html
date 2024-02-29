@@ -31,10 +31,11 @@
 </div>
 
 <div class="flex justify-center gap-3" [ngClass]="stepsContainerClass">
+  @for(step of steps; track $index){
   <button
-    *ngFor="let step of steps; let i = index"
     class="mel-carousel-step-dot"
-    (click)="scrollToStep(i)"
-    [ngClass]="selectedStep === i ? 'bg-primary' : 'bg-transparent'"
+    (click)="scrollToStep($index)"
+    [ngClass]="selectedStep === $index ? 'bg-primary' : 'bg-transparent'"
   ></button>
+  }
 </div>

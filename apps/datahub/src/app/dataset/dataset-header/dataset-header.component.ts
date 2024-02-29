@@ -1,10 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { RouterFacade } from 'geonetwork-ui'
-import {
-  CatalogRecord,
-  DatasetRecord,
-  ServiceRecord,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
 @Component({
   selector: 'mel-datahub-dataset-header',
@@ -13,17 +9,14 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatasetHeaderComponent {
-  @Input() set metadata(value: Partial<DatasetRecord | ServiceRecord>) {
-    this.record = value as CatalogRecord
-  }
-  record: CatalogRecord
+  @Input() record: Partial<CatalogRecord>
 
   @Input() incomplete: boolean
 
   constructor(protected routerFacade: RouterFacade) {}
 
   fieldReady(propName: string) {
-    return !this.incomplete || propName in this.metadata
+    return !this.incomplete || propName in this.record
   }
 
   getScrollElement(id: string) {
