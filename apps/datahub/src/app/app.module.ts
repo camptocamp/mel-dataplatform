@@ -32,7 +32,6 @@ import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.compon
 import { SearchHeaderComponent } from './search/search-header/search-header.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SearchResultsComponent } from './search/search-results/search-results.component'
-import { HeaderComponent } from './common/header/header.component'
 import { HomePageComponent } from './home/home-page/home-page.component'
 import { AppRouterService } from './app.router.service'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
@@ -74,7 +73,6 @@ import { FormsModule } from '@angular/forms'
     SearchPageComponent,
     SearchHeaderComponent,
     SearchResultsComponent,
-    HeaderComponent,
     HomePageComponent,
     HomeHeaderComponent,
     ResultsListComponent,
