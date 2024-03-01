@@ -9,19 +9,19 @@
       <span class="font-semibold" translate="">mel.dataset.updatedOn</span>
       <div class="text-primary font-semibold">{{ lastUpdate }}</div>
     </div>
-    } @if(record.keywords?.length) {
+    } @if(record.themes?.length) {
     <div class="flex flex-col gap-2">
       <span class="font-semibold" translate="">mel.dataset.categories</span>
       <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
-        @for(keyword of record.keywords; track record.uniqueIdentifier) {
+        @for(theme of record.themes; track record.uniqueIdentifier) {
         <button
           type="button"
-          [attr.aria-label]="keyword"
-          [title]="keyword"
-          (click)="onKeywordClick(keyword, $event)"
+          [attr.aria-label]="theme"
+          [title]="theme"
+          (click)="onThemeClick(theme, $event)"
           class="mel-badge-button-primary truncate"
         >
-          {{ keyword }}
+          {{ theme }}
         </button>
         }
       </div>

@@ -54,15 +54,21 @@ describe('datasets', () => {
     })
 
     describe('Information block', () => {
-      beforeEach(() =>
-        cy
-          .get('mel-datahub-dataset-information')
+      beforeEach(() => {
+        cy.get('mel-datahub-dataset-information')
           .children('div')
           .first()
           .children('div')
           .eq(1)
           .as('mainInfo')
-      )
+
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(1)
+          .find('div')
+          .children('button')
+          .as('categoriesBtns')
+      })
       it('should display the information block', () => {
         cy.get('mel-datahub-dataset-information').should('be.visible')
       })
@@ -77,12 +83,12 @@ describe('datasets', () => {
       })
 
       it('should display the categories btns', () => {
-        cy.get('@mainInfo')
-          .children('div')
-          .eq(1)
-          .find('div')
-          .children('button')
-          .should('have.length.gt', 0)
+        cy.get('@categoriesBtns').should('have.length.gt', 0)
+      })
+
+      it('should navaigate to search with a topic filter when clicking on category button', () => {
+        cy.get('@categoriesBtns').first().click()
+        cy.url().should('contain', 'search?topic=Planungsunterlagen')
       })
 
       it('should display the territories', () => {

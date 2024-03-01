@@ -17,7 +17,7 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/re
 export class DatasetInformationComponent {
   @Input() record: Partial<CatalogRecord>
   iconsUrl = 'assets/icons/'
-  @Output() keyword = new EventEmitter<string>()
+  @Output() clickedTheme = new EventEmitter<string>()
 
   constructor(public translateService: TranslateService) {}
 
@@ -27,8 +27,8 @@ export class DatasetInformationComponent {
     )
   }
 
-  onKeywordClick(keyword: string, event: Event) {
+  onThemeClick(theme: string, event: Event) {
     event.stopPropagation()
-    this.keyword.emit(keyword)
+    this.clickedTheme.emit(theme)
   }
 }
