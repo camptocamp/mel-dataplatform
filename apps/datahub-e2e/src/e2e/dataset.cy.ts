@@ -31,6 +31,28 @@ describe('datasets', () => {
         .should('have.css', 'max-height', '72px')
     })
 
+    it('should scroll down when clicking on download button', () => {
+      cy.get('mel-datahub-button').eq(1).as('downloadButton')
+      cy.get('@downloadButton').click()
+      cy.get('@downloadButton').should(() => {
+        const scrollPosition = Cypress.dom.getWindowByElement(
+          cy.state('window')
+        ).scrollY
+        expect(scrollPosition).to.be.greaterThan(0)
+      })
+    })
+
+    it('should scroll down when clicking on api button', () => {
+      cy.get('mel-datahub-button').eq(2).as('apiButton')
+      cy.get('@apiButton').click()
+      cy.get('@apiButton').should(() => {
+        const scrollPosition = Cypress.dom.getWindowByElement(
+          cy.state('window')
+        ).scrollY
+        expect(scrollPosition).to.be.greaterThan(0)
+      })
+    })
+
     describe('Information block', () => {
       beforeEach(() => {
         cy.get('mel-datahub-dataset-information')
