@@ -1,36 +1,28 @@
 <div class="mel-grid-container-dataset">
   <div class="sm:col-start-2 sm:col-span-8">
     <div class="gap-1 sm:mt-12 sm:mb-[-22px] mt-8 mb-5">
-      <div class="inline-flex bg-primary h-1 w-16"></div>
-      <p
-        class="font-title text-[28px] font-medium text-title text-center sm:text-left"
-        translate
-      >
-        mel.record.metadata.api
-      </p>
+      <div class="mel-title-line"></div>
+      <p class="mel-section-title" translate>mel.record.metadata.api</p>
     </div>
     <mel-datahub-custom-carousel
       containerClass="gap-4 py-10"
       stepsContainerClass="right-[var(--container-outside-width)] bottom-[calc(100%-12px)] top-auto"
     >
+      @for(link of apiLinks$ | async; track $index) {
       <mel-datahub-api-card
-        *ngFor="
-          let link of apiLinks$ | async;
-          let first = first;
-          let last = last
-        "
         [title]="link.name"
         [link]="link"
         [currentLink]="selectedApiLink"
         [ngClass]="{
-          'mr-[var(--container-outside-width)]': last,
-          'ml-[var(--container-outside-width)]': first,
+          'mr-[var(--container-outside-width)]': $last,
+          'ml-[var(--container-outside-width)]': $first,
           'card-shadow': link !== selectedApiLink || !selectedApiLink,
           'bg-neutral-100': link === selectedApiLink
         }"
         (openRecordApiForm)="openRecordApiForm($event)"
       >
       </mel-datahub-api-card>
+      }
     </mel-datahub-custom-carousel>
   </div>
 </div>

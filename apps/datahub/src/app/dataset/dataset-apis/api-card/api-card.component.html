@@ -1,6 +1,9 @@
-<a
+<div
   [title]="link.name"
-  [ngClass]="{ 'cursor-pointer': displayApiFormButton }"
+  [ngClass]="{
+    'cursor-pointer': displayApiFormButton,
+    'bg-gray-7': currentlyActive
+  }"
   (click)="openRecordApiFormPanel()"
   class="mel-card w-[330px] group relative h-40 p-4 overflow-hidden"
 >
@@ -9,20 +12,25 @@
   </h1>
 
   <div class="flex flex-row justify-between">
-    <span class="mel-badge-button-primary uppercase">
+    <span
+      class="mel-badge-button-primary card-icon uppercase"
+      [ngClass]="{
+        'text-primary-dark opacity-100': currentlyActive
+      }"
+    >
       {{ link.accessServiceProtocol }}
     </span>
-    <mel-datahub-copy-text-button
+    <gn-ui-copy-text-button
       *ngIf="!displayApiFormButton"
       [text]="link.url.toString()"
       [tooltipText]="'tooltip.url.copy' | translate"
       [displayText]="false"
-    ></mel-datahub-copy-text-button>
+    ></gn-ui-copy-text-button>
     <button
       *ngIf="displayApiFormButton"
       type="button"
       [ngClass]="{
-        'h-6': displayApiFormButton
+        'h-6 focus:bg-text-primary-dark': displayApiFormButton
       }"
       mat-raised-button
       [matTooltip]="
@@ -35,10 +43,10 @@
       <mat-icon
         class="material-symbols-outlined pointer-events-none align-top card-icon"
         [ngClass]="{
-          'text-secondary opacity-100': currentlyActive
+          'text-primary-dark opacity-100': currentlyActive
         }"
         >more_horiz</mat-icon
       >
     </button>
   </div>
-</a>
+</div>

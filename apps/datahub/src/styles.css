@@ -20,6 +20,9 @@
   .mel-badge-secondary {
     @apply mel-badge text-secondary border border-secondary;
   }
+  .mel-section-title {
+    @apply font-title text-[28px] font-medium text-title text-center sm:text-left;
+  }
   .mel-badge-button {
     @apply cursor-pointer hover:text-gray-8;
   }
@@ -63,7 +66,7 @@
     @apply w-[645px] text-[17px] pointer-events-auto;
   }
   .card-icon {
-    @apply text-primary opacity-50 group-hover:text-primary-dark group-hover:opacity-100 transition-colors transition-opacity;
+    @apply text-primary group-hover:text-primary-dark transition-colors transition-opacity;
   }
 }
 .tippy-box[data-theme~='data-platform'] {

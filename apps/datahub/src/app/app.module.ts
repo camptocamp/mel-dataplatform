@@ -69,7 +69,6 @@ import { FormsModule } from '@angular/forms'
 import { ApiFormComponent } from './dataset/dataset-apis/api-form/api-form.component'
 import { MelApiCardComponent } from './dataset/dataset-apis/api-card/api-card.component'
 import { MatTooltipModule } from '@angular/material/tooltip'
-import { MelCopyTextButtonComponent } from './common/copy-text-button/copy-text-button.component'
 
 @NgModule({
   declarations: [
@@ -106,7 +105,6 @@ import { MelCopyTextButtonComponent } from './common/copy-text-button/copy-text-
     MelDropdownMultiselectComponent,
     ApiFormComponent,
     MelApiCardComponent,
-    MelCopyTextButtonComponent,
   ],
   imports: [
     BrowserModule,
