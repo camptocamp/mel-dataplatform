@@ -32,7 +32,7 @@ export class DatasetApisComponent implements OnInit {
   }
 
   setStyle(link: DatasetServiceDistribution) {
-    this.maxHeight = link === undefined ? '0px' : '500px'
+    this.maxHeight = link === undefined ? '0px' : '750px'
     this.opacity = link === undefined ? 0 : 1
   }
 }

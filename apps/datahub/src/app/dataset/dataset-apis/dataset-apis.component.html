@@ -1,38 +1,46 @@
-<div>
-  <p
-    class="font-title text-[28px] font-medium mt-8 mb-5 text-title text-center sm:mt-12 sm:mb-[-22px] sm:text-left"
-    translate
-  >
-    mel.record.metadata.api
-  </p>
-  <gn-ui-carousel
-    containerClass="gap-4 py-10"
-    stepsContainerClass="right-[var(--container-outside-width)] bottom-[calc(100%-12px)] top-auto"
-  >
-    <gn-ui-api-card
-      *ngFor="let link of apiLinks$ | async; let first = first; let last = last"
-      [title]="link.name"
-      [link]="link"
-      [currentLink]="selectedApiLink"
-      class="w-80"
-      [ngClass]="{
-        'mr-[var(--container-outside-width)]': last,
-        'ml-[var(--container-outside-width)]': first,
-        'card-shadow': link !== selectedApiLink || !selectedApiLink,
-        'bg-neutral-100': link === selectedApiLink
-      }"
-      (openRecordApiForm)="openRecordApiForm($event)"
+<div class="mel-grid-container-dataset">
+  <div class="sm:col-start-2 sm:col-span-8">
+    <div class="gap-1 sm:mt-12 sm:mb-[-22px] mt-8 mb-5">
+      <div class="inline-flex bg-primary h-1 w-16"></div>
+      <p
+        class="font-title text-[28px] font-medium text-title text-center sm:text-left"
+        translate
+      >
+        mel.record.metadata.api
+      </p>
+    </div>
+    <mel-datahub-custom-carousel
+      containerClass="gap-4 py-10"
+      stepsContainerClass="right-[var(--container-outside-width)] bottom-[calc(100%-12px)] top-auto"
     >
-    </gn-ui-api-card>
-  </gn-ui-carousel>
+      <mel-datahub-api-card
+        *ngFor="
+          let link of apiLinks$ | async;
+          let first = first;
+          let last = last
+        "
+        [title]="link.name"
+        [link]="link"
+        [currentLink]="selectedApiLink"
+        [ngClass]="{
+          'mr-[var(--container-outside-width)]': last,
+          'ml-[var(--container-outside-width)]': first,
+          'card-shadow': link !== selectedApiLink || !selectedApiLink,
+          'bg-neutral-100': link === selectedApiLink
+        }"
+        (openRecordApiForm)="openRecordApiForm($event)"
+      >
+      </mel-datahub-api-card>
+    </mel-datahub-custom-carousel>
+  </div>
 </div>
 <div
-  class="content overflow-hidden transition-all duration-300"
+  class="content bg-red-100 transition-all duration-300 mt-4"
   [ngClass]="selectedApiLink ? 'ease-in' : 'ease-out'"
   [style.maxHeight]="maxHeight"
   [style.opacity]="opacity"
 >
-  <div class="bg-primary-opacity-10 py-8">
+  <div class="py-8">
     <div class="mel-container-lg flex flex-col gap-8">
       <div class="flex flex-wrap justify-between sm:mb-2 ng-star-inserted">
         <p class="text-[21px] text-title font-title" translate>
@@ -55,9 +63,7 @@
           >
         </button>
       </div>
-      <gn-ui-record-api-form
-        [apiLink]="selectedApiLink"
-      ></gn-ui-record-api-form>
+      <mel-datahub-api-form [apiLink]="selectedApiLink"></mel-datahub-api-form>
     </div>
   </div>
 </div>
