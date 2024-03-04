@@ -1,0 +1,44 @@
+<a
+  [title]="link.name"
+  [ngClass]="{ 'cursor-pointer': displayApiFormButton }"
+  (click)="openRecordApiFormPanel()"
+  class="mel-card w-[330px] group relative h-40 p-4 overflow-hidden"
+>
+  <h1 class="font-bold text-[17px] line-clamp-2">
+    {{ link.name || link.description }}
+  </h1>
+
+  <div class="flex flex-row justify-between">
+    <span class="mel-badge-button-primary uppercase">
+      {{ link.accessServiceProtocol }}
+    </span>
+    <mel-datahub-copy-text-button
+      *ngIf="!displayApiFormButton"
+      [text]="link.url.toString()"
+      [tooltipText]="'tooltip.url.copy' | translate"
+      [displayText]="false"
+    ></mel-datahub-copy-text-button>
+    <button
+      *ngIf="displayApiFormButton"
+      type="button"
+      [ngClass]="{
+        'h-6': displayApiFormButton
+      }"
+      mat-raised-button
+      [matTooltip]="
+        !currentlyActive
+          ? ('record.metadata.api.form.openForm' | translate)
+          : ('record.metadata.api.form.closeForm' | translate)
+      "
+      matTooltipPosition="above"
+    >
+      <mat-icon
+        class="material-symbols-outlined pointer-events-none align-top card-icon"
+        [ngClass]="{
+          'text-secondary opacity-100': currentlyActive
+        }"
+        >more_horiz</mat-icon
+      >
+    </button>
+  </div>
+</a>
