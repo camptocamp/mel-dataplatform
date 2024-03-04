@@ -9,12 +9,15 @@
 
   }
 </div>
-<div class="mel-grid-container-dataset">
-  <div class="sm:col-start-2 sm:col-span-8">
+<div class="">
+  <div class="">
     @if ((displayMap$ | async) || (displayData$ | async)) {
     <!-- TODO: try to adapt tab layout to fit MEL -->
-    <div style="height: 612px">
-      <div class="pt-8 overflow-visible sm:pt-5" style="height: 512px">
+    <div class="mel-grid-container-dataset" style="height: 612px">
+      <div
+        class="sm:col-start-2 sm:col-span-8 pt-8 overflow-visible sm:pt-5"
+        style="height: 512px"
+      >
         <div
           class="text-[28px] text-title font-title transform sm:translate-y-10"
           translate
@@ -71,9 +74,11 @@
     <!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
     <gn-ui-data-view-share></gn-ui-data-view-share>
     } @if(displayDownload$ | async) {
-    <div id="download" class="block mt-6">
-      <!-- TODO: create corresponding components, uses GN-UI components for now -->
-      <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
+    <div id="download" class="mel-grid-container-dataset mt-6">
+      <div class="sm:col-start-2 sm:col-span-8">
+        <!-- TODO: create corresponding components, uses GN-UI components for now -->
+        <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
+      </div>
     </div>
     }
     <div class="lg:mx-auto">
@@ -86,8 +91,8 @@
     </div>
     @if(displayRelated$ | async) {
     <!-- TODO: create corresponding UI component-->
-    <div>
-      <div>
+    <div class="mel-grid-container-dataset">
+      <div class="sm:col-start-2 sm:col-span-8">
         <div class="overflow-visible">
           <div>
             <p
