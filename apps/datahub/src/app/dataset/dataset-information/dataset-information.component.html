@@ -14,15 +14,11 @@
       <span class="font-semibold" translate="">mel.dataset.categories</span>
       <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
         @for(theme of record.themes; track record.uniqueIdentifier) {
-        <button
-          type="button"
-          [attr.aria-label]="theme"
-          [title]="theme"
-          (click)="onThemeClick(theme, $event)"
-          class="mel-badge-button-primary truncate"
+        <span
+          class="mel-badge-button-primary hover:cursor-default hover:bg-white hover:text-primary hover:border-primary truncate"
         >
           {{ theme }}
-        </button>
+        </span>
         }
       </div>
     </div>

@@ -66,7 +66,7 @@ describe('datasets', () => {
           .children('div')
           .eq(1)
           .find('div')
-          .children('button')
+          .children('span')
           .as('categoriesBtns')
       })
       it('should display the information block', () => {
@@ -84,11 +84,6 @@ describe('datasets', () => {
 
       it('should display the categories btns', () => {
         cy.get('@categoriesBtns').should('have.length.gt', 0)
-      })
-
-      it('should navaigate to search with a topic filter when clicking on category button', () => {
-        cy.get('@categoriesBtns').first().click()
-        cy.url().should('contain', 'search?topic=Planungsunterlagen')
       })
 
       it('should display the territories', () => {

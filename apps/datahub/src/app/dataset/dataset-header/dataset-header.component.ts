@@ -26,8 +26,4 @@ export class DatasetHeaderComponent {
   scrollTo(id: string) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
   }
-
-  onInfoThemeClick(theme: string) {
-    this.routerFacade.updateSearch({ topic: theme })
-  }
 }
