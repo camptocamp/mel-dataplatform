@@ -12,28 +12,6 @@ describe('datasets', () => {
       )
     })
 
-    it('should scroll down when clicking on download button', () => {
-      cy.get('mel-datahub-button').eq(1).as('downloadButton')
-      cy.get('@downloadButton').click()
-      cy.get('@downloadButton').should(() => {
-        const scrollPosition = Cypress.dom.getWindowByElement(
-          cy.state('window')
-        ).scrollY
-        expect(scrollPosition).to.be.greaterThan(0)
-      })
-    })
-
-    it('should scroll down when clicking on api button', () => {
-      cy.get('mel-datahub-button').eq(2).as('apiButton')
-      cy.get('@apiButton').click()
-      cy.get('@apiButton').should(() => {
-        const scrollPosition = Cypress.dom.getWindowByElement(
-          cy.state('window')
-        ).scrollY
-        expect(scrollPosition).to.be.greaterThan(0)
-      })
-    })
-
     it('should display the title', () => {
       cy.get('.mel-page-title').should('be.visible')
       cy.get('.mel-page-title').should('have.text', ' Alpenkonvention ')
@@ -121,6 +99,44 @@ describe('datasets', () => {
           .first()
           .find('a')
           .should('have.length', 4)
+      })
+    })
+
+    describe('API block', () => {
+      beforeEach(() =>
+        cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      )
+
+      it('should display the API block', () => {
+        cy.get('mel-datahub-dataset-apis').should('be.visible')
+      })
+      it('should have API cards', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .should('have.length.gt', 0)
+      })
+      it('should display the swagger link', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .last()
+          .click()
+        cy.get('mel-datahub-api-form')
+          .find('a')
+          .invoke('attr', 'href')
+          .should(
+            'eq',
+            'https://mel.integration.apps.gs-fr-prod.camptocamp.com/data/swagger-ui/index.html'
+          )
+      })
+      it('should open the api form', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .last()
+          .click()
+        cy.get('mel-datahub-api-form').should('be.visible')
       })
     })
 
