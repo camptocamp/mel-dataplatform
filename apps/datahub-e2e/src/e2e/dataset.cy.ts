@@ -61,13 +61,6 @@ describe('datasets', () => {
           .children('div')
           .eq(1)
           .as('mainInfo')
-
-        cy.get('@mainInfo')
-          .children('div')
-          .eq(1)
-          .find('div')
-          .children('span')
-          .as('categoriesBtns')
       })
       it('should display the information block', () => {
         cy.get('mel-datahub-dataset-information').should('be.visible')
@@ -83,7 +76,12 @@ describe('datasets', () => {
       })
 
       it('should display the categories btns', () => {
-        cy.get('@categoriesBtns').should('have.length.gt', 0)
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(1)
+          .find('div')
+          .children('span')
+          .should('have.length.gt', 0)
       })
 
       it('should display the territories', () => {
@@ -91,7 +89,7 @@ describe('datasets', () => {
           .children('div')
           .eq(2)
           .find('div')
-          .children('button')
+          .children('span')
           .should('have.length.gt', 0)
       })
 

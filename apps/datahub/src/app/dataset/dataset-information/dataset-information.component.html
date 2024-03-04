@@ -14,9 +14,7 @@
       <span class="font-semibold" translate="">mel.dataset.categories</span>
       <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
         @for(theme of record.themes; track record.uniqueIdentifier) {
-        <span
-          class="mel-badge-button-primary hover:cursor-default hover:bg-white hover:text-primary hover:border-primary truncate"
-        >
+        <span class="mel-badge-primary truncate">
           {{ theme }}
         </span>
         }
@@ -27,22 +25,8 @@
     <div class="flex flex-col gap-2">
       <span class="font-semibold" translate="">mel.dataset.territories</span>
       <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
-        <button
-          type="button"
-          aria-label="Lille"
-          title="Lille"
-          class="mel-badge-button-secondary truncate"
-        >
-          Lille
-        </button>
-        <button
-          type="button"
-          aria-label="Hauts-de-France"
-          title="Hauts-de-France"
-          class="mel-badge-button-secondary truncate"
-        >
-          Hauts-de-France
-        </button>
+        <span class="mel-badge-secondary truncate"> Lille </span>
+        <span class="mel-badge-secondary truncate"> Hauts-de-France </span>
       </div>
     </div>
     @if(record.licenses?.length) {

@@ -11,14 +11,23 @@
   .mel-title-line {
     @apply inline-flex bg-primary h-1 w-16;
   }
+  .mel-badge {
+    @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-sm leading-none transition-colors;
+  }
+  .mel-badge-primary {
+    @apply mel-badge text-primary border border-primary;
+  }
+  .mel-badge-secondary {
+    @apply mel-badge text-secondary border border-secondary;
+  }
   .mel-badge-button {
-    @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-sm leading-none hover:text-gray-8 cursor-pointer transition-colors;
+    @apply cursor-pointer hover:text-gray-8;
   }
   .mel-badge-button-primary {
-    @apply mel-badge-button text-primary border border-primary hover:border-primary-dark hover:bg-primary-dark;
+    @apply mel-badge-button mel-badge-primary hover:border-primary-dark hover:bg-primary-dark;
   }
   .mel-badge-button-secondary {
-    @apply mel-badge-button text-secondary border border-secondary hover:border-secondary-dark hover:bg-secondary-dark;
+    @apply mel-badge-button mel-badge-secondary hover:border-secondary-dark hover:bg-secondary-dark;
   }
   .mel-container-lg {
     @apply max-w-[1320px] mx-auto px-4;
