@@ -69,6 +69,8 @@ import { FormsModule } from '@angular/forms'
 import { ApiFormComponent } from './dataset/dataset-apis/api-form/api-form.component'
 import { MelApiCardComponent } from './dataset/dataset-apis/api-card/api-card.component'
 import { MatTooltipModule } from '@angular/material/tooltip'
+import { MelDownloadsListComponent } from './dataset/dataset-downloads/downloads-list/downloads-list.component'
+import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-item/download-item.component'
 
 @NgModule({
   declarations: [
@@ -105,6 +107,8 @@ import { MatTooltipModule } from '@angular/material/tooltip'
     MelDropdownMultiselectComponent,
     ApiFormComponent,
     MelApiCardComponent,
+    MelDownloadsListComponent,
+    MelDownloadItemComponent,
   ],
   imports: [
     BrowserModule,

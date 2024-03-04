@@ -1,3 +1,5 @@
+import path from 'path'
+
 describe('datasets', () => {
   describe('when not logged in', () => {
     beforeEach(() => cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4'))
@@ -179,6 +181,29 @@ describe('datasets', () => {
         .find('.ease-in')
         .should('have.css', 'max-height')
         .and('satisfy', (maxHeight) => parseInt(maxHeight, 10) > 110)
+    })
+
+    describe('Downloads section', () => {
+      beforeEach(() => cy.visit('dataset/n_tri_lill_inondable_s_059'))
+      it('should download the resource when clicking on download button', () => {
+        cy.get('[data-cy="download-button"]').first().click()
+        cy.readFile(
+          path.join('cypress/downloads', 'n_tri_lill_inondable_s_059.csv')
+        ).as('downloadedFile')
+        cy.get('@downloadedFile').should('exist')
+      })
+      it('should copy the link resource to clipboard when clicking on copy button', () => {
+        cy.get('body').focus()
+        cy.get('[data-cy="copy-button"]').first().click()
+        // attempt to make the whole page focused
+        cy.get('body').focus()
+
+        cy.window().then((win) => {
+          win.navigator.clipboard.readText().then((text) => {
+            expect(text).to.eq('your copied text')
+          })
+        })
+      })
     })
 
     it('should display the footer', () => {

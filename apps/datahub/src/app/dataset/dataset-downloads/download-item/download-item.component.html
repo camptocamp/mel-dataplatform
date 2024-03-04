@@ -1,0 +1,44 @@
+<div
+  class="group flex justify-between border border-gray-4 pt-2 pb-1 pl-4 pr-2 hover:drop-shadow-md"
+>
+  <div class="overflow-hidden basis-2/3">
+    <div
+      class="text-21 text-black truncate font-title"
+      [title]="link.description || link.name"
+    >
+      {{ link.description || link.name }}
+    </div>
+    <div class="">
+      <span
+        class="inline-flex items-center justify-center text-17 font-extrabold leading-none text-black rounded transition-opacity opacity-70 group-hover:opacity-100"
+        data-cy="download-format"
+        >{{ format || ('mel.downloads.format.unknown' | translate) }}</span
+      >
+      <span
+        class="pl-2 inline-flex items-center text-gray-800 text-sm"
+        *ngIf="isFromWfs"
+        translate=""
+        >mel.search.filter.generatedByWfs</span
+      >
+    </div>
+  </div>
+  <div class="flex grow-1 gap-4">
+    <a
+      href="{{ link.url }}"
+      target="_blank"
+      rel="noopener"
+      [class]="'mel-primary-button font-medium'"
+      data-cy="download-button"
+      ><span translate>mel.dataset.download</span>
+      <img src="assets/icons/download.svg" alt="download" [class]="" />
+    </a>
+    <mel-datahub-button
+      [label]="'mel.dataset.copy.cliboard' | translate"
+      [icon]="'openInNew'"
+      [buttonClass]="'mel-primary-button flex grow-1 w-[162px] font-medium'"
+      data-cy="copy-button"
+      ata
+      (click)="handleClickCopy($event)"
+    ></mel-datahub-button>
+  </div>
+</div>

@@ -28,6 +28,7 @@
   "mel.dataset.api.access": "Access the",
   "mel.dataset.api.swagger": "swagger console",
   "mel.dataset.categories": "Categories :",
+  "mel.dataset.copy.cliboard": "",
   "mel.dataset.download": "Download",
   "mel.dataset.favorite": "Favorites",
   "mel.dataset.informations": "Information",
@@ -42,6 +43,7 @@
   "mel.dataset.share": "Share this content :",
   "mel.dataset.territories": "Territories :",
   "mel.dataset.updatedOn": "Updated on",
+  "mel.downloads.format.unknown": "",
   "mel.homepage.public.datasets": "",
   "mel.homepage.visit.catalog": "",
   "mel.metadata.api.form.create": "Create your request",
@@ -56,6 +58,7 @@
   "mel.record.metadata.api.form.closeForm": "",
   "mel.record.metadata.api.form.openForm": "",
   "mel.record.metadata.api.form.title": "Generate a custom URL",
+  "mel.record.metadata.download": "",
   "mel.record.metadata.preview": "Preview",
   "mel.record.metadata.producteur": "Producer",
   "mel.record.metadata.quality": "Metadata quality",
@@ -67,5 +70,6 @@
   "mel.search.autocomplete.error": "",
   "mel.search.field.any.placeholder": "",
   "mel.searchpage.subtitle.favorites": "",
+  "mel.search.filter.generatedByWfs": "",
   "mel.tooltip.url.copy": ""
 }
