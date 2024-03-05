@@ -63,10 +63,18 @@ describe('search', () => {
         cy.login()
         cy.clearFavorites()
         cy.visit('/search')
-        cy.get('mel-datahub-heart-toggle').first().click()
+        cy.intercept('PUT', '**/geonetwork/srv/api/userselections/**').as(
+          'addFavoriteRequest'
+        )
+        cy.get('mel-datahub-results-card-search')
+          .first()
+          .find('mel-datahub-heart-toggle')
+          .first()
+          .click()
+        cy.wait('@addFavoriteRequest')
       })
 
-      it('shold display the correct subtitle', () => {
+      it('should display the correct subtitle', () => {
         cy.get('mel-datahub-search-header')
           .find('.font-title')
           .first()

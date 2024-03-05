@@ -26,8 +26,4 @@ export class DatasetHeaderComponent {
   scrollTo(id: string) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
   }
-
-  onInfoKeywordClick(keyword: string) {
-    this.routerFacade.updateSearch({ q: keyword })
-  }
 }

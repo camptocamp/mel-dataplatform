@@ -54,15 +54,14 @@ describe('datasets', () => {
     })
 
     describe('Information block', () => {
-      beforeEach(() =>
-        cy
-          .get('mel-datahub-dataset-information')
+      beforeEach(() => {
+        cy.get('mel-datahub-dataset-information')
           .children('div')
           .first()
           .children('div')
           .eq(1)
           .as('mainInfo')
-      )
+      })
       it('should display the information block', () => {
         cy.get('mel-datahub-dataset-information').should('be.visible')
       })
@@ -81,7 +80,7 @@ describe('datasets', () => {
           .children('div')
           .eq(1)
           .find('div')
-          .children('button')
+          .children('span')
           .should('have.length.gt', 0)
       })
 
@@ -90,7 +89,7 @@ describe('datasets', () => {
           .children('div')
           .eq(2)
           .find('div')
-          .children('button')
+          .children('span')
           .should('have.length.gt', 0)
       })
 
