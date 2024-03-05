@@ -68,6 +68,9 @@
   .card-icon {
     @apply text-primary group-hover:text-primary-dark transition-colors transition-opacity;
   }
+  .card-label {
+    @apply group-hover:bg-primary-dark group-hover:border-white group-hover:text-white transition-colors;
+  }
 }
 .tippy-box[data-theme~='data-platform'] {
   background-color: rgba(0, 0, 0, 0);
