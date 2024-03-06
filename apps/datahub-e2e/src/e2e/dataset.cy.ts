@@ -200,7 +200,9 @@ describe('datasets', () => {
 
         cy.window().then((win) => {
           win.navigator.clipboard.readText().then((text) => {
-            expect(text).to.eq('your copied text')
+            expect(text).to.eq(
+              'https://metropole-europeenne-de-lille.opendatasoft.com/explore/dataset/n_tri_lill_inondable_s_059/download?format=csv&timezone=Europe/Berlin&use_labels_for_header=false'
+            )
           })
         })
       })
