@@ -39,11 +39,4 @@ export class DatasetPageComponent {
   selectedTabIndex$ = new BehaviorSubject(0)
 
   constructor(public facade: MdViewFacade, private route: ActivatedRoute) {}
-
-  onTabIndexChange(index: number): void {
-    this.selectedTabIndex$.next(index)
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'))
-    }, 0)
-  }
 }
