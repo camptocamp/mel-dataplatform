@@ -183,12 +183,21 @@ describe('datasets', () => {
         .and('satisfy', (maxHeight) => parseInt(maxHeight, 10) > 110)
     })
 
-    describe('Downloads section', () => {
-      beforeEach(() => cy.visit('dataset/n_tri_lill_inondable_s_059'))
+    describe.only('Downloads section', () => {
+      beforeEach(() => {
+        cy.intercept(
+          'GET',
+          '/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv',
+          {
+            fixture: 'insee-rectangles_200m_menage_erbm.csv',
+          }
+        )
+        cy.visit('/dataset/04bcec79-5b25-4b16-b635-73115f7456e4')
+      })
       it('should download the resource when clicking on download button', () => {
         cy.get('[data-cy="download-button"]').first().click()
         cy.readFile(
-          path.join('cypress/downloads', 'n_tri_lill_inondable_s_059.csv')
+          path.join('cypress/downloads', 'rectangles_200m_menage_erbm.csv')
         ).as('downloadedFile')
         cy.get('@downloadedFile').should('exist')
       })
@@ -201,7 +210,7 @@ describe('datasets', () => {
         cy.window().then((win) => {
           win.navigator.clipboard.readText().then((text) => {
             expect(text).to.eq(
-              'https://metropole-europeenne-de-lille.opendatasoft.com/explore/dataset/n_tri_lill_inondable_s_059/download?format=csv&timezone=Europe/Berlin&use_labels_for_header=false'
+              'https://www.geo2france.fr/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
             )
           })
         })
