@@ -35,6 +35,8 @@ describe('search', () => {
           ' Metadata for E2E testing purpose. (this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut) '
         )
 
+      cy.get('.mel-carousel-step-dot').should('exist')
+
       cy.get('mel-datahub-results-card-last-created')
         .find('h1')
         .should('be.visible')
@@ -89,6 +91,8 @@ describe('search', () => {
             'have.text',
             ' Metadata for E2E testing purpose. (this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut) '
           )
+
+        cy.get('.mel-carousel-step-dot').should('not.exist')
 
         cy.get('mel-datahub-results-card-favorite')
           .find('.mel-badge-button-primary')

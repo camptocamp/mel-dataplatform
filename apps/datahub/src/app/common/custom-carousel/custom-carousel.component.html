@@ -30,6 +30,7 @@
   </button>
 </div>
 
+@if(steps.length > 1){
 <div class="flex justify-center gap-3" [ngClass]="stepsContainerClass">
   @for(step of steps; track $index){
   <button
@@ -39,3 +40,4 @@
   ></button>
   }
 </div>
+}
