@@ -1,0 +1,14 @@
+<div class="w-full h-full flex flex-col p-1">
+    <div class="relative h-[420px]">
+      <gn-ui-table-view
+        *ngIf="mode === 'table'"
+        [link]="selectedLink$ | async"
+      ></gn-ui-table-view>
+      <gn-ui-chart-view
+        *ngIf="mode === 'chart'"
+        (chartConfig$)="setChartConfig($event)"
+        [link]="selectedLink$ | async"
+      ></gn-ui-chart-view>
+    </div>
+  </div>
+  

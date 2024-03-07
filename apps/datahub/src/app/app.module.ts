@@ -8,6 +8,7 @@ import {
   FeatureCatalogModule,
   FeatureRecordModule,
   FeatureSearchModule,
+  FeatureDatavizModule,
   LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
@@ -16,8 +17,8 @@ import {
   TRANSLATE_DEFAULT_CONFIG,
   UiElementsModule,
   UiLayoutModule,
-  UiWidgetsModule,
   UiInputsModule,
+  UiWidgetsModule
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -72,6 +73,8 @@ import { MatTooltipModule } from '@angular/material/tooltip'
 import { MelDownloadsListComponent } from './dataset/dataset-downloads/downloads-list/downloads-list.component'
 import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-item/download-item.component'
 import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/dataset-visualisation.component'
+import { MapViewComponent } from './dataset/dataset-visualisation/map-view/map-view.component'
+import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/data-view.component'
 
 @NgModule({
   declarations: [
@@ -111,6 +114,8 @@ import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/d
     MelDownloadsListComponent,
     MelDownloadItemComponent,
     DatasetVisualisationComponent,
+    MapViewComponent,
+    MelDataViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -128,6 +133,7 @@ import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/d
     OverlayModule,
     FormsModule,
     MatTooltipModule,
+    FeatureDatavizModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
