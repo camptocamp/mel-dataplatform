@@ -15,9 +15,9 @@ import {
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
   UiElementsModule,
-  UiInputsModule,
   UiLayoutModule,
   UiWidgetsModule,
+  UiInputsModule,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -66,6 +66,9 @@ import { MelFilterDropdownComponent } from './search/search-filters/filter-dropd
 import { MelDropdownMultiselectComponent } from './search/search-filters/dropdown-multiselect/dropdown-multiselect.component'
 import { OverlayModule } from '@angular/cdk/overlay'
 import { FormsModule } from '@angular/forms'
+import { ApiFormComponent } from './dataset/dataset-apis/api-form/api-form.component'
+import { MelApiCardComponent } from './dataset/dataset-apis/api-card/api-card.component'
+import { MatTooltipModule } from '@angular/material/tooltip'
 
 @NgModule({
   declarations: [
@@ -100,6 +103,8 @@ import { FormsModule } from '@angular/forms'
     SearchFiltersComponent,
     MelFilterDropdownComponent,
     MelDropdownMultiselectComponent,
+    ApiFormComponent,
+    MelApiCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,6 +121,7 @@ import { FormsModule } from '@angular/forms'
     MatTabsModule,
     OverlayModule,
     FormsModule,
+    MatTooltipModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {

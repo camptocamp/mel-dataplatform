@@ -12,6 +12,25 @@ describe('datasets', () => {
       )
     })
 
+    it('should display the title', () => {
+      cy.get('.mel-page-title').should('be.visible')
+      cy.get('.mel-page-title').should('have.text', ' Alpenkonvention ')
+    })
+
+    it('should display the abstract in collapsed mode applying gradient', () => {
+      cy.get('mel-datahub-text-expand').should('be.visible')
+      cy.get('mel-datahub-text-expand')
+        .find('mel-datahub-button')
+        .should('have.text', ' En savoir plus ')
+      cy.get('mel-datahub-text-expand')
+        .find('mel-datahub-button')
+        .find('img')
+        .should('have.attr', 'src', 'assets/icons/arrow.svg')
+      cy.get('mel-datahub-text-expand')
+        .find('.bg-gradient-to-b')
+        .should('have.css', 'max-height', '72px')
+    })
+
     it('should scroll down when clicking on download button', () => {
       cy.get('mel-datahub-button').eq(1).as('downloadButton')
       cy.get('@downloadButton').click()
@@ -32,25 +51,6 @@ describe('datasets', () => {
         ).scrollY
         expect(scrollPosition).to.be.greaterThan(0)
       })
-    })
-
-    it('should display the title', () => {
-      cy.get('.mel-page-title').should('be.visible')
-      cy.get('.mel-page-title').should('have.text', ' Alpenkonvention ')
-    })
-
-    it('should display the abstract in collapsed mode applying gradient', () => {
-      cy.get('mel-datahub-text-expand').should('be.visible')
-      cy.get('mel-datahub-text-expand')
-        .find('mel-datahub-button')
-        .should('have.text', ' En savoir plus ')
-      cy.get('mel-datahub-text-expand')
-        .find('mel-datahub-button')
-        .find('img')
-        .should('have.attr', 'src', 'assets/icons/arrow.svg')
-      cy.get('mel-datahub-text-expand')
-        .find('.bg-gradient-to-b')
-        .should('have.css', 'max-height', '72px')
     })
 
     describe('Information block', () => {
@@ -121,6 +121,44 @@ describe('datasets', () => {
           .first()
           .find('a')
           .should('have.length', 4)
+      })
+    })
+
+    describe('API block', () => {
+      beforeEach(() =>
+        cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      )
+
+      it('should display the API block', () => {
+        cy.get('mel-datahub-dataset-apis').should('be.visible')
+      })
+      it('should have API cards', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .should('have.length.gt', 0)
+      })
+      it('should display the swagger link', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .last()
+          .click()
+        cy.get('mel-datahub-api-form')
+          .find('a')
+          .invoke('attr', 'href')
+          .should(
+            'eq',
+            'https://mel.integration.apps.gs-fr-prod.camptocamp.com/data/swagger-ui/index.html'
+          )
+      })
+      it('should open the api form', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .last()
+          .click()
+        cy.get('mel-datahub-api-form').should('be.visible')
       })
     })
 
