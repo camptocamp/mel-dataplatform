@@ -20,9 +20,6 @@
       ></mel-datahub-dataset-visualisation>
     </div>
     <!-- TODO: try to adapt tab layout to fit MEL -->
-    } @if((selectedTabIndex$ | async) === 2) {
-    <!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
-    <gn-ui-data-view-share></gn-ui-data-view-share>
     } @if(displayDownload$ | async) {
     <div id="download" class="block mt-6">
       <!-- TODO: create corresponding components, uses GN-UI components for now -->
