@@ -7,8 +7,4 @@ import { RecordApiFormComponent } from 'geonetwork-ui'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ApiFormComponent extends RecordApiFormComponent {
-  override setFormat(evt: unknown): void {
-    this.format$.next(String(evt))
-  }
-}
+export class ApiFormComponent extends RecordApiFormComponent {}
