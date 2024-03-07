@@ -11,11 +11,10 @@
   "mel.common.footer.plan": "Sitemap",
   "mel.common.footer.recruitment": "Recruitment",
   "mel.common.footer.social": "Social medias",
-  "mel.common.header.title": "Data platform",
   "mel.datahub.home.title": "Métropole Européenne de Lille",
   "mel.datahub.multiselect.filter.placeholder": "",
   "mel.datahub.search.clear": "",
-  "mel.datahub.search.filters.format": "",
+  "mel.datahub.search.filters.license": "",
   "mel.datahub.search.filters.publicationYear": "",
   "mel.datahub.search.filters.publisher": "",
   "mel.datahub.search.filters.topic": "",
@@ -54,6 +53,8 @@
   "mel.metadata.api.form.type": "Output format",
   "mel.record.metadata.api": "API",
   "mel.record.metadata.api.form.closeButton": "Close",
+  "mel.record.metadata.api.form.closeForm": "",
+  "mel.record.metadata.api.form.openForm": "",
   "mel.record.metadata.api.form.title": "Generate a custom URL",
   "mel.record.metadata.preview": "Preview",
   "mel.record.metadata.producteur": "Producer",
@@ -65,5 +66,6 @@
   "mel.record.tab.map": "Map",
   "mel.search.autocomplete.error": "",
   "mel.search.field.any.placeholder": "",
-  "mel.searchpage.subtitle.favorites": ""
+  "mel.searchpage.subtitle.favorites": "",
+  "mel.tooltip.url.copy": ""
 }
