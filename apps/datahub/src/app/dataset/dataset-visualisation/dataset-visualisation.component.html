@@ -32,7 +32,7 @@
         </ng-template>
         @if(displayMap) {
         <div class="block" style="height: 500px">
-          <gn-ui-map-view></gn-ui-map-view>
+          <mel-datahub-map-view></mel-datahub-map-view>
         </div>
         }
       </mat-tab>
@@ -41,8 +41,8 @@
           <span translate>mel.record.tab.data</span>
         </ng-template>
         @if(displayData) {
-        <div class="block mel-viz-block" *ngIf="dropdownChoices$ | async as selectedLinks">
-          <mel-datahub-data-view [links]="selectedLinks" mode="table"></mel-datahub-data-view>
+        <div class="block" *ngIf="dropdownChoices$ | async as selectedLinks">
+          <mel-datahub-data-view mode="table"></mel-datahub-data-view>
         </div>
         }
       </mat-tab>
@@ -52,7 +52,7 @@
         </ng-template>
         @if(displayData) {
         <div class="block test"  *ngIf="dropdownChoices$ | async as selectedLinks">
-          <mel-datahub-data-view [links]="selectedLinks" mode="chart"></mel-datahub-data-view>
+          <mel-datahub-data-view mode="chart"></mel-datahub-data-view>
         </div>
         }
       </mat-tab>
