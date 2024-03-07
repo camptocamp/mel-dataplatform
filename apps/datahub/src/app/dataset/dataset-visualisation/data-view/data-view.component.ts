@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { DataViewComponent } from 'geonetwork-ui'
 import { DatasetDistribution } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
@@ -9,9 +9,9 @@ import { DatasetDistribution } from 'geonetwork-ui/libs/common/domain/src/lib/mo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MelDataViewComponent extends DataViewComponent {
-  @Input() set links(link: unknown) {
-    const parsedLink: DatasetDistribution = JSON.parse(link[0].value)
-    parsedLink.url = new URL(parsedLink.url)
-    this.selectedLink$.next(parsedLink)
+  override selectLink(linkAsString: unknown): void {
+    const link: DatasetDistribution = JSON.parse(String(linkAsString))
+    link.url = new URL(link.url)
+    this.selectedLink$.next(link)
   }
 }

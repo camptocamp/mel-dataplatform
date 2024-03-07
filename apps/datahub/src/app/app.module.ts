@@ -9,6 +9,7 @@ import {
   FeatureRecordModule,
   FeatureSearchModule,
   FeatureDatavizModule,
+  FeatureMapModule,
   LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
@@ -18,7 +19,8 @@ import {
   UiElementsModule,
   UiLayoutModule,
   UiInputsModule,
-  UiWidgetsModule
+  UiWidgetsModule,
+  UiMapModule
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -73,7 +75,7 @@ import { MatTooltipModule } from '@angular/material/tooltip'
 import { MelDownloadsListComponent } from './dataset/dataset-downloads/downloads-list/downloads-list.component'
 import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-item/download-item.component'
 import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/dataset-visualisation.component'
-import { MapViewComponent } from './dataset/dataset-visualisation/map-view/map-view.component'
+import { MelMapViewComponent } from './dataset/dataset-visualisation/map-view/map-view.component'
 import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/data-view.component'
 
 @NgModule({
@@ -114,7 +116,7 @@ import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/
     MelDownloadsListComponent,
     MelDownloadItemComponent,
     DatasetVisualisationComponent,
-    MapViewComponent,
+    MelMapViewComponent,
     MelDataViewComponent,
   ],
   imports: [
@@ -124,9 +126,11 @@ import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/
     UiElementsModule,
     UiLayoutModule,
     UiInputsModule,
+    UiMapModule,
     FeatureSearchModule,
     FeatureCatalogModule,
     FeatureRecordModule,
+    FeatureMapModule,
     MatAutocompleteModule,
     MatIconModule,
     MatTabsModule,
