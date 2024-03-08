@@ -24,12 +24,15 @@
       animationDuration="200ms"
       mat-stretch-tabs="false"
       mat-align-tabs="start"
-      color="transparent"
+      [disableRipple]="true"
     >
       <mat-tab [disabled]="!displayMap">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.map</span>
         </ng-template>
+        <div class="flex flex-row">
+          <div class="w-full border-b border-white 3 z-index-10"></div>
+        </div>
         @if(displayMap) {
         <div class="block" style="height: 500px">
           <mel-datahub-map-view></mel-datahub-map-view>
@@ -51,7 +54,10 @@
           <span translate>mel.record.tab.chart</span>
         </ng-template>
         @if(displayData) {
-        <div class="block test"  *ngIf="dropdownChoices$ | async as selectedLinks">
+        <div
+          class="block test"
+          *ngIf="dropdownChoices$ | async as selectedLinks"
+        >
           <mel-datahub-data-view mode="chart"></mel-datahub-data-view>
         </div>
         }
