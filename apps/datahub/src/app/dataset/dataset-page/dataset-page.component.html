@@ -12,7 +12,7 @@
 <div class="mel-grid-container-dataset">
   <div class="sm:col-start-2 sm:col-span-8">
     @if ((displayMap$ | async) || (displayData$ | async)) {
-    <div id="visualisation" class="block mt-6">
+    <div id="visualisation" class="block mt-6 mb-44">
       <!-- TODO: create corresponding components, uses GN-UI components for now -->
       <mel-datahub-dataset-visualisation
         [displayMap]="displayMap$ | async"
