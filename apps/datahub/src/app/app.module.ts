@@ -20,7 +20,8 @@ import {
   UiLayoutModule,
   UiInputsModule,
   UiWidgetsModule,
-  UiMapModule
+  UiMapModule,
+  GN_UI_VERSION
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -77,6 +78,7 @@ import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-i
 import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/dataset-visualisation.component'
 import { MelMapViewComponent } from './dataset/dataset-visualisation/map-view/map-view.component'
 import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/data-view.component'
+import { environment } from '../environments/environnment'
 
 @NgModule({
   declarations: [
@@ -171,6 +173,7 @@ import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/
   providers: [
     importProvidersFrom(FeatureAuthModule),
     provideGn4(),
+    { provide: GN_UI_VERSION, useValue: environment.version },
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
     {
       provide: LOGIN_URL,
