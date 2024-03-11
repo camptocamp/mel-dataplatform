@@ -1,4 +1,5 @@
-<div class="mt-8 mb-6 sm:mt-12 sm:mb-2" *ngIf="links && links.length > 0">
+@if(links && links.length > 0){
+<div class="mt-8 mb-6 sm:mt-12 sm:mb-2">
   <div class="mel-title-line"></div>
   <div class="flex flex-wrap justify-between">
     <p
@@ -11,7 +12,7 @@
       class="flex flex-wrap justify-start sm:justify-end sm:pb-4"
       data-cy="download-format-filters"
     >
-      <gn-ui-button
+      @for(format of visibleFormats; track $index){<gn-ui-button
         class="m-1 format-filter"
         [extraClass]="
           '!px-[12px] !py-[8px] !text-[15px]' +
@@ -19,14 +20,14 @@
         "
         (buttonClick)="toggleFilterFormat(format)"
         [attr.data-format]="format"
-        *ngFor="let format of visibleFormats"
       >
-        {{ getFilterFormatTitle(format) }}
-      </gn-ui-button>
+        {{ getFilterFormatTitle(format) }} </gn-ui-button
+      >}
     </div>
   </div>
 </div>
-<div class="mb-2 sm:mb-3" *ngFor="let link of filteredLinks">
+@for( link of filteredLinks; track $index){
+<div class="mb-2 sm:mb-3">
   <mel-datahub-download-item
     [link]="link"
     [color]="getLinkColor(link)"
@@ -34,3 +35,4 @@
     [isFromWfs]="isFromWfs(link)"
   ></mel-datahub-download-item>
 </div>
+} }
