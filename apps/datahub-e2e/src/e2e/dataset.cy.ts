@@ -220,6 +220,14 @@ describe('datasets', () => {
       cy.get('mel-datahub-footer').should('be.visible')
     })
   })
+
+  it('should return to the dataset list', () => {
+    cy.get('mel-datahub-dataset-header')
+      .find('mel-datahub-button')
+      .first()
+      .click()
+    cy.url().should('include', '/search')
+  })
 })
 describe('when logged in', () => {
   beforeEach(() => {
