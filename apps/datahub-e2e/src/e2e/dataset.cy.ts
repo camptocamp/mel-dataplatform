@@ -1,6 +1,8 @@
 describe('datasets', () => {
   describe('when not logged in', () => {
-    beforeEach(() => cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4'))
+    beforeEach(() => {
+      cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4')
+    })
 
     it('should display the favorite button disabled', () => {
       cy.get('mel-datahub-button').eq(0).find('button').as('favoriteButton')
@@ -179,6 +181,39 @@ describe('datasets', () => {
         .find('.ease-in')
         .should('have.css', 'max-height')
         .and('satisfy', (maxHeight) => parseInt(maxHeight, 10) > 110)
+    })
+
+    describe('Downloads section', () => {
+      beforeEach(() => {
+        cy.visit('/dataset/04bcec79-5b25-4b16-b635-73115f7456e4')
+      })
+      it('should download button should contain the correct link and open in new tab', () => {
+        cy.get('[data-cy="download-button"]')
+          .first()
+          .invoke('attr', 'href')
+          .as('downloadLink')
+        cy.get('@downloadLink').should(
+          'contain',
+          '/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
+        )
+        cy.get('[data-cy="download-button"]')
+          .first()
+          .should('have.attr', 'target', '_blank')
+      })
+      it('should copy the link resource to clipboard when clicking on copy button', () => {
+        cy.get('body').focus()
+        cy.get('[data-cy="copy-button"]').first().click()
+        // attempt to make the whole page focused
+        cy.get('body').focus()
+
+        cy.window().then((win) => {
+          win.navigator.clipboard.readText().then((text) => {
+            expect(text).to.eq(
+              'https://www.geo2france.fr/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
+            )
+          })
+        })
+      })
     })
 
     it('should display the footer', () => {

@@ -1,0 +1,38 @@
+@if(links && links.length > 0){
+<div class="mt-8 mb-6 sm:mt-12 sm:mb-2">
+  <div class="mel-title-line"></div>
+  <div class="flex flex-wrap justify-between">
+    <p
+      class="font-title text-[28px] text-title font-medium mr-4 pb-4 text-center sm:text-left"
+      translate
+    >
+      mel.record.metadata.download
+    </p>
+    <div
+      class="flex flex-wrap justify-start sm:justify-end sm:pb-4"
+      data-cy="download-format-filters"
+    >
+      @for(format of visibleFormats; track $index){<gn-ui-button
+        class="m-1 format-filter"
+        [extraClass]="
+          '!px-[12px] !py-[8px] !text-[15px]' +
+          (isFilterActive(format) ? ' opacity-100' : ' opacity-50')
+        "
+        (buttonClick)="toggleFilterFormat(format)"
+        [attr.data-format]="format"
+      >
+        {{ getFilterFormatTitle(format) }} </gn-ui-button
+      >}
+    </div>
+  </div>
+</div>
+@for( link of filteredLinks; track $index){
+<div class="mb-2 sm:mb-3">
+  <mel-datahub-download-item
+    [link]="link"
+    [color]="getLinkColor(link)"
+    [format]="getLinkFormat(link)"
+    [isFromWfs]="isFromWfs(link)"
+  ></mel-datahub-download-item>
+</div>
+} }

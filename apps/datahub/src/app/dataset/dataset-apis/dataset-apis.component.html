@@ -14,6 +14,7 @@
         [link]="link"
         [currentLink]="selectedApiLink"
         [ngClass]="{
+          'rounded-lg': true,
           'mr-[var(--container-outside-width)]': $last,
           'ml-[var(--container-outside-width)]': $first,
           'card-shadow': link !== selectedApiLink || !selectedApiLink,
