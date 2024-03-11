@@ -1,5 +1,5 @@
 <div
-  class="group flex justify-between border border-gray-4 pt-2 pb-1 pl-4 pr-2 hover:drop-shadow-md"
+  class="group flex justify-between border border-gray-4 pt-2 pb-1 pl-4 pr-2 hover:border-black"
 >
   <div class="overflow-hidden basis-2/3">
     <div
@@ -30,14 +30,13 @@
       [class]="'mel-primary-button font-medium'"
       data-cy="download-button"
       ><span translate>mel.dataset.download</span>
-      <img src="assets/icons/download.svg" alt="download" [class]="" />
+      <img src="assets/icons/download.svg" alt="download" />
     </a>
     <mel-datahub-button
       [label]="'mel.dataset.copy.cliboard' | translate"
       [icon]="'openInNew'"
       [buttonClass]="'mel-primary-button flex grow-1 w-[162px] font-medium'"
       data-cy="copy-button"
-      ata
       (click)="handleClickCopy($event)"
     ></mel-datahub-button>
   </div>

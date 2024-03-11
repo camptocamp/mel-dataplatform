@@ -4,7 +4,7 @@ import { defineConfig } from 'cypress'
 
 export default defineConfig({
   e2e: {
-    ...nxE2EPreset(__dirname),
+    ...nxE2EPreset(__filename, { cypressDir: 'src' }),
     baseUrl: 'http://localhost:4200',
     downloadsFolder: 'cypress/downloads',
   },
