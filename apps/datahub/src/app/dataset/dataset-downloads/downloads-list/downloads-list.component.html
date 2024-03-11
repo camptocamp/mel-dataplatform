@@ -1,29 +1,29 @@
-<div
-  class="flex flex-wrap justify-between mt-8 mb-6 sm:mt-12 sm:mb-2"
-  *ngIf="links && links.length > 0"
->
-  <p
-    class="font-title text-[28px] text-title font-medium mr-4 pb-4 text-center sm:text-left"
-    translate
-  >
-    mel.record.metadata.download
-  </p>
-  <div
-    class="flex flex-wrap justify-start sm:justify-end sm:pb-4"
-    data-cy="download-format-filters"
-  >
-    <gn-ui-button
-      class="m-1 format-filter"
-      [extraClass]="
-        '!px-[12px] !py-[8px] !text-[15px]' +
-        (isFilterActive(format) ? ' opacity-100' : ' opacity-50')
-      "
-      (buttonClick)="toggleFilterFormat(format)"
-      [attr.data-format]="format"
-      *ngFor="let format of visibleFormats"
+<div class="mt-8 mb-6 sm:mt-12 sm:mb-2" *ngIf="links && links.length > 0">
+  <div class="mel-title-line"></div>
+  <div class="flex flex-wrap justify-between">
+    <p
+      class="font-title text-[28px] text-title font-medium mr-4 pb-4 text-center sm:text-left"
+      translate
     >
-      {{ getFilterFormatTitle(format) }}
-    </gn-ui-button>
+      mel.record.metadata.download
+    </p>
+    <div
+      class="flex flex-wrap justify-start sm:justify-end sm:pb-4"
+      data-cy="download-format-filters"
+    >
+      <gn-ui-button
+        class="m-1 format-filter"
+        [extraClass]="
+          '!px-[12px] !py-[8px] !text-[15px]' +
+          (isFilterActive(format) ? ' opacity-100' : ' opacity-50')
+        "
+        (buttonClick)="toggleFilterFormat(format)"
+        [attr.data-format]="format"
+        *ngFor="let format of visibleFormats"
+      >
+        {{ getFilterFormatTitle(format) }}
+      </gn-ui-button>
+    </div>
   </div>
 </div>
 <div class="mb-2 sm:mb-3" *ngFor="let link of filteredLinks">
