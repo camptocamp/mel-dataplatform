@@ -1,5 +1,13 @@
 <div class="mel-grid-container-dataset">
   <div class="md:col-start-2 lg:col-start-2 md:col-span-6 lg:col-span-8 py-16">
+    <div class="ml-4">
+      <gn-ui-navigation-button
+        (click)="back()"
+        [label]="'datahub.search.back' | translate"
+        [icon]="'arrow_back'"
+      >
+      </gn-ui-navigation-button>
+    </div>
     <div class="flex justify-end gap-2">
       <mel-datahub-favorite-heart
         [record]="record"
