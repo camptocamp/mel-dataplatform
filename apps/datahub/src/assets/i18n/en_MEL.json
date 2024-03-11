@@ -27,6 +27,7 @@
   "mel.dataset.api": "API",
   "mel.dataset.api.access": "Access the",
   "mel.dataset.api.swagger": "swagger console",
+  "mel.dataset.back": "Back",
   "mel.dataset.categories": "Categories :",
   "mel.dataset.copy.cliboard": "",
   "mel.dataset.download": "Download",
@@ -71,5 +72,8 @@
   "mel.search.field.any.placeholder": "",
   "mel.searchpage.subtitle.favorites": "",
   "mel.search.filter.generatedByWfs": "",
-  "mel.tooltip.url.copy": ""
+  "mel.tooltip.url.copy": "",
+  "record.metadata.api.form.closeForm": "",
+  "record.metadata.api.form.openForm": "",
+  "tooltip.url.copy": ""
 }
