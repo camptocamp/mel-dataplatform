@@ -11,11 +11,10 @@
   "mel.common.footer.plan": "Plan du site",
   "mel.common.footer.recruitment": "Recrutement",
   "mel.common.footer.social": "Réseaux sociaux",
-  "mel.common.header.title": "Data platform",
   "mel.datahub.home.title": "Métropole Européenne Lille",
   "mel.datahub.multiselect.filter.placeholder": "Rechercher",
   "mel.datahub.search.clear": "Effacer",
-  "mel.datahub.search.filters.format": "Format",
+  "mel.datahub.search.filters.license": "Licence",
   "mel.datahub.search.filters.publicationYear": "Date",
   "mel.datahub.search.filters.publisher": "Producteur",
   "mel.datahub.search.filters.topic": "Thématique",
@@ -54,6 +53,8 @@
   "mel.metadata.api.form.type": "Format en sortie",
   "mel.record.metadata.api": "API",
   "mel.record.metadata.api.form.closeButton": "Fermer",
+  "mel.record.metadata.api.form.closeForm": "Fermer le panneau de personnalisation",
+  "mel.record.metadata.api.form.openForm": "Ouvrir le panneau de personnalisation",
   "mel.record.metadata.api.form.title": "Générer une URL personnalisée",
   "mel.record.metadata.preview": "Visualisation",
   "mel.record.metadata.producteur": "Producteur",
@@ -65,5 +66,6 @@
   "mel.record.tab.map": "Cartographie",
   "mel.search.autocomplete.error": "Les suggestions ne peuvent pas être récupérées",
   "mel.search.field.any.placeholder": "Rechercher un jeu de données",
-  "mel.searchpage.subtitle.favorites": "Jeux de données suivis"
+  "mel.searchpage.subtitle.favorites": "Jeux de données suivis",
+  "mel.tooltip.url.copy": "Copier l'URL"
 }

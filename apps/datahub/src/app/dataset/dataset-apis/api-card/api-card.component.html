@@ -23,7 +23,7 @@
     <gn-ui-copy-text-button
       *ngIf="!displayApiFormButton"
       [text]="link.url.toString()"
-      [tooltipText]="'tooltip.url.copy' | translate"
+      [tooltipText]="'mel.tooltip.url.copy' | translate"
       [displayText]="false"
     ></gn-ui-copy-text-button>
     <button
@@ -35,8 +35,8 @@
       mat-raised-button
       [matTooltip]="
         !currentlyActive
-          ? ('record.metadata.api.form.openForm' | translate)
-          : ('record.metadata.api.form.closeForm' | translate)
+          ? ('mel.record.metadata.api.form.openForm' | translate)
+          : ('mel.record.metadata.api.form.closeForm' | translate)
       "
       matTooltipPosition="above"
     >
