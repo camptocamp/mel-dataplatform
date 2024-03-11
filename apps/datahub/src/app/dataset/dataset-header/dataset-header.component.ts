@@ -5,7 +5,11 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/re
 @Component({
   selector: 'mel-datahub-dataset-header',
   templateUrl: './dataset-header.component.html',
-  styles: ``,
+  styles: `
+    :host ::ng-deep .markdown-body {
+      line-height: 1.2 !important;
+    } 
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatasetHeaderComponent {

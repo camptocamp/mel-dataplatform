@@ -20,18 +20,18 @@
       }
     </div>
     <h1
-      class="mel-page-title sm:block my-4 sm:-ml-20 sm:mr-10 md:mr-20 lg:mr-44"
+      class="mel-page-title sm:block mt-4 mb-10 sm:-ml-20 sm:mr-10 md:mr-20 lg:mr-44"
     >
       {{ record.title }}
     </h1>
     @if(record.abstract){
-    <h2 class="mel-section-title" translate>mel.dataset.abstract</h2>
+    <h2 class="mel-section-title mb-6" translate>mel.dataset.abstract</h2>
     <gn-ui-content-ghost
       ghostClass="h-32"
       [showContent]="fieldReady('abstract')"
     >
       <mel-datahub-text-expand [maxLines]="3"
-        ><div class="sm:block">
+        ><div class="sm:block text-2xl">
           <gn-ui-markdown-parser
             [textContent]="record.abstract"
           ></gn-ui-markdown-parser></div

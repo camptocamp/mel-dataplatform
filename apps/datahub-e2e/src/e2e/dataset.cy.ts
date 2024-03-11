@@ -28,7 +28,7 @@ describe('datasets', () => {
         .should('have.attr', 'src', 'assets/icons/arrow.svg')
       cy.get('mel-datahub-text-expand')
         .find('.bg-gradient-to-b')
-        .should('have.css', 'max-height', '72px')
+        .should('have.css', 'max-height', '96px')
     })
 
     it('should scroll down when clicking on download button', () => {
