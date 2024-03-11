@@ -22,4 +22,5 @@ export class ButtonComponent {
   btnClass = 'mel-primary-button'
   @Input() imageClass?: string
   @Input() disabled = false
+  @Input() iconFirst = false
 }
