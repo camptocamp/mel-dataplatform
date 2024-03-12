@@ -226,7 +226,7 @@ describe('datasets', () => {
       beforeEach(() => cy.visit('/search?publisher=Barbie%20Inc.'))
       it('should return to the search page with the previous query on', () => {
         cy.get('mel-datahub-results-card-search').first().click()
-  
+
         cy.get('mel-datahub-dataset-header')
           .find('mel-datahub-button')
           .first()
@@ -238,7 +238,7 @@ describe('datasets', () => {
       beforeEach(() => cy.visit('/home'))
       it('should return to the dataset list on the search page', () => {
         cy.get('mel-datahub-results-card-last-created').first().click()
-  
+
         cy.get('mel-datahub-dataset-header')
           .find('mel-datahub-button')
           .first()
