@@ -5,10 +5,10 @@
         (click)="back()"
         [label]="'mel.dataset.back' | translate"
         [icon]="'arrow-back'"
-        [iconFirst]="true"
+        [buttonClass]="'flex flex-row-reverse mel-primary-button'"
       >
       </mel-datahub-button>
-      <div class="flex justify-end gap-2">
+      <div class="flex justify-end gap-2 ml-2">
         <mel-datahub-favorite-heart
           [record]="record"
           [label]="'mel.dataset.favorite' | translate"
