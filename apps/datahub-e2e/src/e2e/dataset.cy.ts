@@ -5,7 +5,7 @@ describe('datasets', () => {
     })
 
     it('should display the favorite button disabled', () => {
-      cy.get('mel-datahub-button').eq(0).find('button').as('favoriteButton')
+      cy.get('mel-datahub-button').eq(1).find('button').as('favoriteButton')
       cy.get('@favoriteButton').should('be.disabled')
       cy.get('@favoriteButton').should(
         'have.css',
@@ -220,6 +220,33 @@ describe('datasets', () => {
       cy.get('mel-datahub-footer').should('be.visible')
     })
   })
+
+  describe('Navigation', () => {
+    describe('With a query on', () => {
+      beforeEach(() => cy.visit('/search?publisher=Barbie%20Inc.'))
+      it('should return to the search page with the previous query on', () => {
+        cy.get('mel-datahub-results-card-search').first().click()
+
+        cy.get('mel-datahub-dataset-header')
+          .find('mel-datahub-button')
+          .first()
+          .click()
+        cy.url().should('include', '/search?publisher=Barbie%20Inc.')
+      })
+    })
+    describe('Without a query on', () => {
+      beforeEach(() => cy.visit('/home'))
+      it('should return to the dataset list on the search page', () => {
+        cy.get('mel-datahub-results-card-last-created').first().click()
+
+        cy.get('mel-datahub-dataset-header')
+          .find('mel-datahub-button')
+          .first()
+          .click()
+        cy.url().should('include', '/search')
+      })
+    })
+  })
 })
 describe('when logged in', () => {
   beforeEach(() => {
@@ -228,7 +255,7 @@ describe('when logged in', () => {
     cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4')
   })
   it('should toggle the favorite button', () => {
-    cy.get('mel-datahub-button').eq(0).as('favoriteButton')
+    cy.get('mel-datahub-button').eq(1).as('favoriteButton')
     cy.get('@favoriteButton')
       .find('img')
       .should('have.attr', 'src', 'assets/icons/heart.svg')

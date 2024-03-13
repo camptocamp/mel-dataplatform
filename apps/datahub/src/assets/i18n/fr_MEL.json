@@ -27,6 +27,7 @@
   "mel.dataset.api": "API",
   "mel.dataset.api.access": "Accéder à",
   "mel.dataset.api.swagger": "la console swagger",
+  "mel.dataset.back": "Retour",
   "mel.dataset.categories": "Catégories :",
   "mel.dataset.copy.cliboard": "Copier le lien",
   "mel.dataset.download": "Télécharger",
@@ -71,5 +72,8 @@
   "mel.search.field.any.placeholder": "Rechercher un jeu de données",
   "mel.searchpage.subtitle.favorites": "Jeux de données suivis",
   "mel.search.filter.generatedByWfs": "généré par une API",
-  "mel.tooltip.url.copy": "Copier l'URL"
+  "mel.tooltip.url.copy": "Copier l'URL",
+  "record.metadata.api.form.closeForm": "",
+  "record.metadata.api.form.openForm": "",
+  "tooltip.url.copy": ""
 }

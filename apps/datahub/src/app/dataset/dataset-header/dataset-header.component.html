@@ -1,26 +1,35 @@
 <div class="mel-grid-container-dataset">
   <div class="md:col-start-2 lg:col-start-2 md:col-span-6 lg:col-span-8 py-16">
-    <div class="flex justify-end gap-2">
-      <mel-datahub-favorite-heart
-        [record]="record"
-        [label]="'mel.dataset.favorite' | translate"
-      ></mel-datahub-favorite-heart>
-      @if(getScrollElement('download')){
+    <div class="flex flex-row flex-wrap gap-2 justify-between sm:-ml-20">
       <mel-datahub-button
-        [label]="'mel.dataset.download' | translate"
-        [icon]="'download'"
-        (click)="scrollTo('download')"
-      ></mel-datahub-button>
-      } @if(getScrollElement('api')){
-      <mel-datahub-button
-        [label]="'mel.dataset.api' | translate"
-        [icon]="'api'"
-        (click)="scrollTo('api')"
-      ></mel-datahub-button>
-      }
+        (click)="back()"
+        [label]="'mel.dataset.back' | translate"
+        [icon]="'arrow-back'"
+        [buttonClass]="'flex flex-row-reverse mel-primary-button'"
+      >
+      </mel-datahub-button>
+      <div class="flex justify-end flex-wrap gap-2">
+        <mel-datahub-favorite-heart
+          [record]="record"
+          [label]="'mel.dataset.favorite' | translate"
+        ></mel-datahub-favorite-heart>
+        @if(getScrollElement('download')){
+        <mel-datahub-button
+          [label]="'mel.dataset.download' | translate"
+          [icon]="'download'"
+          (click)="scrollTo('download')"
+        ></mel-datahub-button>
+        } @if(getScrollElement('api')){
+        <mel-datahub-button
+          [label]="'mel.dataset.api' | translate"
+          [icon]="'api'"
+          (click)="scrollTo('api')"
+        ></mel-datahub-button>
+        }
+      </div>
     </div>
     <h1
-      class="mel-page-title sm:block mt-4 mb-10 sm:-ml-20 sm:mr-10 md:mr-20 lg:mr-44"
+      class="mel-page-title sm:block my-10 sm:-ml-20 sm:mr-10 md:mr-20 lg:mr-44"
     >
       {{ record.title }}
     </h1>
