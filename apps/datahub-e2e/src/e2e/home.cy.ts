@@ -1,5 +1,5 @@
 describe('home', () => {
-  beforeEach(() => cy.visit('/home'))
+  beforeEach(() => cy.visit('/'))
 
   describe('home header search', () => {
     it('should display the title', () => {

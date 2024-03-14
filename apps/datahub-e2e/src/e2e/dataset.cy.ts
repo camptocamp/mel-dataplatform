@@ -235,7 +235,7 @@ describe('datasets', () => {
       })
     })
     describe('Without a query on', () => {
-      beforeEach(() => cy.visit('/home'))
+      beforeEach(() => cy.visit('/'))
       it('should return to the dataset list on the search page', () => {
         cy.get('mel-datahub-results-card-last-created').first().click()
 
