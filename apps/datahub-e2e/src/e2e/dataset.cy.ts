@@ -126,6 +126,41 @@ describe('datasets', () => {
       })
     })
 
+    describe('Vizualisation block', () => {
+      beforeEach(() =>
+        cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      )
+
+      it('should display the vizualisation block', () => {
+        cy.get('mel-datahub-dataset-visualisation').should('be.visible')
+      })
+
+      it('should display the map preview by default', () => {
+        cy.get('gn-ui-map-context').should('be.visible')
+        cy.get('gn-ui-table-view').should('not.exist')
+        cy.get('gn-ui-chart-view').should('not.exist')
+      })
+
+      it('should switch between tabs and display the table and analysis components', () => {
+        cy.get('mel-datahub-dataset-visualisation')
+          .find('.mat-mdc-tab-labels')
+          .children('div')
+          .eq(1)
+          .click()
+        cy.get('gn-ui-table-view').should('be.visible')
+        cy.get('mel-datahub-dataset-visualisation')
+          .find('.mat-mdc-tab-labels')
+          .children('div')
+          .eq(2)
+          .click()
+        cy.get('gn-ui-chart-view').should('be.visible')
+      })
+
+      it('should display the sharing tool', () => {
+        cy.get('gn-ui-data-view-share').should('be.visible')
+      })
+    })
+
     describe('API block', () => {
       beforeEach(() =>
         cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')

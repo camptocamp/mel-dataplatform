@@ -111,15 +111,15 @@ input[type='checkbox'] {
   accent-color: var(--color-primary);
 }
 .mat-mdc-tab-labels {
-  @apply flex flex-row gap-1 ml-2.5
+  @apply flex flex-row gap-1 ml-2.5;
 }
 
 .mat-mdc-tab.mdc-tab {
- border-top: 1px solid #CCCDD2;
-  border-left: 1px solid #CCCDD2;
-  border-right: 1px solid #CCCDD2;
+  border-top: 1px solid #cccdd2;
+  border-left: 1px solid #cccdd2;
+  border-right: 1px solid #cccdd2;
   border-radius: 3px 3px 0 0;
-  background-color: #CCCDD2;
+  background-color: #cccdd2;
   font-family: 'Lato';
   font-weight: bold;
   letter-spacing: normal;
@@ -127,21 +127,21 @@ input[type='checkbox'] {
 }
 
 .mat-mdc-tab.mdc-tab--active {
-  @apply bg-white
+  @apply bg-white;
 }
 
 .mdc-tab__text-label {
-  @apply text-black !important
-} 
+  @apply text-black !important;
+}
 
 .mat-mdc-tab-body {
-  @apply border border-gray-6 rounded bg-white
+  @apply border border-gray-6 rounded bg-white;
 }
 
 .mdc-tab-indicator__content {
-  @apply hidden
+  @apply hidden;
 }
 
 .mat-mdc-tab:not(.mdc-tab--stacked) {
-  @apply h-9 !important
+  @apply h-9 !important;
 }
