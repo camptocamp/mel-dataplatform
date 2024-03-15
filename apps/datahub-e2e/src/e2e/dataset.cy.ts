@@ -55,6 +55,150 @@ describe('datasets', () => {
       })
     })
 
+    describe('Information block', () => {
+      beforeEach(() => {
+        cy.get('mel-datahub-dataset-information')
+          .children('div')
+          .first()
+          .children('div')
+          .eq(1)
+          .as('mainInfo')
+      })
+      it('should display the information block', () => {
+        cy.get('mel-datahub-dataset-information').should('be.visible')
+      })
+
+      it('should display the update date', () => {
+        cy.get('@mainInfo')
+          .first()
+          .find('div')
+          .first()
+          .find('span')
+          .should('have.text', 'Mise à jour le')
+      })
+
+      it('should display the categories btns', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(1)
+          .find('div')
+          .children('span')
+          .should('have.length.gt', 0)
+      })
+
+      it('should display the territories', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(2)
+          .find('div')
+          .children('span')
+          .should('have.length.gt', 0)
+      })
+
+      it('should display the licenses', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(3)
+          .children('span')
+          .eq(1)
+          .should('have.length.gt', 0)
+      })
+
+      it('should display the producer', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(4)
+          .find('span')
+          .eq(1)
+          .should('have.text', 'Bundesamt für Raumentwicklung')
+      })
+
+      it('should display the social media share btns', () => {
+        cy.get('mel-datahub-dataset-information')
+          .children('div')
+          .first()
+          .children('div')
+          .eq(2)
+          .children('div')
+          .first()
+          .find('a')
+          .should('have.length', 4)
+      })
+    })
+
+    describe('Vizualisation block', () => {
+      beforeEach(() =>
+        cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      )
+
+      it('should display the vizualisation block', () => {
+        cy.get('mel-datahub-dataset-visualisation').should('be.visible')
+      })
+
+      it('should display the map preview by default', () => {
+        cy.get('gn-ui-map-context').should('be.visible')
+        cy.get('gn-ui-table-view').should('not.exist')
+        cy.get('gn-ui-chart-view').should('not.exist')
+      })
+
+      it('should switch between tabs and display the table and analysis components', () => {
+        cy.get('mel-datahub-dataset-visualisation')
+          .find('.mat-mdc-tab-labels')
+          .children('div')
+          .eq(1)
+          .click()
+        cy.get('gn-ui-table-view').should('be.visible')
+        cy.get('mel-datahub-dataset-visualisation')
+          .find('.mat-mdc-tab-labels')
+          .children('div')
+          .eq(2)
+          .click()
+        cy.get('gn-ui-chart-view').should('be.visible')
+      })
+
+      it('should display the sharing tool', () => {
+        cy.get('gn-ui-data-view-share').should('be.visible')
+      })
+    })
+
+    describe('API block', () => {
+      beforeEach(() =>
+        cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      )
+
+      it('should display the API block', () => {
+        cy.get('mel-datahub-dataset-apis').should('be.visible')
+      })
+      it('should have API cards', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .should('have.length.gt', 0)
+      })
+      it('should display the swagger link', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .last()
+          .click()
+        cy.get('mel-datahub-api-form')
+          .find('a')
+          .invoke('attr', 'href')
+          .should(
+            'eq',
+            'https://mel.integration.apps.gs-fr-prod.camptocamp.com/data/swagger-ui/index.html'
+          )
+      })
+      it('should open the api form', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .last()
+          .click()
+        cy.get('mel-datahub-api-form').should('be.visible')
+      })
+    })
+
     it('should display the abstract in expanded mode without gradient', () => {
       cy.get('mel-datahub-text-expand').should('be.visible')
       cy.get('mel-datahub-text-expand').find('mel-datahub-button').click()
