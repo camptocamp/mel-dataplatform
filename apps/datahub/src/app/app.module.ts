@@ -21,7 +21,8 @@ import {
   UiInputsModule,
   UiWidgetsModule,
   UiMapModule,
-  GN_UI_VERSION
+  GN_UI_VERSION,
+  WEB_COMPONENT_EMBEDDER_URL,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -174,6 +175,10 @@ import { environment } from '../environments/environnment'
     importProvidersFrom(FeatureAuthModule),
     provideGn4(),
     { provide: GN_UI_VERSION, useValue: environment.version },
+    {
+      provide: WEB_COMPONENT_EMBEDDER_URL,
+      useFactory: () => '/plateforme/wc-embedder.html',
+    },
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
     {
       provide: LOGIN_URL,
