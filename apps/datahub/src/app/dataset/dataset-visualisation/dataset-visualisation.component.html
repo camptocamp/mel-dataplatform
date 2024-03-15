@@ -1,22 +1,14 @@
-<div style="height: 812px">
+<div>
   <div
-    class="flex flex-col gap-8 pt-8 overflow-visible sm:pt-5"
+    class="flex flex-col gap-8 pt-8 overflow-visible sm:pt-5 sm:pb-8"
     style="height: 512px"
   >
     <div class="flex flex-col">
       <div class="pb-2 gap-1">
         <div class="inline-flex bg-primary h-1 w-16"></div>
-        <div class="text-2xl font-title" translate="">
-          mel.record.metadata.preview
-        </div>
+        <div class="text-2xl font-title" translate="">mel.record.preview</div>
       </div>
-      <span class="w-5/6 leading-5"
-        >Vous pouvez choisir différentes visualisation afin d’apprécier le jeu
-        données. “Cartographie” vous présente les données sous forme de Pin Map,
-        “Tableau” vous permet de consulter les données sous forme brute et
-        “Analyse” vous donne la possibilité de jongler entre différentes
-        Dataviz.</span
-      >
+      <span class="w-5/6 leading-5" translate>mel.record.preview.subtitle</span>
     </div>
     <mat-tab-group
       (selectedIndexChange)="onTabIndexChange($event)"

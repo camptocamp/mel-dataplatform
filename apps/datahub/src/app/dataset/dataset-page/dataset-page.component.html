@@ -9,72 +9,16 @@
 
   }
 </div>
-<div class="mel-grid-container-dataset">
+@if ((displayMap$ | async) || (displayData$ | async)) {
+<div id="visualisation" class="mel-grid-container-dataset mt-6 md:mb-80 mb-96">
   <div class="sm:col-start-2 sm:col-span-8">
-    @if ((displayMap$ | async) || (displayData$ | async)) {
-    <div id="visualisation" class="block mt-6 mb-44">
-      <!-- TODO: create corresponding components, uses GN-UI components for now -->
-      <mel-datahub-dataset-visualisation
-        [displayMap]="displayMap$ | async"
-        [displayData]="displayData$ | async"
-      ></mel-datahub-dataset-visualisation>
-    </div>
-    <!-- TODO: try to adapt tab layout to fit MEL -->
-    } @if(displayDownload$ | async) {
-    <div id="download" class="block mt-6">
-      <!-- TODO: create corresponding components, uses GN-UI components for now -->
-      <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
-    </div>
-    }
-    <div class="lg:mx-auto">
-      @if(displayApi$ | async) {
-      <div id="api" class="block mt-6">
-        <!-- TODO: create corresponding components, uses GN-UI components for now -->
-        <mel-datahub-dataset-apis></mel-datahub-dataset-apis>
-      </div>
-      }
-    </div>
-    @if(displayRelated$ | async) {
-    <!-- TODO: create corresponding UI component-->
-    <div>
-      <div>
-        <div class="overflow-visible">
-          <div>
-            <p
-              class="font-title text-[28px] text-title font-medium mt-6 sm:mt-10 mb-4 text-center sm:text-left"
-              translate
-            >
-              mel.record.metadata.related
-            </p>
-            <div
-              class="mb-4 flex flex-wrap gap-6 justify-center sm:justify-start"
-            >
-              <gn-ui-related-record-card
-                *ngFor="let record of facade.related$ | async"
-                [record]="record"
-              >
-              </gn-ui-related-record-card>
-            </div>
-          </div>
-        </div>
-        }
-      </mat-tab>
-      <mat-tab [disabled]="(displayData$ | async) === false">
-        <ng-template mat-tab-label>
-          <span class="tab-header-label" translate>mel.record.tab.chart</span>
-        </ng-template>
-        @if(displayData$ | async) {
-        <div class="block">
-          <gn-ui-data-view mode="chart"></gn-ui-data-view>
-        </div>
-        }
-      </mat-tab>
-    </mat-tab-group>
+    <mel-datahub-dataset-visualisation
+      [displayMap]="displayMap$ | async"
+      [displayData]="displayData$ | async"
+    ></mel-datahub-dataset-visualisation>
   </div>
 </div>
-} @if((selectedTabIndex$ | async) === 2) {
-<!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
-<gn-ui-data-view-share></gn-ui-data-view-share>
+<!-- TODO: try to adapt tab layout to fit MEL -->
 } @if(displayDownload$ | async) {
 <div id="download" class="mel-grid-container-dataset mt-6">
   <div class="sm:col-start-2 sm:col-span-8">
