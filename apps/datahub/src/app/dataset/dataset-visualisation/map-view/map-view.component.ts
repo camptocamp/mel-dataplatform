@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
-import { MapViewComponent, getOptionalMapConfig } from 'geonetwork-ui';
-import { MapConfig } from 'geonetwork-ui';
+import { MapViewComponent, getOptionalMapConfig } from 'geonetwork-ui'
+import { MapConfig } from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-map-view',
