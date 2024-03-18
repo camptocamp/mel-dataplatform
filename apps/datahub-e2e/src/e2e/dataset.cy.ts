@@ -157,6 +157,11 @@ describe('datasets', () => {
       })
 
       it('should display the sharing tool', () => {
+        cy.get('mel-datahub-dataset-visualisation')
+          .find('.mat-mdc-tab-labels')
+          .children('div')
+          .eq(2)
+          .click()
         cy.get('gn-ui-data-view-share').should('be.visible')
       })
     })
