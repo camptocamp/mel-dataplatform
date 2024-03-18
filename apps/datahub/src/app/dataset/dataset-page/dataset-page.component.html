@@ -10,7 +10,7 @@
   }
 </div>
 @if ((displayMap$ | async) || (displayData$ | async)) {
-<div id="visualisation" class="mel-grid-container-dataset mt-6 md:mb-80 mb-96">
+<div id="visualisation" class="mel-grid-container-dataset">
   <div class="sm:col-start-2 sm:col-span-8">
     <mel-datahub-dataset-visualisation
       [displayMap]="displayMap$ | async"

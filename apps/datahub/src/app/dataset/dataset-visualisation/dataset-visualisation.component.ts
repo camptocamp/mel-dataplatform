@@ -13,7 +13,7 @@ import { DatasetDistribution } from 'geonetwork-ui/libs/common/domain/src/lib/mo
 export class DatasetVisualisationComponent {
   @Input() displayMap: boolean
   @Input() displayData: boolean
-  selectedTabIndex$ = new BehaviorSubject(0)
+  selectedTabIndex = 0
 
   compatibleDataLinks$ = combineLatest([
     this.mdViewFacade.dataLinks$,
@@ -45,7 +45,7 @@ export class DatasetVisualisationComponent {
   constructor(public mdViewFacade: MdViewFacade) {}
 
   onTabIndexChange(index: number): void {
-    this.selectedTabIndex$.next(index)
+    this.selectedTabIndex = index
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
     }, 0)
