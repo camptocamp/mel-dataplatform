@@ -10,18 +10,17 @@
     </h1>
 
     <div class="flex flex-col justify-between">
-      @if(record.keywords?.length) {
+      @if(keywords?.length) {
       <div class="flex gap-1">
-        @for(keyword of record.keywords.slice(0, 2); track
-        record?.uniqueIdentifier){<button
+        @for(keyword of keywords.slice(0, 2); track $index){<button
           type="button"
-          [attr.aria-label]="keyword"
-          [title]="keyword"
+          [attr.aria-label]="keyword.label"
+          [title]="keyword.label"
           class="mel-badge-button-primary truncate"
           (click)="onKeywordClick(keyword, $event)"
           (keyup.enter)="$event.stopPropagation()"
         >
-          {{ keyword }}</button
+          {{ keyword.label }}</button
         >}
       </div>
       }

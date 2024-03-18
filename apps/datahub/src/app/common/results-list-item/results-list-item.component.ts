@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import {
+  CatalogRecord,
+  Keyword,
+} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
 @Component({
   selector: 'mel-datahub-results-list-item',
@@ -8,7 +11,7 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/re
 export class ResultsListItemComponent {
   @Input() record: CatalogRecord
   @Output() mdSelect = new EventEmitter<CatalogRecord>()
-  @Output() keyword = new EventEmitter<string>()
+  @Output() keyword = new EventEmitter<Keyword>()
 
   get shownOrganization() {
     return this.record?.ownerOrganization
@@ -18,7 +21,11 @@ export class ResultsListItemComponent {
     return this.record?.recordCreated?.toLocaleDateString('fr')
   }
 
-  onKeywordClick(keyword: string, event: Event) {
+  get keywords() {
+    return this.record?.keywords?.filter((keyword) => keyword.type !== 'place')
+  }
+
+  onKeywordClick(keyword: Keyword, event: Event) {
     event.stopPropagation()
     this.keyword.emit(keyword)
   }

@@ -19,4 +19,8 @@ export class DatasetInformationComponent {
       this.translateService.currentLang
     )
   }
+
+  get territories() {
+    return this.record?.keywords?.filter((keyword) => keyword.type === 'place')
+  }
 }

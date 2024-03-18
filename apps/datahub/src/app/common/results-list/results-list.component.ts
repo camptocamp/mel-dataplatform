@@ -8,7 +8,10 @@ import {
   SearchService,
   SearchState,
 } from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import {
+  CatalogRecord,
+  Keyword,
+} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { Subscription } from 'rxjs'
 
 @Component({
@@ -34,7 +37,12 @@ export class ResultsListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.searchFacade
-      .setConfigRequestFields([...FIELDS_BRIEF, 'createDate', 'changeDate'])
+      .setConfigRequestFields([
+        ...FIELDS_BRIEF,
+        'createDate',
+        'changeDate',
+        'allKeywords',
+      ])
       .setPageSize(this.numberOfResults)
       .setSortBy(['desc', 'createDate'])
     this.subscriptions = this.favoritesService.myFavoritesUuid$.subscribe(
@@ -48,8 +56,8 @@ export class ResultsListComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe()
   }
 
-  onInfoKeywordClick(keyword: string) {
-    this.routerFacade.updateSearch({ q: keyword })
+  onInfoKeywordClick(keyword: Keyword) {
+    this.routerFacade.updateSearch({ q: keyword.label })
   }
 
   onMetadataSelection(metadata: CatalogRecord): void {

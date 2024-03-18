@@ -57,6 +57,7 @@ describe('datasets', () => {
 
     describe('Information block', () => {
       beforeEach(() => {
+        cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
         cy.get('mel-datahub-dataset-information')
           .children('div')
           .first()
@@ -110,7 +111,7 @@ describe('datasets', () => {
           .eq(4)
           .find('span')
           .eq(1)
-          .should('have.text', 'Bundesamt für Raumentwicklung')
+          .should('have.text', 'Région Hauts-de-France')
       })
 
       it('should display the social media share btns', () => {
