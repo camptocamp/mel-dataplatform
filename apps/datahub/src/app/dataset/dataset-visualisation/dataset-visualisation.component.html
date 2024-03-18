@@ -1,6 +1,9 @@
-<div>
+<div
+  class="flex flex-col md:gap-48 gap-72"
+  [ngClass]="{ 'pb-40': selectedTabIndex !== 2 }"
+>
   <div
-    class="flex flex-col gap-8 pt-8 overflow-visible sm:pt-5 sm:pb-8"
+    class="flex flex-col gap-8 overflow-visible sm:pt-5 mb-16"
     style="height: 512px"
   >
     <div class="flex flex-col">
@@ -55,6 +58,6 @@
         }
       </mat-tab>
     </mat-tab-group>
-    <gn-ui-data-view-share></gn-ui-data-view-share>
   </div>
+  <gn-ui-data-view-share *ngIf="selectedTabIndex === 2"></gn-ui-data-view-share>
 </div>
