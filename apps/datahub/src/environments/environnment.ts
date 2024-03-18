@@ -6,8 +6,7 @@ import packageJson from 'geonetwork-ui/package.json'
 
 export const environment = {
   production: false,
-  version:
-    packageJson.version.split('-')[1].includes('dev')
-      ? 'main'
-      : `v${packageJson.version.split('-')[0]}`,
+  version: packageJson.version.split('-')[1].includes('dev')
+    ? 'main'
+    : `v${packageJson.version.split('-')[0]}`,
 }
