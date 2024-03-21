@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { ErrorType, MdViewFacade, RouterFacade } from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import {
+  CatalogRecord,
+  Keyword,
+} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { combineLatest, map } from 'rxjs'
 
 @Component({
@@ -44,8 +47,8 @@ export class DatasetPageComponent {
     protected routerFacade: RouterFacade
   ) {}
 
-  onInfoKeywordClick(keyword: string) {
-    this.routerFacade.updateSearch({ q: keyword })
+  onInfoKeywordClick(keyword: Keyword) {
+    this.routerFacade.updateSearch({ q: keyword.label })
   }
 
   onMetadataSelection(metadata: CatalogRecord): void {
