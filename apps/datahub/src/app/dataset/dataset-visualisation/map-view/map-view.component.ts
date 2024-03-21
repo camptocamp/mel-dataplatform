@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
-import { MapViewComponent, getOptionalMapConfig } from 'geonetwork-ui'
-import { MapConfig } from 'geonetwork-ui'
+import { MapViewComponent } from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-map-view',
@@ -9,7 +8,6 @@ import { MapConfig } from 'geonetwork-ui'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MelMapViewComponent extends MapViewComponent implements OnInit {
-  override mapConfig: MapConfig = getOptionalMapConfig()
   override selectLinkToDisplay(link: unknown): void {
     this.selectedLinkIndex$.next(Number(link))
   }

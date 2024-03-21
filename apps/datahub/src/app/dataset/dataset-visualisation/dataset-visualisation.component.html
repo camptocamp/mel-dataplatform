@@ -39,7 +39,7 @@
           <span translate>mel.record.tab.data</span>
         </ng-template>
         @if(displayData) {
-        <div class="block" *ngIf="dropdownChoices$ | async as selectedLinks">
+        <div class="block">
           <mel-datahub-data-view mode="table"></mel-datahub-data-view>
         </div>
         }
@@ -49,10 +49,7 @@
           <span translate>mel.record.tab.chart</span>
         </ng-template>
         @if(displayData) {
-        <div
-          class="block test"
-          *ngIf="dropdownChoices$ | async as selectedLinks"
-        >
+        <div class="block">
           <mel-datahub-data-view mode="chart"></mel-datahub-data-view>
         </div>
         }
