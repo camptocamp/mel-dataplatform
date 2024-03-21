@@ -18,11 +18,9 @@
     ></mel-datahub-dataset-visualisation>
   </div>
 </div>
-<!-- TODO: try to adapt tab layout to fit MEL -->
 } @if(displayDownload$ | async) {
 <div id="download" class="mel-grid-container-dataset mt-6">
-  <div class="sm:col-start-2 sm:col-span-8">
-    <!-- TODO: create corresponding components, uses GN-UI components for now -->
+  <div class="sm:col-start-2 sm:col-span-7">
     <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
   </div>
 </div>
@@ -30,28 +28,30 @@
 <div class="lg:mx-auto">
   @if(displayApi$ | async) {
   <div id="api" class="block mt-6">
-    <!-- TODO: create corresponding components, uses GN-UI components for now -->
     <mel-datahub-dataset-apis></mel-datahub-dataset-apis>
   </div>
   }
 </div>
 @if(displayRelated$ | async) {
-<!-- TODO: create corresponding UI component-->
-<div class="mel-grid-container-dataset">
-  <div class="sm:col-start-2 sm:col-span-8">
+<div class="mel-grid-container-dataset mt-12">
+  <div class="sm:col-start-2 sm:col-span-7">
     <div class="overflow-visible">
-      <div>
-        <p
-          class="font-title text-[28px] text-title font-medium mt-6 sm:mt-10 mb-4 text-center sm:text-left"
-          translate
-        >
+      <div class="mel-title-line"></div>
+      <div class="flex flex-col flex-wrap gap-4 justify-between">
+        <p class="mel-section-title mr-4 text-left" translate>
           mel.record.metadata.related
         </p>
-        <div class="mb-4 flex flex-wrap gap-6 justify-center sm:justify-start">
+        <p translate="">mel.record.metadata.related.description</p>
+        <div
+          class="mb-4 flex flex-wrap gap-3 justify-center md:justify-start 2xl:justify-between"
+        >
           @for(record of facade.related$ | async; track
           record.uniqueIdentifier){
-          <gn-ui-related-record-card [record]="record">
-          </gn-ui-related-record-card>
+          <mel-datahub-results-card-last-created
+            [record]="record"
+            (mdSelect)="onMetadataSelection($event)"
+            (keyword)="onInfoKeywordClick($event)"
+          ></mel-datahub-results-card-last-created>
           }
         </div>
       </div>

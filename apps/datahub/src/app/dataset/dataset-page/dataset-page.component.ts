@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { ErrorType, MdViewFacade } from 'geonetwork-ui'
+import { ErrorType, MdViewFacade, RouterFacade } from 'geonetwork-ui'
+import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { combineLatest, map } from 'rxjs'
 
 @Component({
@@ -37,5 +38,17 @@ export class DatasetPageComponent {
   )
   errorTypes = ErrorType
 
-  constructor(public facade: MdViewFacade, private route: ActivatedRoute) {}
+  constructor(
+    public facade: MdViewFacade,
+    private route: ActivatedRoute,
+    protected routerFacade: RouterFacade
+  ) {}
+
+  onInfoKeywordClick(keyword: string) {
+    this.routerFacade.updateSearch({ q: keyword })
+  }
+
+  onMetadataSelection(metadata: CatalogRecord): void {
+    this.routerFacade.goToMetadata(metadata)
+  }
 }
