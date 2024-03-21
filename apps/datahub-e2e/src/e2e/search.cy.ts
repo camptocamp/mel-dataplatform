@@ -16,6 +16,21 @@ describe('search', () => {
     })
   })
 
+  describe('search cards', () => {
+    it('should display two keywords', () => {
+      cy.get('mel-datahub-results-card-search')
+        .first()
+        .find('.mel-badge-button-primary')
+        .should('have.length', 2)
+    })
+    it('should not dislay any place keywords (which are already displayed as territories)', () => {
+      cy.get('mel-datahub-results-card-search')
+        .eq(6)
+        .find('.mel-badge-button-primary')
+        .should('not.contain', 'HAUTS-DE-FRANCE')
+    })
+  })
+
   describe('search header carousel', () => {
     // If not logged in or no favorites exists
 
