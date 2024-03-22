@@ -17,6 +17,7 @@ export class AppRouterService extends RouterService {
           shouldDetach: true,
         },
       },
+      { path: '**', redirectTo: '', pathMatch: 'full' },
     ]
   }
 }
