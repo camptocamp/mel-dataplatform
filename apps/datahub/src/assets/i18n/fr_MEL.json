@@ -1,15 +1,11 @@
 {
-  "mel.common.footer.accessibility": "Accessibilité : partiellement conforme à 55%",
   "mel.common.footer.contact": "Contactez-nous",
   "mel.common.footer.follow": "Suivez-nous !",
   "mel.common.footer.legal": "Mentions légales",
   "mel.common.footer.logo.financeUE": "Financé par l'Union européenne",
   "mel.common.footer.logo.franceRelance": "France Relance",
   "mel.common.footer.newletter.signup": "S'inscrire à l'infolettre",
-  "mel.common.footer.news": "Actualités",
   "mel.common.footer.newsletter.inform": "Restez informés de l'actualité de la MEL en vous inscrivant à l'infolettre !",
-  "mel.common.footer.plan": "Plan du site",
-  "mel.common.footer.recruitment": "Recrutement",
   "mel.common.footer.social": "Réseaux sociaux",
   "mel.datahub.home.title": "Métropole Européenne Lille",
   "mel.datahub.multiselect.filter.placeholder": "Rechercher",
@@ -70,10 +66,7 @@
   "mel.record.tab.map": "Cartographie",
   "mel.search.autocomplete.error": "Les suggestions ne peuvent pas être récupérées",
   "mel.search.field.any.placeholder": "Rechercher un jeu de données",
-  "mel.searchpage.subtitle.favorites": "Jeux de données suivis",
   "mel.search.filter.generatedByWfs": "généré par une API",
-  "mel.tooltip.url.copy": "Copier l'URL",
-  "record.metadata.api.form.closeForm": "",
-  "record.metadata.api.form.openForm": "",
-  "tooltip.url.copy": ""
+  "mel.searchpage.subtitle.favorites": "Jeux de données suivis",
+  "mel.tooltip.url.copy": "Copier l'URL"
 }
