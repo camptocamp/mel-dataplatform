@@ -1,7 +1,7 @@
 describe('datasets', () => {
   describe('when not logged in', () => {
     beforeEach(() => {
-      cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4')
+      cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
     })
 
     it('should display the favorite button disabled', () => {
@@ -16,7 +16,10 @@ describe('datasets', () => {
 
     it('should display the title', () => {
       cy.get('.mel-page-title').should('be.visible')
-      cy.get('.mel-page-title').should('have.text', ' Alpenkonvention ')
+      cy.get('.mel-page-title').should(
+        'have.text',
+        ' SCoT (Schéma de cohérence territoriale) en région Hauts-de-France '
+      )
     })
 
     it('should display the abstract in collapsed mode applying gradient', () => {
@@ -110,7 +113,7 @@ describe('datasets', () => {
           .eq(4)
           .find('span')
           .eq(1)
-          .should('have.text', 'Bundesamt für Raumentwicklung')
+          .should('have.text', 'Région Hauts-de-France')
       })
 
       it('should display the social media share btns', () => {
@@ -127,10 +130,6 @@ describe('datasets', () => {
     })
 
     describe('Vizualisation block', () => {
-      beforeEach(() =>
-        cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
-      )
-
       it('should display the vizualisation block', () => {
         cy.get('mel-datahub-dataset-visualisation').should('be.visible')
       })
