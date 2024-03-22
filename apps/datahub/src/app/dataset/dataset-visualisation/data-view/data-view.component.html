@@ -3,7 +3,7 @@
     @if(dropdownChoices$ | async) {
     <gn-ui-dropdown-selector
       [title]="'mel.record.preview.select' | translate"
-      class="mt-2 mr-4"
+      class="truncate mt-2 mr-4 p-2"
       extraBtnClass="!text-primary font-sans font-medium"
       [choices]="dropdownChoices$ | async"
       (selectValue)="selectLink($event)"
