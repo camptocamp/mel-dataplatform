@@ -1,23 +1,23 @@
 <div class="w-full h-full flex flex-col p-1">
   <div class="w-full flex justify-end mb-2">
+    @if(dropdownChoices$ | async) {
     <gn-ui-dropdown-selector
-      *ngIf="dropdownChoices$ | async as choices"
       [title]="'mel.record.preview.select' | translate"
       class="mt-2 mr-4"
       extraBtnClass="!text-primary font-sans font-medium"
-      [choices]="choices"
+      [choices]="dropdownChoices$ | async"
       (selectValue)="selectLink($event)"
     ></gn-ui-dropdown-selector>
+    }
   </div>
   <div class="relative h-[420px] m-4">
-    <gn-ui-table-view
-      *ngIf="mode === 'table'"
-      [link]="selectedLink$ | async"
-    ></gn-ui-table-view>
+    @if(mode === 'table') {
+    <gn-ui-table-view [link]="selectedLink$ | async"></gn-ui-table-view>
+    } @if(mode === 'chart') {
     <gn-ui-chart-view
-      *ngIf="mode === 'chart'"
       (chartConfig$)="setChartConfig($event)"
       [link]="selectedLink$ | async"
     ></gn-ui-chart-view>
+    }
   </div>
 </div>

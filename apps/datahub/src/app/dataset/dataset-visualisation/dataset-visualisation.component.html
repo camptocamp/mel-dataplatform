@@ -56,5 +56,7 @@
       </mat-tab>
     </mat-tab-group>
   </div>
-  <gn-ui-data-view-share *ngIf="selectedTabIndex === 2"></gn-ui-data-view-share>
+  @if(selectedTabIndex === 2) {
+  <gn-ui-data-view-share></gn-ui-data-view-share>
+  }
 </div>
