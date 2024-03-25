@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
-import { BehaviorSubject, map } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 import { MdViewFacade } from 'geonetwork-ui'
 import { DatasetDistribution } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 
 @Component({
   selector: 'mel-datahub-dataset-visualisation',
@@ -17,10 +16,7 @@ export class DatasetVisualisationComponent {
 
   selectedLink$ = new BehaviorSubject<DatasetDistribution>(null)
 
-  constructor(
-    public mdViewFacade: MdViewFacade,
-    private breakpointObserver: BreakpointObserver
-  ) {}
+  constructor(public mdViewFacade: MdViewFacade) {}
 
   onTabIndexChange(index: number): void {
     this.selectedTabIndex = index
@@ -28,8 +24,4 @@ export class DatasetVisualisationComponent {
       window.dispatchEvent(new Event('resize'))
     }, 0)
   }
-
-  isMediumScreen$ = this.breakpointObserver
-    .observe(Breakpoints.Medium)
-    .pipe(map((result) => result.matches))
 }

@@ -145,3 +145,10 @@ input[type='checkbox'] {
 .mat-mdc-tab:not(.mdc-tab--stacked) {
   @apply h-9 !important;
 }
+
+@media only screen and (max-width: 639px) {
+  /*hide chart tab on mobile*/
+  .mat-mdc-tab.mdc-tab:nth-child(3) {
+    display: none;
+  }
+}
