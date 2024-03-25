@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col md:gap-48 gap-72"
+  class="flex flex-col md:gap-60 gap-72"
   [ngClass]="{ 'pb-40': selectedTabIndex !== 2 }"
 >
   <div
@@ -44,7 +44,7 @@
         </div>
         }
       </mat-tab>
-      <mat-tab [disabled]="!displayData">
+      <mat-tab [disabled]="!displayData" *ngIf="isMediumScreen$ | async">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.chart</span>
         </ng-template>
@@ -57,6 +57,6 @@
     </mat-tab-group>
   </div>
   @if(selectedTabIndex === 2) {
-  <gn-ui-data-view-share></gn-ui-data-view-share>
+  <gn-ui-data-view-share class="hidden md:block"></gn-ui-data-view-share>
   }
 </div>
