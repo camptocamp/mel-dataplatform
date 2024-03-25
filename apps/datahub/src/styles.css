@@ -81,6 +81,10 @@
     @apply group-hover:bg-primary-dark group-hover:border-white group-hover:text-white transition-colors;
   }
 }
+html,
+body {
+  height: 100%;
+}
 .tippy-box[data-theme~='data-platform'] {
   background-color: rgba(0, 0, 0, 0);
 }

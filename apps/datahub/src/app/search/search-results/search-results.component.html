@@ -1,35 +1,29 @@
 <div class="relative">
-  <gn-ui-content-ghost
-    ghostClass="h-96"
-    class="container"
-    [showContent]="(searchFacade.isLoading$ | async) === false"
+  <div
+    data-cy="searchResults"
+    class="px-2 pb-2.5 text-gray-5 text-xs font-semibold"
+    translate
+    [translateParams]="{ hits: searchFacade.resultsHits$ | async }"
   >
-    <div
-      data-cy="searchResults"
-      class="px-2 pb-2.5 text-gray-5 text-xs font-semibold"
-      translate
-      [translateParams]="{ hits: searchFacade.resultsHits$ | async }"
-    >
-      mel.datahub.search.hits.found
-    </div>
-    <mel-datahub-results-list-grid
-      [numberOfResults]="18"
-    ></mel-datahub-results-list-grid>
-    <div class="flex justify-center mt-8">
-      @if((searchFacade.isLoading$ | async) === false &&
-      (searchFacade.isEndOfResults$ | async) === false){
-      <ng-container>
-        <button class="mel-primary-button" (click)="onShowMore()">
-          <span class="uppercase tracking-widest" translate
-            >mel.datahub.search.showMore</span
-          >
-        </button>
-      </ng-container>
-      } @else if((searchFacade.isLoading$ | async) === true){
-      <ng-container>
-        <gn-ui-spinning-loader></gn-ui-spinning-loader>
-      </ng-container>
-      }
-    </div>
-  </gn-ui-content-ghost>
+    mel.datahub.search.hits.found
+  </div>
+  <mel-datahub-results-list-grid
+    [numberOfResults]="18"
+  ></mel-datahub-results-list-grid>
+  <div class="flex justify-center mt-8">
+    @if((searchFacade.isLoading$ | async) === false &&
+    (searchFacade.isEndOfResults$ | async) === false){
+    <ng-container>
+      <button class="mel-primary-button" (click)="onShowMore()">
+        <span class="uppercase tracking-widest" translate
+          >mel.datahub.search.showMore</span
+        >
+      </button>
+    </ng-container>
+    } @else if((searchFacade.isLoading$ | async) === true){
+    <ng-container>
+      <gn-ui-spinning-loader></gn-ui-spinning-loader>
+    </ng-container>
+    }
+  </div>
 </div>
