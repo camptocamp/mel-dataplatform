@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col md:gap-60 gap-72"
+  class="flex flex-col gap-64 lg:gap-60"
   [ngClass]="{ 'pb-40': selectedTabIndex !== 2 }"
 >
   <div
@@ -57,6 +57,6 @@
     </mat-tab-group>
   </div>
   @if(selectedTabIndex === 2) {
-  <gn-ui-data-view-share class="hidden md:block"></gn-ui-data-view-share>
+  <gn-ui-data-view-share class="hidden sm:block"></gn-ui-data-view-share>
   }
 </div>

@@ -6,7 +6,13 @@ import { DatasetDistribution } from 'geonetwork-ui/libs/common/domain/src/lib/mo
 @Component({
   selector: 'mel-datahub-dataset-visualisation',
   templateUrl: './dataset-visualisation.component.html',
-  styles: ``,
+  styles: `
+  @media only screen and (max-width: 639px) {
+    /*hide chart tab on mobile*/
+      ::ng-deep .mat-mdc-tab.mdc-tab:nth-child(3) {
+      display: none;
+    }
+  }`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatasetVisualisationComponent {
