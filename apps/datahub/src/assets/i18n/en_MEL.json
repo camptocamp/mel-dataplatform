@@ -1,15 +1,11 @@
 {
-  "mel.common.footer.accessibility": "Accessibility : partially conform to 55%",
   "mel.common.footer.contact": "Contact us",
   "mel.common.footer.follow": "Follow us !",
   "mel.common.footer.legal": "Legal mentions",
   "mel.common.footer.logo.financeUE": "Financed by the European Union",
   "mel.common.footer.logo.franceRelance": "France Relance",
   "mel.common.footer.newletter.signup": "Sign up to the newsletter",
-  "mel.common.footer.news": "Last news",
   "mel.common.footer.newsletter.inform": "Subscribe to the newsletter and stay informed of MEL's last news !",
-  "mel.common.footer.plan": "Sitemap",
-  "mel.common.footer.recruitment": "Recruitment",
   "mel.common.footer.social": "Social medias",
   "mel.datahub.home.title": "Métropole Européenne de Lille",
   "mel.datahub.multiselect.filter.placeholder": "",
@@ -70,10 +66,7 @@
   "mel.record.tab.map": "Map",
   "mel.search.autocomplete.error": "",
   "mel.search.field.any.placeholder": "",
-  "mel.searchpage.subtitle.favorites": "",
   "mel.search.filter.generatedByWfs": "",
-  "mel.tooltip.url.copy": "",
-  "record.metadata.api.form.closeForm": "",
-  "record.metadata.api.form.openForm": "",
-  "tooltip.url.copy": ""
+  "mel.searchpage.subtitle.favorites": "",
+  "mel.tooltip.url.copy": ""
 }
