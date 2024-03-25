@@ -33,7 +33,7 @@
   }
 </div>
 @if(displayRelated$ | async) {
-<div class="mel-grid-container-dataset my-12">
+<div class="mel-grid-container-dataset my-12" data-cy="related-records-section">
   <div class="sm:col-start-2 sm:col-span-7">
     <div class="overflow-visible">
       <div class="mel-title-line"></div>
@@ -42,9 +42,7 @@
           mel.record.metadata.related
         </p>
         <p translate="">mel.record.metadata.related.description</p>
-        <div
-          class="mb-4 flex flex-wrap gap-3 justify-center md:justify-start 2xl:justify-between"
-        >
+        <div class="mb-4 flex flex-wrap gap-6 justify-start">
           @for(record of facade.related$ | async; track
           record.uniqueIdentifier){
           <mel-datahub-results-card-last-created
