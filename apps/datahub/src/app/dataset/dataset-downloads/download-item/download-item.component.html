@@ -26,7 +26,7 @@
       href="{{ link.url }}"
       target="_blank"
       rel="noopener"
-      [class]="'mel-primary-button font-medium w-[162px]'"
+      [class]="'mel-primary-button font-medium text-nowrap'"
       data-cy="download-button"
       ><span translate>mel.dataset.download</span>
       <img src="assets/icons/download.svg" alt="download" />
@@ -34,7 +34,7 @@
     <mel-datahub-button
       [label]="'mel.dataset.copy.cliboard' | translate"
       [icon]="'copy'"
-      [buttonClass]="'mel-primary-button flex grow-1 w-[162px] font-medium'"
+      [buttonClass]="'mel-primary-button flex grow-1 text-nowrap font-medium'"
       data-cy="copy-button"
       (click)="handleClickCopy($event)"
     ></mel-datahub-button>
