@@ -8,6 +8,8 @@ import {
   FeatureCatalogModule,
   FeatureRecordModule,
   FeatureSearchModule,
+  FeatureDatavizModule,
+  FeatureMapModule,
   LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
@@ -16,8 +18,11 @@ import {
   TRANSLATE_DEFAULT_CONFIG,
   UiElementsModule,
   UiLayoutModule,
-  UiWidgetsModule,
   UiInputsModule,
+  UiWidgetsModule,
+  UiMapModule,
+  GN_UI_VERSION,
+  WEB_COMPONENT_EMBEDDER_URL,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -71,6 +76,10 @@ import { MelApiCardComponent } from './dataset/dataset-apis/api-card/api-card.co
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MelDownloadsListComponent } from './dataset/dataset-downloads/downloads-list/downloads-list.component'
 import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-item/download-item.component'
+import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/dataset-visualisation.component'
+import { MelMapViewComponent } from './dataset/dataset-visualisation/map-view/map-view.component'
+import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/data-view.component'
+import { environment } from '../environments/environnment'
 
 @NgModule({
   declarations: [
@@ -109,6 +118,9 @@ import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-i
     MelApiCardComponent,
     MelDownloadsListComponent,
     MelDownloadItemComponent,
+    DatasetVisualisationComponent,
+    MelMapViewComponent,
+    MelDataViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -117,15 +129,18 @@ import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-i
     UiElementsModule,
     UiLayoutModule,
     UiInputsModule,
+    UiMapModule,
     FeatureSearchModule,
     FeatureCatalogModule,
     FeatureRecordModule,
+    FeatureMapModule,
     MatAutocompleteModule,
     MatIconModule,
     MatTabsModule,
     OverlayModule,
     FormsModule,
     MatTooltipModule,
+    FeatureDatavizModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
@@ -159,6 +174,11 @@ import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-i
   providers: [
     importProvidersFrom(FeatureAuthModule),
     provideGn4(),
+    { provide: GN_UI_VERSION, useValue: environment.version },
+    {
+      provide: WEB_COMPONENT_EMBEDDER_URL,
+      useFactory: () => '/plateforme/wc-embedder.html',
+    },
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
     {
       provide: LOGIN_URL,

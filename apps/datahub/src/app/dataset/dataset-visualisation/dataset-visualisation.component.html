@@ -1,0 +1,62 @@
+<div
+  class="flex flex-col gap-64 lg:gap-60"
+  [ngClass]="{ 'pb-40': selectedTabIndex !== 2 }"
+>
+  <div
+    class="flex flex-col gap-8 overflow-visible sm:pt-5 mb-16"
+    style="height: 512px"
+  >
+    <div class="flex flex-col">
+      <div class="pb-2 gap-1">
+        <div class="inline-flex bg-primary h-1 w-16"></div>
+        <div class="text-2xl font-title" translate="">mel.record.preview</div>
+      </div>
+      <span class="w-5/6 leading-5" translate>mel.record.preview.subtitle</span>
+    </div>
+    <mat-tab-group
+      (selectedIndexChange)="onTabIndexChange($event)"
+      [selectedIndex]="displayMap ? 0 : 1"
+      animationDuration="200ms"
+      mat-stretch-tabs="false"
+      mat-align-tabs="start"
+      [disableRipple]="true"
+    >
+      <mat-tab [disabled]="!displayMap">
+        <ng-template mat-tab-label>
+          <span translate>mel.record.tab.map</span>
+        </ng-template>
+        <div class="flex flex-row">
+          <div class="w-full border-b border-white 3 z-index-10"></div>
+        </div>
+        @if(displayMap) {
+        <div class="block" style="height: 500px">
+          <mel-datahub-map-view></mel-datahub-map-view>
+        </div>
+        }
+      </mat-tab>
+      <mat-tab [disabled]="!displayData">
+        <ng-template mat-tab-label>
+          <span translate>mel.record.tab.data</span>
+        </ng-template>
+        @if(displayData) {
+        <div class="block">
+          <mel-datahub-data-view mode="table"></mel-datahub-data-view>
+        </div>
+        }
+      </mat-tab>
+      <mat-tab [disabled]="!displayData">
+        <ng-template mat-tab-label>
+          <span translate>mel.record.tab.chart</span>
+        </ng-template>
+        @if(displayData) {
+        <div class="block">
+          <mel-datahub-data-view mode="chart"></mel-datahub-data-view>
+        </div>
+        }
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  @if(selectedTabIndex === 2) {
+  <gn-ui-data-view-share class="hidden sm:block"></gn-ui-data-view-share>
+  }
+</div>

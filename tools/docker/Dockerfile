@@ -3,8 +3,12 @@
 
 FROM nginx:1.24-alpine
 
-COPY dist/apps/datahub/browser /usr/share/nginx/html/plateforme/
+ARG APP_NAME="plateforme"
+
+COPY dist/apps/datahub/browser /usr/share/nginx/html/${APP_NAME}/
 COPY tools/docker/docker-entrypoint.sh /
+
+COPY tools/webcomponent/wc-embedder.html /usr/share/nginx/html/${APP_NAME}
 
 # copy default NGINX conf & put the app name in it
 COPY tools/docker/nginx.conf /etc/nginx/conf.d/default.conf

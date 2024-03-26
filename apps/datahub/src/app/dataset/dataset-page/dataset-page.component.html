@@ -10,63 +10,15 @@
   }
 </div>
 @if ((displayMap$ | async) || (displayData$ | async)) {
-<!-- TODO: try to adapt tab layout to fit MEL -->
-<div class="mel-grid-container-dataset" style="height: 612px">
-  <div
-    class="sm:col-start-2 sm:col-span-8 pt-8 overflow-visible sm:pt-5"
-    style="height: 512px"
-  >
-    <div
-      class="text-[28px] text-title font-title transform sm:translate-y-10"
-      translate
-    >
-      mel.record.metadata.preview
-    </div>
-    <mat-tab-group
-      (selectedIndexChange)="onTabIndexChange($event)"
-      [selectedIndex]="(displayMap$ | async) ? 0 : 1"
-      animationDuration="200ms"
-      mat-stretch-tabs="false"
-      mat-align-tabs="start"
-    >
-      <mat-tab [disabled]="(displayMap$ | async) === false">
-        <ng-template mat-tab-label>
-          <span class="tab-header-label sm:ml-32" translate
-            >mel.record.tab.map</span
-          >
-        </ng-template>
-        @if(displayMap$ | async) {
-        <div class="block" style="height: 500px">
-          <gn-ui-map-view></gn-ui-map-view>
-        </div>
-        }
-      </mat-tab>
-      <mat-tab [disabled]="(displayData$ | async) === false">
-        <ng-template mat-tab-label>
-          <span class="tab-header-label" translate>mel.record.tab.data</span>
-        </ng-template>
-        @if(displayData$ | async) {
-        <div class="block">
-          <gn-ui-data-view mode="table"></gn-ui-data-view>
-        </div>
-        }
-      </mat-tab>
-      <mat-tab [disabled]="(displayData$ | async) === false">
-        <ng-template mat-tab-label>
-          <span class="tab-header-label" translate>mel.record.tab.chart</span>
-        </ng-template>
-        @if(displayData$ | async) {
-        <div class="block">
-          <gn-ui-data-view mode="chart"></gn-ui-data-view>
-        </div>
-        }
-      </mat-tab>
-    </mat-tab-group>
+<div id="visualisation" class="mel-grid-container-dataset">
+  <div class="sm:col-start-2 sm:col-span-8">
+    <mel-datahub-dataset-visualisation
+      [displayMap]="displayMap$ | async"
+      [displayData]="displayData$ | async"
+    ></mel-datahub-dataset-visualisation>
   </div>
 </div>
-} @if((selectedTabIndex$ | async) === 2) {
-<!-- TODO: create corresponding UI component or provide GN_UI_VERSION-->
-<gn-ui-data-view-share></gn-ui-data-view-share>
+<!-- TODO: try to adapt tab layout to fit MEL -->
 } @if(displayDownload$ | async) {
 <div id="download" class="mel-grid-container-dataset mt-6">
   <div class="sm:col-start-2 sm:col-span-8">

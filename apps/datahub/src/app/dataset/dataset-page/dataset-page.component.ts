@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { ErrorType, MdViewFacade } from 'geonetwork-ui'
-import { BehaviorSubject, combineLatest, map } from 'rxjs'
+import { combineLatest, map } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-dataset-page',
@@ -36,14 +36,6 @@ export class DatasetPageComponent {
     map((records) => records?.length > 0)
   )
   errorTypes = ErrorType
-  selectedTabIndex$ = new BehaviorSubject(0)
 
   constructor(public facade: MdViewFacade, private route: ActivatedRoute) {}
-
-  onTabIndexChange(index: number): void {
-    this.selectedTabIndex$.next(index)
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'))
-    }, 0)
-  }
 }

@@ -1,7 +1,7 @@
 describe('datasets', () => {
   describe('when not logged in', () => {
     beforeEach(() => {
-      cy.visit('/dataset/8698bf0b-fceb-4f0f-989b-111e7c4af0a4')
+      cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
     })
 
     it('should display the favorite button disabled', () => {
@@ -16,7 +16,10 @@ describe('datasets', () => {
 
     it('should display the title', () => {
       cy.get('.mel-page-title').should('be.visible')
-      cy.get('.mel-page-title').should('have.text', ' Alpenkonvention ')
+      cy.get('.mel-page-title').should(
+        'have.text',
+        ' SCoT (Schéma de cohérence territoriale) en région Hauts-de-France '
+      )
     })
 
     it('should display the abstract in collapsed mode applying gradient', () => {
@@ -76,6 +79,45 @@ describe('datasets', () => {
 
     it('should display the footer', () => {
       cy.get('mel-datahub-footer').should('be.visible')
+    })
+  })
+
+  describe('Vizualisation block', () => {
+    beforeEach(() => {
+      cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+    })
+    it('should display the vizualisation block', () => {
+      cy.get('mel-datahub-dataset-visualisation').should('be.visible')
+    })
+
+    it('should display the map preview by default', () => {
+      cy.get('gn-ui-map-context').should('be.visible')
+      cy.get('gn-ui-table-view').should('not.exist')
+      cy.get('gn-ui-chart-view').should('not.exist')
+    })
+
+    it('should switch between tabs and display the table and analysis components', () => {
+      cy.get('mel-datahub-dataset-visualisation')
+        .find('.mat-mdc-tab-labels')
+        .children('div')
+        .eq(1)
+        .click()
+      cy.get('gn-ui-table-view').should('be.visible')
+      cy.get('mel-datahub-dataset-visualisation')
+        .find('.mat-mdc-tab-labels')
+        .children('div')
+        .eq(2)
+        .click()
+      cy.get('gn-ui-chart-view').should('be.visible')
+    })
+
+    it('should display the sharing tool', () => {
+      cy.get('mel-datahub-dataset-visualisation')
+        .find('.mat-mdc-tab-labels')
+        .children('div')
+        .eq(2)
+        .click()
+      cy.get('gn-ui-data-view-share').should('be.visible')
     })
   })
 
