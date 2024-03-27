@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
 import { ErrorType, MdViewFacade, RouterFacade } from 'geonetwork-ui'
 import {
   CatalogRecord,
@@ -43,7 +42,6 @@ export class DatasetPageComponent {
 
   constructor(
     public facade: MdViewFacade,
-    private route: ActivatedRoute,
     protected routerFacade: RouterFacade
   ) {}
 
