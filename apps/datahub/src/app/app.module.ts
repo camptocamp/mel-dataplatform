@@ -177,7 +177,7 @@ import { environment } from '../environments/environnment'
     { provide: GN_UI_VERSION, useValue: environment.version },
     {
       provide: WEB_COMPONENT_EMBEDDER_URL,
-      useFactory: () => '/plateforme/wc-embedder.html',
+      useFactory: () => '/catalogue/wc-embedder.html',
     },
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
     {

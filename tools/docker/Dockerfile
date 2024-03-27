@@ -3,7 +3,7 @@
 
 FROM nginx:1.24-alpine
 
-ARG APP_NAME="plateforme"
+ARG APP_NAME="catalogue"
 
 COPY dist/apps/datahub/browser /usr/share/nginx/html/${APP_NAME}/
 COPY tools/docker/docker-entrypoint.sh /
