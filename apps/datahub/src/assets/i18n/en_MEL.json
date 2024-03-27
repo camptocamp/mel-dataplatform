@@ -60,6 +60,7 @@
   "mel.record.metadata.quality": "Metadata quality",
   "mel.record.metadata.quality.details": "Details",
   "mel.record.metadata.related": "Similar records",
+  "mel.record.metadata.related.description": "",
   "mel.record.preview": "Vizualisation",
   "mel.record.preview.load": "Data loading",
   "mel.record.preview.select": "Data selection",

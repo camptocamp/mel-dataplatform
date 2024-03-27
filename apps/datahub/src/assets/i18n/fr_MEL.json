@@ -60,6 +60,7 @@
   "mel.record.metadata.quality": "Qualité des métadonnées",
   "mel.record.metadata.quality.details": "Détails",
   "mel.record.metadata.related": "Jeux de données similaires",
+  "mel.record.metadata.related.description": "Retrouvez ici les jeux de données ou informations similaires à votre recherche.",
   "mel.record.preview": "Visualisation",
   "mel.record.preview.load": "Chargement des données",
   "mel.record.preview.select": "Source des données",

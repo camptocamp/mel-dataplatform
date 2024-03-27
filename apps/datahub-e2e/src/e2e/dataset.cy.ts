@@ -262,6 +262,16 @@ describe('datasets', () => {
     })
   })
 
+  describe('Related datasets section', () => {
+    it('should display the related datasets section', () => {
+      cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      cy.get('[data-cy="related-records-section"]').should('be.visible')
+      cy.get('[data-cy="related-records-section"]')
+        .find('mel-datahub-results-card-last-created')
+        .should('have.length.gt', 0)
+    })
+  })
+
   describe('Navigation', () => {
     describe('With a query on', () => {
       beforeEach(() => cy.visit('/search?publisher=Barbie%20Inc.'))
