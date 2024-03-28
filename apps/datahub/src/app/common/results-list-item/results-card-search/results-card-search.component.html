@@ -27,8 +27,8 @@
     </div>
   </div>
   <div class="flex flex-col justify-between grow">
-    <div class="line-clamp-3 text-[15px] text-gray-2">
-      {{ record.abstract }}
+    <div data-cy="abstract" class="line-clamp-3 text-[15px] text-gray-2">
+      {{ record.abstract | stripHtml }}
     </div>
     <div class="flex justify-between gap-1 font-semibold">
       <div class="flex flex-col text-gray-1 gap-[3px] w-9/12">

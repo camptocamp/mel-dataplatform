@@ -80,6 +80,7 @@ import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/d
 import { MelMapViewComponent } from './dataset/dataset-visualisation/map-view/map-view.component'
 import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/data-view.component'
 import { environment } from '../environments/environnment'
+import { StripHtmlPipe } from './common/strip-html.pipe'
 
 @NgModule({
   declarations: [
@@ -121,6 +122,7 @@ import { environment } from '../environments/environnment'
     DatasetVisualisationComponent,
     MelMapViewComponent,
     MelDataViewComponent,
+    StripHtmlPipe,
   ],
   imports: [
     BrowserModule,

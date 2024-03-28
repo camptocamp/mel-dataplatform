@@ -29,6 +29,12 @@ describe('search', () => {
         .find('.mel-badge-button-primary')
         .should('not.contain', 'HAUTS-DE-FRANCE')
     })
+    it('should not dislay html in abstract', () => {
+      cy.get('mel-datahub-results-card-search')
+        .eq(5)
+        .find('[data-cy="abstract"]')
+        .should('not.contain', '<p>')
+    })
   })
 
   describe('search header carousel', () => {
