@@ -14,7 +14,7 @@
   "mel.datahub.search.filters.publicationYear": "Date",
   "mel.datahub.search.filters.publisher": "Producteur",
   "mel.datahub.search.filters.topic": "Thématique",
-  "mel.datahub.search.form.description": "Vous pouvez utiliser la barre de recherche où les différents filtres situés ci-dessous pour trouver un jeu de données plus rapidement.",
+  "mel.datahub.search.form.description": "Vous pouvez utiliser la barre de recherche ou les différents filtres situés ci-dessous pour trouver un jeu de données plus rapidement.",
   "mel.datahub.search.form.title": "Trouver un jeu de données",
   "mel.datahub.search.hits.found": "{hits, plural, =0{Aucune correspondance.} one{1 enregistrement trouvé.} other{Ensemble des données: {hits}}}",
   "mel.datahub.search.showMore": "Plus de résultats...",
