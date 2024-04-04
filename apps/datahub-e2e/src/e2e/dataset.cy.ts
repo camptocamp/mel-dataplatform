@@ -141,7 +141,7 @@ describe('datasets', () => {
         .find('div')
         .first()
         .find('span')
-        .should('have.text', 'Mise à jour le')
+        .should('have.text', 'Donnée mise à jour le')
     })
 
     it('should display the categories btns', () => {
