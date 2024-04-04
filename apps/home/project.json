@@ -64,7 +64,8 @@
           "buildTarget": "home:build:production"
         },
         "development": {
-          "buildTarget": "home:build:development"
+          "buildTarget": "home:build:development",
+          "proxyConfig": "proxy-config.js"
         }
       },
       "defaultConfiguration": "development"
