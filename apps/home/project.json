@@ -1,0 +1,107 @@
+{
+  "name": "home",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "mel-datahub",
+  "sourceRoot": "apps/home/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/home",
+        "index": "apps/home/src/index.html",
+        "main": "apps/home/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/home/tsconfig.app.json",
+        "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
+        "styles": ["apps/home/src/styles.css"],
+        "scripts": [],
+        "preserveSymlinks": true,
+        "allowedCommonJsDependencies": [
+          "duration-relativetimeformat",
+          "papaparse",
+          "xlsx",
+          "chroma-js",
+          "@rgrove/parse-xml",
+          "@messageformat/core",
+          "rbush",
+          "@camptocamp/ogc-client",
+          "pbf",
+          "alasql",
+          "moment"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2Mb",
+              "maximumError": "4mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "home:build:production"
+        },
+        "development": {
+          "buildTarget": "home:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "home:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/home/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "home:build",
+        "staticFilePath": "dist/apps/home/browser"
+      }
+    },
+    "docker-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx build home --base-href='/acceuil/'",
+          "docker build -f ./tools/docker/Dockerfile . -t ghcr.io/camptocamp/mel-dataplatform/home:latest"
+        ],
+        "parallel": false
+      }
+    }
+  }
+}
