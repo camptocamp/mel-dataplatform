@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "../../libs/mel/src/lib/strip-html.pipe.ts"],
   "compilerOptions": {
     "types": ["jest", "node"]
   }
