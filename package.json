@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve mel-datahub",
-    "home": "nx serve home",
+    "home": "nx serve home --port 4201",
     "format": "nx format:write",
     "format:check": "nx format:check",
     "lint:all": "nx run-many --target=lint",

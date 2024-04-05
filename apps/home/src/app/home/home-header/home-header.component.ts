@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { RouterFacade, SearchService } from 'geonetwork-ui'
+import { SearchService } from 'geonetwork-ui'
+import {
+  DATAHUB_ROOT,
+  DATAHUB_ROUTE_SEARCH,
+  goFromHomeToRecord,
+  goFromHomeToSearch,
+} from '@mel-dataplatform/mel'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
 
@@ -17,14 +23,18 @@ import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/sear
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeHeaderComponent {
-  constructor(
-    public routerFacade: RouterFacade,
-    private searchService: SearchService
-  ) {}
+  HREF_ROUTE_SEARCH = `${DATAHUB_ROOT}/${DATAHUB_ROUTE_SEARCH}`
+
+  constructor(private searchService: SearchService) {}
 
   onFuzzySearchSelection(record: CatalogRecord) {
-    this.routerFacade.goToMetadata(record)
+    goFromHomeToRecord(record)
   }
+
+  onFuzzySearchSubmit(query: string) {
+    goFromHomeToSearch(query)
+  }
+
   clearSearchAndSort(sort: SortByField | string): void {
     this.searchService.setSortAndFilters({}, sort as SortByField)
   }

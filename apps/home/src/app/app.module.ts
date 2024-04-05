@@ -1,9 +1,7 @@
 import { importProvidersFrom, isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule } from '@angular/router'
 import { AppComponent } from './app.component'
 import {
-  DefaultRouterModule,
   FeatureAuthModule,
   FeatureCatalogModule,
   FeatureRecordModule,
@@ -20,7 +18,6 @@ import {
   UiInputsModule,
   UiWidgetsModule,
   UiMapModule,
-  RouterService,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -41,7 +38,6 @@ import { MatTooltipModule } from '@angular/material/tooltip'
 import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { HomePageComponent } from './home/home-page/home-page.component'
-import { AppRouterService } from './app.router.service'
 
 @NgModule({
   declarations: [AppComponent, HomeHeaderComponent, HomePageComponent],
@@ -85,21 +81,11 @@ import { AppRouterService } from './app.router.service'
     ),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
-    DefaultRouterModule.forRoot({
-      searchStateId: 'mainSearch',
-      searchRouteComponent: HomePageComponent,
-      recordRouteComponent: HomePageComponent,
-    }),
-    RouterModule.forRoot([], {
-      initialNavigation: 'enabledBlocking',
-      scrollPositionRestoration: 'enabled',
-    }),
   ],
   providers: [
     importProvidersFrom(FeatureAuthModule),
     provideGn4(),
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
-    { provide: RouterService, useClass: AppRouterService },
     {
       provide: LOGIN_URL,
       useFactory: () => '${current_url}?login',
