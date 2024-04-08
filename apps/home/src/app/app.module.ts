@@ -4,20 +4,12 @@ import { AppComponent } from './app.component'
 import {
   FeatureAuthModule,
   FeatureCatalogModule,
-  FeatureRecordModule,
   FeatureSearchModule,
-  FeatureDatavizModule,
-  FeatureMapModule,
   LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
-  UiElementsModule,
-  UiLayoutModule,
-  UiInputsModule,
-  UiWidgetsModule,
-  UiMapModule,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -28,13 +20,6 @@ import { StoreModule } from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatIconModule } from '@angular/material/icon'
-import { MatTabsModule } from '@angular/material/tabs'
-import { ReactiveFormsModule } from '@angular/forms'
-import { MatAutocompleteModule } from '@angular/material/autocomplete'
-import { OverlayModule } from '@angular/cdk/overlay'
-import { FormsModule } from '@angular/forms'
-import { MatTooltipModule } from '@angular/material/tooltip'
 import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { HomePageComponent } from './home/home-page/home-page.component'
@@ -45,22 +30,8 @@ import { HomePageComponent } from './home/home-page/home-page.component'
     MelModule,
     BrowserModule,
     BrowserAnimationsModule,
-    UiWidgetsModule,
-    UiElementsModule,
-    UiLayoutModule,
-    UiInputsModule,
-    UiMapModule,
     FeatureSearchModule,
     FeatureCatalogModule,
-    FeatureRecordModule,
-    FeatureMapModule,
-    MatAutocompleteModule,
-    MatIconModule,
-    MatTabsModule,
-    OverlayModule,
-    FormsModule,
-    MatTooltipModule,
-    FeatureDatavizModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
@@ -68,7 +39,6 @@ import { HomePageComponent } from './home/home-page/home-page.component'
         useClass: MelEmbeddedTranslateLoader,
       },
     }),
-    ReactiveFormsModule,
     StoreModule.forRoot(
       {},
       {
