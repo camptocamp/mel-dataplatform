@@ -23,7 +23,7 @@
             "output": "./assets"
           }
         ],
-        "styles": ["apps/datahub/src/styles.css"],
+        "styles": ["resources/styles.css"],
         "scripts": [],
         "preserveSymlinks": true,
         "allowedCommonJsDependencies": [
