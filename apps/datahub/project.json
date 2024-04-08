@@ -15,7 +15,14 @@
         "browser": "apps/datahub/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/datahub/tsconfig.app.json",
-        "assets": ["apps/datahub/src/favicon.ico", "apps/datahub/src/assets"],
+        "assets": [
+          "apps/datahub/src/favicon.ico",
+          {
+            "glob": "**/*",
+            "input": "resources/assets",
+            "output": "./assets"
+          }
+        ],
         "styles": ["apps/datahub/src/styles.css"],
         "scripts": [],
         "preserveSymlinks": true,

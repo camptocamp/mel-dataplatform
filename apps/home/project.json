@@ -15,7 +15,14 @@
         "browser": "apps/home/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/home/tsconfig.app.json",
-        "assets": ["apps/home/src/favicon.ico", "apps/home/src/assets"],
+        "assets": [
+          "apps/home/src/favicon.ico",
+          {
+            "glob": "**/*",
+            "input": "resources/assets",
+            "output": "./assets"
+          }
+        ],
         "styles": ["apps/home/src/styles.css"],
         "scripts": [],
         "preserveSymlinks": true,
