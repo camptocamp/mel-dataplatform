@@ -16,50 +16,25 @@ import { MelDatahubFooterComponent } from './footer/mel-datahub-footer.component
 import { CustomCarouselComponent } from './custom-carousel/custom-carousel.component'
 import { MelFuzzySearchComponent } from './fuzzy-search/fuzzy-search.component'
 import { MelAutocompleteComponent } from './autocomplete/autocomplete.component'
-import { BrowserModule } from '@angular/platform-browser'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import {
-  FeatureCatalogModule,
-  FeatureDatavizModule,
-  FeatureMapModule,
-  FeatureRecordModule,
-  FeatureSearchModule,
   UiElementsModule,
-  UiInputsModule,
   UiLayoutModule,
-  UiMapModule,
   UiWidgetsModule,
 } from 'geonetwork-ui'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatIconModule } from '@angular/material/icon'
-import { MatTabsModule } from '@angular/material/tabs'
-import { OverlayModule } from '@angular/cdk/overlay'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { MatTooltipModule } from '@angular/material/tooltip'
+import { ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { StripHtmlPipe } from './strip-html.pipe'
 
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     UiWidgetsModule,
     UiElementsModule,
     UiLayoutModule,
-    UiInputsModule,
-    UiMapModule,
-    FeatureSearchModule,
-    FeatureCatalogModule,
-    FeatureRecordModule,
-    FeatureMapModule,
     MatAutocompleteModule,
     MatIconModule,
-    MatTabsModule,
-    OverlayModule,
-    FormsModule,
-    MatTooltipModule,
-    FeatureDatavizModule,
     TranslateModule,
     ReactiveFormsModule,
   ],
