@@ -9,10 +9,9 @@ describe('home', () => {
       cy.get('mel-datahub-fuzzy-search').should('be.visible')
       cy.get('mel-datahub-autocomplete').should('have.length.gt', 0)
     })
-    it('should navigate to search and display results when executing a search', () => {
+    it('should create correct url to navigate to search', () => {
       cy.get('mel-datahub-fuzzy-search').type('test{enter}')
-      cy.url().should('include', 'search')
-      cy.get('mel-datahub-results-card-search').should('have.length.gt', 0)
+      cy.url().should('include', 'catalogue/search?q=test')
     })
   })
 
@@ -53,10 +52,16 @@ describe('home', () => {
           .first()
           .as('firstResult')
       })
-      it('should open the dataset page in the same application on click', () => {
+      it('should create correct url to open the dataset page in the same application on click', () => {
         cy.get('@firstResult').click()
-        cy.url().should('include', 'dataset')
-        cy.get('mel-datahub-dataset-page').should('be.visible')
+        cy.url().should(
+          'include',
+          'catalogue/dataset/9e1ea778-d0ce-4b49-90b7-37bc0e448300'
+        )
+      })
+      it('should create correct url to navigate to search on keyword click', () => {
+        cy.get('@firstResult').find('.mel-badge-button-primary').first().click()
+        cy.url().should('include', 'catalogue/search?q=administration')
       })
     })
   })
