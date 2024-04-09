@@ -48,8 +48,11 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-      - name: Run docker-build
+      - name: Run docker-build for datahub
         run: npx nx docker-build mel-datahub
+
+      - name: Run docker-build for home
+        run: npx nx docker-build home
 
       - uses: docker/login-action@v1
         name: Login to GitHub Container Registry
@@ -58,10 +61,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 'Pushing the image onto ghcr.io'
+      - name: 'Pushing the images onto ghcr.io'
         if: github.ref == 'refs/heads/main'
         run: |
           docker push ghcr.io/camptocamp/mel-dataplatform/datahub:latest
+          docker push ghcr.io/camptocamp/mel-dataplatform/home:latest
 
   cypress-run:
     name: End-to-end tests
@@ -86,8 +90,11 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-      - name: Run tests
+      - name: Run tests for datahub
         run: npx nx e2e mel-datahub-e2e
+
+      - name: Run tests for home
+        run: npx nx e2e home-e2e
 
   agents:
     name: Nx Cloud - Agents

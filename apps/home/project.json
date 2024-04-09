@@ -105,7 +105,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "nx build home --base-href='/acceuil/'",
+          "nx build home --base-href='/accueil/'",
           "docker build -f ./tools/docker/Dockerfile . -t ghcr.io/camptocamp/mel-dataplatform/home:latest"
         ],
         "parallel": false
