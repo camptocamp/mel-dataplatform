@@ -1,22 +1,22 @@
 {
-  "name": "mel-datahub",
+  "name": "home",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "mel-datahub",
-  "sourceRoot": "apps/datahub/src",
+  "sourceRoot": "apps/home/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/datahub",
-        "index": "apps/datahub/src/index.html",
-        "browser": "apps/datahub/src/main.ts",
+        "outputPath": "dist/apps/home",
+        "index": "apps/home/src/index.html",
+        "browser": "apps/home/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/datahub/tsconfig.app.json",
+        "tsConfig": "apps/home/tsconfig.app.json",
         "assets": [
-          "apps/datahub/src/favicon.ico",
+          "apps/home/src/favicon.ico",
           {
             "glob": "**/*",
             "input": "resources/assets",
@@ -68,10 +68,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "mel-datahub:build:production"
+          "buildTarget": "home:build:production"
         },
         "development": {
-          "buildTarget": "mel-datahub:build:development",
+          "buildTarget": "home:build:development",
           "proxyConfig": "proxy-config.js"
         }
       },
@@ -80,7 +80,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "mel-datahub:build"
+        "buildTarget": "home:build"
       }
     },
     "lint": {
@@ -91,22 +91,22 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/datahub/jest.config.ts"
+        "jestConfig": "apps/home/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "mel-datahub:build",
-        "staticFilePath": "dist/apps/datahub/browser"
+        "buildTarget": "home:build",
+        "staticFilePath": "dist/apps/home/browser"
       }
     },
     "docker-build": {
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "nx build mel-datahub --base-href='/catalogue/'",
-          "docker build --build-arg APP_NAME=catalogue -f ./tools/docker/Dockerfile . -t ghcr.io/camptocamp/mel-dataplatform/catalogue:latest"
+          "nx build home --base-href='/accueil/'",
+          "docker build --build-arg APP_NAME=accueil -f ./tools/docker/Dockerfile . -t ghcr.io/camptocamp/mel-dataplatform/accueil:latest"
         ],
         "parallel": false
       }

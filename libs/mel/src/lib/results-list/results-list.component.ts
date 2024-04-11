@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core'
+import { Component, Input, OnDestroy, OnInit, Optional } from '@angular/core'
 import { Store } from '@ngrx/store'
 import {
   FIELDS_BRIEF,
@@ -13,6 +13,7 @@ import {
   Keyword,
 } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { Subscription } from 'rxjs'
+import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
 
 @Component({
   selector: 'mel-datahub-results-list',
@@ -30,7 +31,7 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   constructor(
     protected searchService: SearchService,
     protected searchFacade: SearchFacade,
-    protected routerFacade: RouterFacade,
+    @Optional() protected routerFacade: RouterFacade,
     protected favoritesService: FavoritesService,
     protected store: Store<SearchState>
   ) {}
@@ -57,10 +58,14 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   }
 
   onInfoKeywordClick(keyword: Keyword) {
-    this.routerFacade.updateSearch({ q: keyword.label })
+    this.routerFacade
+      ? this.routerFacade.updateSearch({ q: keyword.label })
+      : goFromHomeToSearch(keyword.label)
   }
 
   onMetadataSelection(metadata: CatalogRecord): void {
-    this.routerFacade.goToMetadata(metadata)
+    this.routerFacade
+      ? this.routerFacade.goToMetadata(metadata)
+      : goFromHomeToRecord(metadata)
   }
 }

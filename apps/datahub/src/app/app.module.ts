@@ -13,7 +13,6 @@ import {
   LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
-  RouterService,
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
   UiElementsModule,
@@ -37,32 +36,12 @@ import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.compon
 import { SearchHeaderComponent } from './search/search-header/search-header.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SearchResultsComponent } from './search/search-results/search-results.component'
-import { HomePageComponent } from './home/home-page/home-page.component'
-import { AppRouterService } from './app.router.service'
-import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { MatIconModule } from '@angular/material/icon'
-import { MelEmbeddedTranslateLoader } from './common/embedded.translate.loader'
-import { ResultsListComponent } from './common/results-list/results-list.component'
-import { ResultsListItemComponent } from './common/results-list-item/results-list-item.component'
-import { ResultsListCarouselComponent } from './common/results-list/results-list-carousel/results-list-carousel.component'
-import { ResultsListGridComponent } from './common/results-list/results-list-grid/results-list-grid.component'
-import { ResultsCardFavoriteComponent } from './common/results-list-item/results-card-favorite/results-card-favorite.component'
-import { ResultsCardLastCreatedComponent } from './common/results-list-item/results-card-last-created/results-card-last-created.component'
-import { ResultsCardSearchComponent } from './common/results-list-item/results-card-search/results-card-search.component'
 import { MatTabsModule } from '@angular/material/tabs'
 import { DatasetApisComponent } from './dataset/dataset-apis/dataset-apis.component'
-import { MelDatahubMetadataQualityComponent } from './common/metadata-quality/mel-datahub-metadata-quality.component'
 import { DatasetHeaderComponent } from './dataset/dataset-header/dataset-header.component'
-import { ButtonComponent } from './common/button/button.component'
 import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-downloads.component'
-import { FavoriteHeartComponent } from './common/favorites/favorite-heart/favorite-heart.component'
-import { HeartToggleComponent } from './common/favorites/heart-toggle/heart-toggle.component'
-import { TextExpandComponent } from './common/text-expand/text-expand.component'
-import { MelDatahubFooterComponent } from './common/footer/mel-datahub-footer.component'
-import { CustomCarouselComponent } from './common/custom-carousel/custom-carousel.component'
 import { DatasetInformationComponent } from './dataset/dataset-information/dataset-information.component'
-import { MelFuzzySearchComponent } from './common/fuzzy-search/fuzzy-search.component'
-import { MelAutocompleteComponent } from './common/autocomplete/autocomplete.component'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { SearchFormComponent } from './search/search-form/search-form.component'
@@ -80,7 +59,7 @@ import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/d
 import { MelMapViewComponent } from './dataset/dataset-visualisation/map-view/map-view.component'
 import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/data-view.component'
 import { environment } from '../environments/environnment'
-import { StripHtmlPipe } from './common/strip-html.pipe'
+import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
 
 @NgModule({
   declarations: [
@@ -88,29 +67,11 @@ import { StripHtmlPipe } from './common/strip-html.pipe'
     SearchPageComponent,
     SearchHeaderComponent,
     SearchResultsComponent,
-    HomePageComponent,
-    HomeHeaderComponent,
-    ResultsListComponent,
-    ResultsListCarouselComponent,
-    ResultsListGridComponent,
-    ResultsListItemComponent,
-    ResultsCardFavoriteComponent,
-    ResultsCardLastCreatedComponent,
-    ResultsCardSearchComponent,
     DatasetPageComponent,
     DatasetApisComponent,
-    MelDatahubMetadataQualityComponent,
     DatasetHeaderComponent,
-    ButtonComponent,
     DatasetDownloadsComponent,
-    FavoriteHeartComponent,
-    HeartToggleComponent,
-    TextExpandComponent,
-    MelDatahubFooterComponent,
-    CustomCarouselComponent,
     DatasetInformationComponent,
-    MelFuzzySearchComponent,
-    MelAutocompleteComponent,
     SearchFormComponent,
     SearchFiltersComponent,
     MelFilterDropdownComponent,
@@ -122,9 +83,9 @@ import { StripHtmlPipe } from './common/strip-html.pipe'
     DatasetVisualisationComponent,
     MelMapViewComponent,
     MelDataViewComponent,
-    StripHtmlPipe,
   ],
   imports: [
+    MelModule,
     BrowserModule,
     BrowserAnimationsModule,
     UiWidgetsModule,
@@ -186,7 +147,6 @@ import { StripHtmlPipe } from './common/strip-html.pipe'
       provide: LOGIN_URL,
       useFactory: () => '${current_url}?login',
     },
-    { provide: RouterService, useClass: AppRouterService },
   ],
   bootstrap: [AppComponent],
 })
