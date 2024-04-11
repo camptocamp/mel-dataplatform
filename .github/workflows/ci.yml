@@ -64,8 +64,8 @@ jobs:
       - name: 'Pushing the images onto ghcr.io'
         if: github.ref == 'refs/heads/main'
         run: |
-          docker push ghcr.io/camptocamp/mel-dataplatform/datahub:latest
-          docker push ghcr.io/camptocamp/mel-dataplatform/home:latest
+          docker push ghcr.io/camptocamp/mel-dataplatform/catalogue:latest
+          docker push ghcr.io/camptocamp/mel-dataplatform/accueil:latest
 
   cypress-run:
     name: End-to-end tests
