@@ -11,7 +11,8 @@ COPY tools/docker/docker-entrypoint.sh /
 COPY tools/webcomponent/wc-embedder.html /usr/share/nginx/html/${APP_NAME}
 
 # copy default NGINX conf & put the app name in it
-COPY tools/docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY tools/docker/nginx.apps.conf /etc/nginx/conf.d/default.conf
+RUN sed -i "s/APP_NAME/${APP_NAME}/" /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
