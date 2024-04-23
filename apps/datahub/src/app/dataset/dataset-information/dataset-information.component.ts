@@ -15,7 +15,7 @@ export class DatasetInformationComponent {
   constructor(public translateService: TranslateService) {}
 
   get lastUpdate() {
-    return this.record?.recordUpdated?.toLocaleDateString(
+    return this.record?.resourceUpdated?.toLocaleDateString(
       this.translateService.currentLang
     )
   }
