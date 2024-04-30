@@ -35,7 +35,7 @@
     "@ngrx/router-store": "~17.0.0",
     "@ngrx/store": "~17.0.0",
     "@ngx-translate/core": "^15.0.0",
-    "@nx/angular": "17.2.8",
+    "@nx/angular": "17.3.2",
     "@vendure/ngx-translate-extract": "^9.0.3",
     "geonetwork-ui": "^2.3.0-dev.139106e0",
     "rxjs": "~7.8.0",
