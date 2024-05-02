@@ -12,16 +12,15 @@
       class="flex flex-wrap justify-start sm:justify-end sm:pb-4"
       data-cy="download-format-filters"
     >
-      @for(format of visibleFormats; track $index){<gn-ui-button
-        class="m-1 format-filter"
-        [extraClass]="
-          '!px-[12px] !py-[8px] !text-[15px]' +
-          (isFilterActive(format) ? ' opacity-100' : ' opacity-50')
+      @for(format of visibleFormats; track $index){<button
+        [class]="
+          'mel-badge-button-gray m-1' +
+          (isFilterActive(format) ? ' bg-gray-4 text-white' : ' text-gray-4')
         "
-        (buttonClick)="toggleFilterFormat(format)"
+        (click)="toggleFilterFormat(format)"
         [attr.data-format]="format"
       >
-        {{ getFilterFormatTitle(format) }} </gn-ui-button
+        {{ getFilterFormatTitle(format) }}</button
       >}
     </div>
   </div>

@@ -32,6 +32,9 @@
   .mel-badge-secondary {
     @apply mel-badge text-secondary border border-secondary;
   }
+  .mel-badge-gray {
+    @apply mel-badge text-gray-4 border border-gray-4;
+  }
   .mel-badge-button {
     @apply cursor-pointer hover:text-gray-8;
   }
@@ -40,6 +43,9 @@
   }
   .mel-badge-button-secondary {
     @apply mel-badge-button mel-badge-secondary hover:border-secondary-dark hover:bg-secondary-dark;
+  }
+  .mel-badge-button-gray {
+    @apply mel-badge-button mel-badge-gray hover:border-gray-2 hover:bg-gray-2;
   }
   .mel-container-lg {
     @apply max-w-[1320px] mx-auto px-4;
