@@ -93,7 +93,7 @@ describe('home', () => {
         .first()
         .children('div')
         .eq(1)
-        .children('img')
+        .children('a')
         .should('have.length', 2)
     })
     it('should have a button to the newsletter subscription', () => {
