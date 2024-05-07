@@ -85,7 +85,7 @@ describe('home', () => {
       cy.get('@url').should('include', 'twitter')
       cy.get('@url').should('include', 'MetropoleLille')
     })
-    it('should display the partners icons', () => {
+    it('should display the partners icons as links', () => {
       cy.get('@footer')
         .children('footer')
         .first()
@@ -93,8 +93,16 @@ describe('home', () => {
         .first()
         .children('div')
         .eq(1)
-        .children('img')
+        .children('a')
         .should('have.length', 2)
+        .each((el, index) => {
+          const urls = [
+            'https://next-generation-eu.europa.eu/index_fr',
+            'https://www.economie.gouv.fr/plan-de-relance',
+          ]
+          cy.wrap(el).should('have.attr', 'href', urls[index])
+          cy.wrap(el).should('have.attr', 'target', '_blank')
+        })
     })
     it('should have a button to the newsletter subscription', () => {
       cy.get('@footer')
