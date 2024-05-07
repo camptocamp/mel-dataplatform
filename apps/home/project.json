@@ -21,11 +21,6 @@
             "glob": "**/*",
             "input": "resources/assets",
             "output": "./assets"
-          },
-          {
-            "glob": "**/*",
-            "input": "assets-common",
-            "output": "assets/"
           }
         ],
         "styles": ["resources/styles.css"],
