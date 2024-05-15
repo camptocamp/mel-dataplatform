@@ -74,7 +74,7 @@ export class AppModule {
       '#212029',
       'white',
       'Lato',
-      'Montserrat'
+      'Lato'
     )
   }
 }

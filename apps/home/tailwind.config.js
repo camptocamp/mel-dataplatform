@@ -29,9 +29,6 @@ module.exports = {
         'gray-7': '#EEEEEE',
         'gray-8': '#FFFFFF',
       },
-      fontFamily: {
-        title: ['Lato'],
-      },
     },
   },
   plugins: [],
