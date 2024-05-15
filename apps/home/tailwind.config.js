@@ -30,7 +30,7 @@ module.exports = {
         'gray-8': '#FFFFFF',
       },
       fontFamily: {
-        title: ['Montserrat'],
+        title: ['Lato'],
       },
     },
   },
