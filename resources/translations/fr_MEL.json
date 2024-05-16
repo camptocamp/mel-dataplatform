@@ -64,7 +64,7 @@
   "mel.record.preview": "Visualisation",
   "mel.record.preview.load": "Chargement des données",
   "mel.record.preview.select": "Source des données",
-  "mel.record.preview.subtitle": "Vous pouvez choisir différentes visualisation afin d'apprécier le jeu données. “Cartographie” vous présente les données sous forme de Pin Map, “Tableau” vous permet de consulter les données sous forme brute et “Analyse” vous donne la possibilité de jongler entre différentes Dataviz.",
+  "mel.record.preview.subtitle": "Visualisez la donnée sous forme de carte, de tableau ou de graphique simple que vous pouvez configurer à partir du contenu du jeu de données.",
   "mel.record.tab.chart": "Analyse",
   "mel.record.tab.data": "Tableau",
   "mel.record.tab.map": "Cartographie",
