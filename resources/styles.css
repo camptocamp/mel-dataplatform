@@ -6,7 +6,7 @@
 
 @layer components {
   .mel-page-title {
-    @apply text-black text-5xl font-extrabold font-title;
+    @apply text-black text-5xl font-extrabold;
   }
   .mel-title-line {
     @apply inline-flex bg-primary h-1 w-16;
@@ -21,7 +21,7 @@
     @apply mel-badge text-secondary border border-secondary;
   }
   .mel-section-title {
-    @apply font-title text-[28px] font-medium text-title text-center sm:text-left;
+    @apply text-[28px] font-bold text-title text-center sm:text-left;
   }
   .mel-badge {
     @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-sm leading-none transition-colors;

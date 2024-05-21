@@ -160,8 +160,7 @@ export class AppModule {
       '#007A80',
       '#212029',
       'white',
-      'Lato',
-      'Montserrat'
+      'Lato'
     )
   }
 }

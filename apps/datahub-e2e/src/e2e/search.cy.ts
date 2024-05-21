@@ -42,7 +42,7 @@ describe('search', () => {
 
     it('shold display the correct subtitle', () => {
       cy.get('mel-datahub-search-header')
-        .find('.font-title')
+        .find('.mel-section-title')
         .first()
         .should('have.text', ' Derniers jeux de données publiés ')
     })
@@ -99,7 +99,7 @@ describe('search', () => {
 
       it('should display the correct subtitle', () => {
         cy.get('mel-datahub-search-header')
-          .find('.font-title')
+          .find('.mel-section-title')
           .first()
           .should('have.text', ' Jeux de données suivis ')
       })
