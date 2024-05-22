@@ -23,4 +23,12 @@ export class DatasetInformationComponent {
   get territories() {
     return this.record?.keywords?.filter((keyword) => keyword.type === 'place')
   }
+
+  get displayCategories() {
+    const categoryKeywords = this.record?.keywords?.filter(
+      (keyword) => keyword.thesaurus?.name === 'Catégories'
+    )
+
+    return categoryKeywords?.map((keyword) => keyword.label)
+  }
 }

@@ -29,6 +29,12 @@ describe('search', () => {
         .find('.mel-badge-button-primary')
         .should('not.contain', 'HAUTS-DE-FRANCE')
     })
+    it('should not dislay any place keywords (which are already displayed as categories)', () => {
+      cy.get('mel-datahub-results-card-search')
+        .eq(6)
+        .find('.mel-badge-button-primary')
+        .should('not.contain', 'Administration, action publique')
+    })
     it('should not dislay html in abstract', () => {
       cy.get('mel-datahub-results-card-search')
         .eq(5)
