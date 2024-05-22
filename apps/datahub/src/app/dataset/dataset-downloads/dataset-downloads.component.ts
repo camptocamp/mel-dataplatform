@@ -38,6 +38,11 @@ export class DatasetDownloadsComponent {
             link as DatasetServiceDistribution
           )
         )
+      const ogcLinks = links.filter(
+        (link) =>
+          link.type === 'service' &&
+          link.accessServiceProtocol === 'ogcFeatures'
+      )
       const otherLinks = links.filter(
         (link) =>
           link.type !== 'service' ||
@@ -48,23 +53,38 @@ export class DatasetDownloadsComponent {
 
       this.error = null
 
-      return combineLatest(
-        wfsLinks.length > 0
+      return combineLatest([
+        ...(wfsLinks.length > 0
           ? wfsLinks.map((link) =>
-              this.dataService.getDownloadLinksFromWfs(
-                link as DatasetServiceDistribution
-              )
+              this.dataService
+                .getDownloadLinksFromWfs(link as DatasetServiceDistribution)
+                .pipe(
+                  catchError((e) => {
+                    this.error = e.message
+                    return [of([] as DatasetDistribution[])]
+                  })
+                )
             )
-          : [of([] as DatasetDistribution[])]
-      ).pipe(
+          : [of([] as DatasetDistribution[])]),
+        ...(ogcLinks.length > 0
+          ? ogcLinks.map((link) =>
+              this.dataService
+                .getDownloadLinksFromOgcApiFeatures(
+                  link as DatasetServiceDistribution
+                )
+                .catch((e) => {
+                  this.error = e.message
+                  return Promise.resolve([])
+                })
+            )
+          : [of([] as DatasetDistribution[])]),
+      ]).pipe(
         map(flattenArray),
         map(removeLinksWithUnknownFormat),
         map(removeDuplicateLinks),
-        map((wfsDownloadLinks) => [
-          ...otherLinks,
-          ...wfsDownloadLinks,
-          ...esriRestLinks,
-        ]),
+        map((downloadLinks) => {
+          return [...otherLinks, ...downloadLinks, ...esriRestLinks]
+        }),
         catchError((e) => {
           this.error = e.message
           return of([...otherLinks, ...esriRestLinks])

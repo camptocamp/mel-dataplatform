@@ -3,8 +3,8 @@
     type="button"
     [attr.aria-label]="'carousel-arrow-left'"
     title="carousel-arrow-left"
-    [class]="selectedStep === 0 ? 'invisible' : 'block hover:drop-shadow-lg'"
-    (click)="scrollToStep(selectedStep - 1)"
+    [class]="currentStep === 0 ? 'invisible' : 'block hover:drop-shadow-lg'"
+    (click)="scrollToStep(currentStep - 1)"
   >
     <img src="assets/icons/carousel-arrow-left.svg" alt="arrow-left" />
   </button>
@@ -20,11 +20,11 @@
     [attr.aria-label]="'carousel-arrow-right'"
     title="carousel-arrow-right"
     [class]="
-      selectedStep === steps.length - 1
+      currentStep === steps.length - 1
         ? 'invisible'
         : 'block hover:drop-shadow-lg'
     "
-    (click)="scrollToStep(selectedStep + 1)"
+    (click)="scrollToStep(currentStep + 1)"
   >
     <img src="assets/icons/carousel-arrow-right.svg" alt="arrow-right" />
   </button>
@@ -36,7 +36,7 @@
   <button
     class="mel-carousel-step-dot"
     (click)="scrollToStep($index)"
-    [ngClass]="selectedStep === $index ? 'bg-primary' : 'bg-transparent'"
+    [ngClass]="currentStep === $index ? 'bg-primary' : 'bg-transparent'"
   ></button>
   }
 </div>
