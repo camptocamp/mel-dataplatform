@@ -13,10 +13,13 @@ marker('mel.datahub.search.filters.license')
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchFiltersComponent {
-  searchConfig = ['topic', 'publisher', 'publicationYear', 'license'].map(
-    (filter) => ({
-      fieldName: filter,
-      title: `mel.datahub.search.filters.${filter}`,
-    })
-  )
+  searchConfig = [
+    'categoryKeyword',
+    'publisher',
+    'publicationYear',
+    'license',
+  ].map((filter) => ({
+    fieldName: filter,
+    title: `mel.datahub.search.filters.${filter}`,
+  }))
 }

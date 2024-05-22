@@ -22,6 +22,7 @@ import {
   UiMapModule,
   GN_UI_VERSION,
   WEB_COMPONENT_EMBEDDER_URL,
+  FieldsService,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -60,6 +61,7 @@ import { MelMapViewComponent } from './dataset/dataset-visualisation/map-view/ma
 import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/data-view.component'
 import { environment } from '../environments/environnment'
 import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
+import { MelFieldsService } from './search/service/fields.service'
 
 @NgModule({
   declarations: [
@@ -147,6 +149,7 @@ import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
       provide: LOGIN_URL,
       useFactory: () => '${current_url}?login',
     },
+    { provide: FieldsService, useClass: MelFieldsService },
   ],
   bootstrap: [AppComponent],
 })
