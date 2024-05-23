@@ -52,6 +52,10 @@ nx run-many -t <target1> <target2> -p <proj1> <proj2>
 
 Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/core-features/run-tasks).
 
+## Versioning
+
+The `old/mentions-legales` folder is here for versioning purposes only. The files contained in it do not compile with the app here, but are uploaded on the server `svc.georchestra.gs-fr-prod.camptocamp.com`. The details on how to access the server and upload newer versions of these files can be found here : https://github.com/camptocamp/georchestra-mel-configuration/wiki/Transferts-de-donn%C3%A9es.
+
 ## Want better Editor Integration?
 
 Have a look at the [Nx Console extensions](https://nx.dev/nx-console). It provides autocomplete support, a UI for exploring and running tasks & generators, and more! Available for VSCode, IntelliJ and comes with a LSP for Vim users.
