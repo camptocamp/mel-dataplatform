@@ -22,7 +22,10 @@ export class ResultsListItemComponent {
   }
 
   get keywords() {
-    return this.record?.keywords?.filter((keyword) => keyword.type !== 'place')
+    return this.record?.keywords?.filter(
+      (keyword) =>
+        keyword.type !== 'place' && keyword.thesaurus?.name !== 'Catégories'
+    )
   }
 
   onKeywordClick(keyword: Keyword, event: Event) {

@@ -156,7 +156,7 @@ describe('datasets', () => {
     it('should display the territories', () => {
       cy.get('@mainInfo')
         .children('div')
-        .eq(2)
+        .eq(1)
         .find('div')
         .children('span')
         .should('have.length.gt', 0)
@@ -174,7 +174,7 @@ describe('datasets', () => {
     it('should display the producer', () => {
       cy.get('@mainInfo')
         .children('div')
-        .eq(4)
+        .eq(3)
         .find('span')
         .eq(1)
         .should('have.text', 'Région Hauts-de-France')

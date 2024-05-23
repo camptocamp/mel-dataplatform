@@ -13,11 +13,11 @@
       <span class="font-semibold" translate="">mel.dataset.updatedOn</span>
       <div class="text-primary font-semibold">{{ lastUpdate }}</div>
     </div>
-    } @if(record.topics?.length) {
+    } @if(displayCategories?.length) {
     <div class="flex flex-col gap-2">
       <span class="font-semibold" translate="">mel.dataset.categories</span>
       <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
-        @for(topic of record.topics; track $index) {
+        @for(topic of displayCategories; track $index) {
         <span class="mel-badge-primary truncate">
           {{ topic }}
         </span>
