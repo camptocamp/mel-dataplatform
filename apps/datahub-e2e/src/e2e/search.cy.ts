@@ -165,21 +165,21 @@ describe('search', () => {
     it('should display the search results in a grid', () => {
       cy.get('mel-datahub-results-list-grid').should('be.visible')
     })
-    it('should filter the results when selecting a filter value (topic)', () => {
-      cy.get('@filters').first().click()
+    it('should filter the results when selecting a filter value (licence)', () => {
+      cy.get('@filters').eq(3).click()
       getFilterOptions()
-      cy.get('@options').first().click()
+      cy.get('@options').eq(1).click()
       cy.get('@result-cards').should('have.length', 2)
       cy.get('@result-cards')
         .first()
         .find('h1')
-        .should('have.text', ' Alpenkonvention ')
+        .should('have.text', ' Accroches vélos MEL ')
       cy.get('@result-cards')
         .eq(1)
         .find('h1')
         .should(
           'have.text',
-          ' Patrimoine - Biens classés et zones de protection - Série '
+          ' Mat éolien construit ou en projet dans les Hauts de France '
         )
     })
     it('should filter the results when selecting multiple filter values (producer)', () => {
