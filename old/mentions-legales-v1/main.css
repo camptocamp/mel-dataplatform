@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.table-cells {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+.header-cells {
+  @apply table-cells bg-gray-200;
+}
+
+.links {
+  @apply text-blue-500 underline hover:text-blue-700;
+}
+
+.list-with-dots {
+  @apply list-disc ml-6;
+}
