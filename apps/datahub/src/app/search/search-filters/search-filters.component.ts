@@ -16,7 +16,7 @@ export class SearchFiltersComponent {
   searchConfig = [
     'categoryKeyword',
     'publisher',
-    'publicationYear',
+    'revisionYear',
     'license',
   ].map((filter) => ({
     fieldName: filter,
