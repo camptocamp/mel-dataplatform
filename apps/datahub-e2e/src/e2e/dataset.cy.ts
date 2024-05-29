@@ -211,13 +211,12 @@ describe('datasets', () => {
         .find('mel-datahub-api-card')
         .last()
         .click()
-      cy.get('mel-datahub-api-form')
-        .find('a')
-        .invoke('attr', 'href')
-        .should(
-          'eq',
-          'https://mel.integration.apps.gs-fr-prod.camptocamp.com/data/swagger-ui/index.html'
-        )
+      cy.window().then((win) => {
+        cy.get('mel-datahub-api-form')
+          .find('a')
+          .invoke('attr', 'href')
+          .should('eq', `${win.location.origin}/data/swagger-ui/index.html`)
+      })
     })
     it('should open the api form', () => {
       cy.get('mel-datahub-dataset-apis')
