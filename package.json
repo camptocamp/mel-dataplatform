@@ -1,7 +1,7 @@
 {
   "name": "@mel-dataplatform/source",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "scripts": {
     "start": "nx serve mel-datahub",
     "home": "nx serve home --port 4201",
