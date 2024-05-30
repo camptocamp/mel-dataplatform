@@ -7,4 +7,8 @@ import { RecordApiFormComponent } from 'geonetwork-ui'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ApiFormComponent extends RecordApiFormComponent {}
+export class ApiFormComponent extends RecordApiFormComponent {
+  get swaggerUrl() {
+    return `${window.location.origin}/data/swagger-ui/index.html`
+  }
+}
