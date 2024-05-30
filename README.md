@@ -14,7 +14,7 @@ Pour démarrer le serveur de développement, exécuter `npm start` ou `nx serve 
 
 Les tests d'ensemble peuvent être exécutés en utilisant le répertoire `support-services` de GeoNetwork-UI afin de simuler les services backend.
 
-Copier le répertoire https://github.com/geonetwork/geonetwork-ui/tree/main/support-services en local et exécuter `docker compose up -d` dans celui-ci. L'intégration continue de ce dépôt utiliser le même système et les mêmes données pour exécuter les tests.
+Copier le répertoire https://github.com/geonetwork/geonetwork-ui/tree/main/support-services en local et exécuter `docker compose up -d` dans celui-ci. L'intégration continue de ce dépôt utilise le même système et les mêmes données pour exécuter les tests.
 
 Ensuite, exécuter `npm run e2e:datahub` ou `npm run e2e:datahub-dev` (pour les exécuter et les voir passer dans un navigateur).
 
