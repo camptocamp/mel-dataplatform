@@ -8,6 +8,8 @@ on:
     branches:
       - main
   pull_request:
+  release:
+    types: [created]
 
 # Needed for nx-set-shas within nx-cloud-main.yml, when run on the main branch
 permissions:
@@ -62,10 +64,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 'Pushing the images onto ghcr.io'
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.event_name == 'release'
         run: |
-          docker push ghcr.io/camptocamp/mel-dataplatform/catalogue:latest
-          docker push ghcr.io/camptocamp/mel-dataplatform/accueil:latest
+          TAG_NAME=${{ github.ref == 'refs/heads/main' && 'latest' || github.ref_name }}
+          docker push ghcr.io/camptocamp/mel-dataplatform/catalogue:$TAG_NAME
+          docker push ghcr.io/camptocamp/mel-dataplatform/accueil:$TAG_NAME
 
   cypress-run:
     name: End-to-end tests
