@@ -32,18 +32,33 @@ Cypress.Commands.add(
       },
     })
     cy.getCookie('XSRF-TOKEN').then((xsrfTokenCookie) => {
-      cy.request({
-        method: 'POST',
-        url: '/geonetwork/signin',
-        body: `username=${username}&password=${password}&_csrf=${xsrfTokenCookie.value}`,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        followRedirect: false,
-      })
+      // do the login 2 times because it sometimes doesn't register (?)
+      for (let i = 0; i < 2; i++) {
+        cy.request({
+          method: 'POST',
+          url: '/geonetwork/signin',
+          body: `username=${username}&password=${password}&_csrf=${xsrfTokenCookie.value}`,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          followRedirect: false,
+        })
+      }
     })
-    if (redirect) return cy.visit('/')
-    else return cy.window()
+    cy.request({
+      method: 'GET',
+      url: '/geonetwork/srv/api/me',
+      headers: {
+        Accept: 'application/json',
+      },
+    }).then((response) => {
+      if (response.status !== 200) {
+        throw new Error('Could not log in to GeoNetwork API 😢')
+      }
+      cy.log('Login to GeoNetwork API successful!')
+    })
+    if (redirect) cy.visit('/')
+    return cy.window()
   }
 )
 
@@ -67,7 +82,7 @@ Cypress.Commands.add('clearFavorites', () => {
 
   cy.window().then(function () {
     cy.request({
-      url: `/geonetwork/srv/api/userselections/0/${this.myId}`,
+      url: `/geonetwork/srv/api/userselections/0/${this['myId']}`,
       headers: { accept: 'application/json' },
     })
       .its('body')
@@ -78,10 +93,10 @@ Cypress.Commands.add('clearFavorites', () => {
     .getCookie('XSRF-TOKEN')
     .its('value')
     .then(function (token) {
-      const favoritesId = this.favoritesId || []
+      const favoritesId = this['favoritesId'] || []
       cy.request({
         url: `/geonetwork/srv/api/userselections/0/${
-          this.myId
+          this['myId']
         }?uuid=${favoritesId.join('&uuid=')}`,
         method: 'DELETE',
         headers: { accept: 'application/json', 'X-XSRF-TOKEN': token },

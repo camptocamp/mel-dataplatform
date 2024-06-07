@@ -90,19 +90,20 @@ describe('search', () => {
     describe('User logged in', () => {
       beforeEach(() => {
         cy.login()
-        cy.clearFavorites()
         cy.visit('/search')
         cy.intercept('PUT', '**/geonetwork/srv/api/userselections/**').as(
           'addFavoriteRequest'
         )
+        cy.clearFavorites()
         cy.get('mel-datahub-results-card-search')
-          .first()
+          .eq(1)
           .find('mel-datahub-heart-toggle')
           .first()
+          .find('mel-datahub-button')
+          .first()
           .click()
-        cy.wait('@addFavoriteRequest')
+        cy.get('mel-datahub-results-card-favorite').as('favoriteCard')
       })
-
       it('should display the correct subtitle', () => {
         cy.get('mel-datahub-search-header')
           .find('.mel-section-title')
@@ -110,9 +111,7 @@ describe('search', () => {
           .should('have.text', ' Jeux de données suivis ')
       })
       it('should display record results in favorite cards inside a carousel', () => {
-        cy.get('mel-datahub-custom-carousel')
-          .find('mel-datahub-results-card-favorite')
-          .first()
+        cy.get('mel-datahub-results-card-favorite')
           .find('h1')
           .should(
             'have.text',
@@ -129,16 +128,10 @@ describe('search', () => {
           .find('mel-datahub-metadata-quality')
           .should('be.visible')
       })
-
-      describe('interactions with dataset', () => {
-        beforeEach(() => {
-          cy.get('mel-datahub-results-card-favorite').first().as('firstResult')
-        })
-        it('should open the dataset page in the same application on click', () => {
-          cy.get('@firstResult').find('h1').click()
-          cy.url().should('include', 'dataset')
-          cy.get('mel-datahub-dataset-page').should('be.visible')
-        })
+      it('should open the dataset page in the same application on click', () => {
+        cy.get('@favoriteCard').find('h1').click()
+        cy.url().should('include', 'dataset')
+        cy.get('mel-datahub-dataset-page').should('be.visible')
       })
     })
   })
