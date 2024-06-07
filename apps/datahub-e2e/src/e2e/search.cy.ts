@@ -110,7 +110,7 @@ describe('search', () => {
           .first()
           .should('have.text', ' Jeux de données suivis ')
       })
-      it('should display record results in favorite cards inside a carousel', () => {
+      it('should display record results in favorite cards', () => {
         cy.get('mel-datahub-results-card-favorite')
           .find('h1')
           .should(
