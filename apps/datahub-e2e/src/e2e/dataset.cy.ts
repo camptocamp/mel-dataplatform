@@ -32,8 +32,10 @@ describe('datasets', () => {
         .find('img')
         .should('have.attr', 'src', 'assets/icons/arrow.svg')
       cy.get('mel-datahub-text-expand')
-        .find('.bg-gradient-to-b')
-        .should('have.css', 'max-height', '96px')
+        .find('div')
+        .children('div')
+        .eq(1)
+        .should('have.class', 'bg-gradient-to-b')
     })
 
     it('should scroll down when clicking on download button', () => {
