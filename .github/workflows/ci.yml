@@ -9,7 +9,7 @@ on:
       - main
   pull_request:
   release:
-    types: [created]
+    types: [published]
 
 # Needed for nx-set-shas within nx-cloud-main.yml, when run on the main branch
 permissions:
