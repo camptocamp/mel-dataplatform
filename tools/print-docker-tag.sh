@@ -7,6 +7,6 @@
 appName=$1
 gitTag=$(git describe --exact-match --tags 2>/dev/null | sed "s/^v//") # remove "v" in front of version if any
 gitRef=$(git rev-parse --short HEAD)
-dockerTag=${gitTag:-${"latest"}}
+dockerTag=${gitTag:-"latest"}
 
 echo "ghcr.io/camptocamp/mel-dataplatform/${appName}:${dockerTag}"
