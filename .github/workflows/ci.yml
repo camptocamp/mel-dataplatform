@@ -27,11 +27,11 @@ jobs:
       init-commands: |
         npx nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
       parallel-commands: |
-        npx nx-cloud record -- npx nx affected --target=format:check --base=HEAD~1
+        npx nx-cloud record -- npx nx format:check
       parallel-commands-on-agents: |
-        npx nx affected --target=lint --parallel=3 --base=HEAD~1
-        npx nx affected --target=test --parallel=3 --ci --code-coverage --base=HEAD~1
-        npx nx affected --target=build --parallel=3 --base=HEAD~1
+        npx nx affected --target=lint --parallel=3
+        npx nx affected --target=test --parallel=3 --ci --code-coverage
+        npx nx affected --target=build --parallel=3
 
   push-docker:
     needs: lint-test-build
