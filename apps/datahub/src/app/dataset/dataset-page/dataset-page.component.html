@@ -59,14 +59,14 @@
 } } @else {
 <div class="mt-12 p-4 max-w-[600px] m-auto text-[13px]">
   @if((facade.error$ | async).notFound) {
-  <gn-ui-search-results-error
+  <gn-ui-error
     [type]="errorTypes.RECORD_NOT_FOUND"
     [recordId]="(facade.metadata$ | async).uniqueIdentifier"
-  ></gn-ui-search-results-error>
+  ></gn-ui-error>
   } @else if((facade.error$ | async).otherError) {}
-  <gn-ui-search-results-error
+  <gn-ui-error
     [type]="errorTypes.RECEIVED_ERROR"
     [error]="(facade.error$ | async).otherError"
-  ></gn-ui-search-results-error>
+  ></gn-ui-error>
 </div>
 }

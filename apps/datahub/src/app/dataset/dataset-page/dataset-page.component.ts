@@ -4,7 +4,7 @@ import {
   CatalogRecord,
   Keyword,
 } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
-import { combineLatest, map } from 'rxjs'
+import { combineLatest, map, startWith } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-dataset-page',
@@ -15,12 +15,12 @@ import { combineLatest, map } from 'rxjs'
 export class DatasetPageComponent {
   displayMap$ = combineLatest([
     this.facade.mapApiLinks$,
-    this.facade.geoDataLinks$,
+    this.facade.geoDataLinksWithGeometry$,
   ]).pipe(
-    map(
-      ([mapLinks, geoDataLinks]) =>
-        mapLinks?.length > 0 || geoDataLinks?.length > 0
-    )
+    map(([mapApiLinks, geoDataLinksWithGeometry]) => {
+      return mapApiLinks?.length > 0 || geoDataLinksWithGeometry?.length > 0
+    }),
+    startWith(false)
   )
   displayData$ = combineLatest([
     this.facade.dataLinks$,
