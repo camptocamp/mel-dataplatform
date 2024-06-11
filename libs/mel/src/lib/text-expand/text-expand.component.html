@@ -1,14 +1,14 @@
 <div
   #container
-  class="overflow-hidden transition-[max-height] duration-300 mb-8"
-  [ngClass]="
-    isExpanded || !showToggleButton
-      ? 'ease-in'
-      : 'ease-out bg-gradient-to-b from-black to-beige text-transparent bg-clip-text'
-  "
+  class="overflow-hidden transition-[max-height] duration-300 mb-8 relative"
+  [ngClass]="isExpanded || !showToggleButton ? 'ease-in' : 'ease-out'"
   [style.maxHeight]="maxHeight"
 >
   <ng-content></ng-content>
+  <div
+    *ngIf="showToggleButton && !isExpanded"
+    class="absolute inset-0 bg-gradient-to-b from-transparent to-beige"
+  ></div>
 </div>
 @if(showToggleButton){
 <mel-datahub-button
