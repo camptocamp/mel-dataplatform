@@ -106,7 +106,7 @@
       "options": {
         "commands": [
           "nx build home --base-href='/accueil/'",
-          "docker build --build-arg APP_NAME=accueil -f ./tools/docker/Dockerfile . -t $(tools/print-docker-tag.sh accueil"
+          "docker build --build-arg APP_NAME=accueil -f ./tools/docker/Dockerfile . -t $(tools/print-docker-tag.sh accueil)"
         ],
         "parallel": false
       }

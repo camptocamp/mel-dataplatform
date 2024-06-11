@@ -106,7 +106,7 @@
       "options": {
         "commands": [
           "nx build mel-datahub --base-href='/catalogue/'",
-          "docker build --build-arg APP_NAME=catalogue -f ./tools/docker/Dockerfile . -t $(tools/print-docker-tag.sh catalogue"
+          "docker build --build-arg APP_NAME=catalogue -f ./tools/docker/Dockerfile . -t $(tools/print-docker-tag.sh catalogue)"
         ],
         "parallel": false
       }
