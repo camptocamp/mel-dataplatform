@@ -106,7 +106,7 @@
       "options": {
         "commands": [
           "nx build home --base-href='/accueil/'",
-          "docker build --build-arg APP_NAME=accueil -f ./tools/docker/Dockerfile . -t ghcr.io/camptocamp/mel-dataplatform/accueil:latest"
+          "docker build --build-arg APP_NAME=accueil -f ./tools/docker/Dockerfile . -t $(tools/print-docker-tag.sh accueil"
         ],
         "parallel": false
       }

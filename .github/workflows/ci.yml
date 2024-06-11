@@ -66,9 +66,8 @@ jobs:
       - name: 'Pushing the images onto ghcr.io'
         if: github.ref == 'refs/heads/main' || github.event_name == 'release'
         run: |
-          TAG_NAME=${{ github.ref == 'refs/heads/main' && 'latest' || github.ref_name }}
-          docker push ghcr.io/camptocamp/mel-dataplatform/catalogue:$TAG_NAME
-          docker push ghcr.io/camptocamp/mel-dataplatform/accueil:$TAG_NAME
+          docker image ls --format '{{.Repository}}:{{.Tag}}' --filter=reference='ghcr.io/camptocamp/mel-dataplatform/*' | \
+          xargs -r -L1 docker push $1
 
   cypress-run:
     name: End-to-end tests
