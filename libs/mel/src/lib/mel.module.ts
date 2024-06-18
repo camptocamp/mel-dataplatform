@@ -17,6 +17,7 @@ import { CustomCarouselComponent } from './custom-carousel/custom-carousel.compo
 import { MelFuzzySearchComponent } from './fuzzy-search/fuzzy-search.component'
 import { MelAutocompleteComponent } from './autocomplete/autocomplete.component'
 import {
+  PopupAlertComponent,
   UiElementsModule,
   UiLayoutModule,
   UiWidgetsModule,
@@ -37,6 +38,7 @@ import { StripHtmlPipe } from './strip-html.pipe'
     MatIconModule,
     TranslateModule,
     ReactiveFormsModule,
+    PopupAlertComponent,
   ],
   declarations: [
     ResultsListComponent,
