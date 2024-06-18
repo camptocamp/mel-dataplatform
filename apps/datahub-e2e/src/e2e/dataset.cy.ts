@@ -86,7 +86,7 @@ describe('datasets', () => {
 
   describe('Vizualisation block', () => {
     beforeEach(() => {
-      cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      cy.visit('/dataset/04bcec79-5b25-4b16-b635-73115f7456e4')
     })
     it('should display the vizualisation block', () => {
       cy.get('mel-datahub-dataset-visualisation').should('be.visible')
