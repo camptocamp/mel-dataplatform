@@ -23,6 +23,7 @@ import {
   GN_UI_VERSION,
   WEB_COMPONENT_EMBEDDER_URL,
   FieldsService,
+  PopupAlertComponent,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -105,6 +106,7 @@ import { MelFieldsService } from './search/service/fields.service'
     OverlayModule,
     FormsModule,
     MatTooltipModule,
+    PopupAlertComponent,
     FeatureDatavizModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
