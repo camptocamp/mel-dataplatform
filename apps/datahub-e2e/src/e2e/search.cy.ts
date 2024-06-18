@@ -224,4 +224,12 @@ describe('search', () => {
       )
     })
   })
+  describe.only('pagination', () => {
+    beforeEach(() => {
+      cy.visit('/search')
+    })
+    it('should display the pagination', () => {
+      cy.get('mel-datahub-pagination-buttons').should('be.visible')
+    })
+  })
 })
