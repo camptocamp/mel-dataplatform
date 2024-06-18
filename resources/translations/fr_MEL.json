@@ -17,6 +17,8 @@
   "mel.datahub.search.form.description": "Vous pouvez utiliser la barre de recherche ou les différents filtres situés ci-dessous pour trouver un jeu de données plus rapidement.",
   "mel.datahub.search.form.title": "Trouver un jeu de données",
   "mel.datahub.search.hits.found": "{hits, plural, =0{Aucune correspondance.} one{1 enregistrement trouvé.} other{Ensemble des données: {hits}}}",
+  "mel.datahub.search.pagination.previous": "PRÉCÉDENT",
+  "mel.datahub.search.pagination.next": "SUIVANT",
   "mel.datahub.search.showMore": "Plus de résultats...",
   "mel.datahub.search.title": "Catalogue de jeux de données",
   "mel.dataset.abstract": "Description",
