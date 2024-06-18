@@ -19,6 +19,7 @@ import { MelAutocompleteComponent } from './autocomplete/autocomplete.component'
 import {
   PopupAlertComponent,
   UiElementsModule,
+  UiInputsModule,
   UiLayoutModule,
   UiWidgetsModule,
 } from 'geonetwork-ui'
@@ -27,6 +28,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { StripHtmlPipe } from './strip-html.pipe'
+import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-buttons.component'
 
 @NgModule({
   imports: [
@@ -39,6 +41,7 @@ import { StripHtmlPipe } from './strip-html.pipe'
     TranslateModule,
     ReactiveFormsModule,
     PopupAlertComponent,
+    UiInputsModule,
   ],
   declarations: [
     ResultsListComponent,
@@ -58,6 +61,7 @@ import { StripHtmlPipe } from './strip-html.pipe'
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
     StripHtmlPipe,
+    MelPaginationButtonsComponent,
   ],
   exports: [
     ResultsListComponent,
@@ -76,6 +80,7 @@ import { StripHtmlPipe } from './strip-html.pipe'
     CustomCarouselComponent,
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
+    MelPaginationButtonsComponent,
   ],
 })
 export class MelModule {}
