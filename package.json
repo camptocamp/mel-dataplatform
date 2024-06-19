@@ -13,7 +13,7 @@
     "e2e:datahub-dev": "nx e2e mel-datahub-e2e --watch",
     "e2e:home": "nx e2e home-e2e",
     "e2e:home-dev": "nx e2e home-e2e --watch",
-    "i18n:extract": "ngx-translate-extract -s --fi '  ' --input ./apps --output ./apps/datahub/src/assets/i18n/{en_MEL,fr_MEL}.json --clean --format json && npm run format"
+    "i18n:extract": "ngx-translate-extract -s --fi '  ' --input ./apps ./libs --output ./resources/translations/{en_MEL,fr_MEL}.json --clean --format json && npm run format"
   },
   "private": true,
   "dependencies": {
