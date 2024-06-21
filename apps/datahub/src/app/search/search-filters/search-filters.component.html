@@ -10,7 +10,12 @@
       <h4 class="mel-paragraph-title" translate>
         mel.datahub.search.filters.refine
       </h4>
-      <button data-cy="filterResetBtn" class="mel-simple-button" (click)="resetFilters()" translate>
+      <button
+        data-cy="filterResetBtn"
+        class="mel-simple-button"
+        (click)="resetFilters()"
+        translate
+      >
         mel.datahub.search.filters.reset
       </button>
     </div>
@@ -20,7 +25,10 @@
   </div>
   <div class="flex flex-row">
     <div>
-      <div class="flex gap-2 flex-wrap lg:flex-nowrap" *ngIf="displayCount < searchConfig.length">
+      <div
+        class="flex gap-2 flex-wrap lg:flex-nowrap"
+        *ngIf="displayCount < searchConfig.length"
+      >
         <ng-container
           *ngFor="
             let filter of searchConfig | slice : 0 : 3;
@@ -32,7 +40,11 @@
             [title]="filter.title | translate"
           ></mel-datahub-filter-dropdown>
         </ng-container>
-        <button data-cy="filterExpandBtn" class="mel-primary-button" (click)="showAll()">
+        <button
+          data-cy="filterExpandBtn"
+          class="mel-primary-button"
+          (click)="showAll()"
+        >
           <mat-icon class="material-symbols-outlined">more_verti</mat-icon>
         </button>
       </div>
