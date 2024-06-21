@@ -166,7 +166,10 @@ describe('search', () => {
       cy.get('@result-cards')
         .first()
         .find('h1')
-        .should('have.text', ' Concentrations annuelles de polluants dans l\'air ambiant issues du réseau permanent de mesures en région Hauts-de-France ')
+        .should(
+          'have.text',
+          " Concentrations annuelles de polluants dans l'air ambiant issues du réseau permanent de mesures en région Hauts-de-France "
+        )
     })
     it('should filter the results when selecting multiple filter values (producer)', () => {
       cy.get('@filters').eq(1).click()
@@ -255,7 +258,7 @@ describe('search', () => {
               const titles = $titles
                 .toArray()
                 .map((title) => title.innerText.trim())
-              assert.notEqual(titles, this["initialResultTitles"]) // @initialResultTitles
+              assert.notEqual(titles, this['initialResultTitles']) // @initialResultTitles
             })
         })
       })
