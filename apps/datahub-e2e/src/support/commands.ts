@@ -17,6 +17,8 @@ declare namespace Cypress {
     login(username?: string, password?: string, redirect?: boolean)
     signOut(): void
     clearFavorites()
+    selectDropdownOption(value: string): void
+    openDropdown(): Chainable<JQuery<HTMLElement>>
   }
 }
 
@@ -67,6 +69,29 @@ Cypress.Commands.add('signOut', () => {
   cy.get('a[title="User details"]').click()
   cy.get('a[title="Sign out"]').click()
 })
+
+// previous value should be a <gn-ui-dropdown-selector> component
+Cypress.Commands.add(
+  'openDropdown',
+  { prevSubject: true },
+  (dropdownElement) => {
+    cy.get('body').click('bottomLeft') // first click on the document to close other dropdowns
+    cy.wrap(dropdownElement).find('button').click()
+    return cy.get('.cdk-overlay-container').find('[role=listbox]')
+  }
+)
+
+// previous value should be a <gn-ui-dropdown-selector> component
+Cypress.Commands.add(
+  'selectDropdownOption',
+  { prevSubject: true },
+  (dropdownElement, value: string) => {
+    cy.wrap(dropdownElement)
+      .openDropdown()
+      .find(`[data-cy-value="${value}"]`)
+      .click()
+  }
+)
 
 /**
  * This will most likely fail if the user is not logged in!
