@@ -1,8 +1,65 @@
-<div class="flex flex-wrap xl:flex-nowrap gap-2">
-  @for(filter of searchConfig; track filter.fieldName) {
-  <mel-datahub-filter-dropdown
-    [fieldName]="filter.fieldName"
-    [title]="filter.title | translate"
-  ></mel-datahub-filter-dropdown>
-  }
+<div
+  class="flex flex-col"
+  [ngClass]="{ 'mel-filter-container': displayCount === searchConfig.length }"
+>
+  <div
+    class="flex flex-row justify-between mb-2 flex-wrap lg:flex-nowrap"
+    *ngIf="displayCount === searchConfig.length"
+  >
+    <div class="flex flex-row items-center gap-5">
+      <h4 class="mel-paragraph-title" translate>
+        mel.datahub.search.filters.refine
+      </h4>
+      <button data-cy="filterResetBtn" class="mel-simple-button" (click)="resetFilters()" translate>
+        mel.datahub.search.filters.reset
+      </button>
+    </div>
+    <div class="flex flex-row gap-2">
+      <gn-ui-sort-by></gn-ui-sort-by>
+    </div>
+  </div>
+  <div class="flex flex-row">
+    <div>
+      <div class="flex gap-2 flex-wrap lg:flex-nowrap" *ngIf="displayCount < searchConfig.length">
+        <ng-container
+          *ngFor="
+            let filter of searchConfig | slice : 0 : 3;
+            trackBy: trackByFn
+          "
+        >
+          <mel-datahub-filter-dropdown
+            [fieldName]="filter.fieldName"
+            [title]="filter.title | translate"
+          ></mel-datahub-filter-dropdown>
+        </ng-container>
+        <button data-cy="filterExpandBtn" class="mel-primary-button" (click)="showAll()">
+          <mat-icon class="material-symbols-outlined">more_verti</mat-icon>
+        </button>
+      </div>
+      <div
+        class="flex flex-wrap gap-2"
+        *ngIf="displayCount === searchConfig.length"
+      >
+        <ng-container *ngFor="let filter of searchConfig; trackBy: trackByFn">
+          <mel-datahub-filter-dropdown
+            [fieldName]="filter.fieldName"
+            [title]="filter.title | translate"
+          ></mel-datahub-filter-dropdown>
+        </ng-container>
+      </div>
+    </div>
+    <button
+      data-cy="filterCloseBtn"
+      type="button"
+      *ngIf="displayCount === searchConfig.length"
+      class="flex flex-row self-end mel-simple-button"
+      (click)="showAll()"
+      translate
+    >
+      mel.datahub.search.filters.reduce
+      <mat-icon class="material-symbols-outlined ml-1 align-middle leading-none"
+        >remove</mat-icon
+      >
+    </button>
+  </div>
 </div>
