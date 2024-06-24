@@ -17,10 +17,6 @@ export class SearchResultsComponent {
     this.searchFacade.setPageSize(this.pageSize)
   }
 
-  onShowMore() {
-    this.searchFacade.scroll()
-  }
-
   onPageChange(page: number) {
     this.searchService.setPage(page)
   }

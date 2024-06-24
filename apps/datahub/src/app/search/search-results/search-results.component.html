@@ -12,13 +12,11 @@
   ></mel-datahub-results-list-grid>
   <div class="flex justify-center mt-16">
     @if((searchFacade.isLoading$ | async) === false){
-    <ng-container>
-      <mel-datahub-pagination-buttons
-        [totalPages]="searchFacade.totalPages$ | async"
-        [currentPage]="searchFacade.currentPage$ | async"
-        (newCurrentPageEvent)="searchService.setPage($any($event))"
-      ></mel-datahub-pagination-buttons>
-    </ng-container>
+    <mel-datahub-pagination-buttons
+      [totalPages]="searchFacade.totalPages$ | async"
+      [currentPage]="searchFacade.currentPage$ | async"
+      (newCurrentPageEvent)="searchService.setPage($any($event))"
+    ></mel-datahub-pagination-buttons>
     } @else if((searchFacade.isLoading$ | async) === true){
     <ng-container>
       <gn-ui-spinning-loader></gn-ui-spinning-loader>
