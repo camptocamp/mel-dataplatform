@@ -99,7 +99,7 @@
     @apply text-black;
   }
   .pagination-btn-arrow {
-    @apply scale-[2] font-light;
+    @apply scale-[2] font-extralight;
   }
 }
 html,
