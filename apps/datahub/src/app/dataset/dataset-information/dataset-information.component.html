@@ -18,9 +18,12 @@
       <span class="font-semibold" translate="">mel.dataset.categories</span>
       <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
         @for(topic of displayCategories; track $index) {
-        <span class="mel-badge-primary truncate">
+        <button
+          class="mel-badge-primary truncate"
+          (click)="onInfoKeywordClick(topic)"
+        >
           {{ topic }}
-        </span>
+        </button>
         }
       </div>
     </div>

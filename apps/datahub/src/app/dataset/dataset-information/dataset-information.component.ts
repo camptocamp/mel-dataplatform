@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Optional,
+} from '@angular/core'
+import { goFromHomeToSearch } from '@mel-dataplatform/mel'
 import { TranslateService } from '@ngx-translate/core'
+import { RouterFacade } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
 @Component({
@@ -12,7 +19,10 @@ export class DatasetInformationComponent {
   @Input() record: Partial<CatalogRecord>
   iconsUrl = 'assets/icons/'
 
-  constructor(public translateService: TranslateService) {}
+  constructor(
+    public translateService: TranslateService,
+    @Optional() protected routerFacade: RouterFacade
+  ) {}
 
   get lastUpdate() {
     return this.record?.resourceUpdated?.toLocaleDateString(
@@ -30,5 +40,11 @@ export class DatasetInformationComponent {
     )
 
     return categoryKeywords?.map((keyword) => keyword.label)
+  }
+
+  onInfoKeywordClick(keyword: string) {
+    this.routerFacade
+      ? this.routerFacade.updateSearch({ q: keyword })
+      : goFromHomeToSearch(keyword)
   }
 }
