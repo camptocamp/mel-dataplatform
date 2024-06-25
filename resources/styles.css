@@ -29,9 +29,6 @@
   .mel-badge {
     @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-sm leading-none transition-colors;
   }
-  .mel-badge-primary {
-    @apply mel-badge text-primary border border-primary;
-  }
   .mel-badge-secondary {
     @apply mel-badge text-secondary border border-secondary;
   }
