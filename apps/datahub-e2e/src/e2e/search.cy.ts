@@ -228,8 +228,9 @@ describe('search', () => {
     beforeEach(() => {
       cy.visit('/search')
     })
-    it('should display the pagination', () => {
-      cy.get('mel-datahub-pagination-buttons').should('be.visible')
+    // if more than 18 datasets, pagination should be visible, please adapt test
+    it('should not display the pagination', () => {
+      cy.get('mel-datahub-pagination-buttons').should('not.exist')
     })
   })
 })

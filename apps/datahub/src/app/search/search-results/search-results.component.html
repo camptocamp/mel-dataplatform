@@ -11,7 +11,8 @@
     [numberOfResults]="pageSize"
   ></mel-datahub-results-list-grid>
   <div class="flex justify-center mt-16">
-    @if((searchFacade.isLoading$ | async) === false){
+    @if((searchFacade.isLoading$ | async) === false && (searchFacade.totalPages$
+    | async) > 1){
     <mel-datahub-pagination-buttons
       [totalPages]="searchFacade.totalPages$ | async"
       [currentPage]="searchFacade.currentPage$ | async"
