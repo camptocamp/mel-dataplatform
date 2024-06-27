@@ -42,9 +42,7 @@ export class DatasetInformationComponent {
     return categoryKeywords?.map((keyword) => keyword.label)
   }
 
-  onInfoKeywordClick(keyword: string) {
-    this.routerFacade
-      ? this.routerFacade.updateSearch({ q: keyword })
-      : goFromHomeToSearch(keyword)
+  onCategoryKeywordClick(category: string) {
+    this.routerFacade.updateSearch({ q: category })
   }
 }
