@@ -17,12 +17,12 @@
     <div class="flex flex-col gap-2">
       <span class="font-semibold" translate="">mel.dataset.categories</span>
       <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
-        @for(topic of displayCategories; track $index) {
+        @for(category of displayCategories; track $index) {
         <button
           class="mel-badge-primary truncate"
-          (click)="onInfoKeywordClick(topic)"
+          (click)="onCategoryKeywordClick(category)"
         >
-          {{ topic }}
+          {{ category }}
         </button>
         }
       </div>
