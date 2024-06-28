@@ -225,6 +225,8 @@ describe('datasets', () => {
         .find('mel-datahub-custom-carousel')
         .find('mel-datahub-api-card')
         .last()
+        .find('button')
+        .eq(1)
         .click()
       cy.get('mel-datahub-api-form').should('be.visible')
     })
