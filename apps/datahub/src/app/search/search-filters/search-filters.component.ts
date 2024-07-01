@@ -7,7 +7,7 @@ marker('mel.datahub.search.filters.publisher')
 marker('mel.datahub.search.filters.revisionYear')
 marker('mel.datahub.search.filters.license')
 marker('mel.datahub.search.filters.qualityScore')
-marker('mel.datahub.search.filters.keyword')
+marker('mel.datahub.search.filters.territories')
 
 @Component({
   selector: 'mel-datahub-search-filters',
@@ -24,7 +24,7 @@ export class SearchFiltersComponent {
     'publicationYear',
     'license',
     'qualityScore',
-    'keyword',
+    'territories',
   ].map((filter) => ({
     fieldName: filter,
     title: `mel.datahub.search.filters.${filter}`,
