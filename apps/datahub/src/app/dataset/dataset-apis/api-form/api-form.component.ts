@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { RecordApiFormComponent } from 'geonetwork-ui'
+import { ErrorType, RecordApiFormComponent } from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-api-form',
@@ -8,6 +8,7 @@ import { RecordApiFormComponent } from 'geonetwork-ui'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ApiFormComponent extends RecordApiFormComponent {
+  errorTypes = ErrorType
   get swaggerUrl() {
     return `${window.location.origin}/data/swagger-ui/index.html`
   }
