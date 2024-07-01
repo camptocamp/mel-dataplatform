@@ -23,6 +23,9 @@
   .mel-section-title {
     @apply text-[28px] font-bold text-title text-center sm:text-left;
   }
+  .mel-paragraph-title {
+    @apply text-[18px] font-bold text-title sm:text-left;
+  }
   .mel-badge {
     @apply inline-block bg-white py-1.5 px-2 rounded font-medium text-sm leading-none transition-colors;
   }
@@ -101,6 +104,12 @@
   .pagination-btn-arrow {
     @apply scale-[2] font-extralight;
   }
+  .mel-filter-container {
+    @apply rounded border border-primary p-4 sm:flex-wrap;
+  }
+  .mel-simple-button:hover {
+    @apply text-primary-dark;
+  }
 }
 html,
 body {
@@ -169,4 +178,25 @@ input[type='checkbox'] {
 
 .mat-mdc-tab:not(.mdc-tab--stacked) {
   @apply h-9 !important;
+}
+
+gn-ui-sort-by button {
+  @apply bg-primary text-white rounded-none !important;
+}
+
+gn-ui-sort-by button div {
+  @apply font-bold !important;
+}
+
+gn-ui-sort-by button:hover {
+  @apply bg-primary-dark !important;
+}
+
+/* In your global styles.css or styles.scss file */
+gn-ui-sort-by button mat-icon {
+  @apply fill-white opacity-100 !important;
+}
+
+gn-ui-sort-by gn-ui-dropdown-selector span {
+  @apply text-[16px] !important;
 }
