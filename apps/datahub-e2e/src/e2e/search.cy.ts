@@ -224,7 +224,7 @@ describe('search', () => {
       )
     })
   })
-  describe.only('pagination', () => {
+  describe('pagination', () => {
     beforeEach(() => {
       cy.visit('/search')
     })
