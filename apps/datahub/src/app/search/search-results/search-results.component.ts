@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { SearchFacade } from 'geonetwork-ui'
+import { SearchFacade, SearchService } from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-search-results',
@@ -8,9 +8,16 @@ import { SearchFacade } from 'geonetwork-ui'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchResultsComponent {
-  constructor(protected searchFacade: SearchFacade) {}
+  pageSize = 18
 
-  onShowMore() {
-    this.searchFacade.scroll()
+  constructor(
+    protected searchFacade: SearchFacade,
+    protected searchService: SearchService
+  ) {
+    this.searchFacade.setPageSize(this.pageSize)
+  }
+
+  onPageChange(page: number) {
+    this.searchService.setPage(page)
   }
 }

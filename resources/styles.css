@@ -86,6 +86,21 @@
   .card-label {
     @apply group-hover:bg-primary-dark group-hover:border-white group-hover:text-white transition-colors;
   }
+  .pagination-btn {
+    @apply border-none bg-transparent mr-14;
+  }
+  .pagination-btn:disabled {
+    @apply border-none bg-transparent text-primary opacity-100;
+  }
+  .pagination-btn-nav {
+    @apply border-none bg-transparent text-primary opacity-100;
+  }
+  .pagination-btn-nav:disabled {
+    @apply text-black;
+  }
+  .pagination-btn-arrow {
+    @apply scale-[2] font-extralight;
+  }
 }
 html,
 body {

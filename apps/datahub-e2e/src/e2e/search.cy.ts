@@ -224,4 +224,13 @@ describe('search', () => {
       )
     })
   })
+  describe.only('pagination', () => {
+    beforeEach(() => {
+      cy.visit('/search')
+    })
+    // if more than 18 datasets, pagination should be visible, please adapt test
+    it('should not display the pagination', () => {
+      cy.get('mel-datahub-pagination-buttons').should('not.exist')
+    })
+  })
 })

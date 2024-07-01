@@ -8,18 +8,16 @@
     mel.datahub.search.hits.found
   </div>
   <mel-datahub-results-list-grid
-    [numberOfResults]="18"
+    [numberOfResults]="pageSize"
   ></mel-datahub-results-list-grid>
-  <div class="flex justify-center mt-8">
-    @if((searchFacade.isLoading$ | async) === false &&
-    (searchFacade.isEndOfResults$ | async) === false){
-    <ng-container>
-      <button class="mel-primary-button" (click)="onShowMore()">
-        <span class="uppercase tracking-widest" translate
-          >mel.datahub.search.showMore</span
-        >
-      </button>
-    </ng-container>
+  <div class="flex justify-center mt-16">
+    @if((searchFacade.isLoading$ | async) === false && (searchFacade.totalPages$
+    | async) > 1){
+    <mel-datahub-pagination-buttons
+      [totalPages]="searchFacade.totalPages$ | async"
+      [currentPage]="searchFacade.currentPage$ | async"
+      (newCurrentPageEvent)="searchService.setPage($any($event))"
+    ></mel-datahub-pagination-buttons>
     } @else if((searchFacade.isLoading$ | async) === true){
     <ng-container>
       <gn-ui-spinning-loader></gn-ui-spinning-loader>

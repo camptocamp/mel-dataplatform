@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { marker } from '@biesbjerg/ngx-translate-extract-marker'
 
-marker('mel.datahub.search.filters.topic')
+marker('mel.datahub.search.filters.categoryKeyword')
 marker('mel.datahub.search.filters.publisher')
-marker('mel.datahub.search.filters.publicationYear')
+marker('mel.datahub.search.filters.revisionYear')
 marker('mel.datahub.search.filters.license')
 
 @Component({
