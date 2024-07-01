@@ -20,6 +20,7 @@
   "mel.datahub.search.filters.reduce": "",
   "mel.datahub.search.filters.refine": "",
   "mel.datahub.search.filters.reset": "",
+  "mel.datahub.search.filters.territories": "",
   "mel.datahub.search.filters.topic": "",
   "mel.datahub.search.form.description": "",
   "mel.datahub.search.form.title": "",
@@ -82,5 +83,7 @@
   "mel.search.filter.generatedByWfs": "",
   "mel.searchpage.subtitle.favorites": "",
   "mel.tooltip.url.copy": "",
-  "search.filters.categoryKeyword": ""
+  "search.filters.categoryKeyword": "",
+  "search.filters.qualityScore": "",
+  "search.filters.territories": ""
 }

@@ -19,6 +19,7 @@
   "mel.datahub.search.filters.reduce": "Réduire",
   "mel.datahub.search.filters.refine": "Affiner votre recherche",
   "mel.datahub.search.filters.reset": "Réinitialiser",
+  "mel.datahub.search.filters.territories": "Territoires",
   "mel.datahub.search.filters.topic": "Catégorie",
   "mel.datahub.search.form.description": "Vous pouvez utiliser la barre de recherche ou les différents filtres situés ci-dessous pour trouver un jeu de données plus rapidement.",
   "mel.datahub.search.form.title": "Trouver un jeu de données",
@@ -81,5 +82,7 @@
   "mel.search.filter.generatedByWfs": "généré par une API",
   "mel.searchpage.subtitle.favorites": "Jeux de données suivis",
   "mel.tooltip.url.copy": "Copier l'URL racine",
-  "search.filters.categoryKeyword": "Mot clé"
+  "search.filters.categoryKeyword": "Mot clé",
+  "search.filters.qualityScore": "",
+  "search.filters.territories": ""
 }

@@ -4,6 +4,8 @@ import { FieldsService, SimpleSearchField } from 'geonetwork-ui'
 import { TranslatedSearchField } from 'geonetwork-ui'
 
 marker('search.filters.categoryKeyword')
+marker('search.filters.qualityScore')
+marker('search.filters.territories')
 @Injectable({
   providedIn: 'root',
 })
@@ -20,6 +22,8 @@ export class MelFieldsService extends FieldsService {
       this.injector,
       'desc'
     ),
+    qualityScore: new SimpleSearchField('qualityScore', this.injector, 'desc'),
+    territories: new TranslatedSearchField('th_mel.link', this.injector, 'asc'),
   }
 
   constructor(override injector: Injector) {
