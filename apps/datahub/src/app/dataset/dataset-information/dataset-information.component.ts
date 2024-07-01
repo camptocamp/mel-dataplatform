@@ -4,7 +4,6 @@ import {
   Input,
   Optional,
 } from '@angular/core'
-import { goFromHomeToSearch } from '@mel-dataplatform/mel'
 import { TranslateService } from '@ngx-translate/core'
 import { RouterFacade } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
