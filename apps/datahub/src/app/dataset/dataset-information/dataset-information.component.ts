@@ -42,6 +42,6 @@ export class DatasetInformationComponent {
   }
 
   onCategoryKeywordClick(category: string) {
-    this.routerFacade.updateSearch({ q: category })
+    this.routerFacade.updateSearch({ categoryKeyword: category })
   }
 }
