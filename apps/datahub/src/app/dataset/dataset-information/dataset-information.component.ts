@@ -38,7 +38,7 @@ export class DatasetInformationComponent {
       (keyword) => keyword.thesaurus?.name === 'Catégories'
     )
 
-    return categoryKeywords?.map((keyword) => keyword.label)
+    return categoryKeywords
   }
 
   onCategoryKeywordClick(category: string) {

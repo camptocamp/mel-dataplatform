@@ -20,9 +20,9 @@
         @for(category of displayCategories; track $index) {
         <button
           class="mel-badge-primary truncate"
-          (click)="onCategoryKeywordClick(category)"
+          (click)="onCategoryKeywordClick(category.key)"
         >
-          {{ category }}
+          {{ category.label }}
         </button>
         }
       </div>
