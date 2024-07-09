@@ -81,7 +81,7 @@
     @apply inline-flex items-center justify-center w-10 h-10 bg-primary rounded-full cursor-pointer hover:bg-primary-dark;
   }
   .mel-fuzzy-search {
-    @apply w-[645px] text-[17px] pointer-events-auto;
+    @apply w-[309px] text-[17px] pointer-events-auto;
   }
   .card-icon {
     @apply text-primary group-hover:text-primary-dark transition-colors transition-opacity;
@@ -104,8 +104,8 @@
   .pagination-btn-arrow {
     @apply scale-[2] font-extralight;
   }
-  .mel-filter-container {
-    @apply rounded border border-primary p-4 sm:flex-wrap;
+  .mel-simple-button {
+    @apply font-semibold;
   }
   .mel-simple-button:hover {
     @apply text-primary-dark;
