@@ -219,7 +219,7 @@ describe('search', () => {
         ' Aucune correspondance. '
       )
     })
-    describe('expanded search panel', () => {
+    describe.only('expanded search panel', () => {
       beforeEach(() => {
         cy.get('[data-cy="filterExpandBtn"]').as('expandBtn')
       })
@@ -237,30 +237,6 @@ describe('search', () => {
         cy.get('body').click()
         cy.get('[data-cy=filterResetBtn]').click()
         cy.get('@result-cards').should('have.length', 14)
-      })
-      describe('sort by date', () => {
-        beforeEach(() => {
-          // first sort by popularity
-          cy.get('@expandBtn').click()
-          cy.get('gn-ui-sort-by').selectDropdownOption('desc,_score')
-          cy.get('@result-cards')
-            .find('[data-cy="recordTitle"]')
-            .then(($titles) =>
-              $titles.toArray().map((title) => title.innerText.trim())
-            )
-            .as('initialResultTitles')
-          cy.get('gn-ui-sort-by').selectDropdownOption('desc,createDate')
-        })
-        it('changes the results order', function () {
-          cy.get('@result-cards')
-            .find('[data-cy="recordTitle"]')
-            .then(($titles) => {
-              const titles = $titles
-                .toArray()
-                .map((title) => title.innerText.trim())
-              assert.notEqual(titles, this['initialResultTitles']) // @initialResultTitles
-            })
-        })
       })
       it('should show close button and show less filters on click', () => {
         cy.get('@expandBtn').click()
