@@ -1,11 +1,19 @@
+@if (fieldName === 'qualityScore'){
+<mel-datahub-dropdown-range
+  class="w-full"
+  [title]="title"
+  [choices]="choices$ | async"
+  (selectValues)="onSelectedValues($event)"
+  [attr.data-cy-field]="fieldName"
+></mel-datahub-dropdown-range>
+} @else {
 <mel-datahub-dropdown-multiselect
   class="w-full"
   [title]="title"
-  [maxRows]="6"
   [choices]="choices$ | async"
   [selected]="selected$ | async"
-  [allowSearch]="true"
   (selectValues)="onSelectedValues($event)"
   [attr.data-cy-field]="fieldName"
 >
 </mel-datahub-dropdown-multiselect>
+}

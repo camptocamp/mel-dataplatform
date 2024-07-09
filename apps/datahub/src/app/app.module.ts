@@ -63,6 +63,7 @@ import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/
 import { environment } from '../environments/environnment'
 import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
 import { MelFieldsService } from './search/service/fields.service'
+import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-datahub-dropdown-range/mel-datahub-dropdown-range.component'
 
 @NgModule({
   declarations: [
@@ -86,6 +87,8 @@ import { MelFieldsService } from './search/service/fields.service'
     DatasetVisualisationComponent,
     MelMapViewComponent,
     MelDataViewComponent,
+    MelDatahubDropdownRangeComponent,
+    MelDatahubDropdownRangeComponent,
   ],
   imports: [
     MelModule,
