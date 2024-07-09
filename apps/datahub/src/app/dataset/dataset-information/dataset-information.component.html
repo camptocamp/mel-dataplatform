@@ -7,7 +7,7 @@
       mel.dataset.informations
     </div>
   </div>
-  <div class="flex flex-col gap-8 border-b-[1px] border-gray-3 pb-6">
+  <div class="flex flex-col gap-8 border-b-[1px] border-gray-3 pb-2">
     @if(lastUpdate){
     <div class="flex flex-row gap-2">
       <span class="font-semibold" translate="">mel.dataset.updatedOn</span>
@@ -46,6 +46,19 @@
     <div class="inline-block break-normal font-semibold">
       <span class="mr-1" translate="">mel.dataset.owner</span>
       <span>{{ record.ownerOrganization?.name }}</span>
+    </div>
+    } @if(record.landingPage) {
+    <div class="flex flex-row gap-1">
+      <a
+        class="underline text-gray-2 text-sm"
+        [href]="record.landingPage"
+        translate
+        >mel.dataset.details
+      </a>
+      <mat-icon
+        class="material-symbols-outlined !w-[12px] !h-[14px] !text-[14px] opacity-75 mt-1"
+        >open_in_new</mat-icon
+      >
     </div>
     }
   </div>
