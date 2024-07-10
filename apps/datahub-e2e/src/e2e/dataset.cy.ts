@@ -193,6 +193,14 @@ describe('datasets', () => {
         .find('a')
         .should('have.length', 4)
     })
+    it('should display the detailed file link and lead to it', () => {
+      cy.get('@mainInfo')
+        .children('div')
+        .eq(4)
+        .find('a')
+        .invoke('attr', 'href')
+        .should('include', '/geonetwork/srv/fre/catalog.search#/metadata')
+    })
   })
 
   describe('API block', () => {
