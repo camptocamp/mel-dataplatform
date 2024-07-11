@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { marker } from '@biesbjerg/ngx-translate-extract-marker'
 import { RouterFacade } from 'geonetwork-ui'
+import { getOptionalSearchConfig } from 'geonetwork-ui'
 
 marker('mel.datahub.search.filters.topic')
 marker('mel.datahub.search.filters.categoryKeyword')
@@ -11,6 +12,12 @@ marker('mel.datahub.search.filters.qualityScore')
 marker('mel.datahub.search.filters.territories')
 marker('mel.datahub.search.filters.producerOrg')
 marker('mel.datahub.search.filters.publisherOrg')
+marker('mel.datahub.search.filters.format')
+marker('mel.datahub.search.filters.inspireKeyword')
+marker('mel.datahub.search.filters.keyword')
+marker('mel.datahub.search.filters.isSpatial')
+marker('mel.datahub.search.filters.resourceType')
+marker('mel.datahub.search.filters.representationType')
 
 @Component({
   selector: 'mel-datahub-search-filters',
@@ -21,14 +28,16 @@ marker('mel.datahub.search.filters.publisherOrg')
 export class SearchFiltersComponent {
   constructor(private routerFacade: RouterFacade) {}
   displayCount = 3
-  searchConfig = [
-    'categoryKeyword',
-    'organization',
-    'publicationYear',
-    'license',
-    'qualityScore',
-    'territories',
-  ].map((filter) => ({
+  searchConfig = (
+    getOptionalSearchConfig().ADVANCED_FILTERS || [
+      'categoryKeyword',
+      'organization',
+      'publicationYear',
+      'license',
+      'qualityScore',
+      'territories',
+    ]
+  ).map((filter) => ({
     fieldName: filter,
     title: `mel.datahub.search.filters.${filter}`,
   }))
