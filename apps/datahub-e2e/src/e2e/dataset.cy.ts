@@ -196,37 +196,45 @@ describe('datasets', () => {
   })
 
   describe('API block', () => {
-    beforeEach(() => cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2'))
+    describe('When the link is working', () => {
+      beforeEach(() =>
+        cy.visit('/dataset/04bcec79-5b25-4b16-b635-73115f7456e4')
+      )
 
-    it('should display the API block', () => {
-      cy.get('mel-datahub-dataset-apis').should('be.visible')
-    })
-    it('should have API cards', () => {
-      cy.get('mel-datahub-dataset-apis')
-        .find('mel-datahub-custom-carousel')
-        .find('mel-datahub-api-card')
-        .should('have.length.gt', 0)
-    })
-    it('should display the swagger link', () => {
-      cy.get('mel-datahub-dataset-apis')
-        .find('mel-datahub-custom-carousel')
-        .find('mel-datahub-api-card')
-        .last()
-        .click()
-      cy.window().then((win) => {
-        cy.get('mel-datahub-api-form')
-          .find('a')
-          .invoke('attr', 'href')
-          .should('eq', `${win.location.origin}/data/swagger-ui/index.html`)
+      it('should display the API block', () => {
+        cy.get('mel-datahub-dataset-apis').should('be.visible')
       })
-    })
-    it('should open the api form', () => {
-      cy.get('mel-datahub-dataset-apis')
-        .find('mel-datahub-custom-carousel')
-        .find('mel-datahub-api-card')
-        .last()
-        .click()
-      cy.get('mel-datahub-api-form').should('be.visible')
+      it('should have API cards', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .should('have.length.gt', 0)
+      })
+      it('should display the swagger link', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .last()
+          .find('button')
+          .eq(1)
+          .click()
+        cy.window().then((win) => {
+          cy.get('mel-datahub-api-form')
+            .find('a')
+            .invoke('attr', 'href')
+            .should('eq', `${win.location.origin}/data/swagger-ui/index.html`)
+        })
+      })
+      it('should open the api form', () => {
+        cy.get('mel-datahub-dataset-apis')
+          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-api-card')
+          .last()
+          .find('button')
+          .eq(1)
+          .click()
+        cy.get('mel-datahub-api-form').should('be.visible')
+      })
     })
   })
 

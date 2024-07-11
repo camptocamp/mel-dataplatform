@@ -1,11 +1,9 @@
 <div
   [title]="link.name"
   [ngClass]="{
-    'cursor-pointer': displayApiFormButton,
     'bg-gray-7': currentlyActive
   }"
-  (click)="openRecordApiFormPanel()"
-  class="mel-card w-[330px] group relative h-40 p-4 overflow-hidden"
+  class="mel-card w-[330px] group relative h-40 p-4 overflow-hidden cursor-default"
 >
   <h1 class="font-bold text-[17px] line-clamp-2">
     {{ link.name || link.description }}
@@ -20,33 +18,36 @@
     >
       {{ link.accessServiceProtocol }}
     </span>
-    <gn-ui-copy-text-button
-      *ngIf="!displayApiFormButton"
-      [text]="link.url.toString()"
-      [tooltipText]="'mel.tooltip.url.copy' | translate"
-      [displayText]="false"
-    ></gn-ui-copy-text-button>
-    <button
-      *ngIf="displayApiFormButton"
-      type="button"
-      [ngClass]="{
-        'h-6 focus:bg-text-primary-dark': displayApiFormButton
-      }"
-      mat-raised-button
-      [matTooltip]="
-        !currentlyActive
-          ? ('mel.record.metadata.api.form.openForm' | translate)
-          : ('mel.record.metadata.api.form.closeForm' | translate)
-      "
-      matTooltipPosition="above"
-    >
-      <mat-icon
-        class="material-symbols-outlined pointer-events-none align-top card-icon"
+    <div class="flex flex-row gap-2 items-center">
+      <gn-ui-copy-text-button
+        [text]="link.url.toString()"
+        [tooltipText]="'mel.tooltip.url.copy' | translate"
+        [displayText]="false"
+      ></gn-ui-copy-text-button>
+      @if(displayApiFormButton){
+      <button
+        type="button"
         [ngClass]="{
-          'text-primary-dark opacity-100': currentlyActive
+          'h-6 focus:bg-text-primary-dark': displayApiFormButton
         }"
-        >more_horiz</mat-icon
+        (click)="openRecordApiFormPanel()"
+        mat-raised-button
+        [matTooltip]="
+          !currentlyActive
+            ? ('mel.record.metadata.api.form.openForm' | translate)
+            : ('mel.record.metadata.api.form.closeForm' | translate)
+        "
+        matTooltipPosition="above"
       >
-    </button>
+        <mat-icon
+          class="material-symbols-outlined pointer-events-none align-middle card-icon"
+          [ngClass]="{
+            'text-primary-dark opacity-100': currentlyActive
+          }"
+          >more_horiz</mat-icon
+        >
+      </button>
+      }
+    </div>
   </div>
 </div>
