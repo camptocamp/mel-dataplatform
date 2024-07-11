@@ -50,7 +50,7 @@ export class MelDatahubDropdownRangeComponent {
   overlayOpen = false
   overlayWidth = 'auto'
   overlayMaxHeight = 'none'
-  id = `dropdown-multiselect-${Math.floor(Math.random() * 10000)}`
+  id = `dropdown-range-${Math.floor(Math.random() * 10000)}`
 
   get hasSelectedChoices() {
     return this.selected.length > 0
@@ -78,8 +78,8 @@ export class MelDatahubDropdownRangeComponent {
   }
 
   onValidate() {
-    const lowValue = Number(this.lowValue)
-    const highValue = Number(this.highValue)
+    const lowValue = Number(this.lowValue) * 10
+    const highValue = Number(this.highValue) * 10
     this.selected = this.choices
       .filter((choice) => {
         const choiceNb = Number(choice.value)

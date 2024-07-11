@@ -219,7 +219,7 @@ describe('search', () => {
         ' Aucune correspondance. '
       )
     })
-    describe.only('expanded search panel', () => {
+    describe('expanded search panel', () => {
       beforeEach(() => {
         cy.get('[data-cy="filterExpandBtn"]').as('expandBtn')
       })

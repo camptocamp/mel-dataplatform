@@ -88,7 +88,6 @@ import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-da
     MelMapViewComponent,
     MelDataViewComponent,
     MelDatahubDropdownRangeComponent,
-    MelDatahubDropdownRangeComponent,
   ],
   imports: [
     MelModule,
