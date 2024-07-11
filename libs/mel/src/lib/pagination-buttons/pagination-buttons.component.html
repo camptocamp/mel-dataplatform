@@ -1,8 +1,8 @@
 <div class="relative">
   <div class="flex flex-row items-center">
+    @if (currentPage !== 1) {
     <gn-ui-button
       type="outline"
-      [disabled]="currentPage === 1"
       (buttonClick)="previousPage()"
       extraClass="pagination-btn-nav mr-14"
     >
@@ -13,7 +13,7 @@
         >mel.datahub.search.pagination.previous</span
       >
     </gn-ui-button>
-    @for(page of visiblePages; track $index){ @if(page === '...'){
+    } @for(page of visiblePages; track $index){ @if(page === '...'){
     <span class="mr-14">{{ page }}</span>
     } @else {
     <gn-ui-button
@@ -23,10 +23,9 @@
       extraClass="pagination-btn"
       >{{ page }}</gn-ui-button
     >
-    } }
+    } } @if (currentPage !== totalPages) {
     <gn-ui-button
       type="outline"
-      [disabled]="currentPage === totalPages"
       (buttonClick)="nextPage()"
       extraClass="pagination-btn-nav"
     >
@@ -37,5 +36,6 @@
         >chevron_right</mat-icon
       >
     </gn-ui-button>
+    }
   </div>
 </div>
