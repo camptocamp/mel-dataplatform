@@ -93,6 +93,10 @@ export class MelDatahubDropdownRangeComponent {
         return true
       })
       .map((choice) => choice.value)
+    if (this.selected.length === 0) {
+      // If no value is selected, we keep the low and high values to display nothing
+      this.selected.push(lowValue, highValue)
+    }
     this.selectValues.emit(this.selected)
   }
 }

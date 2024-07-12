@@ -1,20 +1,11 @@
 <button
-  class="mel-primary-button gap-0 rounded-none w-52"
+  class="mel-primary-button gap-0 rounded-none w-52 justify-between"
   [attr.aria-owns]="id"
   (click)="openOverlay()"
   cdkOverlayOrigin
   #overlayOrigin="cdkOverlayOrigin"
 >
   <span>{{ title }}</span>
-  <div class="grow flex items-center mr-2 gap-2 overflow-hidden">
-    @if(hasSelectedChoices){
-    <div
-      class="shrink-0 rounded-full text-primary bg-white font-bold text-[12px] w-5 h-5 flex items-center justify-center mr-1 selected-count ml-2"
-    >
-      {{ selected['length'] }}
-    </div>
-    }
-  </div>
   <button class="h-6 w-6" data-cy="clearSelection">
     @if(hasSelectedChoices && !overlayOpen){
     <mat-icon
@@ -78,6 +69,7 @@
           (valueChange)="highValue = $event"
           [value]="highValue"
           [hint]="'mel.datahub.search.filters.maxValue' | translate"
+          (keyup.enter)="onValidate()"
         ></gn-ui-text-input>
       </div>
       <mel-datahub-button
