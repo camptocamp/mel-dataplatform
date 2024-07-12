@@ -74,6 +74,6 @@
   "mel.search.field.any.placeholder": "Rechercher un jeu de données",
   "mel.search.filter.generatedByWfs": "généré par une API",
   "mel.searchpage.subtitle.favorites": "Jeux de données suivis",
-  "mel.tooltip.url.copy": "Copier l'URL",
+  "mel.tooltip.url.copy": "Copier l'URL racine",
   "search.filters.categoryKeyword": "Mot clé"
 }
