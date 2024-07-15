@@ -114,11 +114,6 @@ describe('datasets', () => {
     })
 
     it('should display the sharing tool', () => {
-      cy.get('mel-datahub-dataset-visualisation')
-        .find('.mat-mdc-tab-labels')
-        .children('div')
-        .eq(2)
-        .click()
       cy.get('gn-ui-data-view-share').should('be.visible')
     })
   })
@@ -291,7 +286,7 @@ describe('datasets', () => {
 
   describe('Navigation', () => {
     describe('With a query on', () => {
-      beforeEach(() => cy.visit('/search?publisher=Barbie%20Inc.'))
+      beforeEach(() => cy.visit('/search?organization=Barbie%20Inc.'))
       it('should return to the search page with the previous query on', () => {
         cy.get('mel-datahub-results-card-search').first().click()
 
@@ -299,7 +294,7 @@ describe('datasets', () => {
           .find('mel-datahub-button')
           .first()
           .click()
-        cy.url().should('include', '/search?publisher=Barbie%20Inc.')
+        cy.url().should('include', '/search?organization=Barbie%20Inc.')
       })
     })
     describe('Without a query on', () => {
