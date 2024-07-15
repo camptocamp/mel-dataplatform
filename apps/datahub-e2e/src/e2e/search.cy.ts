@@ -158,21 +158,17 @@ describe('search', () => {
     it('should display the search results in a grid', () => {
       cy.get('mel-datahub-results-list-grid').should('be.visible')
     })
-    it('should filter the results when selecting a filter value (licence)', () => {
-      cy.get('@filters').eq(3).click()
+    it('should filter the results when selecting a filter value (producer)', () => {
+      cy.get('@filters').eq(1).click()
       getFilterOptions()
       cy.get('@options').eq(1).click()
-      cy.get('@result-cards').should('have.length', 2)
+      cy.get('@result-cards').should('have.length', 1)
       cy.get('@result-cards')
         .first()
         .find('h1')
-        .should('have.text', ' Accroches vélos MEL ')
-      cy.get('@result-cards')
-        .eq(1)
-        .find('h1')
         .should(
           'have.text',
-          ' Mat éolien construit ou en projet dans les Hauts de France '
+          " Concentrations annuelles de polluants dans l'air ambiant issues du réseau permanent de mesures en région Hauts-de-France "
         )
     })
     it('should filter the results when selecting multiple filter values (producer)', () => {
@@ -222,6 +218,32 @@ describe('search', () => {
         'have.text',
         ' Aucune correspondance. '
       )
+    })
+    describe('expanded search panel', () => {
+      beforeEach(() => {
+        cy.get('[data-cy="filterExpandBtn"]').as('expandBtn')
+      })
+      it('should expand the search panel and show more filters on click', () => {
+        cy.get('mel-datahub-filter-dropdown').should('have.length', 3)
+        cy.get('@expandBtn').click()
+        cy.get('mel-datahub-filter-dropdown').should('have.length', 6)
+      })
+      it('should show the reset button and reset the filters on click', () => {
+        cy.get('@expandBtn').click()
+        cy.get('@filters').eq(3).click()
+        getFilterOptions()
+        cy.get('@options').eq(1).click()
+        cy.get('@result-cards').should('have.length', 2)
+        cy.get('body').click()
+        cy.get('[data-cy=filterResetBtn]').click()
+        cy.get('@result-cards').should('have.length', 14)
+      })
+      it('should show close button and show less filters on click', () => {
+        cy.get('@expandBtn').click()
+        cy.get('mel-datahub-filter-dropdown').should('have.length', 6)
+        cy.get('[data-cy=filterCloseBtn]').click()
+        cy.get('mel-datahub-filter-dropdown').should('have.length', 3)
+      })
     })
   })
   describe('pagination', () => {

@@ -1,0 +1,84 @@
+<button
+  class="mel-primary-button gap-0 rounded-none w-52 justify-between"
+  [attr.aria-owns]="id"
+  (click)="openOverlay()"
+  cdkOverlayOrigin
+  #overlayOrigin="cdkOverlayOrigin"
+>
+  <span>{{ title }}</span>
+  <button class="h-6 w-6" data-cy="clearSelection">
+    @if(hasSelectedChoices && !overlayOpen){
+    <mat-icon
+      class="material-symbols-outlined shrink-0 opacity-40 mr-1.5 hover:opacity-80 transition-colors clear-btn"
+      (click)="clearSelection($event)"
+    >
+      close
+    </mat-icon>
+    }
+  </button>
+  <mat-icon class="material-symbols-outlined shrink-0">
+    @if(overlayOpen){
+    <ng-container>expand_less</ng-container>
+    } @else {
+    <ng-container>expand_more</ng-container>
+    }
+  </mat-icon>
+</button>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayOrigin]="overlayOrigin"
+  [cdkConnectedOverlayOpen]="overlayOpen"
+  [cdkConnectedOverlayPositions]="overlayPositions"
+  [cdkConnectedOverlayScrollStrategy]="scrollStrategy"
+  [cdkConnectedOverlayFlexibleDimensions]="true"
+  (overlayOutsideClick)="closeOverlay()"
+  (detach)="closeOverlay()"
+>
+  <div
+    class="bg-white border border-gray-300 shadow-lg py-2 w-full overflow-x-hidden overflow-y-auto overlay-container"
+    [style.max-height]="overlayMaxHeight"
+    [style.width]="'300px'"
+    role="listbox"
+    tabindex="-1"
+    [attr.id]="id"
+    [attr.aria-multiselectable]="true"
+    [attr.aria-label]="title"
+    #overlayContainer
+  >
+    <div class="flex flex-col ml-3 gap-3">
+      <div class="mr-3">
+        <div class="text-primary" translate>
+          mel.datahub.search.filters.range.from
+        </div>
+        <gn-ui-text-input
+          class="w-64"
+          (valueChange)="lowValue = $event"
+          [value]="lowValue"
+          [hint]="'mel.datahub.search.filters.minValue' | translate"
+        ></gn-ui-text-input>
+      </div>
+      <div class="mr-3">
+        <div class="text-primary" translate>
+          mel.datahub.search.filters.range.to
+        </div>
+        <gn-ui-text-input
+          class="w-64"
+          (valueChange)="highValue = $event"
+          [value]="highValue"
+          [hint]="'mel.datahub.search.filters.maxValue' | translate"
+          (keyup.enter)="onValidate()"
+        ></gn-ui-text-input>
+      </div>
+      <mel-datahub-button
+        [disabled]="!lowValue || !highValue"
+        class="self-end mr-3"
+        [label]="'mel.datahub.search.filters.validate' | translate"
+        [icon]="'arrow'"
+        (click)="onValidate()"
+      ></mel-datahub-button>
+    </div>
+  </div>
+</ng-template>
