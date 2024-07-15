@@ -138,6 +138,9 @@ import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-da
       searchStateId: 'mainSearch',
       searchRouteComponent: SearchPageComponent,
       recordRouteComponent: DatasetPageComponent,
+      // reusing the search component for the organization route since MEL
+      // does not have org routes but param is compulsory
+      organizationRouteComponent: SearchPageComponent,
     }),
   ],
   providers: [

@@ -4,11 +4,13 @@ import { RouterFacade } from 'geonetwork-ui'
 
 marker('mel.datahub.search.filters.topic')
 marker('mel.datahub.search.filters.categoryKeyword')
-marker('mel.datahub.search.filters.publisher')
+marker('mel.datahub.search.filters.organization')
 marker('mel.datahub.search.filters.publicationYear')
 marker('mel.datahub.search.filters.license')
 marker('mel.datahub.search.filters.qualityScore')
 marker('mel.datahub.search.filters.territories')
+marker('mel.datahub.search.filters.producerOrg')
+marker('mel.datahub.search.filters.publisherOrg')
 
 @Component({
   selector: 'mel-datahub-search-filters',
@@ -21,7 +23,7 @@ export class SearchFiltersComponent {
   displayCount = 3
   searchConfig = [
     'topic',
-    'publisher',
+    'organization',
     'publicationYear',
     'license',
     'qualityScore',

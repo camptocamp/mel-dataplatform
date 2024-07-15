@@ -179,3 +179,15 @@ input[type='checkbox'] {
 .mat-mdc-tab:not(.mdc-tab--stacked) {
   @apply h-9 !important;
 }
+/* TO REMOVE once the component is extended */
+gn-ui-copy-text-button div input {
+  @apply bg-white rounded-l !important;
+}
+
+gn-ui-copy-text-button div button {
+  @apply rounded-r !important;
+}
+
+gn-ui-copy-text-button div textarea {
+  @apply bg-white rounded-l !important;
+}

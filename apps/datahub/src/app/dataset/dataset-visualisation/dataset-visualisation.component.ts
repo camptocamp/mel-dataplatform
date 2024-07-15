@@ -18,14 +18,27 @@ import { DatasetDistribution } from 'geonetwork-ui/libs/common/domain/src/lib/mo
 export class DatasetVisualisationComponent {
   @Input() displayMap: boolean
   @Input() displayData: boolean
-  selectedTabIndex = 0
+  selectedView: string
 
   selectedLink$ = new BehaviorSubject<DatasetDistribution>(null)
 
-  constructor(public mdViewFacade: MdViewFacade) {}
+  constructor(public mdViewFacade: MdViewFacade) {
+    this.selectedView = this.displayMap ? 'map' : 'table'
+  }
 
   onTabIndexChange(index: number): void {
-    this.selectedTabIndex = index
+    let view
+    switch (index) {
+      case 1:
+        view = 'table'
+        break
+      case 2:
+        view = 'chart'
+        break
+      default:
+        view = 'map'
+    }
+    this.selectedView = view
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
     }, 0)
