@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { marker } from '@biesbjerg/ngx-translate-extract-marker'
 import { RouterFacade } from 'geonetwork-ui'
-import { getOptionalSearchConfig } from 'geonetwork-ui'
+import { getOptionalSearchConfig } from 'libs/util/app-config/src/lib/app-config'
 
 marker('mel.datahub.search.filters.topic')
 marker('mel.datahub.search.filters.categoryKeyword')
@@ -32,7 +32,7 @@ export class SearchFiltersComponent {
     getOptionalSearchConfig().ADVANCED_FILTERS || [
       'categoryKeyword',
       'organization',
-      'publicationYear',
+      'revisionYear',
       'license',
       'qualityScore',
       'territories',

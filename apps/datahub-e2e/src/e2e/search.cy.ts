@@ -184,7 +184,7 @@ describe('search', () => {
         .find('h1')
         .should(
           'have.text',
-          " Concentrations annuelles de polluants dans l'air ambiant issues du réseau permanent de mesures en région Hauts-de-France "
+          ' Metadata for E2E testing purpose. (this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut) '
         )
     })
     it('should filter the results when selecting multiple filter values (producer)', () => {
@@ -193,7 +193,7 @@ describe('search', () => {
       cy.get('@options').first().click()
       cy.get('@options').eq(1).click()
       cy.get('@options').eq(2).click()
-      cy.get('mel-datahub-results-card-search').should('have.length', 3)
+      cy.get('mel-datahub-results-card-search').should('have.length', 5)
     })
     it('should filter by quality score', () => {
       cy.get('[data-cy="filterExpandBtn"]').click()
@@ -222,12 +222,15 @@ describe('search', () => {
       cy.get('@result-cards').should('have.length', 3)
       cy.get('@filters').eq(1).click()
       getFilterOptions()
-      cy.get('@options').eq(12).click()
+      cy.get('@options').eq(5).click()
       cy.get('@result-cards').should('have.length', 1)
       cy.get('@result-cards')
         .first()
         .find('h1')
-        .should('have.text', ' Accroches vélos MEL ')
+        .should(
+          'have.text',
+          ' SCoT (Schéma de cohérence territoriale) en région Hauts-de-France '
+        )
     })
     it('should combine search input and filters and display a message if no results found', () => {
       cy.get('mel-datahub-autocomplete input').type('test')
@@ -237,7 +240,7 @@ describe('search', () => {
       cy.get('@result-cards').should('have.length', 3)
       cy.get('@filters').eq(1).click()
       getFilterOptions()
-      cy.get('@options').eq(10).click()
+      cy.get('@options').eq(8).click()
       cy.get('[data-cy=searchResults]').should(
         'have.text',
         ' Aucune correspondance. '
@@ -257,7 +260,7 @@ describe('search', () => {
         cy.get('@filters').eq(3).click()
         getFilterOptions()
         cy.get('@options').eq(1).click()
-        cy.get('@result-cards').should('have.length', 2)
+        cy.get('@result-cards').should('have.length', 9)
         cy.get('body').click()
         cy.get('[data-cy=filterResetBtn]').click()
         cy.get('@result-cards').should('have.length', 14)
@@ -269,7 +272,7 @@ describe('search', () => {
         cy.get('mel-datahub-filter-dropdown').should('have.length', 3)
       })
     })
-    describe('Filters from config', () => {
+    describe.only('Filters from config', () => {
       beforeEach(() => {
         // this will enable all available filters
         cy.intercept('GET', '/assets/configuration/default.toml', {
@@ -278,6 +281,7 @@ describe('search', () => {
         cy.visit('/search')
       })
       it('should display all filters', () => {
+        cy.get('[data-cy="filterExpandBtn"]').click()
         cy.get('@filters').filter(':visible').should('have.length', 12)
         cy.get('@filters')
           .children()

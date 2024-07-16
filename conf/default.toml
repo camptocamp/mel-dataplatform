@@ -9,4 +9,4 @@
 # The advanced search filters available to the user can be customized with this setting.
 # The following fields can be used for filtering: 'organization', 'format', 'publicationYear', 'inspireKeyword', 'keyword', 'topic', 'isSpatial', 'license', 'resourceType', 'representationType', 'revisionYear', 'categoryKeyword', 'qualityScore', 'territories', 'publisherOrg', 'producerOrg'
 # any other field will be ignored
-advanced_filters = ['format', 'topic', 'resourceType', 'representationType', 'publisherOrg', 'producerOrg']
+# advanced_filters = ['format', 'topic', 'resourceType', 'representationType', 'publisherOrg', 'producerOrg']
