@@ -19,10 +19,12 @@ export function loadAppConfig() {
     .then((conf) => {
       let parsed
       try {
-        parsed = TOML.parse(conf, { joiner: '\n', bigint: false }) as any
-      } catch (e: any) {
+        parsed = TOML.parse(conf, { joiner: '\n', bigint: false })
+      } catch (e: unknown) {
         throw new Error(
-          `An error occurred when parsing the configuration file: ${e.message}`
+          `An error occurred when parsing the configuration file: ${
+            (e as Error).message
+          }`
         )
       }
       const errors = []
