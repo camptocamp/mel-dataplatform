@@ -7,22 +7,6 @@
 [search]
 
 # The advanced search filters available to the user can be customized with this setting.
-# The following fields can be used for filtering: 'publisher', 'format', 'publicationYear', 'inspireKeyword', 'keyword', 'topic', 'isSpatial', 'license', 'resourceType', 'representationType', 'revisionYear', 'categoryKeyword', 'qualityScore', 'territories'
+# The following fields can be used for filtering: 'organization', 'format', 'publicationYear', 'inspireKeyword', 'keyword', 'topic', 'isSpatial', 'license', 'resourceType', 'representationType', 'revisionYear', 'categoryKeyword', 'qualityScore', 'territories', 'publisherOrg', 'producerOrg'
 # any other field will be ignored
-# advanced_filters = ['format', 'topic', 'resourceType', 'representationType']
-
-### GLOBAL SETTINGS
-
-[global]
-# This URL (relative or absolute) must point to the API endpoint of a GeoNetwork4 instance
-# NOT USED AT THE MOMENT BUT MANDATORY
-geonetwork4_api_url = "/geonetwork/srv/api"
-
-### VISUAL THEME
-
-# NOT USED AT THE MOMENT BUT MANDATORY
-[theme]
-primary_color = "#c82850"
-secondary_color = "#001638"
-main_color = "#555"
-background_color = "#fdfbff"
+advanced_filters = ['format', 'topic', 'resourceType', 'representationType', 'publisherOrg', 'producerOrg']
