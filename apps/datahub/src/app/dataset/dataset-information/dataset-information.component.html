@@ -20,7 +20,7 @@
         @for(category of displayCategories; track $index) {
         <button
           class="mel-badge-primary truncate"
-          (click)="onCategoryKeywordClick(category.key)"
+          (click)="onCategoryKeywordClick(category)"
         >
           {{ category.label }}
         </button>

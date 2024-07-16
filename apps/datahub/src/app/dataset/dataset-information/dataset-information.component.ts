@@ -6,7 +6,10 @@ import {
 } from '@angular/core'
 import { TranslateService } from '@ngx-translate/core'
 import { RouterFacade } from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import {
+  CatalogRecord,
+  Keyword,
+} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
 @Component({
   selector: 'mel-datahub-dataset-information',
@@ -41,7 +44,7 @@ export class DatasetInformationComponent {
     return categoryKeywords
   }
 
-  onCategoryKeywordClick(category: string) {
-    this.routerFacade.updateSearch({ categoryKeyword: category })
+  onCategoryKeywordClick(category: Keyword) {
+    this.routerFacade.updateSearch({ categoryKeyword: category.key })
   }
 }

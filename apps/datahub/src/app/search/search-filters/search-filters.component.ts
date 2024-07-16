@@ -22,7 +22,7 @@ export class SearchFiltersComponent {
   constructor(private routerFacade: RouterFacade) {}
   displayCount = 3
   searchConfig = [
-    'topic',
+    'categoryKeyword',
     'organization',
     'publicationYear',
     'license',
