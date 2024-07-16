@@ -149,8 +149,24 @@ describe('search', () => {
     it('should display the search form', () => {
       cy.get('mel-datahub-search-form').should('be.visible')
     })
-    it('should display the search filters', () => {
-      cy.get('mel-datahub-search-filters').should('be.visible')
+    it('should display the base search filters', () => {
+      cy.get('[data-cy="filterExpandBtn"]').click()
+      cy.get('mel-datahub-search-filters')
+        .find('mel-datahub-filter-dropdown')
+        .children()
+        .then(($dropdowns) =>
+          $dropdowns
+            .toArray()
+            .map((dropdown) => dropdown.getAttribute('data-cy-field'))
+        )
+        .should('eql', [
+          'categoryKeyword',
+          'organization',
+          'publicationYear',
+          'license',
+          'qualityScore',
+          'territories',
+        ])
     })
     it('should display the search results', () => {
       cy.get('mel-datahub-search-results').should('be.visible')
@@ -177,6 +193,14 @@ describe('search', () => {
       cy.get('@options').first().click()
       cy.get('@options').eq(1).click()
       cy.get('@options').eq(2).click()
+      cy.get('mel-datahub-results-card-search').should('have.length', 3)
+    })
+    it('should filter by quality score', () => {
+      cy.get('[data-cy="filterExpandBtn"]').click()
+      cy.get('@filters').eq(4).click()
+      cy.get('gn-ui-text-input input').first().type('5')
+      cy.get('gn-ui-text-input input').last().type('7')
+      cy.get('mel-datahub-button').last().click()
       cy.get('mel-datahub-results-card-search').should('have.length', 3)
     })
     it('should filter the results when executing a search', () => {
