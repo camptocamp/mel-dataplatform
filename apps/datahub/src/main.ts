@@ -1,6 +1,6 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
 import { AppModule } from './app/app.module'
-import { loadAppConfig } from 'libs/util/app-config/src/lib/app-config'
+import { loadAppConfig } from '@mel-dataplatform/mel'
 
 loadAppConfig().then(() => {
   platformBrowserDynamic()
