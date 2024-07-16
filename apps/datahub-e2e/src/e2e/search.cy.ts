@@ -269,6 +269,39 @@ describe('search', () => {
         cy.get('mel-datahub-filter-dropdown').should('have.length', 3)
       })
     })
+    describe('Filters from config', () => {
+      beforeEach(() => {
+        // this will enable all available filters
+        cy.intercept('GET', '/assets/configuration/default.toml', {
+          fixture: 'config-with-all-filters.toml',
+        })
+        cy.visit('/search')
+      })
+      it('should display all filters', () => {
+        cy.get('@filters').filter(':visible').should('have.length', 12)
+        cy.get('@filters')
+          .children()
+          .then(($dropdowns) =>
+            $dropdowns
+              .toArray()
+              .map((dropdown) => dropdown.getAttribute('data-cy-field'))
+          )
+          .should('eql', [
+            'publisher',
+            'format',
+            'publicationYear',
+            'inspireKeyword',
+            'keyword',
+            'topic',
+            'isSpatial',
+            'license',
+            'resourceType',
+            'representationType',
+            'revisionYear',
+            'categoryKeyword',
+          ])
+      })
+    })
   })
   describe('pagination', () => {
     beforeEach(() => {
