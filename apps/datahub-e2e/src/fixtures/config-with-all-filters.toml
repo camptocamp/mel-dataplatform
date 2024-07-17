@@ -1,0 +1,2 @@
+[search]
+advanced_filters = ['publisher', 'format', 'publicationYear', 'inspireKeyword', 'keyword', 'topic', 'isSpatial', 'license', 'resourceType', 'representationType', 'revisionYear', 'categoryKeyword']
