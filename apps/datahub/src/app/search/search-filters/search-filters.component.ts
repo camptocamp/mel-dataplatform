@@ -30,12 +30,10 @@ export class SearchFiltersComponent {
   displayCount = 3
   searchConfig = (
     getOptionalSearchConfig().ADVANCED_FILTERS || [
+      'producerOrg',
       'categoryKeyword',
-      'organization',
       'revisionYear',
       'license',
-      'qualityScore',
-      'territories',
     ]
   ).map((filter) => ({
     fieldName: filter,
