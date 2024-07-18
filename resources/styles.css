@@ -87,13 +87,13 @@
     @apply group-hover:bg-primary-dark group-hover:border-white group-hover:text-white transition-colors;
   }
   .pagination-btn {
-    @apply border-none bg-transparent mr-14;
+    @apply border-none bg-transparent mr-8 text-sm;
   }
   .pagination-btn:disabled {
     @apply border-none bg-transparent text-primary opacity-100;
   }
   .pagination-btn-nav {
-    @apply border-none bg-transparent text-primary opacity-100;
+    @apply border-none bg-transparent text-primary opacity-100 text-sm;
   }
   .pagination-btn-nav:disabled {
     @apply text-black;

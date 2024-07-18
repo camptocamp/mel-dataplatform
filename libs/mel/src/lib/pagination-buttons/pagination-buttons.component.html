@@ -4,7 +4,7 @@
     <gn-ui-button
       type="outline"
       (buttonClick)="previousPage()"
-      extraClass="pagination-btn-nav mr-14"
+      extraClass="pagination-btn-nav mr-8"
     >
       <mat-icon class="pagination-btn-arrow material-symbols-outlined"
         >chevron_left</mat-icon
@@ -14,7 +14,7 @@
       >
     </gn-ui-button>
     } @for(page of visiblePages; track $index){ @if(page === '...'){
-    <span class="mr-14">{{ page }}</span>
+    <span class="mr-8">{{ page }}</span>
     } @else {
     <gn-ui-button
       [type]="page === currentPage ? 'outline' : 'light'"
