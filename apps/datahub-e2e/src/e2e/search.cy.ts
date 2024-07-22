@@ -160,12 +160,10 @@ describe('search', () => {
             .map((dropdown) => dropdown.getAttribute('data-cy-field'))
         )
         .should('eql', [
+          'producerOrg',
           'categoryKeyword',
-          'organization',
-          'publicationYear',
+          'revisionYear',
           'license',
-          'qualityScore',
-          'territories',
         ])
     })
     it('should display the search results', () => {
