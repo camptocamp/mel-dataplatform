@@ -4,6 +4,7 @@
 FROM nginx:1.24-alpine
 
 ARG APP_NAME="catalogue"
+ENV APP_NAME=${APP_NAME}
 
 COPY dist/apps/${APP_NAME}/browser /usr/share/nginx/html/${APP_NAME}
 COPY tools/docker/docker-entrypoint.sh /
