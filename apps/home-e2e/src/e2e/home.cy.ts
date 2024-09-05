@@ -40,10 +40,7 @@ describe('home', () => {
       cy.get('mel-datahub-custom-carousel')
         .find('h1')
         .eq(2)
-        .should(
-          'have.text',
-          ' Leitungskataster Fernwärme AEW Energie AG '
-        )
+        .should('have.text', ' Leitungskataster Fernwärme AEW Energie AG ')
         .should('be.visible')
     })
     describe('interactions with dataset', () => {
@@ -60,7 +57,11 @@ describe('home', () => {
         )
       })
       it('should create correct url to navigate to search on keyword click', () => {
-        cy.get('mel-datahub-results-card-last-created').eq(1).find('.mel-badge-button-primary').first().click()
+        cy.get('mel-datahub-results-card-last-created')
+          .eq(1)
+          .find('.mel-badge-button-primary')
+          .first()
+          .click()
         cy.url().should('include', 'catalogue/search?q=administration')
       })
     })
