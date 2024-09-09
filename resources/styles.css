@@ -188,3 +188,9 @@ gn-ui-copy-text-button div button {
 gn-ui-copy-text-button div textarea {
   @apply bg-white rounded-l !important;
 }
+
+/** No margin for first markdown child/heading, that cannot be detected by getBoundingClientRect()
+    => can be removed after next gn-ui update **/
+.markdown-body :first-child {
+  margin-top: 0 !important;
+}

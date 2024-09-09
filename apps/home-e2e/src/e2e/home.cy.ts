@@ -40,10 +40,7 @@ describe('home', () => {
       cy.get('mel-datahub-custom-carousel')
         .find('h1')
         .eq(2)
-        .should(
-          'have.text',
-          ' Cartographie des sols agricoles de la plaine du Rhône '
-        )
+        .should('have.text', ' Leitungskataster Fernwärme AEW Energie AG ')
         .should('be.visible')
     })
     describe('interactions with dataset', () => {
@@ -56,11 +53,15 @@ describe('home', () => {
         cy.get('@firstResult').click()
         cy.url().should(
           'include',
-          'catalogue/dataset/9e1ea778-d0ce-4b49-90b7-37bc0e448300'
+          'catalogue/dataset/a3774ef6-809d-4dd1-984f-9254f49cbd0a'
         )
       })
       it('should create correct url to navigate to search on keyword click', () => {
-        cy.get('@firstResult').find('.mel-badge-button-primary').first().click()
+        cy.get('mel-datahub-results-card-last-created')
+          .eq(1)
+          .find('.mel-badge-button-primary')
+          .first()
+          .click()
         cy.url().should('include', 'catalogue/search?q=administration')
       })
     })
