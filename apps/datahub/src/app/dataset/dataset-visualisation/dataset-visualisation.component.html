@@ -1,9 +1,9 @@
 <div
   class="flex flex-col"
-  [ngClass]="selectedView === 'map' ? 'gap-40' : 'gap-52'"
+  [ngClass]="selectedView === 'map' ? 'mb-52 sm:mb-72' : 'mb-72 sm:mb-80'"
 >
   <div
-    class="flex flex-col gap-8 overflow-visible sm:pt-5 mb-16"
+    class="flex flex-col gap-8 overflow-visible sm:pt-5"
     style="height: 512px"
   >
     <div class="flex flex-col">
@@ -21,6 +21,12 @@
       mat-align-tabs="start"
       [disableRipple]="true"
     >
+      <ng-template #dataViewShare>
+        <gn-ui-data-view-share
+          class="mb-6 hidden sm:block"
+          [viewType]="selectedView"
+        ></gn-ui-data-view-share>
+      </ng-template>
       <mat-tab [disabled]="!displayMap">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.map</span>
@@ -32,6 +38,7 @@
         <div class="block" style="height: 500px">
           <mel-datahub-map-view></mel-datahub-map-view>
         </div>
+        <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
       <mat-tab [disabled]="!displayData">
@@ -42,6 +49,7 @@
         <div class="block">
           <mel-datahub-data-view mode="table"></mel-datahub-data-view>
         </div>
+        <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
       <mat-tab [disabled]="!displayData">
@@ -52,14 +60,9 @@
         <div class="block">
           <mel-datahub-data-view mode="chart"></mel-datahub-data-view>
         </div>
+        <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
     </mat-tab-group>
   </div>
-  @if(displayData || displayMap) {
-  <gn-ui-data-view-share
-    class="hidden sm:block"
-    [viewType]="selectedView"
-  ></gn-ui-data-view-share>
-  }
 </div>
