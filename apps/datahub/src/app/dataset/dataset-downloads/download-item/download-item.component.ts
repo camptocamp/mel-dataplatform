@@ -15,12 +15,13 @@ export class MelDownloadItemComponent extends DownloadItemComponent {
 
   // note that the download attribute calling this getter only takes effect on same-origin resources
   get downloadFileName() {
-    let fileName = ''
+    let completeFileName = ''
+    const fileName = this.link.name ?? 'data'
     if (this.format === 'geojson') {
-      fileName = 'data.geojson'
+      completeFileName = `${fileName}.geojson`
     } else if (this.format === 'json') {
-      fileName = 'data.json'
+      completeFileName = `${fileName}.json`
     }
-    return fileName
+    return completeFileName
   }
 }

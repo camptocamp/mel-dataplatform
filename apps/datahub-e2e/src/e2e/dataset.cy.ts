@@ -263,10 +263,14 @@ describe('datasets', () => {
         .first()
         .should('have.attr', 'download', '')
     })
-    it('should contain download attribute with filename data.json for json files', () => {
+    it('should contain download attribute with filename for json files', () => {
       cy.get('[data-cy="download-button"]')
         .eq(2)
-        .should('have.attr', 'download', 'data.json')
+        .should(
+          'have.attr',
+          'download',
+          'insee:rectangles_200m_menage_erbm.json'
+        )
     })
     it('should open link in new tab as fallback (if download attribute is ignored, for not same-origin)', () => {
       cy.get('[data-cy="download-button"]')
