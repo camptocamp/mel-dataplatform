@@ -245,7 +245,7 @@ describe('datasets', () => {
     beforeEach(() => {
       cy.visit('/dataset/04bcec79-5b25-4b16-b635-73115f7456e4')
     })
-    it('should download button should contain the correct link and open in new tab', () => {
+    it('should contain the correct link in download button', () => {
       cy.get('[data-cy="download-button"]')
         .first()
         .invoke('attr', 'href')
@@ -254,6 +254,25 @@ describe('datasets', () => {
         'contain',
         '/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
       )
+      cy.get('[data-cy="download-button"]')
+        .first()
+        .should('have.attr', 'target', '_blank')
+    })
+    it('should contain empty download attribute for other files than json and geojson', () => {
+      cy.get('[data-cy="download-button"]')
+        .first()
+        .should('have.attr', 'download', '')
+    })
+    it('should contain download attribute with filename for json files', () => {
+      cy.get('[data-cy="download-button"]')
+        .eq(2)
+        .should(
+          'have.attr',
+          'download',
+          'insee:rectangles_200m_menage_erbm.json'
+        )
+    })
+    it('should open link in new tab as fallback (if download attribute is ignored, for not same-origin)', () => {
       cy.get('[data-cy="download-button"]')
         .first()
         .should('have.attr', 'target', '_blank')
