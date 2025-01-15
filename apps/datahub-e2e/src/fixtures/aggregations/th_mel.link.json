@@ -1,0 +1,54 @@
+{
+    "took": 0,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 346,
+            "relation": "eq"
+        },
+        "max_score": null,
+        "hits": []
+    },
+    "aggregations": {
+        "th_mel.link": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+                {
+                    "key": "https://data.lillemetropole.fr/place/melTerritories#1",
+                    "doc_count": 96
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/place/melTerritories#198",
+                    "doc_count": 7
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/place/melTerritories#38",
+                    "doc_count": 2
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/place/melTerritories#53",
+                    "doc_count": 2
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/place/melTerritories#55",
+                    "doc_count": 2
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/place/melTerritories#74",
+                    "doc_count": 2
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/place/melTerritories#89",
+                    "doc_count": 1
+                }
+            ]
+        }
+    }
+}

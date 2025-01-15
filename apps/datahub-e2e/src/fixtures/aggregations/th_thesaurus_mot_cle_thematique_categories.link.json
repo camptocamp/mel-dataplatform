@@ -1,0 +1,70 @@
+{
+    "took": 0,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 346,
+            "relation": "eq"
+        },
+        "max_score": null,
+        "hits": []
+    },
+    "aggregations": {
+        "th_thesaurus_mot_cle_thematique_categories.link": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique",
+                    "doc_count": 58
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/amenagement_urbanisme_foncier",
+                    "doc_count": 43
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/culture_tourisme_sport",
+                    "doc_count": 16
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/economie_emploi",
+                    "doc_count": 6
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/education_formation_enseignement",
+                    "doc_count": 2
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/environnement_energie",
+                    "doc_count": 19
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/espace_public",
+                    "doc_count": 30
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/habitat_logement",
+                    "doc_count": 1
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/mobilite_transports_deplacement",
+                    "doc_count": 35
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/participation_citoyenne_democratie_locale",
+                    "doc_count": 3
+                },
+                {
+                    "key": "https://data.lillemetropole.fr/thematique/categories/services_social_sante",
+                    "doc_count": 14
+                }
+            ]
+        }
+    }
+}
