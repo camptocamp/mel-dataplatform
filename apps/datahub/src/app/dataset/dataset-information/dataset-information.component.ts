@@ -44,7 +44,7 @@ export class DatasetInformationComponent {
     return categoryKeywords
   }
 
-  onCategoryKeywordClick(category: Keyword) {
-    this.routerFacade.updateSearch({ categoryKeyword: category.key })
+  onKeywordClick(query: string, keyword: Keyword) {
+    this.routerFacade.updateSearch({ [query]: keyword.key })
   }
 }
