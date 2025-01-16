@@ -24,7 +24,6 @@ import {
   PopupAlertComponent,
   ContentGhostComponent,
   PaginationButtonsComponent,
-  MetadataQualityItemComponent,
   SpinningLoaderComponent,
   TextInputComponent,
   LoadingMaskComponent,
@@ -34,8 +33,6 @@ import {
   TableViewComponent,
   ErrorComponent,
   CopyTextButtonComponent,
-  PopoverComponent,
-  ProgressBarComponent,
   MapContainerComponent,
 } from 'geonetwork-ui'
 import {
@@ -109,11 +106,8 @@ import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-da
     UiWidgetsModule,
     SpinningLoaderComponent,
     LoadingMaskComponent,
-    PopoverComponent,
-    ProgressBarComponent,
     UiElementsModule,
     ContentGhostComponent,
-    MetadataQualityItemComponent,
     ErrorComponent,
     UiLayoutModule,
     PaginationButtonsComponent,
