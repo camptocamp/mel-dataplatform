@@ -57,7 +57,7 @@
           class="w-64"
           (valueChange)="lowValue = $event"
           [value]="lowValue"
-          [hint]="'mel.datahub.search.filters.minValue' | translate"
+          [placeholder]="'mel.datahub.search.filters.minValue' | translate"
         ></gn-ui-text-input>
       </div>
       <div class="mr-3">
@@ -68,7 +68,7 @@
           class="w-64"
           (valueChange)="highValue = $event"
           [value]="highValue"
-          [hint]="'mel.datahub.search.filters.maxValue' | translate"
+          [placeholder]="'mel.datahub.search.filters.maxValue' | translate"
           (keyup.enter)="onValidate()"
         ></gn-ui-text-input>
       </div>
