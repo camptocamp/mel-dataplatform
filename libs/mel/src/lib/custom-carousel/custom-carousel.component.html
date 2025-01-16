@@ -4,7 +4,7 @@
     [attr.aria-label]="'carousel-arrow-left'"
     title="carousel-arrow-left"
     [class]="currentStep === 0 ? 'invisible' : 'block hover:drop-shadow-lg'"
-    (click)="scrollToStep(currentStep - 1)"
+    (click)="goToPrevPage()"
   >
     <img src="assets/icons/carousel-arrow-left.svg" alt="arrow-left" />
   </button>
@@ -24,7 +24,7 @@
         ? 'invisible'
         : 'block hover:drop-shadow-lg'
     "
-    (click)="scrollToStep(currentStep + 1)"
+    (click)="goToNextPage()"
   >
     <img src="assets/icons/carousel-arrow-right.svg" alt="arrow-right" />
   </button>
@@ -35,7 +35,7 @@
   @for(step of steps; track $index){
   <button
     class="mel-carousel-step-dot"
-    (click)="scrollToStep($index)"
+    (click)="goToPage($index + 1)"
     [ngClass]="currentStep === $index ? 'bg-primary' : 'bg-transparent'"
   ></button>
   }
