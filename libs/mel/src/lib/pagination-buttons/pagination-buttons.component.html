@@ -1,9 +1,9 @@
 <div class="relative">
   <div class="flex flex-row items-center">
-    @if (currentPage !== 1) {
+    @if (!listComponent.isFirstPage) {
     <gn-ui-button
       type="outline"
-      (buttonClick)="previousPage()"
+      (buttonClick)="listComponent.goToPrevPage()"
       extraClass="pagination-btn-nav mr-8"
     >
       <mat-icon class="pagination-btn-arrow material-symbols-outlined"
@@ -17,16 +17,16 @@
     <span class="mr-8">{{ page }}</span>
     } @else {
     <gn-ui-button
-      [type]="page === currentPage ? 'outline' : 'light'"
-      [disabled]="page === currentPage"
-      (buttonClick)="changePage(page)"
+      [type]="page === listComponent.currentPage ? 'outline' : 'light'"
+      [disabled]="page === listComponent.currentPage"
+      (buttonClick)="listComponent.goToPage(page)"
       extraClass="pagination-btn"
       >{{ page }}</gn-ui-button
     >
-    } } @if (currentPage !== totalPages) {
+    } } @if (!listComponent.isLastPage) {
     <gn-ui-button
       type="outline"
-      (buttonClick)="nextPage()"
+      (buttonClick)="listComponent.goToNextPage()"
       extraClass="pagination-btn-nav"
     >
       <span class="font-medium mr-1" translate
