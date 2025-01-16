@@ -13,7 +13,7 @@ import { FavoriteHeartComponent } from './favorites/favorite-heart/favorite-hear
 import { HeartToggleComponent } from './favorites/heart-toggle/heart-toggle.component'
 import { TextExpandComponent } from './text-expand/text-expand.component'
 import { MelDatahubFooterComponent } from './footer/mel-datahub-footer.component'
-import { CustomCarouselComponent } from './custom-carousel/custom-carousel.component'
+import { MelCarouselComponent } from './carousel/carousel.component'
 import { MelFuzzySearchComponent } from './fuzzy-search/fuzzy-search.component'
 import { MelAutocompleteComponent } from './autocomplete/autocomplete.component'
 import {
@@ -85,7 +85,7 @@ import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-b
     HeartToggleComponent,
     TextExpandComponent,
     MelDatahubFooterComponent,
-    CustomCarouselComponent,
+    MelCarouselComponent,
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
     StripHtmlPipe,
@@ -105,7 +105,7 @@ import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-b
     HeartToggleComponent,
     TextExpandComponent,
     MelDatahubFooterComponent,
-    CustomCarouselComponent,
+    MelCarouselComponent,
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
     MelPaginationButtonsComponent,

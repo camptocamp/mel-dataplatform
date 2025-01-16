@@ -4,7 +4,7 @@
     class="container"
     [showContent]="(searchFacade.isLoading$ | async) === false"
   >
-    <mel-datahub-custom-carousel
+    <mel-datahub-carousel
       containerClass="gap-4 pt-4 pb-6"
       stepsContainerClass=""
     >
@@ -22,6 +22,6 @@
         (keyword)="onInfoKeywordClick($event)"
       ></mel-datahub-results-card-last-created>
       } }
-    </mel-datahub-custom-carousel>
+    </mel-datahub-carousel>
   </gn-ui-content-ghost>
 </div>

@@ -53,7 +53,7 @@ describe('search', () => {
         .should('have.text', ' Derniers jeux de données publiés ')
     })
     it('should display record results in last created cards inside a carousel', () => {
-      cy.get('mel-datahub-custom-carousel')
+      cy.get('mel-datahub-carousel')
         .find('mel-datahub-results-card-last-created')
         .first()
         .find('h1')

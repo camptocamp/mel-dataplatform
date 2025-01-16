@@ -209,13 +209,13 @@ describe('datasets', () => {
       })
       it('should have API cards', () => {
         cy.get('mel-datahub-dataset-apis')
-          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-carousel')
           .find('mel-datahub-api-card')
           .should('have.length.gt', 0)
       })
       it('should display the swagger link', () => {
         cy.get('mel-datahub-dataset-apis')
-          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-carousel')
           .find('mel-datahub-api-card')
           .last()
           .find('button')
@@ -230,7 +230,7 @@ describe('datasets', () => {
       })
       it('should open the api form', () => {
         cy.get('mel-datahub-dataset-apis')
-          .find('mel-datahub-custom-carousel')
+          .find('mel-datahub-carousel')
           .find('mel-datahub-api-card')
           .last()
           .find('button')
