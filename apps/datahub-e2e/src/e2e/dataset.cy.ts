@@ -93,7 +93,7 @@ describe('datasets', () => {
     })
 
     it('should display the map preview by default', () => {
-      cy.get('gn-ui-map-context').should('be.visible')
+      cy.get('gn-ui-map-container').should('be.visible')
       cy.get('gn-ui-table-view').should('not.exist')
       cy.get('gn-ui-chart-view').should('not.exist')
     })
