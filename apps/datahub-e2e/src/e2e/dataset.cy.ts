@@ -207,7 +207,10 @@ describe('datasets', () => {
           .children('button')
           .eq(0)
           .click()
-        cy.url().should('include', '/search?categoryKeyword=https:%2F%2Fdata.lillemetropole.fr%2Fthematique%2Fcategories%2Fadministration_action_publique')
+        cy.url().should(
+          'include',
+          '/search?categoryKeyword=https:%2F%2Fdata.lillemetropole.fr%2Fthematique%2Fcategories%2Fadministration_action_publique'
+        )
       })
     })
 
@@ -220,7 +223,10 @@ describe('datasets', () => {
           .children('button')
           .eq(0)
           .click()
-        cy.url().should('include', '/search?territories=https:%2F%2Fdata.lillemetropole.fr%2Fplace%2FmelTerritories%231')
+        cy.url().should(
+          'include',
+          '/search?territories=https:%2F%2Fdata.lillemetropole.fr%2Fplace%2FmelTerritories%231'
+        )
       })
     })
   })

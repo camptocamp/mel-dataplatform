@@ -1,591 +1,546 @@
 {
-    "took": 1,
-    "timed_out": false,
-    "_shards": {
-        "total": 1,
-        "successful": 1,
-        "skipped": 0,
-        "failed": 0
+  "took": 1,
+  "timed_out": false,
+  "_shards": {
+    "total": 1,
+    "successful": 1,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 1,
+      "relation": "eq"
     },
-    "hits": {
-        "total": {
-            "value": 1,
-            "relation": "eq"
-        },
-        "max_score": 1.0,
-        "hits": [
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "gn-records",
+        "_type": "_doc",
+        "_id": "775b7660-b03b-443a-9817-be82ecd0ef07",
+        "_score": 1.0,
+        "_source": {
+          "publicationMonthForResource": "2024-05",
+          "contactForResource": [
             {
-                "_index": "gn-records",
-                "_type": "_doc",
-                "_id": "775b7660-b03b-443a-9817-be82ecd0ef07",
-                "_score": 1.0,
-                "_source": {
-                    "publicationMonthForResource": "2024-05",
-                    "contactForResource": [
-                        {
-                            "website": "",
-                            "role": "originator",
-                            "address": "17 Grand Place, Roubaix, 59100",
-                            "individual": "",
-                            "phone": "",
-                            "logo": "Ville de Roubaix",
-                            "position": "",
-                            "organisationObject": {
-                                "default": "Métropole Européenne de Lille",
-                                "langfre": "Métropole Européenne de Lille"
-                            },
-                            "email": "opendata@lillemetropole.fr"
-                        },
-                        {
-                            "website": "",
-                            "role": "distributor",
-                            "address": "2, boulevard des Cités Unies, Lille, 59040",
-                            "individual": "",
-                            "phone": "",
-                            "logo": "",
-                            "position": "",
-                            "organisationObject": {
-                                "default": "Métropole Européenne de Lille",
-                                "langfre": "Métropole Européenne de Lille"
-                            },
-                            "email": "opendata@lillemetropole.fr"
-                        },
-                        {
-                            "website": "",
-                            "role": "pointOfContact",
-                            "address": "2, boulevard des Cités Unies, Lille, 59040",
-                            "individual": "",
-                            "phone": "",
-                            "logo": "",
-                            "position": "",
-                            "organisationObject": {
-                                "default": "Métropole Européenne de Lille",
-                                "langfre": "Métropole Européenne de Lille"
-                            },
-                            "email": "acrossiny@lillemetropole.fr"
-                        }
-                    ],
-                    "geom": {
-                        "coordinates": [
-                            [
-                                [
-                                    2.789133,
-                                    50.49973
-                                ],
-                                [
-                                    3.272498,
-                                    50.49973
-                                ],
-                                [
-                                    3.272498,
-                                    50.794577
-                                ],
-                                [
-                                    2.789133,
-                                    50.794577
-                                ],
-                                [
-                                    2.789133,
-                                    50.49973
-                                ]
-                            ]
-                        ],
-                        "type": "Polygon"
-                    },
-                    "isPublishedToAll": "true",
-                    "record": "record",
-                    "draft": "n",
-                    "publicationDateForResource": [
-                        "2024-05-29T00:00:00.000Z"
-                    ],
-                    "resolutionScaleDenominator": [
-                        "25000"
-                    ],
-                    "id": "1494",
-                    "extentDescriptionObject": [
-                        {
-                            "default": "Métropole Européenne de Lille",
-                            "langfre": "Métropole Européenne de Lille"
-                        }
-                    ],
-                    "metadataIdentifier": "775b7660-b03b-443a-9817-be82ecd0ef07",
-                    "hasInspireTheme": "true",
-                    "inspireThemeNumber": "1",
-                    "th_thesaurus_mot_cle_thematique_categories_tree": {
-                        "default": [
-                            "Administration, action publique"
-                        ],
-                        "key": [
-                            "https://data.lillemetropole.fr/thematique/categories/administration_action_publique"
-                        ]
-                    },
-                    "hasxlinks": "false",
-                    "tagNumber": "6",
-                    "featureOfRecord": "record",
-                    "cl_topic": [
-                        {
-                            "default": "Société",
-                            "key": "society",
-                            "langfre": "Société"
-                        }
-                    ],
-                    "isPublishedToGuest": "false",
-                    "dateStamp": "2024-12-16T12:17:05.473916Z",
-                    "creationYearForResource": "2022",
-                    "th_gemet": [],
-                    "isTemplate": "n",
-                    "linkUrlProtocolOGCAPIFeatures": "https://data.lillemetropole.fr/data/ogcapi/collections/administration_et_action_publique:construisons_les_projets_de_nouvelles_lignes_de_transport_pro2/items",
-                    "cl_status": [
-                        {
-                            "default": "Finalisé",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ProgressCode",
-                            "key": "completed",
-                            "langfre": "Finalisé"
-                        }
-                    ],
-                    "creationMonthForResource": "2022-08",
-                    "th_httpinspireeceuropaeutheme-themeNumber": "0",
-                    "OrgForResourceObject": {
-                        "default": "Métropole Européenne de Lille",
-                        "langfre": "Métropole Européenne de Lille"
-                    },
-                    "recordOwner": "Baptiste JACQ",
-                    "document": "",
-                    "resourceTemporalDateRange": [
-                        {
-                            "gte": "2024-05-29T00:00:00.000Z",
-                            "lte": "2024-05-29T00:00:00.000Z"
-                        },
-                        {
-                            "gte": "2022-08-04T10:46:00.000Z",
-                            "lte": "2022-08-04T10:46:00.000Z"
-                        }
-                    ],
-                    "OrgObject": {
-                        "default": "Métropole Européenne de Lille",
-                        "langfre": "Métropole Européenne de Lille"
-                    },
-                    "distributorOrgForResourceObject": {
-                        "default": "Métropole Européenne de Lille",
-                        "langfre": "Métropole Européenne de Lille"
-                    },
-                    "mainLanguage": "fre",
-                    "valid": "1",
-                    "th_thesaurus_mot_cle_thematique_administration_action_publique": [
-                        {
-                            "default": "Démocratie locale",
-                            "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale",
-                            "langfre": "Démocratie locale"
-                        },
-                        {
-                            "default": "Democratie participative",
-                            "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative",
-                            "langfre": "Democratie participative"
-                        },
-                        {
-                            "default": "Participation",
-                            "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/participation",
-                            "langfre": "Participation"
-                        }
-                    ],
-                    "th_mel": [
-                        {
-                            "default": "Métropole Européenne de Lille",
-                            "link": "https://data.lillemetropole.fr/place/melTerritories#1",
-                            "langfre": "Métropole Européenne de Lille"
-                        }
-                    ],
-                    "groupPublishedId": [
-                        "1",
-                        "105"
-                    ],
-                    "popularity": 8,
-                    "qualityScore": 75,
-                    "featureTypes": [],
-                    "th_httpinspireeceuropaeutheme-theme": [],
-                    "createDate": "2024-12-12T16:43:33.580983Z",
-                    "MD_LegalConstraintsOtherConstraintsObject": [
-                        {
-                            "default": "Licence Ouverte Etalab 2.0",
-                            "langfre": "Licence Ouverte Etalab 2.0"
-                        }
-                    ],
-                    "docType": "metadata",
-                    "creationDateForResource": [
-                        "2022-08-04T10:46:00.000Z"
-                    ],
-                    "cl_resourceScope": [
-                        {
-                            "default": "Jeu de données",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode",
-                            "key": "dataset",
-                            "langfre": "Jeu de données"
-                        }
-                    ],
-                    "th_gemetNumber": "0",
-                    "standardNameObject": {
-                        "default": "ISO 19115-3",
-                        "langfre": "ISO 19115-3"
-                    },
-                    "resourceType": [
-                        "dataset"
-                    ],
-                    "linkProtocol": [
-                        "OGC API Features"
-                    ],
-                    "th_thesaurus_mot_cle_thematique_administration_action_publiqueNumber": "3",
-                    "rating": "0",
-                    "cl_characterSet": [
-                        {
-                            "default": "Utf8",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_CharacterSetCode",
-                            "key": "utf8",
-                            "langfre": "Utf8"
-                        }
-                    ],
-                    "uuid": "775b7660-b03b-443a-9817-be82ecd0ef07",
-                    "resourceLanguage": [
-                        "fre"
-                    ],
-                    "cl_type": [
-                        {
-                            "default": "Localisation",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode",
-                            "key": "place",
-                            "langfre": "Localisation"
-                        },
-                        {
-                            "default": "Thème",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode",
-                            "key": "theme",
-                            "langfre": "Thème"
-                        }
-                    ],
-                    "contact": [
-                        {
-                            "website": "",
-                            "role": "pointOfContact",
-                            "address": "2, boulevard des Cités Unies, Lille, 59040",
-                            "individual": "",
-                            "phone": "",
-                            "logo": "",
-                            "position": "",
-                            "organisationObject": {
-                                "default": "Métropole Européenne de Lille",
-                                "langfre": "Métropole Européenne de Lille"
-                            },
-                            "email": "opendata@lillemetropole.fr"
-                        }
-                    ],
-                    "revisionDateForResource": [
-                        "2023-03-06T00:00:00.000Z"
-                    ],
-                    "linkUrl": "https://data.lillemetropole.fr/data/ogcapi/collections/administration_et_action_publique:construisons_les_projets_de_nouvelles_lignes_de_transport_pro2/items",
-                    "changeDate": "2024-12-16T12:17:05.473894Z",
-                    "th_thesaurus_mot_cle_thematique_administration_action_publique_tree": {
-                        "default": [
-                            "Democratie participative",
-                            "Démocratie locale",
-                            "Participation"
-                        ],
-                        "key": [
-                            "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale",
-                            "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative",
-                            "https://data.lillemetropole.fr/thematique/administration_action_publique/participation"
-                        ]
-                    },
-                    "logo": "/images/harvesting/logo-mel.jpg",
-                    "tag": [
-                        {
-                            "default": "Démocratie locale",
-                            "langfre": "Démocratie locale",
-                            "key": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale"
-                        },
-                        {
-                            "default": "Democratie participative",
-                            "langfre": "Democratie participative",
-                            "key": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative"
-                        },
-                        {
-                            "default": "Participation",
-                            "langfre": "Participation",
-                            "key": "https://data.lillemetropole.fr/thematique/administration_action_publique/participation"
-                        },
-                        {
-                            "default": "Administration, action publique",
-                            "langfre": "Administration, action publique",
-                            "key": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique"
-                        },
-                        {
-                            "default": "Métropole Européenne de Lille",
-                            "langfre": "Métropole Européenne de Lille",
-                            "key": "https://data.lillemetropole.fr/place/melTerritories#1"
-                        },
-                        {
-                            "default": "Métropole Européenne de Lille",
-                            "langfre": "Métropole Européenne de Lille"
-                        }
-                    ],
-                    "recordGroup": "775b7660-b03b-443a-9817-be82ecd0ef07",
-                    "isPublishedToIntranet": "false",
-                    "crsDetails": [
-                        {
-                            "code": "RGF93 / Lambert 93",
-                            "name": "RGF93 / Lambert 93",
-                            "codeSpace": "",
-                            "url": ""
-                        }
-                    ],
-                    "th_melNumber": "1",
-                    "documentStandard": "iso19115-3.2018",
-                    "resourceAbstractObject": {
-                        "default": "La Métropole Européenne de Lille (MEL) s’est dotée d’un Schéma Directeur des Infrastructures de Transports (SDIT), établissant sa feuille de route en matière de grandes infrastructures de transports collectifs structurants à horizon 2035. Ce schéma, objet de la délibération n°19 C 0312, adopté lors du conseil métropolitain du 28 juin 2019, prévoit notamment la création de nouvelles liaisons en transports collectifs structurants. \n \nLe SDIT se décline opérationnellement en deux volets correspondants aux grandes infrastructures de transports collectifs en lien avec le territoire métropolitain : \n- Le réseau ferré régional, dans son rôle d’articulation avec les réseaux métropolitains, devenant un élément constitutif du réseau de transports urbains, notamment grâce à son intégration tarifaire.\n- De nouvelles liaisons « métropolitaines » en transports en commun.\n \nLes projets de cette concertation font partie des éléments les plus structurants de ces « nouvelles liaisons » comprenant une vingtaine de projets distincts, allant du prolongement du métro jusqu’à l’amélioration du niveau de service de certaines lignes existantes ou la création de lignes de bus circulaires et la mise en place de liaisons de bus express. \n \nCe schéma a fait l’objet d’une concertation de deux mois au 1er semestre 2019. En ce qui concerne le Grand Public, 8000 connexions internet et 859 contributions d’internautes sont venues nourrir la concertation (320 réponses au questionnaire, 329 contributions sur les liaisons proposées par la MEL, 99 propositions de liaisons d’internautes et 111 contributions libres).",
-                        "langfre": "La Métropole Européenne de Lille (MEL) s’est dotée d’un Schéma Directeur des Infrastructures de Transports (SDIT), établissant sa feuille de route en matière de grandes infrastructures de transports collectifs structurants à horizon 2035. Ce schéma, objet de la délibération n°19 C 0312, adopté lors du conseil métropolitain du 28 juin 2019, prévoit notamment la création de nouvelles liaisons en transports collectifs structurants. \n \nLe SDIT se décline opérationnellement en deux volets correspondants aux grandes infrastructures de transports collectifs en lien avec le territoire métropolitain : \n- Le réseau ferré régional, dans son rôle d’articulation avec les réseaux métropolitains, devenant un élément constitutif du réseau de transports urbains, notamment grâce à son intégration tarifaire.\n- De nouvelles liaisons « métropolitaines » en transports en commun.\n \nLes projets de cette concertation font partie des éléments les plus structurants de ces « nouvelles liaisons » comprenant une vingtaine de projets distincts, allant du prolongement du métro jusqu’à l’amélioration du niveau de service de certaines lignes existantes ou la création de lignes de bus circulaires et la mise en place de liaisons de bus express. \n \nCe schéma a fait l’objet d’une concertation de deux mois au 1er semestre 2019. En ce qui concerne le Grand Public, 8000 connexions internet et 859 contributions d’internautes sont venues nourrir la concertation (320 réponses au questionnaire, 329 contributions sur les liaisons proposées par la MEL, 99 propositions de liaisons d’internautes et 111 contributions libres)."
-                    },
-                    "feedbackCount": "0",
-                    "licenseObject": [
-                        {
-                            "default": "Licence Ouverte Etalab 2.0",
-                            "langfre": "Licence Ouverte Etalab 2.0"
-                        }
-                    ],
-                    "isHarvested": "false",
-                    "isOpenData": "false",
-                    "cl_maintenanceAndUpdateFrequency": [
-                        {
-                            "default": "Lorsque nécessaire",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_MaintenanceFrequencyCode",
-                            "key": "asNeeded",
-                            "langfre": "Lorsque nécessaire"
-                        }
-                    ],
-                    "th_thesaurus_mot_cle_thematique_categories": [
-                        {
-                            "default": "Administration, action publique",
-                            "link": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique",
-                            "langfre": "Administration, action publique"
-                        }
-                    ],
-                    "link": [
-                        {
-                            "protocol": "OGC API Features",
-                            "descriptionObject": {
-                                "default": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq (API)",
-                                "langfre": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq (API)"
-                            },
-                            "function": "download",
-                            "applicationProfile": "",
-                            "mimeType": "",
-                            "urlObject": {
-                                "default": "https://data.lillemetropole.fr/data/ogcapi/collections/administration_et_action_publique:construisons_les_projets_de_nouvelles_lignes_de_transport_pro2/items",
-                                "langfre": "https://data.lillemetropole.fr/data/ogcapi/collections/administration_et_action_publique:construisons_les_projets_de_nouvelles_lignes_de_transport_pro2/items"
-                            },
-                            "nameObject": {
-                                "default": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq",
-                                "langfre": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq"
-                            },
-                            "group": 0
-                        }
-                    ],
-                    "displayOrder": "0",
-                    "cl_resourceCharacterSet": [
-                        {
-                            "default": "Utf8",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_CharacterSetCode",
-                            "key": "utf8",
-                            "langfre": "Utf8"
-                        }
-                    ],
-                    "cl_function": [
-                        {
-                            "default": "Métadonnées intégrales",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode",
-                            "key": "completeMetadata",
-                            "langfre": "Métadonnées intégrales"
-                        },
-                        {
-                            "default": "Téléchargement",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode",
-                            "key": "download",
-                            "langfre": "Téléchargement"
-                        }
-                    ],
-                    "valid_inspire": "-1",
-                    "indexingDate": "2025-01-02T09:44:21.035Z",
-                    "resourceDate": [
-                        {
-                            "date": "2024-05-29T00:00:00.000Z",
-                            "type": "publication"
-                        },
-                        {
-                            "date": "2022-08-04T10:46:00.000Z",
-                            "type": "creation"
-                        }
-                    ],
-                    "sourceCatalogue": "91d40455-f688-48fa-ae04-557104398381",
-                    "cl_accessConstraints": [
-                        {
-                            "default": "Autres restrictions",
-                            "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode",
-                            "key": "otherRestrictions",
-                            "langfre": "Autres restrictions"
-                        }
-                    ],
-                    "pointOfContactOrgForResourceObject": {
-                        "default": "Métropole Européenne de Lille",
-                        "langfre": "Métropole Européenne de Lille"
-                    },
-                    "groupPublished": [
-                        "all",
-                        "MEL"
-                    ],
-                    "cat": [
-                        "datasets"
-                    ],
-                    "extra": "null",
-                    "th_mel_tree": {
-                        "default": [
-                            "Métropole Européenne de Lille"
-                        ],
-                        "key": [
-                            "https://data.lillemetropole.fr/place/melTerritories#1"
-                        ]
-                    },
-                    "coordinateSystem": [
-                        "RGF93 / Lambert 93"
-                    ],
-                    "hasOverview": "false",
-                    "userinfo": "mel_bjacq|JACQ|Baptiste|Administrator",
-                    "valid_xsd": "1",
-                    "allKeywords": {
-                        "th_thesaurus_mot_cle_thematique_administration_action_publique": {
-                            "keywords": [
-                                {
-                                    "default": "Démocratie locale",
-                                    "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale",
-                                    "langfre": "Démocratie locale"
-                                },
-                                {
-                                    "default": "Democratie participative",
-                                    "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative",
-                                    "langfre": "Democratie participative"
-                                },
-                                {
-                                    "default": "Participation",
-                                    "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/participation",
-                                    "langfre": "Participation"
-                                }
-                            ],
-                            "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/external.theme.thesaurus_mot_cle_thematique_administration_action_publique",
-                            "theme": "theme",
-                            "id": "geonetwork.thesaurus.external.theme.thesaurus_mot_cle_thematique_administration_action_publique",
-                            "title": "Administration, Action publique"
-                        },
-                        "th_mel": {
-                            "keywords": [
-                                {
-                                    "default": "Métropole Européenne de Lille",
-                                    "link": "https://data.lillemetropole.fr/place/melTerritories#1",
-                                    "langfre": "Métropole Européenne de Lille"
-                                }
-                            ],
-                            "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/local.place.mel",
-                            "theme": "place",
-                            "id": "geonetwork.thesaurus.local.place.mel",
-                            "title": "Territoires MEL"
-                        },
-                        "th_gemet": {
-                            "keywords": [],
-                            "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/external.theme.gemet",
-                            "theme": "theme",
-                            "id": "geonetwork.thesaurus.external.theme.gemet",
-                            "title": "GEMET"
-                        },
-                        "th_thesaurus_mot_cle_thematique_categories": {
-                            "keywords": [
-                                {
-                                    "default": "Administration, action publique",
-                                    "link": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique",
-                                    "langfre": "Administration, action publique"
-                                }
-                            ],
-                            "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/external.theme.thesaurus_mot_cle_thematique_categories",
-                            "theme": "theme",
-                            "id": "geonetwork.thesaurus.external.theme.thesaurus_mot_cle_thematique_categories",
-                            "title": "Catégories"
-                        },
-                        "th_httpinspireeceuropaeutheme-theme": {
-                            "keywords": [],
-                            "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeutheme-theme",
-                            "theme": "theme",
-                            "id": "geonetwork.thesaurus.external.theme.httpinspireeceuropaeutheme-theme",
-                            "title": "GEMET - INSPIRE themes, version 1.0"
-                        }
-                    },
-                    "owner": "113",
-                    "groupOwner": "105",
-                    "pointOfContactOrgObject": {
-                        "default": "Métropole Européenne de Lille",
-                        "langfre": "Métropole Européenne de Lille"
-                    },
-                    "publicationYearForResource": "2024",
-                    "resourceTitleObject": {
-                        "default": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq",
-                        "langfre": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq"
-                    },
-                    "th_thesaurus_mot_cle_thematique_categoriesNumber": "1",
-                    "valid_schematron-rules-iso": "1",
-                    "keywordType-place": [
-                        {
-                            "default": "Métropole Européenne de Lille",
-                            "link": "https://data.lillemetropole.fr/place/melTerritories#1",
-                            "langfre": "Métropole Européenne de Lille"
-                        },
-                        {
-                            "default": "Métropole Européenne de Lille",
-                            "langfre": "Métropole Européenne de Lille"
-                        }
-                    ],
-                    "location": "50.6471535,3.0308155",
-                    "keywordType-theme": [
-                        {
-                            "default": "Démocratie locale",
-                            "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale",
-                            "langfre": "Démocratie locale"
-                        },
-                        {
-                            "default": "Democratie participative",
-                            "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative",
-                            "langfre": "Democratie participative"
-                        },
-                        {
-                            "default": "Participation",
-                            "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/participation",
-                            "langfre": "Participation"
-                        },
-                        {
-                            "default": "Administration, action publique",
-                            "link": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique",
-                            "langfre": "Administration, action publique"
-                        }
-                    ],
-                    "originatorOrgForResourceObject": {
-                        "default": "Métropole Européenne de Lille",
-                        "langfre": "Métropole Européenne de Lille"
-                    },
-                    "userSavedCount": "0"
-                },
-                "edit": false,
-                "canReview": false,
-                "owner": false,
-                "isPublishedToAll": true,
-                "view": true,
-                "notify": true,
-                "download": true,
-                "dynamic": true,
-                "featured": true,
-                "selected": false
+              "website": "",
+              "role": "originator",
+              "address": "17 Grand Place, Roubaix, 59100",
+              "individual": "",
+              "phone": "",
+              "logo": "Ville de Roubaix",
+              "position": "",
+              "organisationObject": {
+                "default": "Métropole Européenne de Lille",
+                "langfre": "Métropole Européenne de Lille"
+              },
+              "email": "opendata@lillemetropole.fr"
+            },
+            {
+              "website": "",
+              "role": "distributor",
+              "address": "2, boulevard des Cités Unies, Lille, 59040",
+              "individual": "",
+              "phone": "",
+              "logo": "",
+              "position": "",
+              "organisationObject": {
+                "default": "Métropole Européenne de Lille",
+                "langfre": "Métropole Européenne de Lille"
+              },
+              "email": "opendata@lillemetropole.fr"
+            },
+            {
+              "website": "",
+              "role": "pointOfContact",
+              "address": "2, boulevard des Cités Unies, Lille, 59040",
+              "individual": "",
+              "phone": "",
+              "logo": "",
+              "position": "",
+              "organisationObject": {
+                "default": "Métropole Européenne de Lille",
+                "langfre": "Métropole Européenne de Lille"
+              },
+              "email": "acrossiny@lillemetropole.fr"
             }
-        ]
-    }
+          ],
+          "geom": {
+            "coordinates": [
+              [
+                [2.789133, 50.49973],
+                [3.272498, 50.49973],
+                [3.272498, 50.794577],
+                [2.789133, 50.794577],
+                [2.789133, 50.49973]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "isPublishedToAll": "true",
+          "record": "record",
+          "draft": "n",
+          "publicationDateForResource": ["2024-05-29T00:00:00.000Z"],
+          "resolutionScaleDenominator": ["25000"],
+          "id": "1494",
+          "extentDescriptionObject": [
+            {
+              "default": "Métropole Européenne de Lille",
+              "langfre": "Métropole Européenne de Lille"
+            }
+          ],
+          "metadataIdentifier": "775b7660-b03b-443a-9817-be82ecd0ef07",
+          "hasInspireTheme": "true",
+          "inspireThemeNumber": "1",
+          "th_thesaurus_mot_cle_thematique_categories_tree": {
+            "default": ["Administration, action publique"],
+            "key": [
+              "https://data.lillemetropole.fr/thematique/categories/administration_action_publique"
+            ]
+          },
+          "hasxlinks": "false",
+          "tagNumber": "6",
+          "featureOfRecord": "record",
+          "cl_topic": [
+            {
+              "default": "Société",
+              "key": "society",
+              "langfre": "Société"
+            }
+          ],
+          "isPublishedToGuest": "false",
+          "dateStamp": "2024-12-16T12:17:05.473916Z",
+          "creationYearForResource": "2022",
+          "th_gemet": [],
+          "isTemplate": "n",
+          "linkUrlProtocolOGCAPIFeatures": "https://data.lillemetropole.fr/data/ogcapi/collections/administration_et_action_publique:construisons_les_projets_de_nouvelles_lignes_de_transport_pro2/items",
+          "cl_status": [
+            {
+              "default": "Finalisé",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ProgressCode",
+              "key": "completed",
+              "langfre": "Finalisé"
+            }
+          ],
+          "creationMonthForResource": "2022-08",
+          "th_httpinspireeceuropaeutheme-themeNumber": "0",
+          "OrgForResourceObject": {
+            "default": "Métropole Européenne de Lille",
+            "langfre": "Métropole Européenne de Lille"
+          },
+          "recordOwner": "Baptiste JACQ",
+          "document": "",
+          "resourceTemporalDateRange": [
+            {
+              "gte": "2024-05-29T00:00:00.000Z",
+              "lte": "2024-05-29T00:00:00.000Z"
+            },
+            {
+              "gte": "2022-08-04T10:46:00.000Z",
+              "lte": "2022-08-04T10:46:00.000Z"
+            }
+          ],
+          "OrgObject": {
+            "default": "Métropole Européenne de Lille",
+            "langfre": "Métropole Européenne de Lille"
+          },
+          "distributorOrgForResourceObject": {
+            "default": "Métropole Européenne de Lille",
+            "langfre": "Métropole Européenne de Lille"
+          },
+          "mainLanguage": "fre",
+          "valid": "1",
+          "th_thesaurus_mot_cle_thematique_administration_action_publique": [
+            {
+              "default": "Démocratie locale",
+              "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale",
+              "langfre": "Démocratie locale"
+            },
+            {
+              "default": "Democratie participative",
+              "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative",
+              "langfre": "Democratie participative"
+            },
+            {
+              "default": "Participation",
+              "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/participation",
+              "langfre": "Participation"
+            }
+          ],
+          "th_mel": [
+            {
+              "default": "Métropole Européenne de Lille",
+              "link": "https://data.lillemetropole.fr/place/melTerritories#1",
+              "langfre": "Métropole Européenne de Lille"
+            }
+          ],
+          "groupPublishedId": ["1", "105"],
+          "popularity": 8,
+          "qualityScore": 75,
+          "featureTypes": [],
+          "th_httpinspireeceuropaeutheme-theme": [],
+          "createDate": "2024-12-12T16:43:33.580983Z",
+          "MD_LegalConstraintsOtherConstraintsObject": [
+            {
+              "default": "Licence Ouverte Etalab 2.0",
+              "langfre": "Licence Ouverte Etalab 2.0"
+            }
+          ],
+          "docType": "metadata",
+          "creationDateForResource": ["2022-08-04T10:46:00.000Z"],
+          "cl_resourceScope": [
+            {
+              "default": "Jeu de données",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ScopeCode",
+              "key": "dataset",
+              "langfre": "Jeu de données"
+            }
+          ],
+          "th_gemetNumber": "0",
+          "standardNameObject": {
+            "default": "ISO 19115-3",
+            "langfre": "ISO 19115-3"
+          },
+          "resourceType": ["dataset"],
+          "linkProtocol": ["OGC API Features"],
+          "th_thesaurus_mot_cle_thematique_administration_action_publiqueNumber": "3",
+          "rating": "0",
+          "cl_characterSet": [
+            {
+              "default": "Utf8",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_CharacterSetCode",
+              "key": "utf8",
+              "langfre": "Utf8"
+            }
+          ],
+          "uuid": "775b7660-b03b-443a-9817-be82ecd0ef07",
+          "resourceLanguage": ["fre"],
+          "cl_type": [
+            {
+              "default": "Localisation",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode",
+              "key": "place",
+              "langfre": "Localisation"
+            },
+            {
+              "default": "Thème",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_KeywordTypeCode",
+              "key": "theme",
+              "langfre": "Thème"
+            }
+          ],
+          "contact": [
+            {
+              "website": "",
+              "role": "pointOfContact",
+              "address": "2, boulevard des Cités Unies, Lille, 59040",
+              "individual": "",
+              "phone": "",
+              "logo": "",
+              "position": "",
+              "organisationObject": {
+                "default": "Métropole Européenne de Lille",
+                "langfre": "Métropole Européenne de Lille"
+              },
+              "email": "opendata@lillemetropole.fr"
+            }
+          ],
+          "revisionDateForResource": ["2023-03-06T00:00:00.000Z"],
+          "linkUrl": "https://data.lillemetropole.fr/data/ogcapi/collections/administration_et_action_publique:construisons_les_projets_de_nouvelles_lignes_de_transport_pro2/items",
+          "changeDate": "2024-12-16T12:17:05.473894Z",
+          "th_thesaurus_mot_cle_thematique_administration_action_publique_tree": {
+            "default": [
+              "Democratie participative",
+              "Démocratie locale",
+              "Participation"
+            ],
+            "key": [
+              "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale",
+              "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative",
+              "https://data.lillemetropole.fr/thematique/administration_action_publique/participation"
+            ]
+          },
+          "logo": "/images/harvesting/logo-mel.jpg",
+          "tag": [
+            {
+              "default": "Démocratie locale",
+              "langfre": "Démocratie locale",
+              "key": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale"
+            },
+            {
+              "default": "Democratie participative",
+              "langfre": "Democratie participative",
+              "key": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative"
+            },
+            {
+              "default": "Participation",
+              "langfre": "Participation",
+              "key": "https://data.lillemetropole.fr/thematique/administration_action_publique/participation"
+            },
+            {
+              "default": "Administration, action publique",
+              "langfre": "Administration, action publique",
+              "key": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique"
+            },
+            {
+              "default": "Métropole Européenne de Lille",
+              "langfre": "Métropole Européenne de Lille",
+              "key": "https://data.lillemetropole.fr/place/melTerritories#1"
+            },
+            {
+              "default": "Métropole Européenne de Lille",
+              "langfre": "Métropole Européenne de Lille"
+            }
+          ],
+          "recordGroup": "775b7660-b03b-443a-9817-be82ecd0ef07",
+          "isPublishedToIntranet": "false",
+          "crsDetails": [
+            {
+              "code": "RGF93 / Lambert 93",
+              "name": "RGF93 / Lambert 93",
+              "codeSpace": "",
+              "url": ""
+            }
+          ],
+          "th_melNumber": "1",
+          "documentStandard": "iso19115-3.2018",
+          "resourceAbstractObject": {
+            "default": "La Métropole Européenne de Lille (MEL) s’est dotée d’un Schéma Directeur des Infrastructures de Transports (SDIT), établissant sa feuille de route en matière de grandes infrastructures de transports collectifs structurants à horizon 2035. Ce schéma, objet de la délibération n°19 C 0312, adopté lors du conseil métropolitain du 28 juin 2019, prévoit notamment la création de nouvelles liaisons en transports collectifs structurants. \n \nLe SDIT se décline opérationnellement en deux volets correspondants aux grandes infrastructures de transports collectifs en lien avec le territoire métropolitain : \n- Le réseau ferré régional, dans son rôle d’articulation avec les réseaux métropolitains, devenant un élément constitutif du réseau de transports urbains, notamment grâce à son intégration tarifaire.\n- De nouvelles liaisons « métropolitaines » en transports en commun.\n \nLes projets de cette concertation font partie des éléments les plus structurants de ces « nouvelles liaisons » comprenant une vingtaine de projets distincts, allant du prolongement du métro jusqu’à l’amélioration du niveau de service de certaines lignes existantes ou la création de lignes de bus circulaires et la mise en place de liaisons de bus express. \n \nCe schéma a fait l’objet d’une concertation de deux mois au 1er semestre 2019. En ce qui concerne le Grand Public, 8000 connexions internet et 859 contributions d’internautes sont venues nourrir la concertation (320 réponses au questionnaire, 329 contributions sur les liaisons proposées par la MEL, 99 propositions de liaisons d’internautes et 111 contributions libres).",
+            "langfre": "La Métropole Européenne de Lille (MEL) s’est dotée d’un Schéma Directeur des Infrastructures de Transports (SDIT), établissant sa feuille de route en matière de grandes infrastructures de transports collectifs structurants à horizon 2035. Ce schéma, objet de la délibération n°19 C 0312, adopté lors du conseil métropolitain du 28 juin 2019, prévoit notamment la création de nouvelles liaisons en transports collectifs structurants. \n \nLe SDIT se décline opérationnellement en deux volets correspondants aux grandes infrastructures de transports collectifs en lien avec le territoire métropolitain : \n- Le réseau ferré régional, dans son rôle d’articulation avec les réseaux métropolitains, devenant un élément constitutif du réseau de transports urbains, notamment grâce à son intégration tarifaire.\n- De nouvelles liaisons « métropolitaines » en transports en commun.\n \nLes projets de cette concertation font partie des éléments les plus structurants de ces « nouvelles liaisons » comprenant une vingtaine de projets distincts, allant du prolongement du métro jusqu’à l’amélioration du niveau de service de certaines lignes existantes ou la création de lignes de bus circulaires et la mise en place de liaisons de bus express. \n \nCe schéma a fait l’objet d’une concertation de deux mois au 1er semestre 2019. En ce qui concerne le Grand Public, 8000 connexions internet et 859 contributions d’internautes sont venues nourrir la concertation (320 réponses au questionnaire, 329 contributions sur les liaisons proposées par la MEL, 99 propositions de liaisons d’internautes et 111 contributions libres)."
+          },
+          "feedbackCount": "0",
+          "licenseObject": [
+            {
+              "default": "Licence Ouverte Etalab 2.0",
+              "langfre": "Licence Ouverte Etalab 2.0"
+            }
+          ],
+          "isHarvested": "false",
+          "isOpenData": "false",
+          "cl_maintenanceAndUpdateFrequency": [
+            {
+              "default": "Lorsque nécessaire",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_MaintenanceFrequencyCode",
+              "key": "asNeeded",
+              "langfre": "Lorsque nécessaire"
+            }
+          ],
+          "th_thesaurus_mot_cle_thematique_categories": [
+            {
+              "default": "Administration, action publique",
+              "link": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique",
+              "langfre": "Administration, action publique"
+            }
+          ],
+          "link": [
+            {
+              "protocol": "OGC API Features",
+              "descriptionObject": {
+                "default": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq (API)",
+                "langfre": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq (API)"
+              },
+              "function": "download",
+              "applicationProfile": "",
+              "mimeType": "",
+              "urlObject": {
+                "default": "https://data.lillemetropole.fr/data/ogcapi/collections/administration_et_action_publique:construisons_les_projets_de_nouvelles_lignes_de_transport_pro2/items",
+                "langfre": "https://data.lillemetropole.fr/data/ogcapi/collections/administration_et_action_publique:construisons_les_projets_de_nouvelles_lignes_de_transport_pro2/items"
+              },
+              "nameObject": {
+                "default": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq",
+                "langfre": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq"
+              },
+              "group": 0
+            }
+          ],
+          "displayOrder": "0",
+          "cl_resourceCharacterSet": [
+            {
+              "default": "Utf8",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_CharacterSetCode",
+              "key": "utf8",
+              "langfre": "Utf8"
+            }
+          ],
+          "cl_function": [
+            {
+              "default": "Métadonnées intégrales",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode",
+              "key": "completeMetadata",
+              "langfre": "Métadonnées intégrales"
+            },
+            {
+              "default": "Téléchargement",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_OnLineFunctionCode",
+              "key": "download",
+              "langfre": "Téléchargement"
+            }
+          ],
+          "valid_inspire": "-1",
+          "indexingDate": "2025-01-02T09:44:21.035Z",
+          "resourceDate": [
+            {
+              "date": "2024-05-29T00:00:00.000Z",
+              "type": "publication"
+            },
+            {
+              "date": "2022-08-04T10:46:00.000Z",
+              "type": "creation"
+            }
+          ],
+          "sourceCatalogue": "91d40455-f688-48fa-ae04-557104398381",
+          "cl_accessConstraints": [
+            {
+              "default": "Autres restrictions",
+              "link": "http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_RestrictionCode",
+              "key": "otherRestrictions",
+              "langfre": "Autres restrictions"
+            }
+          ],
+          "pointOfContactOrgForResourceObject": {
+            "default": "Métropole Européenne de Lille",
+            "langfre": "Métropole Européenne de Lille"
+          },
+          "groupPublished": ["all", "MEL"],
+          "cat": ["datasets"],
+          "extra": "null",
+          "th_mel_tree": {
+            "default": ["Métropole Européenne de Lille"],
+            "key": ["https://data.lillemetropole.fr/place/melTerritories#1"]
+          },
+          "coordinateSystem": ["RGF93 / Lambert 93"],
+          "hasOverview": "false",
+          "userinfo": "mel_bjacq|JACQ|Baptiste|Administrator",
+          "valid_xsd": "1",
+          "allKeywords": {
+            "th_thesaurus_mot_cle_thematique_administration_action_publique": {
+              "keywords": [
+                {
+                  "default": "Démocratie locale",
+                  "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale",
+                  "langfre": "Démocratie locale"
+                },
+                {
+                  "default": "Democratie participative",
+                  "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative",
+                  "langfre": "Democratie participative"
+                },
+                {
+                  "default": "Participation",
+                  "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/participation",
+                  "langfre": "Participation"
+                }
+              ],
+              "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/external.theme.thesaurus_mot_cle_thematique_administration_action_publique",
+              "theme": "theme",
+              "id": "geonetwork.thesaurus.external.theme.thesaurus_mot_cle_thematique_administration_action_publique",
+              "title": "Administration, Action publique"
+            },
+            "th_mel": {
+              "keywords": [
+                {
+                  "default": "Métropole Européenne de Lille",
+                  "link": "https://data.lillemetropole.fr/place/melTerritories#1",
+                  "langfre": "Métropole Européenne de Lille"
+                }
+              ],
+              "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/local.place.mel",
+              "theme": "place",
+              "id": "geonetwork.thesaurus.local.place.mel",
+              "title": "Territoires MEL"
+            },
+            "th_gemet": {
+              "keywords": [],
+              "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/external.theme.gemet",
+              "theme": "theme",
+              "id": "geonetwork.thesaurus.external.theme.gemet",
+              "title": "GEMET"
+            },
+            "th_thesaurus_mot_cle_thematique_categories": {
+              "keywords": [
+                {
+                  "default": "Administration, action publique",
+                  "link": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique",
+                  "langfre": "Administration, action publique"
+                }
+              ],
+              "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/external.theme.thesaurus_mot_cle_thematique_categories",
+              "theme": "theme",
+              "id": "geonetwork.thesaurus.external.theme.thesaurus_mot_cle_thematique_categories",
+              "title": "Catégories"
+            },
+            "th_httpinspireeceuropaeutheme-theme": {
+              "keywords": [],
+              "link": "https://data.lillemetropole.fr/geonetwork/srv/api/registries/vocabularies/external.theme.httpinspireeceuropaeutheme-theme",
+              "theme": "theme",
+              "id": "geonetwork.thesaurus.external.theme.httpinspireeceuropaeutheme-theme",
+              "title": "GEMET - INSPIRE themes, version 1.0"
+            }
+          },
+          "owner": "113",
+          "groupOwner": "105",
+          "pointOfContactOrgObject": {
+            "default": "Métropole Européenne de Lille",
+            "langfre": "Métropole Européenne de Lille"
+          },
+          "publicationYearForResource": "2024",
+          "resourceTitleObject": {
+            "default": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq",
+            "langfre": "Construisons ensemble les projets de nouvelles lignes de transport ! - Propositions - BHNS Lille/Villeneuve-d'Ascq"
+          },
+          "th_thesaurus_mot_cle_thematique_categoriesNumber": "1",
+          "valid_schematron-rules-iso": "1",
+          "keywordType-place": [
+            {
+              "default": "Métropole Européenne de Lille",
+              "link": "https://data.lillemetropole.fr/place/melTerritories#1",
+              "langfre": "Métropole Européenne de Lille"
+            },
+            {
+              "default": "Métropole Européenne de Lille",
+              "langfre": "Métropole Européenne de Lille"
+            }
+          ],
+          "location": "50.6471535,3.0308155",
+          "keywordType-theme": [
+            {
+              "default": "Démocratie locale",
+              "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_locale",
+              "langfre": "Démocratie locale"
+            },
+            {
+              "default": "Democratie participative",
+              "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/democratie_participative",
+              "langfre": "Democratie participative"
+            },
+            {
+              "default": "Participation",
+              "link": "https://data.lillemetropole.fr/thematique/administration_action_publique/participation",
+              "langfre": "Participation"
+            },
+            {
+              "default": "Administration, action publique",
+              "link": "https://data.lillemetropole.fr/thematique/categories/administration_action_publique",
+              "langfre": "Administration, action publique"
+            }
+          ],
+          "originatorOrgForResourceObject": {
+            "default": "Métropole Européenne de Lille",
+            "langfre": "Métropole Européenne de Lille"
+          },
+          "userSavedCount": "0"
+        },
+        "edit": false,
+        "canReview": false,
+        "owner": false,
+        "isPublishedToAll": true,
+        "view": true,
+        "notify": true,
+        "download": true,
+        "dynamic": true,
+        "featured": true,
+        "selected": false
+      }
+    ]
+  }
 }

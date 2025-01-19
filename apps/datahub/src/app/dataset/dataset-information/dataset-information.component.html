@@ -32,8 +32,9 @@
       <span class="font-semibold" translate="">mel.dataset.territories</span>
       <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
         @for(territory of territories; track $index) {
-        <button class="mel-badge-secondary truncate"
-        (click)="onKeywordClick('territories', territory)"
+        <button
+          class="mel-badge-secondary truncate"
+          (click)="onKeywordClick('territories', territory)"
         >
           {{ territory.label }}
         </button>

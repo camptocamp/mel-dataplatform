@@ -301,7 +301,7 @@ describe('search', () => {
             'representationType',
             'revisionYear',
             'categoryKeyword',
-            'territories'
+            'territories',
           ])
       })
     })
@@ -310,43 +310,49 @@ describe('search', () => {
   describe('Search filters and query params from url', () => {
     describe('When searching for a category in the url', () => {
       beforeEach(() => {
-        cy.interceptSearchAggr('th_thesaurus_mot_cle_thematique_categories.link')
-        cy.visit('/search?categoryKeyword=https:%2F%2Fdata.lillemetropole.fr%2Fthematique%2Fcategories%2Fadministration_action_publique')
+        cy.interceptSearchAggr(
+          'th_thesaurus_mot_cle_thematique_categories.link'
+        )
+        cy.visit(
+          '/search?categoryKeyword=https:%2F%2Fdata.lillemetropole.fr%2Fthematique%2Fcategories%2Fadministration_action_publique'
+        )
       })
-      
+
       it('should select the value in the list', () => {
-        cy.get('mel-datahub-dropdown-multiselect')
-        .eq(1)
-        .click()
+        cy.get('mel-datahub-dropdown-multiselect').eq(1).click()
 
         cy.wait('@interceptSearchAggr')
 
-        cy.get('#cdk-overlay-0 button[title="https://data.lillemetropole.fr/thematique/categories/administration_action_publique (58)"]')
-        .should('exist')
+        cy.get(
+          '#cdk-overlay-0 button[title="https://data.lillemetropole.fr/thematique/categories/administration_action_publique (58)"]'
+        ).should('exist')
 
-        cy.get('#cdk-overlay-0 label[title="https://data.lillemetropole.fr/thematique/categories/administration_action_publique (58)"] input[type="checkbox"]')
-        .should('be.checked')
+        cy.get(
+          '#cdk-overlay-0 label[title="https://data.lillemetropole.fr/thematique/categories/administration_action_publique (58)"] input[type="checkbox"]'
+        ).should('be.checked')
       })
     })
 
     describe('When searching for a territory in the url', () => {
       beforeEach(() => {
         cy.interceptSearchAggr('th_mel.link')
-        cy.visit('/search?territories=https:%2F%2Fdata.lillemetropole.fr%2Fplace%2FmelTerritories%231')
+        cy.visit(
+          '/search?territories=https:%2F%2Fdata.lillemetropole.fr%2Fplace%2FmelTerritories%231'
+        )
       })
-      
+
       it('should select the value in the list', () => {
-        cy.get('mel-datahub-dropdown-multiselect')
-        .eq(2)
-        .click()
+        cy.get('mel-datahub-dropdown-multiselect').eq(2).click()
 
         cy.wait('@interceptSearchAggr')
 
-        cy.get('#cdk-overlay-0 button[title="https://data.lillemetropole.fr/place/melTerritories#1 (96)"]')
-        .should('exist')
+        cy.get(
+          '#cdk-overlay-0 button[title="https://data.lillemetropole.fr/place/melTerritories#1 (96)"]'
+        ).should('exist')
 
-        cy.get('#cdk-overlay-0 label[title="https://data.lillemetropole.fr/place/melTerritories#1 (96)"] input[type="checkbox"]')
-        .should('be.checked')
+        cy.get(
+          '#cdk-overlay-0 label[title="https://data.lillemetropole.fr/place/melTerritories#1 (96)"] input[type="checkbox"]'
+        ).should('be.checked')
       })
     })
   })

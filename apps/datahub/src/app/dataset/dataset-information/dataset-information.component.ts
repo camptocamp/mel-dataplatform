@@ -45,9 +45,9 @@ export class DatasetInformationComponent {
   }
 
   onKeywordClick(query: string, keyword: Keyword) {
-    console.log("query", query)
-    console.log("keyword.key", keyword.key)
-    console.log("keyword.key", keyword)
+    console.log('query', query)
+    console.log('keyword.key', keyword.key)
+    console.log('keyword.key', keyword)
     this.routerFacade.updateSearch({ [query]: keyword.key })
   }
 }
