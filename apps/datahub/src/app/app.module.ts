@@ -185,7 +185,7 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
     {
       provide: EXTERNAL_VIEWER_URL_TEMPLATE,
       useFactory: () =>
-        'https://mel.integration.apps.gs-fr-prod.camptocamp.com//mapstore/#/?actions=[{"type":"CATALOG:ADD_LAYERS_FROM_CATALOGS","layers":["${layer_name}"],"sources":[{"url":"${service_url}","type":"${service_type}"}]}]',
+        '/mapstore/#/?actions=[{"type":"CATALOG:ADD_LAYERS_FROM_CATALOGS","layers":["${layer_name}"],"sources":[{"url":"${service_url}","type":"${service_type}"}]}]',
     },
     {
       provide: EXTERNAL_VIEWER_OPEN_NEW_TAB,
