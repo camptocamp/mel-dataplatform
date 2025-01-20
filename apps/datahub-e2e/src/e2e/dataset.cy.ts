@@ -120,7 +120,8 @@ describe('datasets', () => {
 
   describe('Information block', () => {
     beforeEach(() => {
-      cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      cy.interceptDataset('775b7660-b03b-443a-9817-be82ecd0ef07')
+      cy.visit('/dataset/775b7660-b03b-443a-9817-be82ecd0ef07')
       cy.get('mel-datahub-dataset-information')
         .children('div')
         .first()
@@ -146,7 +147,7 @@ describe('datasets', () => {
         .children('div')
         .eq(1)
         .find('div')
-        .children('span')
+        .children('button')
         .should('have.length.gt', 0)
     })
 
@@ -155,7 +156,7 @@ describe('datasets', () => {
         .children('div')
         .eq(1)
         .find('div')
-        .children('span')
+        .children('button')
         .should('have.length.gt', 0)
     })
 
@@ -171,10 +172,10 @@ describe('datasets', () => {
     it('should display the producer', () => {
       cy.get('@mainInfo')
         .children('div')
-        .eq(3)
+        .eq(4)
         .find('span')
         .eq(1)
-        .should('have.text', 'Région Hauts-de-France')
+        .should('have.text', 'Métropole Européenne de Lille')
     })
 
     it('should display the social media share btns', () => {
@@ -191,10 +192,42 @@ describe('datasets', () => {
     it('should display the detailed file link and lead to it', () => {
       cy.get('@mainInfo')
         .children('div')
-        .eq(4)
+        .eq(5)
         .find('a')
         .invoke('attr', 'href')
         .should('include', '/geonetwork/srv/fre/catalog.search#/metadata')
+    })
+
+    describe('When clicking on a category tag', () => {
+      it('should navigate to home page with and search query parameters should be assigned a value', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(1)
+          .find('div')
+          .children('button')
+          .eq(0)
+          .click()
+        cy.url().should(
+          'include',
+          '/search?categoryKeyword=https:%2F%2Fdata.lillemetropole.fr%2Fthematique%2Fcategories%2Fadministration_action_publique'
+        )
+      })
+    })
+
+    describe('When clicking on a territory tag', () => {
+      it('should navigate to home page with and search query parameters should be assigned a value', () => {
+        cy.get('@mainInfo')
+          .children('div')
+          .eq(2)
+          .find('div')
+          .children('button')
+          .eq(0)
+          .click()
+        cy.url().should(
+          'include',
+          '/search?territories=https:%2F%2Fdata.lillemetropole.fr%2Fplace%2FmelTerritories%231'
+        )
+      })
     })
   })
 

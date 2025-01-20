@@ -19,6 +19,8 @@ declare namespace Cypress {
     clearFavorites()
     selectDropdownOption(value: string): void
     openDropdown(): Chainable<JQuery<HTMLElement>>
+    interceptDataset(id: string): void
+    interceptSearchAggr(aggr: string): void
   }
 }
 
@@ -127,4 +129,38 @@ Cypress.Commands.add('clearFavorites', () => {
         headers: { accept: 'application/json', 'X-XSRF-TOKEN': token },
       })
     })
+})
+
+Cypress.Commands.add('interceptDataset', (id) => {
+  cy.fixture(`datasets/${id}.json`).then((fixtureData) => {
+    cy.intercept(
+      'POST',
+      `/geonetwork/srv/api/search/records/_search?bucket=bucket`,
+      (req) => {
+        if (req.body.query?.ids?.values.includes(id)) {
+          req.reply({
+            statusCode: 200,
+            body: fixtureData,
+          })
+        }
+      }
+    ).as('interceptDataset')
+  })
+})
+
+Cypress.Commands.add('interceptSearchAggr', (aggr: string) => {
+  cy.fixture(`aggregations/${aggr}.json`).then((fixtureData) => {
+    cy.intercept(
+      'POST',
+      `/geonetwork/srv/api/search/records/_search?bucket=bucket`,
+      (req) => {
+        if (req.body.aggregations && req.body.aggregations[aggr]) {
+          req.reply({
+            statusCode: 200,
+            body: fixtureData,
+          })
+        }
+      }
+    ).as('interceptSearchAggr')
+  })
 })

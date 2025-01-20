@@ -32,6 +32,7 @@ export class SearchFiltersComponent {
     getOptionalSearchConfig().ADVANCED_FILTERS || [
       'producerOrg',
       'categoryKeyword',
+      'territories',
       'revisionYear',
       'license',
     ]

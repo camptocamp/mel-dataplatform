@@ -280,7 +280,7 @@ describe('search', () => {
       })
       it('should display all filters', () => {
         cy.get('[data-cy="filterExpandBtn"]').click()
-        cy.get('@filters').filter(':visible').should('have.length', 12)
+        cy.get('@filters').filter(':visible').should('have.length', 13)
         cy.get('@filters')
           .children()
           .then(($dropdowns) =>
@@ -301,10 +301,62 @@ describe('search', () => {
             'representationType',
             'revisionYear',
             'categoryKeyword',
+            'territories',
           ])
       })
     })
   })
+
+  describe('Search filters and query params from url', () => {
+    describe('When searching for a category in the url', () => {
+      beforeEach(() => {
+        cy.interceptSearchAggr(
+          'th_thesaurus_mot_cle_thematique_categories.link'
+        )
+        cy.visit(
+          '/search?categoryKeyword=https:%2F%2Fdata.lillemetropole.fr%2Fthematique%2Fcategories%2Fadministration_action_publique'
+        )
+      })
+
+      it('should select the value in the list', () => {
+        cy.get('mel-datahub-dropdown-multiselect').eq(1).click()
+
+        cy.wait('@interceptSearchAggr')
+
+        cy.get(
+          '#cdk-overlay-0 button[title="https://data.lillemetropole.fr/thematique/categories/administration_action_publique (58)"]'
+        ).should('exist')
+
+        cy.get(
+          '#cdk-overlay-0 label[title="https://data.lillemetropole.fr/thematique/categories/administration_action_publique (58)"] input[type="checkbox"]'
+        ).should('be.checked')
+      })
+    })
+
+    describe('When searching for a territory in the url', () => {
+      beforeEach(() => {
+        cy.interceptSearchAggr('th_mel.link')
+        cy.visit(
+          '/search?territories=https:%2F%2Fdata.lillemetropole.fr%2Fplace%2FmelTerritories%231'
+        )
+      })
+
+      it('should select the value in the list', () => {
+        cy.get('mel-datahub-dropdown-multiselect').eq(2).click()
+
+        cy.wait('@interceptSearchAggr')
+
+        cy.get(
+          '#cdk-overlay-0 button[title="https://data.lillemetropole.fr/place/melTerritories#1 (96)"]'
+        ).should('exist')
+
+        cy.get(
+          '#cdk-overlay-0 label[title="https://data.lillemetropole.fr/place/melTerritories#1 (96)"] input[type="checkbox"]'
+        ).should('be.checked')
+      })
+    })
+  })
+
   describe('pagination', () => {
     beforeEach(() => {
       cy.visit('/search')
