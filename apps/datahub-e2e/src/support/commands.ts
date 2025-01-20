@@ -137,11 +137,7 @@ Cypress.Commands.add('interceptDataset', (id) => {
       'POST',
       `/geonetwork/srv/api/search/records/_search?bucket=bucket`,
       (req) => {
-        if (
-          req.body.query?.ids?.values.includes(
-            '775b7660-b03b-443a-9817-be82ecd0ef07'
-          )
-        ) {
+        if (req.body.query?.ids?.values.includes(id)) {
           req.reply({
             statusCode: 200,
             body: fixtureData,
