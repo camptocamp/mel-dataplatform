@@ -76,6 +76,9 @@ import { environment } from '../environments/environnment'
 import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
 import { MelFieldsService } from './search/service/fields.service'
 import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-datahub-dropdown-range/mel-datahub-dropdown-range.component'
+import { matCloseOutline } from '@ng-icons/material-icons/outline'
+import { NgIconsModule } from '@ng-icons/core'
+import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
 
 @NgModule({
   declarations: [
@@ -132,6 +135,7 @@ import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-da
     ChartViewComponent,
     TableViewComponent,
     MapContainerComponent,
+    NgIconsModule.withIcons({ matCloseOutline, matMoreHoriz }),
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
