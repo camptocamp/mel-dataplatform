@@ -14,9 +14,7 @@
     @if((searchFacade.isLoading$ | async) === false && (searchFacade.totalPages$
     | async) > 1){
     <mel-datahub-pagination-buttons
-      [totalPages]="searchFacade.totalPages$ | async"
-      [currentPage]="searchFacade.currentPage$ | async"
-      (newCurrentPageEvent)="searchService.setPage($any($event))"
+      [listComponent]="this"
     ></mel-datahub-pagination-buttons>
     } @else if((searchFacade.isLoading$ | async) === true){
     <ng-container>

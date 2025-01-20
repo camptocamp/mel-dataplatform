@@ -6,7 +6,7 @@ import {
   getLinkPriority,
 } from 'geonetwork-ui'
 import {
-  DatasetDistribution,
+  DatasetDownloadDistribution,
   DatasetServiceDistribution,
 } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { catchError, combineLatest, map, of, switchMap } from 'rxjs'
@@ -61,11 +61,11 @@ export class DatasetDownloadsComponent {
                 .pipe(
                   catchError((e) => {
                     this.error = e.message
-                    return [of([] as DatasetDistribution[])]
+                    return [of([] as DatasetDownloadDistribution[])]
                   })
                 )
             )
-          : [of([] as DatasetDistribution[])]),
+          : [of([] as DatasetDownloadDistribution[])]),
         ...(ogcLinks.length > 0
           ? ogcLinks.map((link) =>
               this.dataService
@@ -77,7 +77,7 @@ export class DatasetDownloadsComponent {
                   return Promise.resolve([])
                 })
             )
-          : [of([] as DatasetDistribution[])]),
+          : [of([] as DatasetDownloadDistribution[])]),
       ]).pipe(
         map(flattenArray),
         map(removeLinksWithUnknownFormat),
@@ -113,6 +113,11 @@ const removeDuplicateLinks = (wfsDownloadLinks) =>
   )
 
 const sortLinks = (allLinks) =>
-  allLinks.sort((a: DatasetDistribution, b: DatasetDistribution): number => {
-    return getLinkPriority(b) - getLinkPriority(a)
-  })
+  allLinks.sort(
+    (
+      a: DatasetDownloadDistribution,
+      b: DatasetDownloadDistribution
+    ): number => {
+      return getLinkPriority(b) - getLinkPriority(a)
+    }
+  )

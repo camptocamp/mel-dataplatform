@@ -6,12 +6,12 @@ import {
 import { CarouselComponent } from 'geonetwork-ui'
 
 @Component({
-  selector: 'mel-datahub-custom-carousel',
-  templateUrl: './custom-carousel.component.html',
+  selector: 'mel-datahub-carousel',
+  templateUrl: './carousel.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomCarouselComponent
+export class MelCarouselComponent
   extends CarouselComponent
   implements AfterViewInit
 {

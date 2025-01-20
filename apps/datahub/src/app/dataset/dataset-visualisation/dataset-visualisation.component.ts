@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 import { MdViewFacade } from 'geonetwork-ui'
-import { DatasetDistribution } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import { DatasetOnlineResource } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
 @Component({
   selector: 'mel-datahub-dataset-visualisation',
@@ -20,7 +20,7 @@ export class DatasetVisualisationComponent {
   @Input() displayData: boolean
   selectedView: string
 
-  selectedLink$ = new BehaviorSubject<DatasetDistribution>(null)
+  selectedLink$ = new BehaviorSubject<DatasetOnlineResource>(null)
 
   constructor(public mdViewFacade: MdViewFacade) {
     this.selectedView = this.displayMap ? 'map' : 'table'

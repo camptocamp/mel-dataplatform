@@ -30,14 +30,14 @@ describe('home', () => {
         .should('be.visible')
     })
     it('should display a carousel that loops through last created cards', () => {
-      cy.get('mel-datahub-custom-carousel').find(
+      cy.get('mel-datahub-carousel').find(
         'mel-datahub-results-card-last-created'
       )
-      cy.get('mel-datahub-custom-carousel')
+      cy.get('mel-datahub-carousel')
         .find('[title="carousel-arrow-right"]')
         .click()
 
-      cy.get('mel-datahub-custom-carousel')
+      cy.get('mel-datahub-carousel')
         .find('h1')
         .eq(2)
         .should('have.text', ' Leitungskataster Fernwärme AEW Energie AG ')

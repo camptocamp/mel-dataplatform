@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+} from '@angular/core'
 import { MapViewComponent } from 'geonetwork-ui'
 
 @Component({
@@ -7,7 +11,10 @@ import { MapViewComponent } from 'geonetwork-ui'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MelMapViewComponent extends MapViewComponent implements OnInit {
+export class MelMapViewComponent
+  extends MapViewComponent
+  implements AfterViewInit
+{
   override selectLinkToDisplay(link: unknown): void {
     this.selectedLinkIndex$.next(Number(link))
   }
