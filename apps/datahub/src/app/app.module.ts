@@ -34,6 +34,8 @@ import {
   ErrorComponent,
   CopyTextButtonComponent,
   MapContainerComponent,
+  EXTERNAL_VIEWER_URL_TEMPLATE,
+  EXTERNAL_VIEWER_OPEN_NEW_TAB,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -175,6 +177,15 @@ import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-da
     {
       provide: LOGIN_URL,
       useFactory: () => '${current_url}?login',
+    },
+    {
+      provide: EXTERNAL_VIEWER_URL_TEMPLATE,
+      useFactory: () =>
+        'https://mel.integration.apps.gs-fr-prod.camptocamp.com//mapstore/#/?actions=[{"type":"CATALOG:ADD_LAYERS_FROM_CATALOGS","layers":["${layer_name}"],"sources":[{"url":"${service_url}","type":"${service_type}"}]}]',
+    },
+    {
+      provide: EXTERNAL_VIEWER_OPEN_NEW_TAB,
+      useFactory: () => true,
     },
     { provide: FieldsService, useClass: MelFieldsService },
   ],

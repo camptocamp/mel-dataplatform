@@ -32,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { StripHtmlPipe } from './strip-html.pipe'
 import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-buttons.component'
+import { MelExternalViewerButtonComponent } from './external-viewer-button/external-viewer-button.component'
 
 @NgModule({
   imports: [
@@ -68,6 +69,7 @@ import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-b
     MelAutocompleteComponent,
     StripHtmlPipe,
     MelPaginationButtonsComponent,
+    MelExternalViewerButtonComponent,
   ],
   exports: [
     ResultsListComponent,
@@ -87,6 +89,7 @@ import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-b
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
     MelPaginationButtonsComponent,
+    MelExternalViewerButtonComponent,
   ],
 })
 export class MelModule {}
