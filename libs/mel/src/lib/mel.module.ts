@@ -32,6 +32,14 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { StripHtmlPipe } from './strip-html.pipe'
 import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-buttons.component'
+import { MelExternalViewerButtonComponent } from './external-viewer-button/external-viewer-button.component'
+import { NgIconsModule } from '@ng-icons/core'
+import {
+  matChevronLeft,
+  matChevronRight,
+  matOpenInNew,
+  matSearch,
+} from '@ng-icons/material-icons/baseline'
 
 @NgModule({
   imports: [
@@ -48,6 +56,12 @@ import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-b
     ReactiveFormsModule,
     PopupAlertComponent,
     UiInputsModule,
+    NgIconsModule.withIcons({
+      matOpenInNew,
+      matSearch,
+      matChevronLeft,
+      matChevronRight,
+    }),
   ],
   declarations: [
     ResultsListComponent,
@@ -68,6 +82,7 @@ import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-b
     MelAutocompleteComponent,
     StripHtmlPipe,
     MelPaginationButtonsComponent,
+    MelExternalViewerButtonComponent,
   ],
   exports: [
     ResultsListComponent,
@@ -87,6 +102,7 @@ import { MelPaginationButtonsComponent } from './pagination-buttons/pagination-b
     MelFuzzySearchComponent,
     MelAutocompleteComponent,
     MelPaginationButtonsComponent,
+    MelExternalViewerButtonComponent,
   ],
 })
 export class MelModule {}

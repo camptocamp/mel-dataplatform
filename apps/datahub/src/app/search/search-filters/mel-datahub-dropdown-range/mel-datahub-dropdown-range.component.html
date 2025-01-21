@@ -8,21 +8,19 @@
   <span>{{ title }}</span>
   <button class="h-6 w-6" data-cy="clearSelection">
     @if(hasSelectedChoices && !overlayOpen){
-    <mat-icon
-      class="material-symbols-outlined shrink-0 opacity-40 mr-1.5 hover:opacity-80 transition-colors clear-btn"
+    <ng-icon
+      class="shrink-0 opacity-40 mr-1.5 hover:opacity-80 transition-colors clear-btn"
+      name="matClose"
       (click)="clearSelection($event)"
     >
-      close
-    </mat-icon>
+    </ng-icon>
     }
   </button>
-  <mat-icon class="material-symbols-outlined shrink-0">
-    @if(overlayOpen){
-    <ng-container>expand_less</ng-container>
-    } @else {
-    <ng-container>expand_more</ng-container>
-    }
-  </mat-icon>
+  @if(overlayOpen){
+  <ng-icon name="matExpandLess" class="shrink-0"></ng-icon>
+  } @else {
+  <ng-icon name="matExpandMore" class="shrink-0"></ng-icon>
+  }
 </button>
 
 <ng-template

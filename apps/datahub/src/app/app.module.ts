@@ -34,6 +34,8 @@ import {
   ErrorComponent,
   CopyTextButtonComponent,
   MapContainerComponent,
+  EXTERNAL_VIEWER_URL_TEMPLATE,
+  EXTERNAL_VIEWER_OPEN_NEW_TAB,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -74,6 +76,9 @@ import { environment } from '../environments/environnment'
 import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
 import { MelFieldsService } from './search/service/fields.service'
 import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-datahub-dropdown-range/mel-datahub-dropdown-range.component'
+import { matCloseOutline } from '@ng-icons/material-icons/outline'
+import { NgIconsModule } from '@ng-icons/core'
+import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
 
 @NgModule({
   declarations: [
@@ -130,6 +135,7 @@ import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-da
     ChartViewComponent,
     TableViewComponent,
     MapContainerComponent,
+    NgIconsModule.withIcons({ matCloseOutline, matMoreHoriz }),
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
@@ -175,6 +181,15 @@ import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-da
     {
       provide: LOGIN_URL,
       useFactory: () => '${current_url}?login',
+    },
+    {
+      provide: EXTERNAL_VIEWER_URL_TEMPLATE,
+      useFactory: () =>
+        '/mapstore/#/?actions=[{"type":"CATALOG:ADD_LAYERS_FROM_CATALOGS","layers":["${layer_name}"],"sources":[{"url":"${service_url}","type":"${service_type}"}]}]',
+    },
+    {
+      provide: EXTERNAL_VIEWER_OPEN_NEW_TAB,
+      useFactory: () => true,
     },
     { provide: FieldsService, useClass: MelFieldsService },
   ],

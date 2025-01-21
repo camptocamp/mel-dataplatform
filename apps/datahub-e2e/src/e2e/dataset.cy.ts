@@ -98,6 +98,18 @@ describe('datasets', () => {
       cy.get('gn-ui-chart-view').should('not.exist')
     })
 
+    it('should open mapstore with dataset in a new tab', () => {
+      cy.window().then((win) => {
+        cy.stub(win, 'open').as('windowOpen')
+      })
+      cy.get('mel-datahub-external-viewer-button').find('button').click()
+      cy.get('@windowOpen').should(
+        'be.calledWith',
+        '/mapstore/#/?actions=[{"type":"CATALOG:ADD_LAYERS_FROM_CATALOGS","layers":["rectangles_200m_menage_erbm"],"sources":[{"url":"https%3A%2F%2Fwww.geo2france.fr%2Fgeoserver%2Finsee%2Fows","type":"wms"}]}]',
+        '_blank'
+      )
+    })
+
     it('should switch between tabs and display the table and analysis components', () => {
       cy.get('mel-datahub-dataset-visualisation')
         .find('.mat-mdc-tab-labels')
