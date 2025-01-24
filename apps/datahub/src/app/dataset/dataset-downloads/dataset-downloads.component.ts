@@ -80,11 +80,11 @@ export class DatasetDownloadsComponent {
           : [of([] as DatasetDownloadDistribution[])]),
       ]).pipe(
         map(flattenArray),
-        map(removeLinksWithUnknownFormat),
         map(removeDuplicateLinks),
         map((downloadLinks) => {
           return [...otherLinks, ...downloadLinks, ...esriRestLinks]
         }),
+        map(removeLinksWithUnknownFormat),
         catchError((e) => {
           this.error = e.message
           return of([...otherLinks, ...esriRestLinks])
@@ -98,8 +98,8 @@ export class DatasetDownloadsComponent {
 const flattenArray = (arrayOfArrays) =>
   arrayOfArrays.reduce((prev, curr) => [...prev, ...curr], [])
 
-const removeLinksWithUnknownFormat = (wfsDownloadLinks) =>
-  wfsDownloadLinks.filter((link) => !!getFileFormat(link))
+const removeLinksWithUnknownFormat = (downloadLinks) =>
+  downloadLinks.filter((link) => !!getFileFormat(link))
 
 const removeDuplicateLinks = (wfsDownloadLinks) =>
   wfsDownloadLinks.filter(
