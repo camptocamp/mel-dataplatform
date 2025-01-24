@@ -287,55 +287,74 @@ describe('datasets', () => {
   })
 
   describe('Downloads section', () => {
-    beforeEach(() => {
-      cy.visit('/dataset/04bcec79-5b25-4b16-b635-73115f7456e4')
-    })
-    it('should contain the correct link in download button', () => {
-      cy.get('[data-cy="download-button"]')
-        .first()
-        .invoke('attr', 'href')
-        .as('downloadLink')
-      cy.get('@downloadLink').should(
-        'contain',
-        '/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
-      )
-      cy.get('[data-cy="download-button"]')
-        .first()
-        .should('have.attr', 'target', '_blank')
-    })
-    it('should contain empty download attribute for other files than json and geojson', () => {
-      cy.get('[data-cy="download-button"]')
-        .first()
-        .should('have.attr', 'download', '')
-    })
-    it('should contain download attribute with filename for json files', () => {
-      cy.get('[data-cy="download-button"]')
-        .eq(2)
-        .should(
-          'have.attr',
-          'download',
-          'insee:rectangles_200m_menage_erbm.json'
+    describe('Dataset with ID 04bcec79-5b25-4b16-b635-73115f7456e4', () => {
+      beforeEach(() => {
+        cy.visit('/dataset/04bcec79-5b25-4b16-b635-73115f7456e4')
+      })
+      it('should contain the correct link in download button', () => {
+        cy.get('[data-cy="download-button"]')
+          .first()
+          .invoke('attr', 'href')
+          .as('downloadLink')
+        cy.get('@downloadLink').should(
+          'contain',
+          '/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
         )
-    })
-    it('should open link in new tab as fallback (if download attribute is ignored, for not same-origin)', () => {
-      cy.get('[data-cy="download-button"]')
-        .first()
-        .should('have.attr', 'target', '_blank')
-    })
-    it('should copy the link resource to clipboard when clicking on copy button', () => {
-      cy.get('body').focus()
-      cy.get('[data-cy="copy-button"]').first().click()
-      // attempt to make the whole page focused
-      cy.get('body').focus()
-
-      cy.window().then((win) => {
-        win.navigator.clipboard.readText().then((text) => {
-          expect(text).to.eq(
-            'https://www.geo2france.fr/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
+        cy.get('[data-cy="download-button"]')
+          .first()
+          .should('have.attr', 'target', '_blank')
+      })
+      it('should contain empty download attribute for other files than json and geojson', () => {
+        cy.get('[data-cy="download-button"]')
+          .first()
+          .should('have.attr', 'download', '')
+      })
+      it('should contain download attribute with filename for json files', () => {
+        cy.get('[data-cy="download-button"]')
+          .eq(2)
+          .should(
+            'have.attr',
+            'download',
+            'insee:rectangles_200m_menage_erbm.json'
           )
+      })
+      it('should open link in new tab as fallback (if download attribute is ignored, for not same-origin)', () => {
+        cy.get('[data-cy="download-button"]')
+          .first()
+          .should('have.attr', 'target', '_blank')
+      })
+      it('should copy the link resource to clipboard when clicking on copy button', () => {
+        cy.get('body').focus()
+        cy.get('[data-cy="copy-button"]').first().click()
+        // attempt to make the whole page focused
+        cy.get('body').focus()
+
+        cy.window().then((win) => {
+          win.navigator.clipboard.readText().then((text) => {
+            expect(text).to.eq(
+              'https://www.geo2france.fr/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
+            )
+          })
         })
       })
+
+
+
     })
+    describe('Dataset with ID ed34db28-5dd4-480f-bf29-dc08f0086131', () => {
+      beforeEach(() => {
+        cy.visit('/dataset/ed34db28-5dd4-480f-bf29-dc08f0086131')
+      })
+      it('should display the download section', () => {
+        cy.get('mel-datahub-dataset-downloads').should('be.visible')
+      })
+      it('should dispaly the correct number of available downloads', () => {
+        cy.get('mel-datahub-dataset-downloads')
+          .find('mel-datahub-download-item')
+          .should('have.length', 10)
+      })
+    })
+
   })
 
   describe('Related datasets section', () => {
