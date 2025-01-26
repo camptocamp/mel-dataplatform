@@ -36,10 +36,13 @@ describe('home', () => {
       cy.get('mel-datahub-carousel')
         .find('[title="carousel-arrow-right"]')
         .click()
+      cy.get('mel-datahub-carousel')
+        .find('[title="carousel-arrow-right"]')
+        .click()
 
       cy.get('mel-datahub-carousel')
         .find('h1')
-        .eq(2)
+        .eq(3)
         .should('have.text', ' Leitungskataster Fernwärme AEW Energie AG ')
         .should('be.visible')
     })
@@ -53,12 +56,12 @@ describe('home', () => {
         cy.get('@firstResult').click()
         cy.url().should(
           'include',
-          'catalogue/dataset/a3774ef6-809d-4dd1-984f-9254f49cbd0a'
+          'catalogue/dataset/ed34db28-5dd4-480f-bf29-dc08f0086131'
         )
       })
       it('should create correct url to navigate to search on keyword click', () => {
         cy.get('mel-datahub-results-card-last-created')
-          .eq(1)
+          .eq(2)
           .find('.mel-badge-button-primary')
           .first()
           .click()
