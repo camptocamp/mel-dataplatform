@@ -337,9 +337,6 @@ describe('datasets', () => {
           })
         })
       })
-
-
-
     })
     describe('Dataset with ID ed34db28-5dd4-480f-bf29-dc08f0086131', () => {
       beforeEach(() => {
@@ -354,7 +351,6 @@ describe('datasets', () => {
           .should('have.length', 10)
       })
     })
-
   })
 
   describe('Related datasets section', () => {
