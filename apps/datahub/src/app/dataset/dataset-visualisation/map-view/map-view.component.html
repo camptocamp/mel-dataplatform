@@ -1,6 +1,7 @@
 <div class="w-full h-full flex flex-col p-1">
   <div class="w-full flex justify-end px-4">
     <gn-ui-dropdown-selector
+      [ngClass]="{ hidden: !displaySource }"
       class="truncate mt-2 mr-4 p-2"
       extraBtnClass="!text-primary font-sans font-medium"
       [title]="'mel.record.preview.select' | translate"
@@ -34,18 +35,19 @@
       <gn-ui-feature-detail [feature]="selection"></gn-ui-feature-detail>
     </div>
     @if (loading) {
-    <gn-ui-loading-mask
-      class="absolute inset-0"
-      [message]="'mel.record.preview.load' | translate"
-    ></gn-ui-loading-mask>
-    } @if (error) {
-    <gn-ui-popup-alert
-      class="absolute m-2 inset-0"
-      icon="error_outline"
-      type="warning"
-    >
-      <span translate>{{ error }}</span>
-    </gn-ui-popup-alert>
+      <gn-ui-loading-mask
+        class="absolute inset-0"
+        [message]="'mel.record.preview.load' | translate"
+      ></gn-ui-loading-mask>
+    }
+    @if (error) {
+      <gn-ui-popup-alert
+        class="absolute m-2 inset-0"
+        icon="error_outline"
+        type="warning"
+      >
+        <span translate>{{ error }}</span>
+      </gn-ui-popup-alert>
     }
   </div>
 </div>

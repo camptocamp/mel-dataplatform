@@ -8,64 +8,69 @@
     </div>
   </div>
   <div class="flex flex-col gap-8 border-b-[1px] border-gray-3 pb-2">
-    @if(lastUpdate){
-    <div class="flex flex-row gap-2">
-      <span class="font-semibold" translate="">mel.dataset.updatedOn</span>
-      <div class="text-primary font-semibold">{{ lastUpdate }}</div>
-    </div>
-    } @if(displayCategories?.length) {
-    <div class="flex flex-col gap-2">
-      <span class="font-semibold" translate="">mel.dataset.categories</span>
-      <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
-        @for(category of displayCategories; track $index) {
-        <button
-          class="mel-badge-primary truncate"
-          (click)="onKeywordClick('categoryKeyword', category)"
-        >
-          {{ category.label }}
-        </button>
-        }
+    @if (lastUpdate) {
+      <div class="flex flex-row gap-2">
+        <span class="font-semibold" translate="">mel.dataset.updatedOn</span>
+        <div class="text-primary font-semibold">{{ lastUpdate }}</div>
       </div>
-    </div>
-    } @if(territories?.length) {
-    <div class="flex flex-col gap-2">
-      <span class="font-semibold" translate="">mel.dataset.territories</span>
-      <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
-        @for(territory of territories; track $index) {
-        <button
-          class="mel-badge-secondary truncate"
-          (click)="onKeywordClick('territories', territory)"
-        >
-          {{ territory.label }}
-        </button>
-        }
+    }
+    @if (displayCategories?.length) {
+      <div class="flex flex-col gap-2">
+        <span class="font-semibold" translate="">mel.dataset.categories</span>
+        <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
+          @for (category of displayCategories; track $index) {
+            <button
+              class="mel-badge-primary truncate"
+              (click)="onKeywordClick('categoryKeyword', category)"
+            >
+              {{ category.label }}
+            </button>
+          }
+        </div>
       </div>
-    </div>
-    } @if(record.licenses?.length) {
-    <div class="inline-block break-normal font-semibold">
-      <span class="mr-1" translate="">mel.dataset.licenses</span>
-      <span>
-        {{ record.licenses[0].text }}
-      </span>
-    </div>
-    } @if(record.ownerOrganization) {
-    <div class="inline-block break-normal font-semibold">
-      <span class="mr-1" translate="">mel.dataset.owner</span>
-      <span>{{ record.ownerOrganization?.name }}</span>
-    </div>
-    } @if(record.landingPage) {
-    <div class="flex flex-row gap-1">
-      <a
-        class="underline text-gray-2 text-sm"
-        [href]="record.landingPage"
-        translate
-        >mel.dataset.details
-      </a>
-      <ng-icon
-        class="material-symbols-outlined !w-[12px] !h-[14px] !text-[14px] opacity-75 mt-1"
-        name="matOpenInNew"
-      ></ng-icon>
-    </div>
+    }
+    @if (territories?.length) {
+      <div class="flex flex-col gap-2">
+        <span class="font-semibold" translate="">mel.dataset.territories</span>
+        <div class="flex gap-1 gap-x-2 flex-row flex-wrap">
+          @for (territory of territories; track $index) {
+            <button
+              class="mel-badge-secondary truncate"
+              (click)="onKeywordClick('territories', territory)"
+            >
+              {{ territory.label }}
+            </button>
+          }
+        </div>
+      </div>
+    }
+    @if (record.licenses?.length) {
+      <div class="inline-block break-normal font-semibold">
+        <span class="mr-1" translate="">mel.dataset.licenses</span>
+        <span>
+          {{ record.licenses[0].text }}
+        </span>
+      </div>
+    }
+    @if (record.ownerOrganization) {
+      <div class="inline-block break-normal font-semibold">
+        <span class="mr-1" translate="">mel.dataset.owner</span>
+        <span>{{ record.ownerOrganization?.name }}</span>
+      </div>
+    }
+    @if (record.landingPage) {
+      <div class="flex flex-row gap-1">
+        <a
+          class="underline text-gray-2 text-sm"
+          [href]="record.landingPage"
+          translate
+          >mel.dataset.details
+        </a>
+        <ng-icon
+          class="material-symbols-outlined !w-[12px] !h-[14px] !text-[14px] opacity-75 mt-1"
+          name="matOpenInNew"
+        ></ng-icon>
+      </div>
     }
   </div>
   <div class="flex flex-col gap-2 pt-4">

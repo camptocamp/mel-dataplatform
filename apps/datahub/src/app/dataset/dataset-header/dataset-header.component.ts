@@ -8,7 +8,7 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/re
   styles: `
     :host ::ng-deep .markdown-body {
       line-height: 1.2 !important;
-    } 
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

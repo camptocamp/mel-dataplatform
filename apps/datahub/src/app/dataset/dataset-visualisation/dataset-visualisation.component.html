@@ -34,33 +34,38 @@
         <div class="flex flex-row">
           <div class="w-full border-b border-white 3 z-index-10"></div>
         </div>
-        @if(displayMap) {
-        <div class="block" style="height: 500px">
-          <mel-datahub-map-view></mel-datahub-map-view>
-        </div>
-        <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
+        @if (displayMap) {
+          <div class="block" style="height: 500px">
+            <mel-datahub-map-view
+              [displaySource]="displaySource"
+            ></mel-datahub-map-view>
+          </div>
+          <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
       <mat-tab [disabled]="!displayData">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.data</span>
         </ng-template>
-        @if(displayData) {
-        <div class="block">
-          <mel-datahub-data-view mode="table"></mel-datahub-data-view>
-        </div>
-        <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
+        @if (displayData) {
+          <div class="block">
+            <mel-datahub-data-view
+              mode="table"
+              [displaySource]="displaySource"
+            ></mel-datahub-data-view>
+          </div>
+          <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
       <mat-tab [disabled]="!displayData">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.chart</span>
         </ng-template>
-        @if(displayData) {
-        <div class="block">
-          <mel-datahub-data-view mode="chart"></mel-datahub-data-view>
-        </div>
-        <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
+        @if (displayData) {
+          <div class="block">
+            <mel-datahub-data-view mode="chart"></mel-datahub-data-view>
+          </div>
+          <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
     </mat-tab-group>

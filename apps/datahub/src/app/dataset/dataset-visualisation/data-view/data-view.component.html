@@ -1,23 +1,25 @@
 <div class="w-full h-full flex flex-col p-1">
   <div class="w-full flex justify-end mb-2">
-    @if(dropdownChoices$ | async) {
-    <gn-ui-dropdown-selector
-      [title]="'mel.record.preview.select' | translate"
-      class="truncate mt-2 mr-4 p-2"
-      extraBtnClass="!text-primary font-sans font-medium"
-      [choices]="dropdownChoices$ | async"
-      (selectValue)="selectLink($event)"
-    ></gn-ui-dropdown-selector>
+    @if (dropdownChoices$ | async) {
+      <gn-ui-dropdown-selector
+        [ngClass]="{ hidden: !displaySource }"
+        [title]="'mel.record.preview.select' | translate"
+        class="truncate mt-2 mr-4 p-2"
+        extraBtnClass="!text-primary font-sans font-medium"
+        [choices]="dropdownChoices$ | async"
+        (selectValue)="selectLink($event)"
+      ></gn-ui-dropdown-selector>
     }
   </div>
   <div class="relative h-[420px] m-4">
-    @if(mode === 'table') {
-    <gn-ui-table-view [link]="selectedLink$ | async"></gn-ui-table-view>
-    } @if(mode === 'chart') {
-    <gn-ui-chart-view
-      (chartConfig$)="setChartConfig($event)"
-      [link]="selectedLink$ | async"
-    ></gn-ui-chart-view>
+    @if (mode === 'table') {
+      <gn-ui-table-view [link]="selectedLink$ | async"></gn-ui-table-view>
+    }
+    @if (mode === 'chart') {
+      <gn-ui-chart-view
+        (chartConfig$)="setChartConfig($event)"
+        [link]="selectedLink$ | async"
+      ></gn-ui-chart-view>
     }
   </div>
 </div>

@@ -18,7 +18,10 @@ import { catchError, combineLatest, map, of, switchMap } from 'rxjs'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatasetDownloadsComponent {
-  constructor(public facade: MdViewFacade, private dataService: DataService) {}
+  constructor(
+    public facade: MdViewFacade,
+    private dataService: DataService
+  ) {}
 
   error: string = null
 

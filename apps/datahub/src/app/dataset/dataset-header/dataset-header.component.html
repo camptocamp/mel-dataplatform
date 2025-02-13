@@ -13,18 +13,19 @@
           [record]="record"
           [label]="'mel.dataset.favorite' | translate"
         ></mel-datahub-favorite-heart>
-        @if(getScrollElement('download')){
-        <mel-datahub-button
-          [label]="'mel.dataset.download' | translate"
-          [icon]="'download'"
-          (click)="scrollTo('download')"
-        ></mel-datahub-button>
-        } @if(getScrollElement('api')){
-        <mel-datahub-button
-          [label]="'mel.dataset.api' | translate"
-          [icon]="'api'"
-          (click)="scrollTo('api')"
-        ></mel-datahub-button>
+        @if (getScrollElement('download')) {
+          <mel-datahub-button
+            [label]="'mel.dataset.download' | translate"
+            [icon]="'download'"
+            (click)="scrollTo('download')"
+          ></mel-datahub-button>
+        }
+        @if (getScrollElement('api')) {
+          <mel-datahub-button
+            [label]="'mel.dataset.api' | translate"
+            [icon]="'api'"
+            (click)="scrollTo('api')"
+          ></mel-datahub-button>
         }
       </div>
     </div>
@@ -34,19 +35,19 @@
     >
       {{ record.title }}
     </h1>
-    @if(record.abstract){
-    <h2 class="mel-section-title mb-6" translate>mel.dataset.abstract</h2>
-    <gn-ui-content-ghost
-      ghostClass="h-32"
-      [showContent]="fieldReady('abstract')"
-    >
-      <mel-datahub-text-expand [maxLines]="3"
-        ><div class="sm:block text-2xl">
-          <gn-ui-markdown-parser
-            [textContent]="record.abstract"
-          ></gn-ui-markdown-parser></div
-      ></mel-datahub-text-expand>
-    </gn-ui-content-ghost>
+    @if (record.abstract) {
+      <h2 class="mel-section-title mb-6" translate>mel.dataset.abstract</h2>
+      <gn-ui-content-ghost
+        ghostClass="h-32"
+        [showContent]="fieldReady('abstract')"
+      >
+        <mel-datahub-text-expand [maxLines]="3"
+          ><div class="sm:block text-2xl">
+            <gn-ui-markdown-parser
+              [textContent]="record.abstract"
+            ></gn-ui-markdown-parser></div
+        ></mel-datahub-text-expand>
+      </gn-ui-content-ghost>
     }
   </div>
   <div class="md:col-span-5 lg:col-span-3 overflow-hidden">

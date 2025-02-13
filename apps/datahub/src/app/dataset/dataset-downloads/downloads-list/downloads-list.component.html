@@ -1,34 +1,39 @@
-@if(links && links.length > 0){
-<div class="mt-8 mb-6 sm:mt-12 sm:mb-2">
-  <div class="mel-title-line"></div>
-  <div class="flex flex-wrap justify-between">
-    <p class="mel-section-title mr-4 pb-4" translate>
-      mel.record.metadata.download
-    </p>
-    <div
-      class="flex flex-wrap justify-start sm:justify-end sm:pb-4"
-      data-cy="download-format-filters"
-    >
-      @for(format of visibleFormats; track $index){<button
-        [class]="
-          'mel-badge-button-gray m-1' +
-          (isFilterActive(format) ? ' bg-gray-4 text-white' : ' text-gray-4')
-        "
-        (click)="toggleFilterFormat(format)"
-        [attr.data-format]="format"
+@if (links && links.length > 0) {
+  <div class="mt-8 mb-6 sm:mt-12 sm:mb-2">
+    <div class="mel-title-line"></div>
+    <div class="flex flex-wrap justify-between">
+      <p class="mel-section-title mr-4 pb-4" translate>
+        mel.record.metadata.download
+      </p>
+      <div
+        class="flex flex-wrap justify-start sm:justify-end sm:pb-4"
+        data-cy="download-format-filters"
       >
-        {{ getFilterFormatTitle(format) }}</button
-      >}
+        @for (format of visibleFormats; track $index) {
+          <button
+            [class]="
+              'mel-badge-button-gray m-1' +
+              (isFilterActive(format)
+                ? ' bg-gray-4 text-white'
+                : ' text-gray-4')
+            "
+            (click)="toggleFilterFormat(format)"
+            [attr.data-format]="format"
+          >
+            {{ getFilterFormatTitle(format) }}
+          </button>
+        }
+      </div>
     </div>
   </div>
-</div>
-@for( link of filteredLinks; track $index){
-<div class="mb-2 sm:mb-3">
-  <mel-datahub-download-item
-    [link]="link"
-    [color]="getLinkColor(link)"
-    [format]="getLinkFormat(link)"
-    [isFromApi]="isFromApi(link)"
-  ></mel-datahub-download-item>
-</div>
-} }
+  @for (link of filteredLinks; track $index) {
+    <div class="mb-2 sm:mb-3">
+      <mel-datahub-download-item
+        [link]="link"
+        [color]="getLinkColor(link)"
+        [format]="getLinkFormat(link)"
+        [isFromApi]="isFromApi(link)"
+      ></mel-datahub-download-item>
+    </div>
+  }
+}

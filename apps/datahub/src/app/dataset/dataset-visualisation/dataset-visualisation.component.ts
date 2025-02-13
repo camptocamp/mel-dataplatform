@@ -7,18 +7,20 @@ import { DatasetOnlineResource } from 'geonetwork-ui/libs/common/domain/src/lib/
   selector: 'mel-datahub-dataset-visualisation',
   templateUrl: './dataset-visualisation.component.html',
   styles: `
-  @media only screen and (max-width: 639px) {
-    /*hide chart tab on mobile*/
+    @media only screen and (max-width: 639px) {
+      /*hide chart tab on mobile*/
       ::ng-deep .mat-mdc-tab.mdc-tab:nth-child(3) {
-      display: none;
+        display: none;
+      }
     }
-  }`,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatasetVisualisationComponent {
   @Input() displayMap: boolean
   @Input() displayData: boolean
   selectedView: string
+  displaySource = false
 
   selectedLink$ = new BehaviorSubject<DatasetOnlineResource>(null)
 
