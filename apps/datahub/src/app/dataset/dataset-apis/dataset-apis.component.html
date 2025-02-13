@@ -10,21 +10,21 @@
       containerClass="gap-4 py-10"
       stepsContainerClass="right-[var(--container-outside-width)] bottom-[calc(100%-12px)] top-auto"
     >
-      @for(link of apiLinks$ | async; track $index) {
-      <mel-datahub-api-card
-        [title]="link.name"
-        [link]="link"
-        [currentLink]="selectedApiLink"
-        [ngClass]="{
-          'rounded-lg': true,
-          'mr-[var(--container-outside-width)]': $last,
-          'ml-[var(--container-outside-width)]': $first,
-          'card-shadow': link !== selectedApiLink || !selectedApiLink,
-          'bg-neutral-100': link === selectedApiLink
-        }"
-        (openRecordApiForm)="openRecordApiForm($event)"
-      >
-      </mel-datahub-api-card>
+      @for (link of apiLinks$ | async; track $index) {
+        <mel-datahub-api-card
+          [title]="link.name"
+          [link]="link"
+          [currentLink]="selectedApiLink"
+          [ngClass]="{
+            'rounded-lg': true,
+            'mr-[var(--container-outside-width)]': $last,
+            'ml-[var(--container-outside-width)]': $first,
+            'card-shadow': link !== selectedApiLink || !selectedApiLink,
+            'bg-neutral-100': link === selectedApiLink,
+          }"
+          (openRecordApiForm)="openRecordApiForm($event)"
+        >
+        </mel-datahub-api-card>
       }
     </mel-datahub-carousel>
   </div>

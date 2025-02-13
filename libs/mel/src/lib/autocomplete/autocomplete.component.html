@@ -10,15 +10,15 @@
   />
   <div class="flex w-12 h-full absolute right-0 top-0">
     <div class="h-[28px] w-[1px] bg-gray-2 my-auto"></div>
-    @if(searchInput.value) {
-    <button
-      type="button"
-      class="flex items-center text-primary hover:text-primary-dark transition-all duration-100 clear-btn absolute inset-y-0 right-[48px] p-3"
-      [ariaLabel]="'mel.datahub.search.clear' | translate"
-      (click)="clear()"
-    >
-      <ng-icon name="matClose"></ng-icon>
-    </button>
+    @if (searchInput.value) {
+      <button
+        type="button"
+        class="flex items-center text-primary hover:text-primary-dark transition-all duration-100 clear-btn absolute inset-y-0 right-[48px] p-3"
+        [ariaLabel]="'mel.datahub.search.clear' | translate"
+        (click)="clear()"
+      >
+        <ng-icon name="matClose"></ng-icon>
+      </button>
     }
     <button
       type="button"
@@ -30,16 +30,16 @@
     </button>
   </div>
 
-  @if(error){
-  <gn-ui-popup-alert
-    class="absolute mt-2 w-full top-[100%] left-0 z-50"
-    icon="error_outline"
-    position="top"
-    type="warning"
-  >
-    <span translate>mel.search.autocomplete.error</span>
-    {{ error }}
-  </gn-ui-popup-alert>
+  @if (error) {
+    <gn-ui-popup-alert
+      class="absolute mt-2 w-full top-[100%] left-0 z-50"
+      icon="error_outline"
+      position="top"
+      type="warning"
+    >
+      <span translate>mel.search.autocomplete.error</span>
+      {{ error }}
+    </gn-ui-popup-alert>
   }
 </div>
 <mat-autocomplete
@@ -47,9 +47,9 @@
   (optionSelected)="handleSelection($event)"
   [displayWith]="displayWithFn"
 >
-  @for(suggestion of suggestions$ | async; track $index){
-  <mat-option [value]="suggestion" class="p-2 suggestion">
-    {{ displayWithFn(suggestion) }}
-  </mat-option>
+  @for (suggestion of suggestions$ | async; track $index) {
+    <mat-option [value]="suggestion" class="p-2 suggestion">
+      {{ displayWithFn(suggestion) }}
+    </mat-option>
   }
 </mat-autocomplete>
