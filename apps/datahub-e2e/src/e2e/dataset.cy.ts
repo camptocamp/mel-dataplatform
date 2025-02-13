@@ -298,7 +298,7 @@ describe('datasets', () => {
           .as('downloadLink')
         cy.get('@downloadLink').should(
           'contain',
-          '/geoserver/insee/ows?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
+          '/geoserver/insee/wfs?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=insee%3Arectangles_200m_menage_erbm&OUTPUTFORMAT=csv'
         )
         cy.get('[data-cy="download-button"]')
           .first()

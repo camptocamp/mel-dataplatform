@@ -18,6 +18,7 @@ marker('mel.datahub.search.filters.keyword')
 marker('mel.datahub.search.filters.isSpatial')
 marker('mel.datahub.search.filters.resourceType')
 marker('mel.datahub.search.filters.representationType')
+marker('mel.datahub.search.filters.revisionYear')
 
 @Component({
   selector: 'mel-datahub-search-filters',

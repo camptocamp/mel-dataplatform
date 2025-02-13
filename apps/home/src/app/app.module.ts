@@ -50,7 +50,10 @@ import { HomePageComponent } from './home/home-page/home-page.component'
       }
     ),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
+    StoreDevtoolsModule.instrument({
+      logOnly: !isDevMode(),
+      connectInZone: true,
+    }),
   ],
   providers: [
     importProvidersFrom(FeatureAuthModule),
