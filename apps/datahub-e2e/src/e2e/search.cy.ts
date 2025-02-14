@@ -6,7 +6,10 @@ describe('search', () => {
       cy.get('.mel-page-title').should('be.visible')
     })
     it('should display the number of result hits', () => {
-      cy.get('[data-cy="searchResults"]').should('include.text', 'Ensemble des données: 16')
+      cy.get('[data-cy="searchResults"]').should(
+        'include.text',
+        'Ensemble des données: 16'
+      )
     })
     it('should display the footer', () => {
       cy.get('mel-datahub-footer').should('be.visible')
@@ -42,7 +45,7 @@ describe('search', () => {
         .should('not.contain', '<p>')
     })
   })
-/// NEW TESTS HERE
+
   describe('search header carousel', () => {
     // If not logged in or no favorites exists
 
@@ -87,13 +90,35 @@ describe('search', () => {
     })
 
     describe('Filtered catalog - not logged in', () => {
+      const getFilterOptions = () => {
+        cy.get('[id^=dropdown-multiselect-] label').as('options')
+      }
       beforeEach(() => {
         cy.visit('/search?producerOrg=Métropole%20Européenne%20de%20Lille')
       })
       it('should display the last created cards filtered by producer', () => {
         cy.get('mel-datahub-carousel')
-        .find('mel-datahub-results-card-last-created')
-        .should('have.length', 2)
+          .find('mel-datahub-results-card-last-created')
+          .should('have.length', 2)
+      })
+      it('should go back to the normal list when producer is unselected', () => {
+        cy.get('mel-datahub-filter-dropdown').as('filters')
+        cy.get('@filters').first().click()
+        getFilterOptions()
+        cy.get('@options').eq(1).click()
+        cy.get('mel-datahub-carousel')
+          .find('mel-datahub-results-card-last-created')
+          .should('have.length', 16)
+      })
+      it('should not take into account other filters', () => {
+        cy.get('[data-cy="filterExpandBtn"]').click()
+        cy.get('mel-datahub-filter-dropdown').as('filters')
+        cy.get('@filters').eq(4).click()
+        getFilterOptions()
+        cy.get('@options').eq(2).click()
+        cy.get('mel-datahub-carousel')
+          .find('mel-datahub-results-card-last-created')
+          .should('have.length', 2)
       })
     })
 
@@ -146,9 +171,13 @@ describe('search', () => {
       })
       describe('Filtered catalog - logged in', () => {
         beforeEach(() => {
-          cy.visit('/search?producerOrg=Métropole%20Européenne%20de%20Lille')
+          cy.visit('/search?producerOrg=DREAL')
         })
-        it('should display the favorite cards unfiltered', () => {
+        it('should ignore the producer filter and display the favorite cards', () => {
+          cy.get('mel-datahub-search-header')
+            .find('.mel-section-title')
+            .first()
+            .should('have.text', ' Jeux de données suivis ')
           cy.get('mel-datahub-results-card-favorite').should('have.length', 1)
         })
       })
@@ -205,22 +234,15 @@ describe('search', () => {
           'Zones de collecte de déchets en porte à porte - par flux de collecte, jour et horaire de tournée'
         )
     })
-    it.only('should filter the results when selecting multiple filter values (producer)', () => {
+    it('should filter the results when selecting multiple filter values (producer)', () => {
       cy.get('@filters').first().click()
       getFilterOptions()
       cy.get('@options').eq(1).click()
+      cy.get('body').click()
+      cy.get('@filters').first().click()
       cy.get('@options').first().click()
       cy.get('mel-datahub-results-card-search').should('have.length', 3)
     })
-    // This filter is not used at the time
-    // it('should filter by quality score', () => {
-    //   cy.get('[data-cy="filterExpandBtn"]').click()
-    //   cy.get('@filters').eq(4).click()
-    //   cy.get('gn-ui-text-input input').first().type('5')
-    //   cy.get('gn-ui-text-input input').last().type('7')
-    //   cy.get('mel-datahub-button').last().click()
-    //   cy.get('mel-datahub-results-card-search').should('have.length', 3)
-    // })
     it('should filter the results when executing a search', () => {
       cy.get('mel-datahub-autocomplete input').type('velo')
       cy.get('mel-datahub-autocomplete').find('button').eq(1).click()
@@ -241,10 +263,7 @@ describe('search', () => {
       cy.get('@result-cards')
         .first()
         .find('h1')
-        .should(
-          'have.text',
-          ' Accroches vélos MEL '
-        )
+        .should('have.text', ' Accroches vélos MEL ')
     })
     it('should combine search input and filters and display a message if no results found', () => {
       cy.get('mel-datahub-autocomplete input').type('test')

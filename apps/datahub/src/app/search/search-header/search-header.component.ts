@@ -55,7 +55,7 @@ export class SearchHeaderComponent implements OnInit, OnDestroy {
         .subscribe((results) => {
           if (this.previousResults.length === 0) {
             this.recordsSubject.next(results || [])
-            this.previousResults = [...results];
+            this.previousResults = [...results]
           }
         })
     )
