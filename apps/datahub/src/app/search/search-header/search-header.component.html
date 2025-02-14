@@ -16,7 +16,7 @@
     </div>
     <div class="h-64" gnUiSearchStateContainer="headerSearch">
       <mel-datahub-results-list-carousel
-        [records]="searchFacade.results$ | async"
+        [records]="records$ | async"
         [numberOfResults]="10"
         [favoritesOnly]="hasFavorites$ | async"
       ></mel-datahub-results-list-carousel>
