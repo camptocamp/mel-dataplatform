@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { ResultsListComponent } from '../results-list.component'
+import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 
 @Component({
   selector: 'mel-datahub-results-list-carousel',
@@ -7,4 +8,6 @@ import { ResultsListComponent } from '../results-list.component'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ResultsListCarouselComponent extends ResultsListComponent {}
+export class ResultsListCarouselComponent extends ResultsListComponent {
+  @Input() records: CatalogRecord[]
+}
