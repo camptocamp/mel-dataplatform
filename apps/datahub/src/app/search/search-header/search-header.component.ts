@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { FavoritesService, RouterFacade, SearchService } from 'geonetwork-ui'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import {
+  FavoritesService,
+  RouterFacade,
+  SearchFacade,
+  SearchService,
+} from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
 import { map } from 'rxjs'
@@ -11,10 +16,12 @@ import { map } from 'rxjs'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchHeaderComponent {
+  @Input() records: CatalogRecord[]
   constructor(
     public routerFacade: RouterFacade,
     private searchService: SearchService,
-    public favoritesService: FavoritesService
+    public favoritesService: FavoritesService,
+    protected searchFacade: SearchFacade
   ) {}
 
   hasFavorites$ = this.favoritesService.myFavoritesUuid$.pipe(
