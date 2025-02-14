@@ -6,13 +6,13 @@ describe('search', () => {
       cy.get('.mel-page-title').should('be.visible')
     })
     it('should display the number of result hits', () => {
-      cy.get('[data-cy="searchResults"]').should('contain', 14)
+      cy.get('[data-cy="searchResults"]').should('include.text', 'Ensemble des données: 16')
     })
     it('should display the footer', () => {
       cy.get('mel-datahub-footer').should('be.visible')
     })
     it('should display the result hits in search card', () => {
-      cy.get('mel-datahub-results-card-search').should('have.length', 14)
+      cy.get('mel-datahub-results-card-search').should('have.length', 16)
     })
   })
 
@@ -42,11 +42,11 @@ describe('search', () => {
         .should('not.contain', '<p>')
     })
   })
-
+/// NEW TESTS HERE
   describe('search header carousel', () => {
     // If not logged in or no favorites exists
 
-    it('shold display the correct subtitle', () => {
+    it('should display the correct subtitle', () => {
       cy.get('mel-datahub-search-header')
         .find('.mel-section-title')
         .first()
@@ -58,8 +58,8 @@ describe('search', () => {
         .first()
         .find('h1')
         .should(
-          'have.text',
-          ' Metadata for E2E testing purpose. (this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut) '
+          'include.text',
+          'Zones de collecte de déchets en porte à porte - par flux de collecte, jour et horaire de tournée'
         )
 
       cy.get('.mel-carousel-step-dot').should('exist')
@@ -86,6 +86,17 @@ describe('search', () => {
       })
     })
 
+    describe('Filtered catalog - not logged in', () => {
+      beforeEach(() => {
+        cy.visit('/search?producerOrg=Métropole%20Européenne%20de%20Lille')
+      })
+      it('should display the last created cards filtered by producer', () => {
+        cy.get('mel-datahub-carousel')
+        .find('mel-datahub-results-card-last-created')
+        .should('have.length', 2)
+      })
+    })
+
     // If logged in and favorites exist
     describe('User logged in', () => {
       beforeEach(() => {
@@ -96,7 +107,7 @@ describe('search', () => {
         )
         cy.clearFavorites()
         cy.get('mel-datahub-results-card-search')
-          .eq(1)
+          .eq(2)
           .find('mel-datahub-heart-toggle')
           .first()
           .find('mel-datahub-button')
@@ -133,6 +144,14 @@ describe('search', () => {
         cy.url().should('include', 'dataset')
         cy.get('mel-datahub-dataset-page').should('be.visible')
       })
+      describe('Filtered catalog - logged in', () => {
+        beforeEach(() => {
+          cy.visit('/search?producerOrg=Métropole%20Européenne%20de%20Lille')
+        })
+        it('should display the favorite cards unfiltered', () => {
+          cy.get('mel-datahub-results-card-favorite').should('have.length', 1)
+        })
+      })
     })
   })
 
@@ -162,6 +181,7 @@ describe('search', () => {
         .should('eql', [
           'producerOrg',
           'categoryKeyword',
+          'territories',
           'revisionYear',
           'license',
         ])
@@ -173,39 +193,37 @@ describe('search', () => {
       cy.get('mel-datahub-results-list-grid').should('be.visible')
     })
     it('should filter the results when selecting a filter value (producer)', () => {
-      cy.get('@filters').eq(1).click()
+      cy.get('@filters').first().click()
       getFilterOptions()
       cy.get('@options').eq(1).click()
-      cy.get('@result-cards').should('have.length', 1)
+      cy.get('@result-cards').should('have.length', 2)
       cy.get('@result-cards')
         .first()
         .find('h1')
         .should(
-          'have.text',
-          ' Metadata for E2E testing purpose. (this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut) '
+          'include.text',
+          'Zones de collecte de déchets en porte à porte - par flux de collecte, jour et horaire de tournée'
         )
     })
-    it('should filter the results when selecting multiple filter values (producer)', () => {
-      cy.get('@filters').eq(1).click()
+    it.only('should filter the results when selecting multiple filter values (producer)', () => {
+      cy.get('@filters').first().click()
       getFilterOptions()
-      cy.get('@options').first().click()
       cy.get('@options').eq(1).click()
-      cy.get('@options').eq(2).click()
-      cy.get('mel-datahub-results-card-search').should('have.length', 5)
-    })
-    it('should filter by quality score', () => {
-      cy.get('[data-cy="filterExpandBtn"]').click()
-      cy.get('@filters').eq(4).click()
-      cy.get('gn-ui-text-input input').first().type('5')
-      cy.get('gn-ui-text-input input').last().type('7')
-      cy.get('mel-datahub-button').last().click()
+      cy.get('@options').first().click()
       cy.get('mel-datahub-results-card-search').should('have.length', 3)
     })
+    // This filter is not used at the time
+    // it('should filter by quality score', () => {
+    //   cy.get('[data-cy="filterExpandBtn"]').click()
+    //   cy.get('@filters').eq(4).click()
+    //   cy.get('gn-ui-text-input input').first().type('5')
+    //   cy.get('gn-ui-text-input input').last().type('7')
+    //   cy.get('mel-datahub-button').last().click()
+    //   cy.get('mel-datahub-results-card-search').should('have.length', 3)
+    // })
     it('should filter the results when executing a search', () => {
       cy.get('mel-datahub-autocomplete input').type('velo')
-      cy.get('mel-datahub-autocomplete .material-symbols-outlined')
-        .contains('search')
-        .click()
+      cy.get('mel-datahub-autocomplete').find('button').eq(1).click()
       cy.get('@result-cards').should('have.length', 1)
       cy.get('@result-cards')
         .first()
@@ -214,31 +232,27 @@ describe('search', () => {
     })
     it('should combine search input and filters (producer)', () => {
       cy.get('mel-datahub-autocomplete input').type('test')
-      cy.get('mel-datahub-autocomplete .material-symbols-outlined')
-        .contains('search')
-        .click()
+      cy.get('mel-datahub-autocomplete').find('button').eq(1).click()
       cy.get('@result-cards').should('have.length', 3)
-      cy.get('@filters').eq(1).click()
+      cy.get('@filters').first().click()
       getFilterOptions()
-      cy.get('@options').eq(5).click()
+      cy.get('@options').eq(1).click()
       cy.get('@result-cards').should('have.length', 1)
       cy.get('@result-cards')
         .first()
         .find('h1')
         .should(
           'have.text',
-          ' SCoT (Schéma de cohérence territoriale) en région Hauts-de-France '
+          ' Accroches vélos MEL '
         )
     })
     it('should combine search input and filters and display a message if no results found', () => {
       cy.get('mel-datahub-autocomplete input').type('test')
-      cy.get('mel-datahub-autocomplete .material-symbols-outlined')
-        .contains('search')
-        .click()
+      cy.get('mel-datahub-autocomplete').find('button').eq(1).click()
       cy.get('@result-cards').should('have.length', 3)
-      cy.get('@filters').eq(1).click()
+      cy.get('@filters').first().click()
       getFilterOptions()
-      cy.get('@options').eq(8).click()
+      cy.get('@options').first().click()
       cy.get('[data-cy=searchResults]').should(
         'have.text',
         ' Aucune correspondance. '
@@ -251,26 +265,26 @@ describe('search', () => {
       it('should expand the search panel and show more filters on click', () => {
         cy.get('mel-datahub-filter-dropdown').should('have.length', 3)
         cy.get('@expandBtn').click()
-        cy.get('mel-datahub-filter-dropdown').should('have.length', 6)
+        cy.get('mel-datahub-filter-dropdown').should('have.length', 5)
       })
       it('should show the reset button and reset the filters on click', () => {
         cy.get('@expandBtn').click()
         cy.get('@filters').eq(3).click()
         getFilterOptions()
         cy.get('@options').eq(1).click()
-        cy.get('@result-cards').should('have.length', 9)
+        cy.get('@result-cards').should('have.length', 3)
         cy.get('body').click()
         cy.get('[data-cy=filterResetBtn]').click()
-        cy.get('@result-cards').should('have.length', 14)
+        cy.get('@result-cards').should('have.length', 16)
       })
       it('should show close button and show less filters on click', () => {
         cy.get('@expandBtn').click()
-        cy.get('mel-datahub-filter-dropdown').should('have.length', 6)
+        cy.get('mel-datahub-filter-dropdown').should('have.length', 5)
         cy.get('[data-cy=filterCloseBtn]').click()
         cy.get('mel-datahub-filter-dropdown').should('have.length', 3)
       })
     })
-    describe.only('Filters from config', () => {
+    describe('Filters from config', () => {
       beforeEach(() => {
         // this will enable all available filters
         cy.intercept('GET', '/assets/configuration/default.toml', {
