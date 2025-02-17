@@ -111,6 +111,9 @@ describe('search', () => {
           .should('have.length', 16)
       })
       it('should not take into account other filters', () => {
+        cy.get('mel-datahub-carousel')
+          .find('mel-datahub-results-card-last-created')
+          .should('have.length', 2)
         cy.get('[data-cy="filterExpandBtn"]').click()
         cy.get('mel-datahub-filter-dropdown').as('filters')
         cy.get('@filters').eq(4).click()
@@ -169,17 +172,11 @@ describe('search', () => {
         cy.url().should('include', 'dataset')
         cy.get('mel-datahub-dataset-page').should('be.visible')
       })
-      describe('Filtered catalog - logged in', () => {
-        beforeEach(() => {
-          cy.visit('/search?producerOrg=DREAL')
-        })
-        it('should ignore the producer filter and display the favorite cards', () => {
-          cy.get('mel-datahub-search-header')
-            .find('.mel-section-title')
-            .first()
-            .should('have.text', ' Jeux de données suivis ')
-          cy.get('mel-datahub-results-card-favorite').should('have.length', 1)
-        })
+      it('should not display the last created cards when the producer filter is activated', () => {
+        cy.get('mel-datahub-filter-dropdown').first().click()
+        cy.get('[id^=dropdown-multiselect-] label').first().click()
+        cy.url().should('include', 'producerOrg=DREAL')
+        cy.get('mel-datahub-results-card-favorite').should('have.length', 1)
       })
     })
   })
