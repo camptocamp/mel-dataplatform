@@ -8,17 +8,19 @@
       containerClass="gap-4 pt-4 pb-6"
       stepsContainerClass=""
     >
-      @for (
-        record of searchFacade.results$ | async;
-        track record?.uniqueIdentifier
-      ) {
-        @if (favoritesOnlyValue) {
+      @if (favoritesOnlyValue) {
+        @for (
+          record of searchFacade.results$ | async;
+          track record?.uniqueIdentifier
+        ) {
           <mel-datahub-results-card-favorite
             [record]="record"
             (mdSelect)="onMetadataSelection($event)"
             (keyword)="onInfoKeywordClick($event)"
           ></mel-datahub-results-card-favorite>
-        } @else {
+        }
+      } @else {
+        @for (record of records; track record?.uniqueIdentifier) {
           <mel-datahub-results-card-last-created
             [record]="record"
             (mdSelect)="onMetadataSelection($event)"
