@@ -13,25 +13,26 @@
     <div class="text-sm mb-[10px] leading-none">{{ creationDate || '' }}</div>
 
     <div class="flex gap-1">
-      @for(keyword of keywords.slice(0, 2); track $index) {
-      <button
-        type="button"
-        [attr.aria-label]="keyword.label"
-        [title]="keyword.label"
-        class="mel-badge-button-primary truncate"
-        (click)="onKeywordClick(keyword, $event)"
-        (keyup.enter)="$event.stopPropagation()"
-      >
-        {{ keyword.label }}
-      </button>
+      @for (keyword of keywords.slice(0, 2); track $index) {
+        <button
+          type="button"
+          [attr.aria-label]="keyword.label"
+          [title]="keyword.label"
+          class="mel-badge-button-primary truncate"
+          (click)="onKeywordClick(keyword, $event)"
+          (keyup.enter)="$event.stopPropagation()"
+        >
+          {{ keyword.label }}
+        </button>
       }
     </div>
   </div>
 
-  @if(shownOrganization?.logoUrl?.href){<gn-ui-thumbnail
-    class="absolute right-[10px] bottom-[10px] w-[80px] h-[80px]"
-    [thumbnailUrl]="shownOrganization?.logoUrl?.href"
-    fit="contain"
-  ></gn-ui-thumbnail
-  >}
+  @if (shownOrganization?.logoUrl?.href) {
+    <gn-ui-thumbnail
+      class="absolute right-[10px] bottom-[10px] w-[80px] h-[80px]"
+      [thumbnailUrl]="shownOrganization?.logoUrl?.href"
+      fit="contain"
+    ></gn-ui-thumbnail>
+  }
 </a>

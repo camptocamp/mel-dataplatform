@@ -5,9 +5,11 @@ export const DATAHUB_ROUTE_DATASET = 'dataset'
 export const DATAHUB_ROUTE_SEARCH = 'search'
 
 export function goFromHomeToRecord(record: CatalogRecord) {
-  window.location.href = `${DATAHUB_ROOT}/${DATAHUB_ROUTE_DATASET}/${record.uniqueIdentifier}`
+  window.location.assign(
+    `${DATAHUB_ROOT}/${DATAHUB_ROUTE_DATASET}/${record.uniqueIdentifier}`
+  )
 }
 
 export function goFromHomeToSearch(query: string) {
-  window.location.href = `${DATAHUB_ROOT}/${DATAHUB_ROUTE_SEARCH}?q=${query}`
+  window.location.assign(`${DATAHUB_ROOT}/${DATAHUB_ROUTE_SEARCH}?q=${query}`)
 }

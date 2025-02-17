@@ -10,10 +10,10 @@
     class="absolute inset-0 bg-gradient-to-b from-transparent to-beige"
   ></div>
 </div>
-@if(showToggleButton){
-<mel-datahub-button
-  [label]="(isExpanded ? 'mel.dataset.less' : 'mel.dataset.more') | translate"
-  [icon]="isExpanded ? 'arrow-up' : 'arrow'"
-  (click)="toggleDisplay()"
-></mel-datahub-button>
+@if (showToggleButton) {
+  <mel-datahub-button
+    [label]="(isExpanded ? 'mel.dataset.less' : 'mel.dataset.more') | translate"
+    [icon]="isExpanded ? 'arrow-up' : 'arrow'"
+    (click)="toggleDisplay()"
+  ></mel-datahub-button>
 }

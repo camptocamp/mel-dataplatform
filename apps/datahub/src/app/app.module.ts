@@ -155,7 +155,10 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
       }
     ),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ logOnly: !isDevMode() }),
+    StoreDevtoolsModule.instrument({
+      logOnly: !isDevMode(),
+      connectInZone: true,
+    }),
     RouterModule.forRoot([], {
       initialNavigation: 'enabledBlocking',
       scrollPositionRestoration: 'enabled',

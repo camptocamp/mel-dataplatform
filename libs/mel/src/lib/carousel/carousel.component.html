@@ -30,14 +30,14 @@
   </button>
 </div>
 
-@if(steps.length > 1){
-<div class="flex justify-center gap-3" [ngClass]="stepsContainerClass">
-  @for(step of steps; track $index){
-  <button
-    class="mel-carousel-step-dot"
-    (click)="goToPage($index + 1)"
-    [ngClass]="currentStep === $index ? 'bg-primary' : 'bg-transparent'"
-  ></button>
-  }
-</div>
+@if (steps.length > 1) {
+  <div class="flex justify-center gap-3" [ngClass]="stepsContainerClass">
+    @for (step of steps; track $index) {
+      <button
+        class="mel-carousel-step-dot"
+        (click)="goToPage($index + 1)"
+        [ngClass]="currentStep === $index ? 'bg-primary' : 'bg-transparent'"
+      ></button>
+    }
+  </div>
 }

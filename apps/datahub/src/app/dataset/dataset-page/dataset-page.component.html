@@ -1,72 +1,77 @@
 @if ((facade.error$ | async) === null) {
-<div class="bg-beige mb-9 sm:mb-16">
-  @if ((facade.isPresent$ | async) === true) {
-
-  <mel-datahub-dataset-header
-    [record]="facade.metadata$ | async"
-    [incomplete]="facade.isIncomplete$ | async"
-  ></mel-datahub-dataset-header>
-
+  <div class="bg-beige mb-9 sm:mb-16">
+    @if ((facade.isPresent$ | async) === true) {
+      <mel-datahub-dataset-header
+        [record]="facade.metadata$ | async"
+        [incomplete]="facade.isIncomplete$ | async"
+      ></mel-datahub-dataset-header>
+    }
+  </div>
+  @if ((displayMap$ | async) || (displayData$ | async)) {
+    <div id="visualisation" class="mel-grid-container-dataset">
+      <div class="sm:col-start-2 sm:col-span-8">
+        <mel-datahub-dataset-visualisation
+          [displayMap]="displayMap$ | async"
+          [displayData]="displayData$ | async"
+        ></mel-datahub-dataset-visualisation>
+      </div>
+    </div>
   }
-</div>
-@if ((displayMap$ | async) || (displayData$ | async)) {
-<div id="visualisation" class="mel-grid-container-dataset">
-  <div class="sm:col-start-2 sm:col-span-8">
-    <mel-datahub-dataset-visualisation
-      [displayMap]="displayMap$ | async"
-      [displayData]="displayData$ | async"
-    ></mel-datahub-dataset-visualisation>
-  </div>
-</div>
-} @if(displayDownload$ | async) {
-<div id="download" class="mel-grid-container-dataset mt-6">
-  <div class="sm:col-start-2 sm:col-span-8">
-    <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
-  </div>
-</div>
-}
-<div class="lg:mx-auto">
-  @if(displayApi$ | async) {
-  <div id="api" class="block mt-6">
-    <mel-datahub-dataset-apis></mel-datahub-dataset-apis>
-  </div>
+  @if (displayDownload$ | async) {
+    <div id="download" class="mel-grid-container-dataset mt-6">
+      <div class="sm:col-start-2 sm:col-span-8">
+        <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
+      </div>
+    </div>
   }
-</div>
-@if(displayRelated$ | async) {
-<div class="mel-grid-container-dataset my-12" data-cy="related-records-section">
-  <div class="sm:col-start-2 sm:col-span-8">
-    <div class="overflow-visible">
-      <div class="mel-title-line"></div>
-      <div class="flex flex-col flex-wrap gap-4 justify-between">
-        <p class="mel-section-title mr-4 text-left" translate>
-          mel.record.metadata.related
-        </p>
-        <p translate="">mel.record.metadata.related.description</p>
-        <div class="mb-4 flex flex-wrap gap-6 justify-start">
-          @for(record of facade.related$ | async; track
-          record.uniqueIdentifier){
-          <mel-datahub-results-card-last-created
-            [record]="record"
-            (mdSelect)="onMetadataSelection($event)"
-            (keyword)="onInfoKeywordClick($event)"
-          ></mel-datahub-results-card-last-created>
-          }
+  <div class="lg:mx-auto">
+    @if (displayApi$ | async) {
+      <div id="api" class="block mt-6">
+        <mel-datahub-dataset-apis></mel-datahub-dataset-apis>
+      </div>
+    }
+  </div>
+  @if (displayRelated$ | async) {
+    <div
+      class="mel-grid-container-dataset my-12"
+      data-cy="related-records-section"
+    >
+      <div class="sm:col-start-2 sm:col-span-8">
+        <div class="overflow-visible">
+          <div class="mel-title-line"></div>
+          <div class="flex flex-col flex-wrap gap-4 justify-between">
+            <p class="mel-section-title mr-4 text-left" translate>
+              mel.record.metadata.related
+            </p>
+            <p translate="">mel.record.metadata.related.description</p>
+            <div class="mb-4 flex flex-wrap gap-6 justify-start">
+              @for (
+                record of facade.related$ | async;
+                track record.uniqueIdentifier
+              ) {
+                <mel-datahub-results-card-last-created
+                  [record]="record"
+                  (mdSelect)="onMetadataSelection($event)"
+                  (keyword)="onInfoKeywordClick($event)"
+                ></mel-datahub-results-card-last-created>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  }
+} @else {
+  <div class="mt-12 p-4 max-w-[600px] m-auto text-[13px]">
+    @if ((facade.error$ | async).notFound) {
+      <gn-ui-error
+        [type]="errorTypes.RECORD_NOT_FOUND"
+        [recordId]="(facade.metadata$ | async).uniqueIdentifier"
+      ></gn-ui-error>
+    } @else if ((facade.error$ | async).otherError) {}
+    <gn-ui-error
+      [type]="errorTypes.RECEIVED_ERROR"
+      [error]="(facade.error$ | async).otherError"
+    ></gn-ui-error>
   </div>
-</div>
-} } @else {
-<div class="mt-12 p-4 max-w-[600px] m-auto text-[13px]">
-  @if((facade.error$ | async).notFound) {
-  <gn-ui-error
-    [type]="errorTypes.RECORD_NOT_FOUND"
-    [recordId]="(facade.metadata$ | async).uniqueIdentifier"
-  ></gn-ui-error>
-  } @else if((facade.error$ | async).otherError) {}
-  <gn-ui-error
-    [type]="errorTypes.RECEIVED_ERROR"
-    [error]="(facade.error$ | async).otherError"
-  ></gn-ui-error>
-</div>
 }

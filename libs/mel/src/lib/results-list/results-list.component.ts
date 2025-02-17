@@ -58,14 +58,18 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   }
 
   onInfoKeywordClick(keyword: Keyword) {
-    this.routerFacade
-      ? this.routerFacade.updateSearch({ q: keyword.label })
-      : goFromHomeToSearch(keyword.label)
+    if (this.routerFacade) {
+      this.routerFacade.updateSearch({ q: keyword.label })
+    } else {
+      goFromHomeToSearch(keyword.label)
+    }
   }
 
   onMetadataSelection(metadata: CatalogRecord): void {
-    this.routerFacade
-      ? this.routerFacade.goToMetadata(metadata)
-      : goFromHomeToRecord(metadata)
+    if (this.routerFacade) {
+      this.routerFacade.goToMetadata(metadata)
+    } else {
+      goFromHomeToRecord(metadata)
+    }
   }
 }

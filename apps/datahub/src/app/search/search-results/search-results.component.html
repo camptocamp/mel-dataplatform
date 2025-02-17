@@ -11,15 +11,17 @@
     [numberOfResults]="pageSize"
   ></mel-datahub-results-list-grid>
   <div class="flex justify-center mt-16">
-    @if((searchFacade.isLoading$ | async) === false && (searchFacade.totalPages$
-    | async) > 1){
-    <mel-datahub-pagination-buttons
-      [listComponent]="this"
-    ></mel-datahub-pagination-buttons>
-    } @else if((searchFacade.isLoading$ | async) === true){
-    <ng-container>
-      <gn-ui-spinning-loader></gn-ui-spinning-loader>
-    </ng-container>
+    @if (
+      (searchFacade.isLoading$ | async) === false &&
+      (searchFacade.totalPages$ | async) > 1
+    ) {
+      <mel-datahub-pagination-buttons
+        [listComponent]="this"
+      ></mel-datahub-pagination-buttons>
+    } @else if ((searchFacade.isLoading$ | async) === true) {
+      <ng-container>
+        <gn-ui-spinning-loader></gn-ui-spinning-loader>
+      </ng-container>
     }
   </div>
 </div>

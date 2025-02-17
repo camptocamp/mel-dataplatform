@@ -1,7 +1,7 @@
 <div
   [title]="link.name"
   [ngClass]="{
-    'bg-gray-7': currentlyActive
+    'bg-gray-7': currentlyActive,
   }"
   class="mel-card w-[330px] group relative h-40 p-4 overflow-hidden cursor-default"
 >
@@ -13,7 +13,7 @@
     <span
       class="mel-badge-button-primary card-label uppercase"
       [ngClass]="{
-        'text-white border-white bg-primary-dark opacity-100': currentlyActive
+        'text-white border-white bg-primary-dark opacity-100': currentlyActive,
       }"
     >
       {{ link.accessServiceProtocol }}
@@ -24,29 +24,29 @@
         [tooltipText]="'mel.tooltip.url.copy' | translate"
         [displayText]="false"
       ></gn-ui-copy-text-button>
-      @if(displayApiFormButton){
-      <button
-        type="button"
-        [ngClass]="{
-          'h-6 focus:bg-text-primary-dark': displayApiFormButton
-        }"
-        (click)="openRecordApiFormPanel()"
-        mat-raised-button
-        [matTooltip]="
-          !currentlyActive
-            ? ('mel.record.metadata.api.form.openForm' | translate)
-            : ('mel.record.metadata.api.form.closeForm' | translate)
-        "
-        matTooltipPosition="above"
-      >
-        <ng-icon
-          class="pointer-events-none align-middle card-icon"
-          name="matMoreHoriz"
+      @if (displayApiFormButton) {
+        <button
+          type="button"
           [ngClass]="{
-            'text-primary-dark opacity-100': currentlyActive
+            'h-6 focus:bg-text-primary-dark': displayApiFormButton,
           }"
-        ></ng-icon>
-      </button>
+          (click)="openRecordApiFormPanel()"
+          mat-raised-button
+          [matTooltip]="
+            !currentlyActive
+              ? ('mel.record.metadata.api.form.openForm' | translate)
+              : ('mel.record.metadata.api.form.closeForm' | translate)
+          "
+          matTooltipPosition="above"
+        >
+          <ng-icon
+            class="pointer-events-none align-middle card-icon"
+            name="matMoreHoriz"
+            [ngClass]="{
+              'text-primary-dark opacity-100': currentlyActive,
+            }"
+          ></ng-icon>
+        </button>
       }
     </div>
   </div>

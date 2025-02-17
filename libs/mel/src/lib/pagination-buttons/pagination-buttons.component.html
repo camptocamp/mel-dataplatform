@@ -1,37 +1,41 @@
 <div class="relative">
   <div class="flex flex-row items-center">
     @if (!listComponent.isFirstPage) {
-    <gn-ui-button
-      type="outline"
-      (buttonClick)="listComponent.goToPrevPage()"
-      extraClass="pagination-btn-nav mr-8"
-    >
-      <ng-icon class="pagination-btn-arrow" name="matChevronLeft"></ng-icon>
-      <span class="font-medium ml-1" translate
-        >mel.datahub.search.pagination.previous</span
+      <gn-ui-button
+        type="outline"
+        (buttonClick)="listComponent.goToPrevPage()"
+        extraClass="pagination-btn-nav mr-8"
       >
-    </gn-ui-button>
-    } @for(page of visiblePages; track $index){ @if(page === '...'){
-    <span class="mr-8">{{ page }}</span>
-    } @else {
-    <gn-ui-button
-      [type]="page === listComponent.currentPage ? 'outline' : 'light'"
-      [disabled]="page === listComponent.currentPage"
-      (buttonClick)="listComponent.goToPage(page)"
-      extraClass="pagination-btn"
-      >{{ page }}</gn-ui-button
-    >
-    } } @if (!listComponent.isLastPage) {
-    <gn-ui-button
-      type="outline"
-      (buttonClick)="listComponent.goToNextPage()"
-      extraClass="pagination-btn-nav"
-    >
-      <span class="font-medium mr-1" translate
-        >mel.datahub.search.pagination.next</span
+        <ng-icon class="pagination-btn-arrow" name="matChevronLeft"></ng-icon>
+        <span class="font-medium ml-1" translate
+          >mel.datahub.search.pagination.previous</span
+        >
+      </gn-ui-button>
+    }
+    @for (page of visiblePages; track $index) {
+      @if (page === '...') {
+        <span class="mr-8">{{ page }}</span>
+      } @else {
+        <gn-ui-button
+          [type]="page === listComponent.currentPage ? 'outline' : 'light'"
+          [disabled]="page === listComponent.currentPage"
+          (buttonClick)="listComponent.goToPage(page)"
+          extraClass="pagination-btn"
+          >{{ page }}</gn-ui-button
+        >
+      }
+    }
+    @if (!listComponent.isLastPage) {
+      <gn-ui-button
+        type="outline"
+        (buttonClick)="listComponent.goToNextPage()"
+        extraClass="pagination-btn-nav"
       >
-      <ng-icon class="pagination-btn-arrow" name="matChevronRight"></ng-icon>
-    </gn-ui-button>
+        <span class="font-medium mr-1" translate
+          >mel.datahub.search.pagination.next</span
+        >
+        <ng-icon class="pagination-btn-arrow" name="matChevronRight"></ng-icon>
+      </gn-ui-button>
     }
   </div>
 </div>
