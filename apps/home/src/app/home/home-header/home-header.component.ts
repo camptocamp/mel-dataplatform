@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { SearchService } from 'geonetwork-ui'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { SearchFacade, SearchService } from 'geonetwork-ui'
 import {
   DATAHUB_ROOT,
   DATAHUB_ROUTE_SEARCH,
@@ -27,6 +27,7 @@ import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/sear
 })
 export class HomeHeaderComponent {
   HREF_ROUTE_SEARCH = `${DATAHUB_ROOT}/${DATAHUB_ROUTE_SEARCH}`
+  @Input() records: CatalogRecord[] = []
 
   constructor(private searchService: SearchService) {}
 
