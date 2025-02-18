@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { DownloadItemComponent } from 'geonetwork-ui'
+import { formatColors } from '@mel-dataplatform/mel'
 
 @Component({
   selector: 'mel-datahub-download-item',
@@ -23,5 +24,15 @@ export class MelDownloadItemComponent extends DownloadItemComponent {
       completeFileName = `${fileName}.json`
     }
     return completeFileName
+  }
+
+  getBadgeStyles(format: string): { [key: string]: string } {
+    const lowerFormat = format?.toLowerCase() || ''
+    const colors = formatColors[lowerFormat] || {
+      background: '#CCCDD2',
+      text: '#000',
+    }
+
+    return { 'background-color': colors.background, color: colors.text }
   }
 }
