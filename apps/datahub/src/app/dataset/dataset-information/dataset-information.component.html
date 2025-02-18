@@ -7,7 +7,7 @@
       mel.dataset.informations
     </div>
   </div>
-  <div class="flex flex-col gap-8 border-b-[1px] border-gray-3 pb-2">
+  <div class="flex flex-col gap-8 border-b-[1px] border-gray-3 pb-7">
     @if (lastUpdate) {
       <div class="flex flex-row gap-2">
         <span class="font-semibold" translate="">mel.dataset.updatedOn</span>
@@ -58,7 +58,7 @@
         <span>{{ record.ownerOrganization?.name }}</span>
       </div>
     }
-    @if (record.landingPage) {
+    <!-- @if (record.landingPage) {
       <div class="flex flex-row gap-1">
         <a
           class="underline text-gray-2 text-sm"
@@ -71,7 +71,7 @@
           name="matOpenInNew"
         ></ng-icon>
       </div>
-    }
+    } -->
   </div>
   <div class="flex flex-col gap-2 pt-4">
     <span class="font-semibold" translate="">mel.dataset.share</span>
