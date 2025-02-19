@@ -7,4 +7,5 @@ import { ResultsListComponent } from '../results-list.component'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ResultsListCarouselComponent extends ResultsListComponent {}
+export class ResultsListCarouselComponent extends ResultsListComponent {
+}

@@ -14,6 +14,7 @@ import {
 } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
+import { FieldFilters } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
 
 @Component({
   selector: 'mel-datahub-results-list',
@@ -27,6 +28,9 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   favoritesOnlyValue: boolean
   @Input() numberOfResults = 10
   subscriptions: Subscription
+  @Input() set producerHasChanged(value: FieldFilters) {
+    this.searchFacade.updateFilters(value)
+  }
 
   constructor(
     protected searchService: SearchService,
