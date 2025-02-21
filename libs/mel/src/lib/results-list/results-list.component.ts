@@ -14,6 +14,7 @@ import {
 } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
+import { FieldFilters } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
 
 @Component({
   selector: 'mel-datahub-results-list',
@@ -24,9 +25,18 @@ export class ResultsListComponent implements OnInit, OnDestroy {
     this.favoritesOnlyValue = value
     this.searchFacade.setFavoritesOnly(value)
   }
-  favoritesOnlyValue: boolean
+  favoritesOnlyValue = false
   @Input() numberOfResults = 10
   subscriptions: Subscription
+  @Input() set producerHasChanged(value: FieldFilters) {
+    if (!this.favoritesOnlyValue && value) {
+      const producerOnlyFilter = {
+        'originatorOrgForResourceObject.default':
+          value['originatorOrgForResourceObject.default'],
+      }
+      this.searchFacade.updateFilters(producerOnlyFilter)
+    }
+  }
 
   constructor(
     protected searchService: SearchService,
