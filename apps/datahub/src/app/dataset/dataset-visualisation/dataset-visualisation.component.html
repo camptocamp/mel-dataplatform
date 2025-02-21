@@ -63,7 +63,10 @@
         </ng-template>
         @if (displayData) {
           <div class="block">
-            <mel-datahub-data-view mode="chart"></mel-datahub-data-view>
+            <mel-datahub-data-view
+              mode="chart"
+              [displaySource]="displaySource"
+            ></mel-datahub-data-view>
           </div>
           <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
