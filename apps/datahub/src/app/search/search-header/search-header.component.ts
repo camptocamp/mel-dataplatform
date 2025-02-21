@@ -1,7 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-} from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import {
   FavoritesService,
   RouterFacade,
@@ -10,11 +7,7 @@ import {
 } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
-import {
-  map,
-  distinctUntilChanged,
-  debounceTime,
-} from 'rxjs'
+import { map, distinctUntilChanged, debounceTime } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-search-header',
@@ -34,9 +27,8 @@ export class SearchHeaderComponent {
 
   producerHasChanged$ = this.searchFacade.searchFilters$.pipe(
     distinctUntilChanged(),
-    debounceTime(100),
     map((filters) => this.hasProducerFilterChanged(filters))
-  );
+  )
 
   hasProducerFilterChanged(filters: any) {
     const currentProducerFilter =
@@ -50,10 +42,11 @@ export class SearchHeaderComponent {
       isEmptyOrNullOrUndefined(currentProducerFilter) &&
       isEmptyOrNullOrUndefined(previousProducerFilter)
     let hasChanged = false
-    if (bothEmptyOrNullOrUndefined || (
+    if (
+      bothEmptyOrNullOrUndefined ||
       JSON.stringify(currentProducerFilter) ===
-      JSON.stringify(previousProducerFilter)
-    )) {
+        JSON.stringify(previousProducerFilter)
+    ) {
       return false
     } else {
       hasChanged = true

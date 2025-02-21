@@ -108,7 +108,7 @@ describe('search', () => {
         cy.get('@options').eq(1).click()
         cy.get('mel-datahub-carousel')
           .find('mel-datahub-results-card-last-created')
-          .should('have.length', 16)
+          .should('have.length', 10)
       })
       it('should not take into account other filters', () => {
         cy.get('mel-datahub-carousel')
