@@ -24,17 +24,21 @@ export class ResultsListComponent implements OnInit, OnDestroy {
   @Input() set favoritesOnly(value: boolean) {
     this.favoritesOnlyValue = value
     this.searchFacade.setFavoritesOnly(value)
+    if (!value) {
+      this.producerHasChanged = this.producerOnlyFilter
+    }
   }
   favoritesOnlyValue = false
   @Input() numberOfResults = 10
   subscriptions: Subscription
+  producerOnlyFilter = {}
   @Input() set producerHasChanged(value: FieldFilters) {
+    this.producerOnlyFilter = {
+      'originatorOrgForResourceObject.default':
+        value['originatorOrgForResourceObject.default'],
+    }
     if (!this.favoritesOnlyValue && value) {
-      const producerOnlyFilter = {
-        'originatorOrgForResourceObject.default':
-          value['originatorOrgForResourceObject.default'],
-      }
-      this.searchFacade.updateFilters(producerOnlyFilter)
+      this.searchFacade.updateFilters(this.producerOnlyFilter)
     }
   }
 
