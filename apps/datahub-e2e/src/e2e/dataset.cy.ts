@@ -356,7 +356,7 @@ describe('datasets', () => {
 
   describe('Related datasets section', () => {
     it('should display the related datasets section', () => {
-      cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+      cy.visit('/dataset/9e1ea778-d0ce-4b49-90b7-37bc0e448300')
       cy.get('[data-cy="related-records-section"]').should('be.visible')
       cy.get('[data-cy="related-records-section"]')
         .find('mel-datahub-results-card-last-created')
