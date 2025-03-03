@@ -44,6 +44,13 @@ export class DatasetInformationComponent {
     return categoryKeywords
   }
 
+  get isDevEnv() {
+    return (
+      window.location.hostname ===
+      'mel.integration.apps.gs-fr-prod.camptocamp.com'
+    )
+  }
+
   onKeywordClick(query: string, keyword: Keyword) {
     this.routerFacade.updateSearch({ [query]: keyword.key })
   }
