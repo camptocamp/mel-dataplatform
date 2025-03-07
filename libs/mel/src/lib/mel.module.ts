@@ -16,6 +16,7 @@ import { MelDatahubFooterComponent } from './footer/mel-datahub-footer.component
 import { MelCarouselComponent } from './carousel/carousel.component'
 import { MelFuzzySearchComponent } from './fuzzy-search/fuzzy-search.component'
 import { MelAutocompleteComponent } from './autocomplete/autocomplete.component'
+import { MelApplicationBannerComponent } from './application-banner/application-banner.component'
 import {
   ContentGhostComponent,
   MetadataQualityItemComponent,
@@ -39,7 +40,10 @@ import {
   matChevronRight,
   matOpenInNew,
   matSearch,
+  matWarning,
 } from '@ng-icons/material-icons/baseline'
+import { iconoirBell } from '@ng-icons/iconoir'
+import { matWarningAmberOutline } from '@ng-icons/material-icons/outline'
 
 @NgModule({
   imports: [
@@ -61,6 +65,9 @@ import {
       matSearch,
       matChevronLeft,
       matChevronRight,
+      iconoirBell,
+      matWarningAmberOutline,
+      matWarning,
     }),
   ],
   declarations: [
@@ -83,6 +90,7 @@ import {
     StripHtmlPipe,
     MelPaginationButtonsComponent,
     MelExternalViewerButtonComponent,
+    MelApplicationBannerComponent,
   ],
   exports: [
     ResultsListComponent,
@@ -103,6 +111,7 @@ import {
     MelAutocompleteComponent,
     MelPaginationButtonsComponent,
     MelExternalViewerButtonComponent,
+    MelApplicationBannerComponent,
   ],
 })
 export class MelModule {}

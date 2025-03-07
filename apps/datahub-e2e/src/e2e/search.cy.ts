@@ -409,4 +409,32 @@ describe('search', () => {
       cy.get('mel-datahub-pagination-buttons').should('not.exist')
     })
   })
+  describe('Warning banner', () => {
+    beforeEach(() => {
+      cy.login()
+    })
+    describe('When the translation key exists', () => {
+      beforeEach(() => {
+        cy.addTranslationKey()
+        cy.visit('/search')
+      })
+      it('should display a warning banner and display the message', () => {
+        cy.get('mel-datahub-application-banner')
+          .find('span')
+          .should(
+            'have.text',
+            'This is a warning message that should be shown when the key is set'
+          )
+      })
+    })
+    describe('When the translation key does not exist', () => {
+      beforeEach(() => {
+        cy.removeTranslationKey()
+        cy.visit('/search')
+      })
+      it('should not display the banner when the translation is deleted', () => {
+        cy.get('mel-datahub-application-banner').should('not.exist')
+      })
+    })
+  })
 })

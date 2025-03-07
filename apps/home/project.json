@@ -21,6 +21,11 @@
             "glob": "**/*",
             "input": "resources/assets",
             "output": "./assets"
+          },
+          {
+            "glob": "*",
+            "input": "conf",
+            "output": "assets/configuration/"
           }
         ],
         "styles": ["resources/styles.css"],

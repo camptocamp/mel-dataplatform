@@ -10,3 +10,10 @@
 # The following fields can be used for filtering: 'organization', 'format', 'publicationYear', 'inspireKeyword', 'keyword', 'topic', 'isSpatial', 'license', 'resourceType', 'representationType', 'revisionYear', 'categoryKeyword', 'qualityScore', 'territories', 'publisherOrg', 'producerOrg'
 # any other field will be ignored
 # advanced_filters = ['producerOrg', 'categoryKeyword', 'territories', 'revisionYear', 'license', 'qualityScore']
+
+### WARNING BANNER
+
+# This section sets the level of warning for the application banner
+[warning]
+# There are 3 levels of warning : primary / secondary / light. Default is set to secondary.
+# warning_level = 'secondary'
