@@ -10,6 +10,7 @@ import {
   provideRepositoryUrl,
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
+  Gn4PlatformService,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -63,6 +64,7 @@ import { HomePageComponent } from './home/home-page/home-page.component'
       provide: LOGIN_URL,
       useFactory: () => '${current_url}?login',
     },
+    Gn4PlatformService,
   ],
   bootstrap: [AppComponent],
 })

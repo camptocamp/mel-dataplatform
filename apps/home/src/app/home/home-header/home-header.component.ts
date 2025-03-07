@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { SearchService } from 'geonetwork-ui'
+import { Gn4PlatformService, SearchService } from 'geonetwork-ui'
 import {
   DATAHUB_ROOT,
   DATAHUB_ROUTE_SEARCH,
+  getOptionalWarningConfig,
   goFromHomeToRecord,
   goFromHomeToSearch,
 } from '@mel-dataplatform/mel'
@@ -27,8 +28,13 @@ import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/sear
 })
 export class HomeHeaderComponent {
   HREF_ROUTE_SEARCH = `${DATAHUB_ROOT}/${DATAHUB_ROUTE_SEARCH}`
+  bannerKey = 'application-banner'
+  bannerType = getOptionalWarningConfig().WARNING_LEVEL || 'normal'
 
-  constructor(private searchService: SearchService) {}
+  constructor(
+    private searchService: SearchService,
+    public platformService: Gn4PlatformService
+  ) {}
 
   onFuzzySearchSelection(record: CatalogRecord) {
     goFromHomeToRecord(record)
