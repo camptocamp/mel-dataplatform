@@ -36,6 +36,7 @@ import {
   MapContainerComponent,
   EXTERNAL_VIEWER_URL_TEMPLATE,
   EXTERNAL_VIEWER_OPEN_NEW_TAB,
+  Gn4PlatformService,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -195,6 +196,7 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
       useFactory: () => true,
     },
     { provide: FieldsService, useClass: MelFieldsService },
+    Gn4PlatformService,
   ],
   bootstrap: [AppComponent],
 })
