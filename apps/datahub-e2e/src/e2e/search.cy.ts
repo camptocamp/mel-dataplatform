@@ -332,7 +332,7 @@ describe('search', () => {
               .map((dropdown) => dropdown.getAttribute('data-cy-field'))
           )
           .should('eql', [
-            'publisher',
+            'publisherOrg',
             'format',
             'publicationYear',
             'inspireKeyword',

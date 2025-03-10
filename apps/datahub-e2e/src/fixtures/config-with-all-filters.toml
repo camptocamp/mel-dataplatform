@@ -1,2 +1,5 @@
 [search]
-advanced_filters = ['publisher', 'format', 'publicationYear', 'inspireKeyword', 'keyword', 'topic', 'isSpatial', 'license', 'resourceType', 'representationType', 'revisionYear', 'categoryKeyword', 'territories']
+advanced_filters = ['publisherOrg', 'format', 'publicationYear', 'inspireKeyword', 'keyword', 'topic', 'isSpatial', 'license', 'resourceType', 'representationType', 'revisionYear', 'categoryKeyword', 'territories']
+
+[warning]
+warning_level = 'secondary'
