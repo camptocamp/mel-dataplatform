@@ -9,6 +9,7 @@ import {
 } from '@mel-dataplatform/mel'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-home-header',
@@ -29,12 +30,14 @@ import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/sear
 export class HomeHeaderComponent {
   HREF_ROUTE_SEARCH = `${DATAHUB_ROOT}/${DATAHUB_ROUTE_SEARCH}`
   bannerKey = 'application-banner'
-  bannerType = getOptionalWarningConfig().WARNING_LEVEL || 'normal'
+  bannerType = getOptionalWarningConfig().WARNING_LEVEL || 'secondary'
 
   constructor(
     private searchService: SearchService,
-    public platformService: Gn4PlatformService
+    private platformService: Gn4PlatformService
   ) {}
+
+  translatedBannerMessage$ = this.platformService.translateKey(this.bannerKey)
 
   onFuzzySearchSelection(record: CatalogRecord) {
     goFromHomeToRecord(record)

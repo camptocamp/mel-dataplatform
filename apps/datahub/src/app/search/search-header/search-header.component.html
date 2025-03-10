@@ -2,7 +2,7 @@
   <div class="pt-[68px] mel-container-lg mx-auto">
     <div class="mb-5">
       <mel-datahub-application-banner
-        [message]="platformService.translateKey(bannerKey) | async"
+        [message]="translatedBannerMessage$ | async"
         class="mel-container-banner"
         [type]="bannerType"
       ></mel-datahub-application-banner>

@@ -9,7 +9,7 @@ import {
 } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
-import { map, distinctUntilChanged } from 'rxjs'
+import { map, distinctUntilChanged, Observable } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-search-header',
@@ -20,15 +20,17 @@ import { map, distinctUntilChanged } from 'rxjs'
 export class SearchHeaderComponent {
   private previousFilters: any = {}
   bannerKey = 'application-banner'
-  bannerType = getOptionalWarningConfig().WARNING_LEVEL || 'normal'
+  bannerType = getOptionalWarningConfig().WARNING_LEVEL || 'secondary'
 
   constructor(
     public routerFacade: RouterFacade,
     private searchService: SearchService,
     public favoritesService: FavoritesService,
     protected searchFacade: SearchFacade,
-    public platformService: Gn4PlatformService
+    private platformService: Gn4PlatformService
   ) {}
+
+  translatedBannerMessage$ = this.platformService.translateKey(this.bannerKey)
 
   producerHasChanged$ = this.searchFacade.searchFilters$.pipe(
     distinctUntilChanged(),
