@@ -3,13 +3,11 @@ import { Gn4PlatformService, SearchService } from 'geonetwork-ui'
 import {
   DATAHUB_ROOT,
   DATAHUB_ROUTE_SEARCH,
-  getOptionalWarningConfig,
   goFromHomeToRecord,
   goFromHomeToSearch,
 } from '@mel-dataplatform/mel'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
-import { Observable } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-home-header',
@@ -30,7 +28,7 @@ import { Observable } from 'rxjs'
 export class HomeHeaderComponent {
   HREF_ROUTE_SEARCH = `${DATAHUB_ROOT}/${DATAHUB_ROUTE_SEARCH}`
   bannerKey = 'application-banner'
-  bannerType = getOptionalWarningConfig().WARNING_LEVEL || 'secondary'
+  bannerType = 'secondary'
 
   constructor(
     private searchService: SearchService,

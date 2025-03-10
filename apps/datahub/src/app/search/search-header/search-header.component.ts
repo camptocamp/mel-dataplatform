@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { getOptionalWarningConfig } from '@mel-dataplatform/mel'
 import {
   FavoritesService,
   RouterFacade,
@@ -9,7 +8,7 @@ import {
 } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
-import { map, distinctUntilChanged, Observable } from 'rxjs'
+import { map, distinctUntilChanged } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-search-header',
@@ -20,7 +19,7 @@ import { map, distinctUntilChanged, Observable } from 'rxjs'
 export class SearchHeaderComponent {
   private previousFilters: any = {}
   bannerKey = 'application-banner'
-  bannerType = getOptionalWarningConfig().WARNING_LEVEL || 'secondary'
+  bannerType = 'secondary'
 
   constructor(
     public routerFacade: RouterFacade,

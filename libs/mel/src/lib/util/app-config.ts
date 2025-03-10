@@ -1,16 +1,11 @@
 import * as TOML from '@ltd/j-toml'
 import { parseConfigSection } from './parse-utils'
-import { SearchConfig, WarningConfig } from './model'
+import { SearchConfig } from './model'
 
 let searchConfig: SearchConfig | null = null
-let warningConfig: WarningConfig | null = null
 
 export function getOptionalSearchConfig(): SearchConfig | null {
   return searchConfig
-}
-
-export function getOptionalWarningConfig(): WarningConfig | null {
-  return warningConfig
 }
 
 let appConfigLoaded = false
@@ -43,26 +38,12 @@ export function loadAppConfig() {
         warnings,
         errors
       )
-      const parsedWarningSection = parseConfigSection(
-        parsed,
-        'warning',
-        [],
-        ['warning_level'],
-        warnings,
-        errors
-      )
       searchConfig =
         parsedSearchSection === null
           ? null
           : ({
               ADVANCED_FILTERS: parsedSearchSection['advanced_filters'],
             } as SearchConfig)
-      warningConfig =
-        parsedWarningSection === null
-          ? null
-          : ({
-              WARNING_LEVEL: parsedWarningSection['warning_level'],
-            } as WarningConfig)
       if (errors.length) {
         throw new Error(`One or more mandatory settings were missing from the configuration file.
       ${errors.join('\n')}`)

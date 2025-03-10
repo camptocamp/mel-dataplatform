@@ -6,7 +6,3 @@ export interface SearchConfig {
   SEARCH_PRESET?: SearchPreset[]
   ADVANCED_FILTERS?: []
 }
-
-export interface WarningConfig {
-  WARNING_LEVEL?: string
-}
