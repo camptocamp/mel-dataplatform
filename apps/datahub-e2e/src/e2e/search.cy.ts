@@ -332,7 +332,7 @@ describe('search', () => {
               .map((dropdown) => dropdown.getAttribute('data-cy-field'))
           )
           .should('eql', [
-            'publisher',
+            'publisherOrg',
             'format',
             'publicationYear',
             'inspireKeyword',
@@ -407,6 +407,34 @@ describe('search', () => {
     // if more than 18 datasets, pagination should be visible, please adapt test
     it('should not display the pagination', () => {
       cy.get('mel-datahub-pagination-buttons').should('not.exist')
+    })
+  })
+  describe('Warning banner', () => {
+    beforeEach(() => {
+      cy.login()
+    })
+    describe('When the translation key exists', () => {
+      beforeEach(() => {
+        cy.addTranslationKey()
+        cy.visit('/search')
+      })
+      it('should display a warning banner and display the message', () => {
+        cy.get('mel-datahub-application-banner')
+          .find('span')
+          .should(
+            'have.text',
+            'This is a warning message that should be shown when the key is set'
+          )
+      })
+    })
+    describe('When the translation key does not exist', () => {
+      beforeEach(() => {
+        cy.removeTranslationKey()
+        cy.visit('/search')
+      })
+      it('should not display the banner when the translation is deleted', () => {
+        cy.get('mel-datahub-application-banner').should('not.exist')
+      })
     })
   })
 })
