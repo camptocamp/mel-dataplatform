@@ -1,8 +1,8 @@
 <div class="bg-beige">
   <div class="p-4 py-6 md:py-20 lg:p-36 container mx-auto">
-    <div class="mb-5">
+    <div class="mb-5" *ngIf="translatedBannerMessage$ | async as bannerMessage">
       <mel-datahub-application-banner
-        [message]="translatedBannerMessage$ | async"
+        [message]="bannerMessage"
         class="mel-container-banner"
         [type]="bannerType"
       ></mel-datahub-application-banner>
