@@ -103,7 +103,7 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
     MelMapViewComponent,
     MelDataViewComponent,
     MelDatahubDropdownRangeComponent,
-    MelApiCardComponent
+    MelApiCardComponent,
   ],
   imports: [
     MelModule,
