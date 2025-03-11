@@ -50,6 +50,9 @@
   .mel-container-lg {
     @apply max-w-[1320px] mx-auto px-4;
   }
+  .mel-container-banner {
+    @apply max-w-[1280px] mx-auto px-4;
+  }
   .mel-grid-container-dataset {
     @apply grid gap-8 grid-cols-1 md:grid-cols-12 mx-2 sm:ml-24 md:mr-0 sm:gap-6;
   }
@@ -106,6 +109,15 @@
   }
   .mel-simple-button:hover {
     @apply text-primary-dark;
+  }
+  .mel-application-banner-primary {
+    @apply border-primary-dark bg-primary-dark text-white font-medium;
+  }
+  .mel-application-banner-secondary {
+    @apply border-primary font-bold;
+  }
+  .mel-application-banner-light {
+    @apply border-primary-light font-medium;
   }
 }
 html,

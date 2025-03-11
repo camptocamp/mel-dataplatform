@@ -1,5 +1,12 @@
 <div class="bg-beige">
   <div class="pt-[68px] mel-container-lg mx-auto">
+    <div class="mb-5" *ngIf="translatedBannerMessage$ | async as bannerMessage">
+      <mel-datahub-application-banner
+        [message]="bannerMessage"
+        class="mel-container-banner"
+        [type]="bannerType"
+      ></mel-datahub-application-banner>
+    </div>
     <div class="px-5">
       <h1 class="flex mel-page-title md:mb-12" translate="">
         mel.datahub.search.title

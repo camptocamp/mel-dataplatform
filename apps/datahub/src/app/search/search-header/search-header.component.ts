@@ -4,10 +4,11 @@ import {
   RouterFacade,
   SearchFacade,
   SearchService,
+  Gn4PlatformService,
 } from 'geonetwork-ui'
 import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
-import { map, distinctUntilChanged, debounceTime } from 'rxjs'
+import { map, distinctUntilChanged } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-search-header',
@@ -17,13 +18,18 @@ import { map, distinctUntilChanged, debounceTime } from 'rxjs'
 })
 export class SearchHeaderComponent {
   private previousFilters: any = {}
+  bannerKey = 'application-banner'
+  bannerType = 'secondary'
 
   constructor(
     public routerFacade: RouterFacade,
     private searchService: SearchService,
     public favoritesService: FavoritesService,
-    protected searchFacade: SearchFacade
+    protected searchFacade: SearchFacade,
+    private platformService: Gn4PlatformService
   ) {}
+
+  translatedBannerMessage$ = this.platformService.translateKey(this.bannerKey)
 
   producerHasChanged$ = this.searchFacade.searchFilters$.pipe(
     distinctUntilChanged(),
