@@ -7,4 +7,5 @@ export default defineConfig({
     ...nxE2EPreset(__filename, { cypressDir: 'src' }),
     baseUrl: 'http://localhost:4200',
   },
+  retries: 4
 })
