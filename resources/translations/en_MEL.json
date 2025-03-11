@@ -75,6 +75,7 @@
   "mel.record.metadata.api.form.closeForm": "Close the customization panel",
   "mel.record.metadata.api.form.openForm": "Open the customization panel",
   "mel.record.metadata.api.form.title": "Generate a custom URL",
+  "mel.record.metadata.associated": "Associated resources",
   "mel.record.metadata.download": "Downloads",
   "mel.record.metadata.producteur": "Producer",
   "mel.record.metadata.quality": "Metadata quality",
