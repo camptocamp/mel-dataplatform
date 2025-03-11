@@ -1,0 +1,37 @@
+<div
+  class="group flex justify-between border border-gray-4 pt-2 pb-1 pl-4 pr-2 hover:border-black"
+>
+  <div class="overflow-hidden basis-2/3 flex items-center">
+    <span
+      class="badge-btn text-xs px-2 font-bold shrink-0"
+      [ngStyle]="getBadgeStyles(format)"
+      *ngIf="format"
+    >
+      {{ format }}
+    </span>
+    <div
+      class="text-21 text-black truncate ml-2"
+      [title]="link.description || link.name"
+    >
+      {{ link.description || link.name }}
+    </div>
+  </div>
+  <div class="flex grow-1 gap-4">
+    <a
+      href="{{ link.url }}"
+      target="_blank"
+      rel="noopener"
+      [class]="'mel-primary-button font-medium text-nowrap'"
+      data-cy="download-button"
+      [download]="downloadFileName"
+    >
+      <img [src]="icon" alt="download" />
+    </a>
+    <mel-datahub-button
+      [icon]="'copy'"
+      [buttonClass]="'mel-primary-button flex grow-1 text-nowrap font-medium'"
+      data-cy="copy-button"
+      (click)="handleClickCopy($event)"
+    ></mel-datahub-button>
+  </div>
+</div>
