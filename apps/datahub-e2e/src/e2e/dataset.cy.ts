@@ -341,7 +341,7 @@ describe('datasets', () => {
     })
     describe('Dataset with ID ed34db28-5dd4-480f-bf29-dc08f0086131', () => {
       beforeEach(() => {
-        cy.visit('/dataset/ed34db28-5dd4-480f-bf29-dc08f0086131')
+        cy.visit('/dataset/accroche_velos')
       })
       it('should display the download section', () => {
         cy.get('[data-cy="download-links"]').should('be.visible')
@@ -349,7 +349,7 @@ describe('datasets', () => {
       it('should dispaly the correct number of available downloads', () => {
         cy.get('[data-cy="download-links"]')
           .find('mel-datahub-link-item')
-          .should('have.length', 10)
+          .should('have.length', 4)
       })
     })
   })

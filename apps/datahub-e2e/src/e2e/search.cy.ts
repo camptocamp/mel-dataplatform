@@ -135,7 +135,7 @@ describe('search', () => {
         )
         cy.clearFavorites()
         cy.get('mel-datahub-results-card-search')
-          .eq(2)
+          .eq(3)
           .find('mel-datahub-heart-toggle')
           .first()
           .find('mel-datahub-button')
