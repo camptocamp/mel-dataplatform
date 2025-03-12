@@ -38,6 +38,9 @@ export class DatasetPageComponent {
   displayRelated$ = this.facade.related$.pipe(
     map((records) => records?.length > 0)
   )
+  displayAssociated$ = this.facade.otherLinks$.pipe(
+    map((links) => links?.length > 0)
+  )
   errorTypes = ErrorType
 
   constructor(

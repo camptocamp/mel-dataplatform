@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import {
   DataService,
   MdViewFacade,
@@ -12,12 +12,13 @@ import {
 import { catchError, combineLatest, map, of, switchMap } from 'rxjs'
 
 @Component({
-  selector: 'mel-datahub-dataset-downloads',
-  templateUrl: './dataset-downloads.component.html',
+  selector: 'mel-datahub-dataset-links',
+  templateUrl: './dataset-links.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DatasetDownloadsComponent {
+export class DatasetLinksComponent {
+  @Input() section: string
   constructor(
     public facade: MdViewFacade,
     private dataService: DataService
@@ -25,7 +26,7 @@ export class DatasetDownloadsComponent {
 
   error: string = null
 
-  links$ = this.facade.downloadLinks$.pipe(
+  downloadLinks$ = this.facade.downloadLinks$.pipe(
     switchMap((links) => {
       const wfsLinks = links.filter(
         (link) =>
@@ -95,6 +96,11 @@ export class DatasetDownloadsComponent {
         map(sortLinks)
       )
     })
+  )
+
+  associatedLinks$ = this.facade.otherLinks$.pipe(
+    map((links) => removeLinksWithUnknownFormat(links)),
+    map((links) => sortLinks(links))
   )
 }
 

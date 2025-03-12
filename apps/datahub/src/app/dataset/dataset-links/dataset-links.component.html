@@ -1,0 +1,11 @@
+@if (section === 'associated' && associatedLinks$ | async) {
+  <mel-datahub-links-list
+    [links]="associatedLinks$ | async"
+    [section]="section"
+  ></mel-datahub-links-list>
+} @else if (section === 'downloads' && downloadLinks$ | async) {
+  <mel-datahub-links-list
+    [links]="downloadLinks$ | async"
+    [section]="section"
+  ></mel-datahub-links-list>
+}

@@ -20,7 +20,10 @@
   @if (displayDownload$ | async) {
     <div id="download" class="mel-grid-container-dataset mt-6">
       <div class="sm:col-start-2 sm:col-span-8">
-        <mel-datahub-dataset-downloads></mel-datahub-dataset-downloads>
+        <mel-datahub-dataset-links
+          section="downloads"
+          data-cy="download-links"
+        ></mel-datahub-dataset-links>
       </div>
     </div>
   }
@@ -31,6 +34,16 @@
       </div>
     }
   </div>
+  @if (displayAssociated$ | async) {
+    <div id="associated" class="mel-grid-container-dataset mt-6 mb-4">
+      <div class="sm:col-start-2 sm:col-span-8">
+        <mel-datahub-dataset-links
+          section="associated"
+          data-cy="associated-links"
+        ></mel-datahub-dataset-links>
+      </div>
+    </div>
+  }
   @if (displayRelated$ | async) {
     <div
       class="mel-grid-container-dataset my-12"

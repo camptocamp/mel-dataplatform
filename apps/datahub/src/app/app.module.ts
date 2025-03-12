@@ -55,7 +55,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatTabsModule } from '@angular/material/tabs'
 import { DatasetApisComponent } from './dataset/dataset-apis/dataset-apis.component'
 import { DatasetHeaderComponent } from './dataset/dataset-header/dataset-header.component'
-import { DatasetDownloadsComponent } from './dataset/dataset-downloads/dataset-downloads.component'
+import { DatasetLinksComponent } from './dataset/dataset-links/dataset-links.component'
 import { DatasetInformationComponent } from './dataset/dataset-information/dataset-information.component'
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
@@ -68,8 +68,8 @@ import { FormsModule } from '@angular/forms'
 import { ApiFormComponent } from './dataset/dataset-apis/api-form/api-form.component'
 import { MelApiCardComponent } from './dataset/dataset-apis/api-card/api-card.component'
 import { MatTooltipModule } from '@angular/material/tooltip'
-import { MelDownloadsListComponent } from './dataset/dataset-downloads/downloads-list/downloads-list.component'
-import { MelDownloadItemComponent } from './dataset/dataset-downloads/download-item/download-item.component'
+import { MelLinksListComponent } from './dataset/dataset-links/links-list/links-list.component'
+import { MelLinkItemComponent } from './dataset/dataset-links/link-item/link-item.component'
 import { DatasetVisualisationComponent } from './dataset/dataset-visualisation/dataset-visualisation.component'
 import { MelMapViewComponent } from './dataset/dataset-visualisation/map-view/map-view.component'
 import { MelDataViewComponent } from './dataset/dataset-visualisation/data-view/data-view.component'
@@ -90,20 +90,20 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
     DatasetPageComponent,
     DatasetApisComponent,
     DatasetHeaderComponent,
-    DatasetDownloadsComponent,
+    DatasetLinksComponent,
     DatasetInformationComponent,
     SearchFormComponent,
     SearchFiltersComponent,
     MelFilterDropdownComponent,
     MelDropdownMultiselectComponent,
     ApiFormComponent,
-    MelApiCardComponent,
-    MelDownloadsListComponent,
-    MelDownloadItemComponent,
+    MelLinksListComponent,
+    MelLinkItemComponent,
     DatasetVisualisationComponent,
     MelMapViewComponent,
     MelDataViewComponent,
     MelDatahubDropdownRangeComponent,
+    MelApiCardComponent,
   ],
   imports: [
     MelModule,

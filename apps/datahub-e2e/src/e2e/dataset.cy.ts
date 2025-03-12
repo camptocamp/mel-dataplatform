@@ -341,15 +341,15 @@ describe('datasets', () => {
     })
     describe('Dataset with ID ed34db28-5dd4-480f-bf29-dc08f0086131', () => {
       beforeEach(() => {
-        cy.visit('/dataset/ed34db28-5dd4-480f-bf29-dc08f0086131')
+        cy.visit('/dataset/accroche_velos')
       })
       it('should display the download section', () => {
-        cy.get('mel-datahub-dataset-downloads').should('be.visible')
+        cy.get('[data-cy="download-links"]').should('be.visible')
       })
       it('should dispaly the correct number of available downloads', () => {
-        cy.get('mel-datahub-dataset-downloads')
-          .find('mel-datahub-download-item')
-          .should('have.length', 10)
+        cy.get('[data-cy="download-links"]')
+          .find('mel-datahub-link-item')
+          .should('have.length', 4)
       })
     })
   })
@@ -361,6 +361,51 @@ describe('datasets', () => {
       cy.get('[data-cy="related-records-section"]')
         .find('mel-datahub-results-card-last-created')
         .should('have.length.gt', 0)
+    })
+  })
+
+  describe('Associated resources section', () => {
+    beforeEach(() => {
+      cy.visit('/dataset/ee965118-2416-4d48-b07e-bbc696f002c2')
+    })
+    it('should display the associated resources section', () => {
+      cy.get('[data-cy="associated-links"]').should('be.visible')
+    })
+    it('should allow the user to copy the link', () => {
+      cy.get('[data-cy="associated-links"]')
+        .find('mel-datahub-link-item')
+        .first()
+        .find('mel-datahub-button')
+        .first()
+        .click()
+      // attempt to make the whole page focused
+      cy.get('body').focus()
+
+      cy.window().then((win) => {
+        win.navigator.clipboard.readText().then((text) => {
+          expect(text).to.eq(
+            'https://sig.hautsdefrance.fr/ext/opendata/Referentiel/SCoT_Dictionnnaire_attributs_2023.xlsx'
+          )
+        })
+      })
+    })
+    it('should allow the user to access the resource', () => {
+      cy.get('[data-cy="associated-links"]')
+        .find('mel-datahub-link-item')
+        .first()
+        .find('a')
+        .first()
+        .should('have.attr', 'target', '_blank')
+      cy.get('[data-cy="associated-links"]')
+        .find('mel-datahub-link-item')
+        .first()
+        .find('a')
+        .first()
+        .should(
+          'have.attr',
+          'href',
+          'https://sig.hautsdefrance.fr/ext/opendata/Referentiel/SCoT_Dictionnnaire_attributs_2023.xlsx'
+        )
     })
   })
 
