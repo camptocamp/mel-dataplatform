@@ -1,9 +1,12 @@
-<div class="bg-beige">
+<div class="bg-beige relative">
   <div class="pt-[68px] mel-container-lg mx-auto">
-    <div class="mb-5" *ngIf="translatedBannerMessage$ | async as bannerMessage">
+    <div
+      class="mb-8 top-0"
+      *ngIf="translatedBannerMessage$ | async as bannerMessage"
+    >
       <mel-datahub-application-banner
         [message]="bannerMessage"
-        class="mel-container-banner"
+        class="mel-container-banner absolute top-0 left-0 right-0"
         [type]="bannerType"
       ></mel-datahub-application-banner>
     </div>
