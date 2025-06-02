@@ -21,7 +21,7 @@
             class="mr-2 w-20"
             (valueChange)="setLimit($event)"
             [value]="displayLimit$ | async"
-            hint=""
+            placeholder=""
           >
           </gn-ui-text-input>
           <div class="flex items-center">
@@ -43,7 +43,7 @@
           class="w-20"
           [value]="offset$ | async"
           (valueChange)="setOffset($event)"
-          hint=""
+          placeholder=""
         >
         </gn-ui-text-input>
       </div>

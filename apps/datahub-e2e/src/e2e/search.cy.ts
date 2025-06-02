@@ -8,14 +8,14 @@ describe('search', () => {
     it('should display the number of result hits', () => {
       cy.get('[data-cy="searchResults"]').should(
         'include.text',
-        'Ensemble des données: 16'
+        'Ensemble des données: 17'
       )
     })
     it('should display the footer', () => {
       cy.get('mel-datahub-footer').should('be.visible')
     })
     it('should display the result hits in search card', () => {
-      cy.get('mel-datahub-results-card-search').should('have.length', 16)
+      cy.get('mel-datahub-results-card-search').should('have.length', 17)
     })
   })
 
@@ -62,7 +62,7 @@ describe('search', () => {
         .find('h1')
         .should(
           'include.text',
-          'Zones de collecte de déchets en porte à porte - par flux de collecte, jour et horaire de tournée'
+          " Aléa de débordement de cours d'eau de la Lys "
         )
 
       cy.get('.mel-carousel-step-dot').should('exist')
@@ -135,7 +135,7 @@ describe('search', () => {
         )
         cy.clearFavorites()
         cy.get('mel-datahub-results-card-search')
-          .eq(3)
+          .eq(4)
           .find('mel-datahub-heart-toggle')
           .first()
           .find('mel-datahub-button')
@@ -304,7 +304,7 @@ describe('search', () => {
         cy.get('@result-cards').should('have.length', 3)
         cy.get('body').click()
         cy.get('[data-cy=filterResetBtn]').click()
-        cy.get('@result-cards').should('have.length', 16)
+        cy.get('@result-cards').should('have.length', 17)
       })
       it('should show close button and show less filters on click', () => {
         cy.get('@expandBtn').click()
