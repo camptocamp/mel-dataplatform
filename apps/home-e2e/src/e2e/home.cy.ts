@@ -39,10 +39,13 @@ describe('home', () => {
       cy.get('mel-datahub-carousel')
         .find('[title="carousel-arrow-right"]')
         .click()
+      cy.get('mel-datahub-carousel')
+        .find('[title="carousel-arrow-right"]')
+        .click()
 
       cy.get('mel-datahub-carousel')
         .find('h1')
-        .eq(3)
+        .eq(4)
         .should('have.text', ' Leitungskataster Fernwärme AEW Energie AG ')
         .should('be.visible')
     })
@@ -56,16 +59,16 @@ describe('home', () => {
         cy.get('@firstResult').click()
         cy.url().should(
           'include',
-          'catalogue/dataset/ed34db28-5dd4-480f-bf29-dc08f0086131'
+          'catalogue/dataset/n_tri_lill_inondable_s_059'
         )
       })
       it('should create correct url to navigate to search on keyword click', () => {
         cy.get('mel-datahub-results-card-last-created')
-          .eq(2)
+          .first()
           .find('.mel-badge-button-primary')
           .first()
           .click()
-        cy.url().should('include', 'catalogue/search?q=administration')
+        cy.url().should('include', 'catalogue/search?q=Environnement')
       })
     })
   })
