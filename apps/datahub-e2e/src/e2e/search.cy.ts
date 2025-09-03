@@ -8,14 +8,14 @@ describe('search', () => {
     it('should display the number of result hits', () => {
       cy.get('[data-cy="searchResults"]').should(
         'include.text',
-        'Ensemble des données: 17'
+        'Ensemble des données: 18'
       )
     })
     it('should display the footer', () => {
       cy.get('mel-datahub-footer').should('be.visible')
     })
     it('should display the result hits in search card', () => {
-      cy.get('mel-datahub-results-card-search').should('have.length', 17)
+      cy.get('mel-datahub-results-card-search').should('have.length', 18)
     })
   })
 
@@ -304,7 +304,7 @@ describe('search', () => {
         cy.get('@result-cards').should('have.length', 3)
         cy.get('body').click()
         cy.get('[data-cy=filterResetBtn]').click()
-        cy.get('@result-cards').should('have.length', 17)
+        cy.get('@result-cards').should('have.length', 18)
       })
       it('should show close button and show less filters on click', () => {
         cy.get('@expandBtn').click()
