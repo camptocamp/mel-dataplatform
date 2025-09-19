@@ -6,7 +6,7 @@
     [placeholder]="placeholder"
     [formControl]="control"
     [matAutocomplete]="auto"
-    (keyup.enter)="handleEnter(searchInput.value)"
+    (keyup.enter)="handleSearch()"
   />
   <div class="flex w-12 h-full absolute right-0 top-0">
     <div class="h-[28px] w-[1px] bg-gray-2 my-auto"></div>
@@ -24,7 +24,7 @@
       type="button"
       class="text-primary hover:text-primary-dark border-gray-300 hover:border-gray-500 absolute transition-all duration-100 search-btn inset-y-0 right-0 p-3 bg-transparent my-auto"
       aria-label="Trigger search"
-      (click)="handleClickSearch()"
+      (click)="handleSearch()"
     >
       <ng-icon name="matSearch"></ng-icon>
     </button>

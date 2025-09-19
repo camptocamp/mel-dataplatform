@@ -14,11 +14,7 @@ import {
   provideRepositoryUrl,
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
-  UiElementsModule,
-  UiLayoutModule,
-  UiInputsModule,
-  UiWidgetsModule,
-  GN_UI_VERSION,
+  GEONETWORK_UI_VERSION,
   WEB_COMPONENT_EMBEDDER_URL,
   FieldsService,
   PopupAlertComponent,
@@ -37,6 +33,14 @@ import {
   EXTERNAL_VIEWER_URL_TEMPLATE,
   EXTERNAL_VIEWER_OPEN_NEW_TAB,
   Gn4PlatformService,
+  ApiCardComponent,
+  RecordApiFormComponent,
+  DownloadItemComponent,
+  DownloadsListComponent,
+  MapViewComponent,
+  DropdownMultiselectComponent,
+  DropdownSelectorComponent,
+  MarkdownParserComponent,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -79,7 +83,7 @@ import { MelFieldsService } from './search/service/fields.service'
 import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-datahub-dropdown-range/mel-datahub-dropdown-range.component'
 import { matCloseOutline } from '@ng-icons/material-icons/outline'
 import { NgIconsModule } from '@ng-icons/core'
-import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
+import { matClose, matExpandLess, matExpandMore, matMoreHoriz } from '@ng-icons/material-icons/baseline'
 
 @NgModule({
   declarations: [
@@ -109,15 +113,11 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
     MelModule,
     BrowserModule,
     BrowserAnimationsModule,
-    UiWidgetsModule,
     SpinningLoaderComponent,
     LoadingMaskComponent,
-    UiElementsModule,
     ContentGhostComponent,
     ErrorComponent,
-    UiLayoutModule,
     PaginationButtonsComponent,
-    UiInputsModule,
     TextInputComponent,
     CopyTextButtonComponent,
     FeatureSearchModule,
@@ -136,7 +136,16 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
     ChartViewComponent,
     TableViewComponent,
     MapContainerComponent,
-    NgIconsModule.withIcons({ matCloseOutline, matMoreHoriz }),
+    ApiCardComponent,
+    RecordApiFormComponent,
+    DownloadItemComponent,
+    DownloadsListComponent,
+    MapViewComponent,
+    DropdownMultiselectComponent,
+    DropdownSelectorComponent,
+    ContentGhostComponent,
+    MarkdownParserComponent,
+    NgIconsModule.withIcons({ matCloseOutline, matMoreHoriz,matExpandMore, matExpandLess, matClose }),
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
@@ -168,6 +177,8 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
       searchStateId: 'mainSearch',
       searchRouteComponent: SearchPageComponent,
       recordRouteComponent: DatasetPageComponent,
+      serviceRouteComponent: DatasetPageComponent,
+      reuseRouteComponent: DatasetPageComponent,
       // reusing the search component for the organization route since MEL
       // does not have org routes but param is compulsory
       organizationRouteComponent: SearchPageComponent,
@@ -176,7 +187,7 @@ import { matMoreHoriz } from '@ng-icons/material-icons/baseline'
   providers: [
     importProvidersFrom(FeatureAuthModule),
     provideGn4(),
-    { provide: GN_UI_VERSION, useValue: environment.version },
+    { provide: GEONETWORK_UI_VERSION, useValue: environment.version },
     {
       provide: WEB_COMPONENT_EMBEDDER_URL,
       useFactory: () => '/catalogue/wc-embedder.html',

@@ -8,7 +8,7 @@ import { ResultsCardFavoriteComponent } from './results-list-item/results-card-f
 import { ResultsCardLastCreatedComponent } from './results-list-item/results-card-last-created/results-card-last-created.component'
 import { ResultsCardSearchComponent } from './results-list-item/results-card-search/results-card-search.component'
 import { MelDatahubMetadataQualityComponent } from './metadata-quality/mel-datahub-metadata-quality.component'
-import { ButtonComponent } from './button/button.component'
+import { MelButtonComponent } from './button/button.component'
 import { FavoriteHeartComponent } from './favorites/favorite-heart/favorite-heart.component'
 import { HeartToggleComponent } from './favorites/heart-toggle/heart-toggle.component'
 import { TextExpandComponent } from './text-expand/text-expand.component'
@@ -18,14 +18,21 @@ import { MelFuzzySearchComponent } from './fuzzy-search/fuzzy-search.component'
 import { MelAutocompleteComponent } from './autocomplete/autocomplete.component'
 import { MelApplicationBannerComponent } from './application-banner/application-banner.component'
 import {
+  ApplicationBannerComponent,
+  AutocompleteComponent,
+  ButtonComponent,
+  CarouselComponent,
   ContentGhostComponent,
+  ExternalViewerButtonComponent,
+  FavoriteStarComponent,
+  FuzzySearchComponent,
+  MaxLinesComponent,
+  MetadataQualityComponent,
   MetadataQualityItemComponent,
+  PaginationButtonsComponent,
   PopoverComponent,
   PopupAlertComponent,
-  UiElementsModule,
-  UiInputsModule,
-  UiLayoutModule,
-  UiWidgetsModule,
+  ThumbnailComponent,
 } from 'geonetwork-ui'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 import { MatIconModule } from '@angular/material/icon'
@@ -48,18 +55,26 @@ import { matWarningAmberOutline } from '@ng-icons/material-icons/outline'
 @NgModule({
   imports: [
     CommonModule,
-    UiWidgetsModule,
     PopoverComponent,
-    UiElementsModule,
     ContentGhostComponent,
     MetadataQualityItemComponent,
-    UiLayoutModule,
     MatAutocompleteModule,
     MatIconModule,
     TranslateModule,
     ReactiveFormsModule,
     PopupAlertComponent,
-    UiInputsModule,
+    ThumbnailComponent,
+    ButtonComponent,
+    ContentGhostComponent,
+    ApplicationBannerComponent,
+    AutocompleteComponent,
+    CarouselComponent,
+    ExternalViewerButtonComponent,
+    FavoriteStarComponent,
+    FuzzySearchComponent,
+    MetadataQualityComponent,
+    PaginationButtonsComponent,
+    MaxLinesComponent,
     NgIconsModule.withIcons({
       matOpenInNew,
       matSearch,
@@ -79,7 +94,7 @@ import { matWarningAmberOutline } from '@ng-icons/material-icons/outline'
     ResultsCardLastCreatedComponent,
     ResultsCardSearchComponent,
     MelDatahubMetadataQualityComponent,
-    ButtonComponent,
+    MelButtonComponent,
     FavoriteHeartComponent,
     HeartToggleComponent,
     TextExpandComponent,
@@ -101,7 +116,7 @@ import { matWarningAmberOutline } from '@ng-icons/material-icons/outline'
     ResultsCardLastCreatedComponent,
     ResultsCardSearchComponent,
     MelDatahubMetadataQualityComponent,
-    ButtonComponent,
+    MelButtonComponent,
     FavoriteHeartComponent,
     HeartToggleComponent,
     TextExpandComponent,

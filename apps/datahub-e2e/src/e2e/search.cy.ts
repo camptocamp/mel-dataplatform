@@ -8,7 +8,7 @@ describe('search', () => {
     it('should display the number of result hits', () => {
       cy.get('[data-cy="searchResults"]').should(
         'include.text',
-        'Ensemble des données: 18'
+        'Ensemble des données: 28'
       )
     })
     it('should display the footer', () => {
@@ -154,7 +154,7 @@ describe('search', () => {
           .find('h1')
           .should(
             'have.text',
-            ' Metadata for E2E testing purpose. (this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut, this title is too long and should be cut) '
+            ' Leitungskataster Fernwärme AEW Energie AG '
           )
 
         cy.get('.mel-carousel-step-dot').should('not.exist')
