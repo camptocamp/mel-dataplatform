@@ -99,7 +99,6 @@ export class DatasetLinksComponent {
   )
 
   associatedLinks$ = this.facade.otherLinks$.pipe(
-    map((links) => removeLinksWithUnknownFormat(links)),
     map((links) => sortLinks(links))
   )
 }

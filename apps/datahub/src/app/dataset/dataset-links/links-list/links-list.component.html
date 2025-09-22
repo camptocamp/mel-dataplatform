@@ -32,7 +32,7 @@
       }
     </div>
   </div>
-  @for (link of filteredLinks; track $index) {
+  @for (link of section === 'downloads' ? filteredLinks : links; track $index) {
     <div class="mb-2 sm:mb-3">
       <mel-datahub-link-item
         [section]="section"
