@@ -132,8 +132,8 @@ describe('datasets', () => {
 
   describe('Information block', () => {
     beforeEach(() => {
-      cy.interceptDataset('775b7660-b03b-443a-9817-be82ecd0ef07')
-      cy.visit('/dataset/775b7660-b03b-443a-9817-be82ecd0ef07')
+      cy.interceptDataset('ed34db28-5dd4-480f-bf29-dc08f0086131')
+      cy.visit('/dataset/ed34db28-5dd4-480f-bf29-dc08f0086131')
       cy.get('mel-datahub-dataset-information')
         .children('div')
         .first()
@@ -316,7 +316,7 @@ describe('datasets', () => {
           .should(
             'have.attr',
             'download',
-            'insee:rectangles_200m_menage_erbm.json'
+            'insee:rectangles_200m_menage_erbm.geojson'
           )
       })
       it('should open link in new tab as fallback (if download attribute is ignored, for not same-origin)', () => {
@@ -404,7 +404,7 @@ describe('datasets', () => {
         .should(
           'have.attr',
           'href',
-          'https://sig.hautsdefrance.fr/ext/opendata/Referentiel/SCoT_Dictionnnaire_attributs_2023.xlsx'
+          'https://qgisserver.hautsdefrance.fr/cgi-bin/qgis_mapserv.fcgi?MAP=/var/www/data/qgis/applications/limites_admin.qgz&request=GetFeature&typename=scot_en_cours&outputformat=csv&service=WFS'
         )
     })
   })
