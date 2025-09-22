@@ -152,10 +152,7 @@ describe('search', () => {
       it('should display record results in favorite cards', () => {
         cy.get('mel-datahub-results-card-favorite')
           .find('h1')
-          .should(
-            'have.text',
-            ' Leitungskataster Fernwärme AEW Energie AG '
-          )
+          .should('have.text', ' Leitungskataster Fernwärme AEW Energie AG ')
 
         cy.get('.mel-carousel-step-dot').should('not.exist')
 

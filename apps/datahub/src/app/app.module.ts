@@ -83,7 +83,12 @@ import { MelFieldsService } from './search/service/fields.service'
 import { MelDatahubDropdownRangeComponent } from './search/search-filters/mel-datahub-dropdown-range/mel-datahub-dropdown-range.component'
 import { matCloseOutline } from '@ng-icons/material-icons/outline'
 import { NgIconsModule } from '@ng-icons/core'
-import { matClose, matExpandLess, matExpandMore, matMoreHoriz } from '@ng-icons/material-icons/baseline'
+import {
+  matClose,
+  matExpandLess,
+  matExpandMore,
+  matMoreHoriz,
+} from '@ng-icons/material-icons/baseline'
 
 @NgModule({
   declarations: [
@@ -145,7 +150,13 @@ import { matClose, matExpandLess, matExpandMore, matMoreHoriz } from '@ng-icons/
     DropdownSelectorComponent,
     ContentGhostComponent,
     MarkdownParserComponent,
-    NgIconsModule.withIcons({ matCloseOutline, matMoreHoriz,matExpandMore, matExpandLess, matClose }),
+    NgIconsModule.withIcons({
+      matCloseOutline,
+      matMoreHoriz,
+      matExpandMore,
+      matExpandLess,
+      matClose,
+    }),
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {

@@ -316,7 +316,7 @@ describe('datasets', () => {
           .should(
             'have.attr',
             'download',
-            'insee:rectangles_200m_menage_erbm.geojson'
+            'insee:rectangles_200m_menage_erbm.json'
           )
       })
       it('should open link in new tab as fallback (if download attribute is ignored, for not same-origin)', () => {
