@@ -137,7 +137,7 @@ Cypress.Commands.add('interceptDataset', (id) => {
   cy.fixture(`datasets/${id}.json`).then((fixtureData) => {
     cy.intercept(
       'POST',
-      `/geonetwork/srv/api/search/records/_search?bucket=bucket`,
+      `/geonetwork/srv/api/search/records/_search?bucket=bucket&relatedType=fcats&relatedType=hassources`,
       (req) => {
         if (req.body.query?.ids?.values.includes(id)) {
           req.reply({
@@ -179,6 +179,13 @@ Cypress.Commands.add('addTranslationKey', () => {
             fieldName: 'application-banner',
             langId: 'fre',
             id: 0,
+            value:
+              'This is a warning message that should be shown when the key is set',
+          },
+          {
+            fieldName: 'application-banner',
+            langId: 'eng',
+            id: 1,
             value:
               'This is a warning message that should be shown when the key is set',
           },

@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent {
+export class MelButtonComponent {
   @Input() label: string
   @Input() set icon(fileName: string) {
     if (fileName) {

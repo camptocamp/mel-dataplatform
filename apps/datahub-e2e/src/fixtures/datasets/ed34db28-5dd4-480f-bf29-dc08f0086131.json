@@ -17,7 +17,7 @@
       {
         "_index": "gn-records",
         "_type": "_doc",
-        "_id": "775b7660-b03b-443a-9817-be82ecd0ef07",
+        "_id": "ed34db28-5dd4-480f-bf29-dc08f0086131",
         "_score": 1.0,
         "_source": {
           "publicationMonthForResource": "2024-05",
@@ -89,7 +89,7 @@
               "langfre": "Métropole Européenne de Lille"
             }
           ],
-          "metadataIdentifier": "775b7660-b03b-443a-9817-be82ecd0ef07",
+          "metadataIdentifier": "ed34db28-5dd4-480f-bf29-dc08f0086131",
           "hasInspireTheme": "true",
           "inspireThemeNumber": "1",
           "th_thesaurus_mot_cle_thematique_categories_tree": {
@@ -213,7 +213,7 @@
               "langfre": "Utf8"
             }
           ],
-          "uuid": "775b7660-b03b-443a-9817-be82ecd0ef07",
+          "uuid": "ed34db28-5dd4-480f-bf29-dc08f0086131",
           "resourceLanguage": ["fre"],
           "cl_type": [
             {
@@ -292,7 +292,7 @@
               "langfre": "Métropole Européenne de Lille"
             }
           ],
-          "recordGroup": "775b7660-b03b-443a-9817-be82ecd0ef07",
+          "recordGroup": "ed34db28-5dd4-480f-bf29-dc08f0086131",
           "isPublishedToIntranet": "false",
           "crsDetails": [
             {
