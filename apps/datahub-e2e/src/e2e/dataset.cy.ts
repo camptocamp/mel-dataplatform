@@ -354,6 +354,13 @@ describe('datasets', () => {
     })
   })
 
+  describe('Feature catalog section', () => {
+    it('should display the feature catalog section', () => {
+      cy.visit('/dataset/accroche_velos')
+      cy.get('[data-cy="feature-catalog-section"]').should('be.visible')
+    })
+  })
+
   describe('Related datasets section', () => {
     it('should display the related datasets section', () => {
       cy.visit('/dataset/9e1ea778-d0ce-4b49-90b7-37bc0e448300')

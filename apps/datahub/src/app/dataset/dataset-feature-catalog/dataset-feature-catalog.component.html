@@ -1,0 +1,21 @@
+<div class="mt-8 mb-6 sm:mt-12 sm:mb-2">
+  <div class="mel-title-line"></div>
+  <div class="flex flex-wrap justify-between">
+    <p class="mel-section-title mr-4 pb-4" translate>
+      mel.record.metadata.featureCatalog
+    </p>
+  </div>
+</div>
+<div
+  class="bg-gray-100 rounded-lg shadow-md"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+>
+  <gn-ui-search-feature-catalog
+    [featureCatalog]="metadataViewFacade.featureCatalog$ | async"
+    (filteredFeatureCatalogChange)="onFilteredFeatureCatalogChange($event)"
+  ></gn-ui-search-feature-catalog>
+  <gn-ui-feature-catalog-list
+    [filteredFeatureCatalog]="filteredFeatureCatalog"
+  ></gn-ui-feature-catalog-list>
+</div>

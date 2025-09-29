@@ -41,6 +41,8 @@ import {
   DropdownMultiselectComponent,
   DropdownSelectorComponent,
   MarkdownParserComponent,
+  SearchFeatureCatalogComponent,
+  FeatureCatalogListComponent,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -89,6 +91,7 @@ import {
   matExpandMore,
   matMoreHoriz,
 } from '@ng-icons/material-icons/baseline'
+import { DatasetFeatureCatalogComponent } from './dataset/dataset-feature-catalog/dataset-feature-catalog.component'
 
 @NgModule({
   declarations: [
@@ -113,6 +116,7 @@ import {
     MelDataViewComponent,
     MelDatahubDropdownRangeComponent,
     MelApiCardComponent,
+    DatasetFeatureCatalogComponent,
   ],
   imports: [
     MelModule,
@@ -150,6 +154,8 @@ import {
     DropdownSelectorComponent,
     ContentGhostComponent,
     MarkdownParserComponent,
+    SearchFeatureCatalogComponent,
+    FeatureCatalogListComponent,
     NgIconsModule.withIcons({
       matCloseOutline,
       matMoreHoriz,

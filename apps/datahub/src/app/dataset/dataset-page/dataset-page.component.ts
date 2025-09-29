@@ -41,6 +41,16 @@ export class DatasetPageComponent {
   displayAssociated$ = this.facade.otherLinks$.pipe(
     map((links) => links?.length > 0)
   )
+  displayFeatureCatalog$ = combineLatest([
+    this.facade.metadata$,
+    this.facade.featureCatalog$,
+  ]).pipe(
+    map(
+      ([metadata, featureCatalog]) =>
+        //subscribing to metadata in order to refresh featureCatalog information
+        featureCatalog?.featureTypes?.length > 0
+    )
+  )
   errorTypes = ErrorType
 
   constructor(
