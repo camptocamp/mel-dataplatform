@@ -206,3 +206,8 @@ gn-ui-copy-text-button div textarea {
 .markdown-body :first-child {
   margin-top: 0 !important;
 }
+
+/* Specific style for dataset feature catalog component */
+gn-ui-search-feature-catalog > div {
+  margin-top: 0 !important;
+}
