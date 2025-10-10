@@ -44,6 +44,15 @@
       </div>
     </div>
   }
+  @if (displayFeatureCatalog$ | async) {
+    <div id="featureCatalog" class="mel-grid-container-dataset">
+      <div class="sm:col-start-2 sm:col-span-8">
+        <mel-datahub-dataset-feature-catalog
+          data-cy="feature-catalog-section"
+        ></mel-datahub-dataset-feature-catalog>
+      </div>
+    </div>
+  }
   @if (displayRelated$ | async) {
     <div
       class="mel-grid-container-dataset my-12"

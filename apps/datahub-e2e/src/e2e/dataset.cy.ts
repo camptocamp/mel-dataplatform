@@ -312,7 +312,7 @@ describe('datasets', () => {
       })
       it('should contain download attribute with filename for json files', () => {
         cy.get('[data-cy="download-button"]')
-          .eq(3)
+          .eq(2)
           .should(
             'have.attr',
             'download',
@@ -351,6 +351,13 @@ describe('datasets', () => {
           .find('mel-datahub-link-item')
           .should('have.length', 4)
       })
+    })
+  })
+
+  describe('Feature catalog section', () => {
+    it('should display the feature catalog section', () => {
+      cy.visit('/dataset/accroche_velos')
+      cy.get('[data-cy="feature-catalog-section"]').should('be.visible')
     })
   })
 
