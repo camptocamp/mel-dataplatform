@@ -312,7 +312,7 @@ describe('datasets', () => {
       })
       it('should contain download attribute with filename for json files', () => {
         cy.get('[data-cy="download-button"]')
-          .eq(3)
+          .eq(2)
           .should(
             'have.attr',
             'download',
