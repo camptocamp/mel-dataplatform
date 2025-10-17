@@ -4,8 +4,6 @@ import { RouterModule } from '@angular/router'
 import { AppComponent } from './app.component'
 import {
   DefaultRouterModule,
-  FeatureAuthModule,
-  FeatureCatalogModule,
   FeatureRecordModule,
   FeatureSearchModule,
   FeatureMapModule,
@@ -43,6 +41,7 @@ import {
   MarkdownParserComponent,
   SearchFeatureCatalogComponent,
   FeatureCatalogListComponent,
+  SearchRouterContainerDirective,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -92,6 +91,7 @@ import {
   matMoreHoriz,
 } from '@ng-icons/material-icons/baseline'
 import { DatasetFeatureCatalogComponent } from './dataset/dataset-feature-catalog/dataset-feature-catalog.component'
+import { provideHttpClient } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -129,8 +129,6 @@ import { DatasetFeatureCatalogComponent } from './dataset/dataset-feature-catalo
     PaginationButtonsComponent,
     TextInputComponent,
     CopyTextButtonComponent,
-    FeatureSearchModule,
-    FeatureCatalogModule,
     FeatureRecordModule,
     DataViewShareComponent,
     FeatureMapModule,
@@ -200,9 +198,11 @@ import { DatasetFeatureCatalogComponent } from './dataset/dataset-feature-catalo
       // does not have org routes but param is compulsory
       organizationRouteComponent: SearchPageComponent,
     }),
+    SearchRouterContainerDirective,
   ],
   providers: [
-    importProvidersFrom(FeatureAuthModule),
+    provideHttpClient(),
+    importProvidersFrom(FeatureSearchModule),
     provideGn4(),
     { provide: GEONETWORK_UI_VERSION, useValue: environment.version },
     {

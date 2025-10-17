@@ -16,6 +16,6 @@ export class MelMapViewComponent
   implements AfterViewInit
 {
   override selectLinkToDisplay(link: unknown): void {
-    this.selectedLinkIndex$.next(Number(link))
+    this.selectedLinkId$.next(Number(link))
   }
 }

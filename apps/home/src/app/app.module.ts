@@ -2,8 +2,6 @@ import { importProvidersFrom, isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { AppComponent } from './app.component'
 import {
-  FeatureAuthModule,
-  FeatureCatalogModule,
   FeatureSearchModule,
   LOGIN_URL,
   provideGn4,
@@ -11,6 +9,7 @@ import {
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
   Gn4PlatformService,
+  SearchStateContainerDirective,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -24,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { HomePageComponent } from './home/home-page/home-page.component'
+import { provideHttpClient } from '@angular/common/http'
 
 @NgModule({
   declarations: [AppComponent, HomeHeaderComponent, HomePageComponent],
@@ -31,8 +31,6 @@ import { HomePageComponent } from './home/home-page/home-page.component'
     MelModule,
     BrowserModule,
     BrowserAnimationsModule,
-    FeatureSearchModule,
-    FeatureCatalogModule,
     TranslateModule.forRoot({
       ...TRANSLATE_DEFAULT_CONFIG,
       loader: {
@@ -55,9 +53,11 @@ import { HomePageComponent } from './home/home-page/home-page.component'
       logOnly: !isDevMode(),
       connectInZone: true,
     }),
+    SearchStateContainerDirective,
   ],
   providers: [
-    importProvidersFrom(FeatureAuthModule),
+    provideHttpClient(),
+    importProvidersFrom(FeatureSearchModule),
     provideGn4(),
     provideRepositoryUrl(() => '/geonetwork/srv/api'),
     {
