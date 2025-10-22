@@ -1,6 +1,8 @@
 <div
   class="flex flex-col"
-  [ngClass]="selectedView === 'map' ? 'mb-52 sm:mb-72' : 'mb-72 sm:mb-80'"
+  [ngClass]="
+    (selectedView$ | async) === 'map' ? 'mb-52 sm:mb-72' : 'mb-72 sm:mb-80'
+  "
 >
   <div
     class="flex flex-col gap-8 overflow-visible sm:pt-5"
@@ -15,7 +17,7 @@
     </div>
     <mat-tab-group
       (selectedIndexChange)="onTabIndexChange($event)"
-      [selectedIndex]="displayMap ? 0 : 1"
+      [selectedIndex]="selectedIndex$ | async"
       animationDuration="200ms"
       mat-stretch-tabs="false"
       mat-align-tabs="start"
@@ -24,48 +26,55 @@
       <ng-template #dataViewShare>
         <gn-ui-data-view-share
           class="mb-6 px-4 hidden sm:block"
-          [viewType]="selectedView"
+          [viewType]="selectedView$ | async"
         ></gn-ui-data-view-share>
       </ng-template>
-      <mat-tab [disabled]="!displayMap">
+      <mat-tab [disabled]="!displayMap$">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.map</span>
         </ng-template>
         <div class="flex flex-row">
           <div class="w-full border-b border-white 3 z-index-10"></div>
         </div>
-        @if (displayMap) {
+        @if (displayMap$) {
           <div class="block" style="height: 500px">
             <mel-datahub-map-view
               [displaySource]="displaySource"
+              (linkSelected)="onSelectedLinkChange($event)"
+              [datavizConfig]="datavizConfig"
+              [selectedView]="selectedView$ | async"
             ></mel-datahub-map-view>
           </div>
           <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
-      <mat-tab [disabled]="!displayData">
+      <mat-tab [disabled]="!displayData$">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.data</span>
         </ng-template>
-        @if (displayData) {
+        @if (displayData$) {
           <div class="block">
             <mel-datahub-data-view
               mode="table"
               [displaySource]="displaySource"
+              [datavizConfig]="datavizConfig"
+              [selectedView]="selectedView$ | async"
             ></mel-datahub-data-view>
           </div>
           <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
-      <mat-tab [disabled]="!displayData">
+      <mat-tab [disabled]="!displayData$">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.chart</span>
         </ng-template>
-        @if (displayData) {
+        @if (displayData$) {
           <div class="block">
             <mel-datahub-data-view
               mode="chart"
               [displaySource]="displaySource"
+              [datavizConfig]="datavizConfig"
+              [selectedView]="selectedView$ | async"
             ></mel-datahub-data-view>
           </div>
           <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>

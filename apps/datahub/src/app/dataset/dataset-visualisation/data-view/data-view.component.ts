@@ -10,8 +10,6 @@ import { DatasetOnlineResource } from 'geonetwork-ui/libs/common/domain/src/lib/
 })
 export class MelDataViewComponent extends DataViewComponent {
   override selectLink(linkAsString: unknown): void {
-    const link: DatasetOnlineResource = JSON.parse(String(linkAsString))
-    link.url = new URL(link.url)
-    this.selectedLink$.next(link)
+    super.selectLink(String(linkAsString))
   }
 }

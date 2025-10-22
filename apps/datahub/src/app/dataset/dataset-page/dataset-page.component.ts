@@ -4,7 +4,7 @@ import {
   CatalogRecord,
   Keyword,
 } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
-import { combineLatest, map, startWith } from 'rxjs'
+import { combineLatest, filter, map, startWith } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-dataset-page',
@@ -50,6 +50,10 @@ export class DatasetPageComponent {
         //subscribing to metadata in order to refresh featureCatalog information
         featureCatalog?.featureTypes?.length > 0
     )
+  )
+  metadataUuid$ = this.facade.metadata$.pipe(
+    map((record) => record?.uniqueIdentifier),
+    filter(Boolean)
   )
   errorTypes = ErrorType
 
