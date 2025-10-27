@@ -52,7 +52,7 @@
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.data</span>
         </ng-template>
-        @if (displayData$) {
+        @if (displayData$ && datavizConfig) {
           <div class="block">
             <mel-datahub-data-view
               mode="table"
@@ -68,7 +68,7 @@
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.chart</span>
         </ng-template>
-        @if (displayData$) {
+        @if (displayData$ && datavizConfig) {
           <div class="block">
             <mel-datahub-data-view
               mode="chart"
