@@ -81,6 +81,20 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
 
   selectedIndex$ = new BehaviorSubject(0)
 
+  displayDatavizConfig$ = combineLatest([
+    this.platformServiceInterface.getMe(),
+    this.mdViewFacade.metadata$,
+  ]).pipe(
+    map(([userInfo, metadata]) => {
+      const isAdmin =
+        userInfo?.profile === 'Administrator' ||
+        userInfo?.username ===
+          (metadata?.extras?.['ownerInfo'] as string).split('|')[0]
+      const isPublished = metadata?.extras?.['isPublishedToAll']
+      return isAdmin && isPublished
+    })
+  )
+
   constructor(
     public mdViewFacade: MdViewFacade,
     private dataService: DataService,
@@ -124,7 +138,7 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
             view = 'table'
           }
 
-          const tab = this.views.indexOf(view) + 1 || 3
+          const tab = this.views.indexOf(view) || 2
 
           this.datavizConfig = {
             ...config,
