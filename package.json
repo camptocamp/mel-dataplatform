@@ -94,7 +94,8 @@
   },
   "overrides": {
     "geonetwork-ui": {
-      "@ngx-translate/core": "~16.0.4"
+      "@ngx-translate/core": "~16.0.4",
+      "@camptocamp/ogc-client": "1.2.1-dev.b1a75df"
     }
   }
 }
