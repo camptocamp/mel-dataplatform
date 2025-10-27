@@ -37,14 +37,14 @@
           [viewType]="selectedView$ | async"
         ></gn-ui-data-view-share>
       </ng-template>
-      <mat-tab [disabled]="!displayMap$">
+      <mat-tab [disabled]="(displayMap$ | async) === false">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.map</span>
         </ng-template>
         <div class="flex flex-row">
           <div class="w-full border-b border-white 3 z-index-10"></div>
         </div>
-        @if (displayMap$) {
+        @if (displayMap$ | async) {
           <div class="block" style="height: 500px">
             <mel-datahub-map-view
               [displaySource]="displaySource"
@@ -56,11 +56,11 @@
           <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
-      <mat-tab [disabled]="!displayData$">
+      <mat-tab [disabled]="(displayData$ | async) === false">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.data</span>
         </ng-template>
-        @if (displayData$ && datavizConfig) {
+        @if ((displayData$ | async) && datavizConfig) {
           <div class="block">
             <mel-datahub-data-view
               mode="table"
@@ -72,11 +72,11 @@
           <ng-container *ngTemplateOutlet="dataViewShare"></ng-container>
         }
       </mat-tab>
-      <mat-tab [disabled]="!displayData$">
+      <mat-tab [disabled]="(displayData$ | async) === false">
         <ng-template mat-tab-label>
           <span translate>mel.record.tab.chart</span>
         </ng-template>
-        @if (displayData$ && datavizConfig) {
+        @if ((displayData$ | async) && datavizConfig) {
           <div class="block">
             <mel-datahub-data-view
               mode="chart"
