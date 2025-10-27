@@ -40,25 +40,44 @@ import { DatavizConfigModel } from 'geonetwork-ui/libs/common/domain/src/lib/mod
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatasetVisualisationComponent implements OnInit, OnDestroy {
-  @Input() recordUuid: string
+  @Input()
+  set recordUuid(value: string) {
+    this.recordUuid$.next(value)
+  }
+  get recordUuid(): string {
+    return this.recordUuid$.value
+  }
+  private recordUuid$ = new BehaviorSubject<string>(null)
+
   sub = new Subscription()
   hasConfig = false
   savingStatus: 'idle' | 'saving' | 'saved' | 'error' = 'idle'
   displaySource = false
   views = ['map', 'table', 'chart']
+  datavizConfig = null
+
+  private readonly TAB_INDICES = {
+    map: 0,
+    table: 1,
+    chart: 2,
+    stac: 3,
+  } as const
+
+  private readonly VIEW_PRIORITY = ['map', 'table', 'stac'] as const
+
+  selectedLink$ = new BehaviorSubject<DatasetOnlineResource>(null)
+  selectedView$ = new BehaviorSubject(null)
+  selectedIndex$ = new BehaviorSubject(0)
+  // selectedTMSStyle$ = new BehaviorSubject(0)
+
   displayMap$ = combineLatest([
     this.mdViewFacade.mapApiLinks$,
     this.mdViewFacade.geoDataLinksWithGeometry$,
   ]).pipe(
-    map(([mapApiLinks, geoDataLinksWithGeometry]) => {
-      const display =
+    map(
+      ([mapApiLinks, geoDataLinksWithGeometry]) =>
         mapApiLinks?.length > 0 || geoDataLinksWithGeometry?.length > 0
-      if (!this.datavizConfig) {
-        this.selectedIndex$.next(display ? 0 : 1)
-        this.selectedView$.next(display ? 'map' : 'table')
-      }
-      return display
-    }),
+    ),
     startWith(false)
   )
 
@@ -72,14 +91,25 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
     )
   )
 
-  displayChart$ = getIsMobile().pipe(map((isMobile) => !isMobile))
+  isMobile$ = getIsMobile()
 
-  selectedLink$ = new BehaviorSubject<DatasetOnlineResource>(null)
+  config$ = this.recordUuid$.pipe(
+    switchMap((uuid) => {
+      if (!uuid) return of(null)
 
-  selectedView$ = new BehaviorSubject(null)
-  datavizConfig = null
-
-  selectedIndex$ = new BehaviorSubject(0)
+      return this.platformServiceInterface.getRecordAttachments(uuid).pipe(
+        map((attachments) =>
+          attachments.find((att) => att.fileName === 'datavizConfig.json')
+        ),
+        switchMap((configAttachment) =>
+          (configAttachment
+            ? this.platformServiceInterface.getFileContent(configAttachment.url)
+            : of(null)
+          ).pipe(map((config: DatavizConfigModel) => config))
+        )
+      )
+    })
+  )
 
   displayDatavizConfig$ = combineLatest([
     this.platformServiceInterface.getMe(),
@@ -103,57 +133,84 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.platformServiceInterface
-      .getRecordAttachments(this.recordUuid)
-      .pipe(
-        map((attachments) =>
-          attachments.find((att) => att.fileName === 'datavizConfig.json')
-        ),
-        switchMap((configAttachment) =>
-          (configAttachment
-            ? this.platformServiceInterface.getFileContent(configAttachment.url)
-            : of(null)
-          ).pipe(
-            switchMap((config: DatavizConfigModel) =>
-              this.displayMap$.pipe(
-                skip(1),
-                take(1),
-                map((displayMap) => ({ config, displayMap }))
-              )
+    this.sub.add(
+      combineLatest([
+        this.displayMap$,
+        this.displayData$,
+
+        this.config$,
+        this.isMobile$,
+      ])
+        .pipe(
+          take(1),
+          map(([displayMap, displayData, config, isMobile]) => {
+            const availableViews = this.getAvailableViews(
+              displayMap,
+              displayData,
+              isMobile
             )
-          )
+            const selectedView = this.determineView(config, availableViews)
+            return { selectedView, config }
+          })
         )
-      )
-      .subscribe(({ config, displayMap }) => {
-        let view
-        if (config) {
-          view =
-            window.innerWidth < 640
-              ? config.view === 'chart'
-                ? 'chart'
-                : 'map'
-              : config.view
+        .subscribe(({ selectedView, config }) => {
+          this.applyViewConfiguration(selectedView, config)
+        })
+    )
+  }
 
-          if (!displayMap && view === 'map') {
-            view = 'table'
-          }
+  private getAvailableViews(
+    displayMap: boolean,
+    displayData: boolean,
+    isMobile: boolean
+  ): Set<string> {
+    const views = new Set<string>()
+    if (displayMap) views.add('map')
+    if (displayData) {
+      views.add('table')
+      if (!isMobile) views.add('chart')
+    }
+    return views
+  }
 
-          const tab = this.views.indexOf(view) || 2
+  private determineView(
+    config: DatavizConfigModel | null,
+    availableViews: Set<string>
+  ): string | null {
+    if (config && availableViews.has(config.view)) {
+      return config.view
+    } else {
+      return this.getDefaultView(availableViews)
+    }
+  }
 
-          this.datavizConfig = {
-            ...config,
-            view,
-          }
-          this.selectedIndex$.next(tab)
-          this.selectedView$.next(view)
-          this.selectedLink$.next(config.source)
-        } else {
-          this.datavizConfig = {
-            link: this.selectedLink$.value,
-            view: this.selectedView$.value,
-          }
-        }
-      })
+  private getDefaultView(availableViews: Set<string>): string | null {
+    for (const view of this.VIEW_PRIORITY) {
+      if (availableViews.has(view)) {
+        return view
+      }
+    }
+    return null
+  }
+
+  private applyViewConfiguration(
+    view: string | null,
+    config: DatavizConfigModel | null
+  ): void {
+    const tabIndex = view ? this.TAB_INDICES[view] : this.TAB_INDICES.map
+
+    this.selectedView$.next(view)
+    this.selectedIndex$.next(tabIndex)
+
+    if (config) {
+      this.selectedLink$.next(config.source)
+      this.datavizConfig = { ...config, view }
+    } else {
+      this.datavizConfig = {
+        source: this.selectedLink$.value,
+        view: view,
+      }
+    }
   }
 
   ngOnDestroy() {
