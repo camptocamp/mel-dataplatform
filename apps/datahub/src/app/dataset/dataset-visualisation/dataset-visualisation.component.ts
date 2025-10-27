@@ -68,7 +68,7 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
   selectedLink$ = new BehaviorSubject<DatasetOnlineResource>(null)
   selectedView$ = new BehaviorSubject(null)
   selectedIndex$ = new BehaviorSubject(0)
-  // selectedTMSStyle$ = new BehaviorSubject(0)
+  selectedTMSStyle$ = new BehaviorSubject(0)
 
   displayMap$ = combineLatest([
     this.mdViewFacade.mapApiLinks$,
@@ -224,16 +224,16 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
         this.selectedView$,
         this.selectedLink$,
         this.mdViewFacade.chartConfig$,
-        // this.selectedTMSStyle$,
+        this.selectedTMSStyle$,
       ])
         .pipe(
           take(1),
-          map(([selectedView, selectedLink, chartConfig]) => {
+          map(([selectedView, selectedLink, chartConfig, selectedTMSStyle]) => {
             return this.dataService.writeConfigAsJSON({
               view: selectedView,
               source: selectedLink,
               chartConfig: selectedView === 'chart' ? chartConfig : null,
-              styleTMSIndex: null,
+              styleTMSIndex: selectedView === 'map' ? selectedTMSStyle : null,
             })
           }),
           switchMap((config) =>
