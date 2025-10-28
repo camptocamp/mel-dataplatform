@@ -3,7 +3,6 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
-  OnDestroy,
   OnInit,
 } from '@angular/core'
 import {
@@ -11,9 +10,7 @@ import {
   combineLatest,
   map,
   of,
-  skip,
   startWith,
-  Subscription,
   switchMap,
   take,
 } from 'rxjs'
@@ -39,7 +36,7 @@ import { DatavizConfigModel } from 'geonetwork-ui/libs/common/domain/src/lib/mod
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DatasetVisualisationComponent implements OnInit, OnDestroy {
+export class DatasetVisualisationComponent implements OnInit {
   @Input()
   set recordUuid(value: string) {
     this.recordUuid$.next(value)
@@ -49,7 +46,6 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
   }
   private recordUuid$ = new BehaviorSubject<string>(null)
 
-  sub = new Subscription()
   hasConfig = false
   savingStatus: 'idle' | 'saving' | 'saved' | 'error' = 'idle'
   displaySource = false
@@ -133,30 +129,28 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.sub.add(
-      combineLatest([
-        this.displayMap$,
-        this.displayData$,
+    combineLatest([
+      this.displayMap$,
+      this.displayData$,
 
-        this.config$,
-        this.isMobile$,
-      ])
-        .pipe(
-          take(1),
-          map(([displayMap, displayData, config, isMobile]) => {
-            const availableViews = this.getAvailableViews(
-              displayMap,
-              displayData,
-              isMobile
-            )
-            const selectedView = this.determineView(config, availableViews)
-            return { selectedView, config }
-          })
-        )
-        .subscribe(({ selectedView, config }) => {
-          this.applyViewConfiguration(selectedView, config)
+      this.config$,
+      this.isMobile$,
+    ])
+      .pipe(
+        take(1),
+        map(([displayMap, displayData, config, isMobile]) => {
+          const availableViews = this.getAvailableViews(
+            displayMap,
+            displayData,
+            isMobile
+          )
+          const selectedView = this.determineView(config, availableViews)
+          return { selectedView, config }
         })
-    )
+      )
+      .subscribe(({ selectedView, config }) => {
+        this.applyViewConfiguration(selectedView, config)
+      })
   }
 
   private getAvailableViews(
@@ -213,56 +207,50 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe()
-  }
-
   saveDatavizConfig() {
     this.savingStatus = 'saving'
-    this.sub.add(
-      combineLatest([
-        this.selectedView$,
-        this.selectedLink$,
-        this.mdViewFacade.chartConfig$,
-        this.selectedTMSStyle$,
-      ])
-        .pipe(
-          take(1),
-          map(([selectedView, selectedLink, chartConfig, selectedTMSStyle]) => {
-            return this.dataService.writeConfigAsJSON({
-              view: selectedView,
-              source: selectedLink,
-              chartConfig: selectedView === 'chart' ? chartConfig : null,
-              styleTMSIndex: selectedView === 'map' ? selectedTMSStyle : null,
-            })
-          }),
-          switchMap((config) =>
-            this.platformServiceInterface.attachFileToRecord(
-              this.recordUuid,
-              config,
-              true
-            )
+    combineLatest([
+      this.selectedView$,
+      this.selectedLink$,
+      this.mdViewFacade.chartConfig$,
+      this.selectedTMSStyle$,
+    ])
+      .pipe(
+        take(1),
+        map(([selectedView, selectedLink, chartConfig, selectedTMSStyle]) => {
+          return this.dataService.writeConfigAsJSON({
+            view: selectedView,
+            source: selectedLink,
+            chartConfig: selectedView === 'chart' ? chartConfig : null,
+            styleTMSIndex: selectedView === 'map' ? selectedTMSStyle : null,
+          })
+        }),
+        switchMap((config) =>
+          this.platformServiceInterface.attachFileToRecord(
+            this.recordUuid,
+            config,
+            true
           )
         )
-        .subscribe({
-          next: () => {
-            this.savingStatus = 'saved'
+      )
+      .subscribe({
+        next: () => {
+          this.savingStatus = 'saved'
+          this.cdr.detectChanges()
+          setTimeout(() => {
+            this.savingStatus = 'idle'
             this.cdr.detectChanges()
-            setTimeout(() => {
-              this.savingStatus = 'idle'
-              this.cdr.detectChanges()
-            }, 2000)
-          },
-          error: () => {
-            this.savingStatus = 'error'
+          }, 2000)
+        },
+        error: () => {
+          this.savingStatus = 'error'
+          this.cdr.detectChanges()
+          setTimeout(() => {
+            this.savingStatus = 'idle'
             this.cdr.detectChanges()
-            setTimeout(() => {
-              this.savingStatus = 'idle'
-              this.cdr.detectChanges()
-            }, 3000)
-          },
-        })
-    )
+          }, 3000)
+        },
+      })
   }
 
   onTabIndexChange(index: number): void {
