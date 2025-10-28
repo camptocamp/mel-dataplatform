@@ -42,6 +42,7 @@ import {
   SearchFeatureCatalogComponent,
   FeatureCatalogListComponent,
   SearchRouterContainerDirective,
+  SearchStateContainerDirective,
 } from 'geonetwork-ui'
 import {
   TranslateLoader,
@@ -199,6 +200,7 @@ import { provideHttpClient } from '@angular/common/http'
       organizationRouteComponent: SearchPageComponent,
     }),
     SearchRouterContainerDirective,
+    SearchStateContainerDirective,
   ],
   providers: [
     provideHttpClient(),
