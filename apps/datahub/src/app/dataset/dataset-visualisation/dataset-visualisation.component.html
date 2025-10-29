@@ -16,6 +16,7 @@
       <span class="w-5/6 leading-5" translate>mel.record.preview.subtitle</span>
     </div>
     <mel-datahub-button
+      data-cy="save-dataviz-config-btn"
       *ngIf="displayDatavizConfig$ | async"
       label="{{ 'record.metadata.preview.config.' + savingStatus | translate }}"
       [class.opacity-50]="savingStatus === 'saved'"
