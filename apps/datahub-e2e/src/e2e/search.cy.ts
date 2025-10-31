@@ -8,7 +8,7 @@ describe('search', () => {
     it('should display the number of result hits', () => {
       cy.get('[data-cy="searchResults"]').should(
         'include.text',
-        'Ensemble des données: 28'
+        'Ensemble des données: 29'
       )
     })
     it('should display the footer', () => {
