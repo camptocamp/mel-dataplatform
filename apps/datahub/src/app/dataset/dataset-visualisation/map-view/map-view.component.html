@@ -6,6 +6,7 @@
       extraBtnClass="!text-primary font-sans font-medium"
       [title]="'mel.record.preview.select' | translate"
       [choices]="dropdownChoices$ | async"
+      [selected]="_selectedChoice"
       (selectValue)="selectLinkToDisplay($event)"
     ></gn-ui-dropdown-selector>
     <mel-datahub-external-viewer-button
