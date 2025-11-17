@@ -40,7 +40,7 @@
     "@ngx-translate/core": "~16.0.4",
     "@nx/angular": "^20.4.2",
     "@vendure/ngx-translate-extract": "^9.0.3",
-    "geonetwork-ui": "2.7.3",
+    "geonetwork-ui": "2.7.4-dev.a83fc214d",
     "rxjs": "7.8.1",
     "tippy.js": "^6.3.7",
     "tslib": "^2.3.0",
