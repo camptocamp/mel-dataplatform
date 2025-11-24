@@ -66,6 +66,7 @@
             <mel-datahub-data-view
               mode="table"
               [displaySource]="displaySource"
+              (linkSelected)="onSelectedLinkChange($event)"
               [datavizConfig]="datavizConfig"
               [selectedView]="selectedView$ | async"
             ></mel-datahub-data-view>
@@ -82,6 +83,7 @@
             <mel-datahub-data-view
               mode="chart"
               [displaySource]="displaySource"
+              (linkSelected)="onSelectedLinkChange($event)"
               [datavizConfig]="datavizConfig"
               [selectedView]="selectedView$ | async"
             ></mel-datahub-data-view>
