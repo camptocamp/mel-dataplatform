@@ -8,6 +8,7 @@ import {
 } from '@angular/core'
 import {
   BehaviorSubject,
+  catchError,
   combineLatest,
   map,
   of,
@@ -95,31 +96,28 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
   config$ = this.recordUuid$.pipe(
     switchMap((uuid) => {
       if (!uuid) return of(null)
-
-      return this.platformServiceInterface.getRecordAttachments(uuid).pipe(
-        map((attachments) =>
-          attachments.find((att) => att.fileName === 'datavizConfig.json')
-        ),
-        switchMap((configAttachment) =>
-          (configAttachment
-            ? this.platformServiceInterface.getFileContent(configAttachment.url)
-            : of(null)
-          ).pipe(
-            map((config) => {
-              return config?.source && typeof config.source.url === 'string'
-                ? ({
-                    ...config,
-                    source: {
-                      ...config.source,
-                      url: new URL(config.source.url as string),
-                    },
-                  } as DatavizConfigModel)
-                : (config as DatavizConfigModel)
-            })
-          )
-        )
-      )
-    })
+      return this.platformServiceInterface.getRecordAttachments(uuid)
+    }),
+    map((attachments) => {
+      return attachments?.find((att) => att.fileName === 'datavizConfig.json')
+    }),
+    switchMap((configAttachment) => {
+      return configAttachment
+        ? this.platformServiceInterface.getFileContent(configAttachment.url)
+        : of(null)
+    }),
+    map((config) => {
+      return config?.source && typeof config.source.url === 'string'
+        ? ({
+            ...config,
+            source: {
+              ...config.source,
+              url: new URL(config.source.url as string),
+            },
+          } as DatavizConfigModel)
+        : (config as DatavizConfigModel)
+    }),
+    catchError(() => of(null))
   )
 
   displayDatavizConfig$ = combineLatest([
