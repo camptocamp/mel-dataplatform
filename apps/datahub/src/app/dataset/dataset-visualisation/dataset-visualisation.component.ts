@@ -3,14 +3,17 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  OnDestroy,
   OnInit,
 } from '@angular/core'
 import {
   BehaviorSubject,
+  catchError,
   combineLatest,
   map,
   of,
   startWith,
+  Subscription,
   switchMap,
   take,
 } from 'rxjs'
@@ -36,7 +39,7 @@ import { DatavizConfigModel } from 'geonetwork-ui/libs/common/domain/src/lib/mod
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DatasetVisualisationComponent implements OnInit {
+export class DatasetVisualisationComponent implements OnInit, OnDestroy {
   @Input()
   set recordUuid(value: string) {
     this.recordUuid$.next(value)
@@ -61,6 +64,7 @@ export class DatasetVisualisationComponent implements OnInit {
 
   private readonly VIEW_PRIORITY = ['map', 'table', 'stac'] as const
 
+  subscription: Subscription
   selectedLink$ = new BehaviorSubject<DatasetOnlineResource>(null)
   selectedView$ = new BehaviorSubject(null)
   selectedIndex$ = new BehaviorSubject(0)
@@ -92,19 +96,28 @@ export class DatasetVisualisationComponent implements OnInit {
   config$ = this.recordUuid$.pipe(
     switchMap((uuid) => {
       if (!uuid) return of(null)
-
-      return this.platformServiceInterface.getRecordAttachments(uuid).pipe(
-        map((attachments) =>
-          attachments.find((att) => att.fileName === 'datavizConfig.json')
-        ),
-        switchMap((configAttachment) =>
-          (configAttachment
-            ? this.platformServiceInterface.getFileContent(configAttachment.url)
-            : of(null)
-          ).pipe(map((config: DatavizConfigModel) => config))
-        )
-      )
-    })
+      return this.platformServiceInterface.getRecordAttachments(uuid)
+    }),
+    map((attachments) => {
+      return attachments?.find((att) => att.fileName === 'datavizConfig.json')
+    }),
+    switchMap((configAttachment) => {
+      return configAttachment
+        ? this.platformServiceInterface.getFileContent(configAttachment.url)
+        : of(null)
+    }),
+    map((config) => {
+      return config?.source && typeof config.source.url === 'string'
+        ? ({
+            ...config,
+            source: {
+              ...config.source,
+              url: new URL(config.source.url as string),
+            },
+          } as DatavizConfigModel)
+        : (config as DatavizConfigModel)
+    }),
+    catchError(() => of(null))
   )
 
   displayDatavizConfig$ = combineLatest([
@@ -129,15 +142,13 @@ export class DatasetVisualisationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    combineLatest([
+    this.subscription = combineLatest([
       this.displayMap$,
       this.displayData$,
-
       this.config$,
       this.isMobile$,
     ])
       .pipe(
-        take(1),
         map(([displayMap, displayData, config, isMobile]) => {
           const availableViews = this.getAvailableViews(
             displayMap,
@@ -151,6 +162,12 @@ export class DatasetVisualisationComponent implements OnInit {
       .subscribe(({ selectedView, config }) => {
         this.applyViewConfiguration(selectedView, config)
       })
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe()
+    }
   }
 
   private getAvailableViews(
@@ -256,9 +273,6 @@ export class DatasetVisualisationComponent implements OnInit {
   onTabIndexChange(index: number): void {
     const view = this.views[index]
     this.selectedView$.next(view)
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'))
-    }, 0)
   }
 
   onSelectedLinkChange(link: DatasetOnlineResource) {

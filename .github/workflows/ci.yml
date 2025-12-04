@@ -2,6 +2,7 @@ name: CI
 
 env:
   NODE_VERSION: 20.18.1
+  GN_UI_VERSION: 2.7.x
 
 on:
   push:
@@ -86,6 +87,7 @@ jobs:
         with:
           repository: geonetwork/geonetwork-ui
           path: 'backend/geonetwork-ui'
+          ref: ${{ env.GN_UI_VERSION }}
       - name: Build the gn-ui backend
         run: sudo docker compose -f backend/geonetwork-ui/support-services/docker-compose.yml up -d init
 

@@ -23,6 +23,7 @@ declare namespace Cypress {
     interceptSearchAggr(aggr: string): void
     addTranslationKey(): void
     removeTranslationKey(): void
+    deleteAttachment(recordId: string, filename: string): void
   }
 }
 
@@ -210,3 +211,22 @@ Cypress.Commands.add('removeTranslationKey', () => {
       })
     })
 })
+
+Cypress.Commands.add(
+  'deleteAttachment',
+  (recordId: string, filename: string) => {
+    cy.getCookie('XSRF-TOKEN')
+      .its('value')
+      .then(function (token) {
+        cy.request({
+          url: `/geonetwork/srv/api/records/${recordId}/attachments/${filename}`,
+          method: 'DELETE',
+          headers: {
+            accept: 'application/json',
+            'X-XSRF-TOKEN': token,
+          },
+          failOnStatusCode: false,
+        })
+      })
+  }
+)
