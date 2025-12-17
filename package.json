@@ -1,6 +1,6 @@
 {
   "name": "@mel-dataplatform/source",
-  "version": "1.1.9",
+  "version": "1.2.0-dev",
   "license": "GPL-3.0",
   "scripts": {
     "start": "nx serve mel-datahub",
