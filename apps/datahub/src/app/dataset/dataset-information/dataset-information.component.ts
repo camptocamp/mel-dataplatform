@@ -37,11 +37,11 @@ export class DatasetInformationComponent {
   }
 
   get displayCategories() {
-    const categoryKeywords = this.record?.keywords?.filter(
-      (keyword) => keyword.thesaurus?.name === 'Catégories'
+    return this.record?.keywords?.filter(
+      (keyword) =>
+        keyword.thesaurus?.id ===
+        'geonetwork.thesaurus.external.theme.thesaurus_mot_cle_thematique_categories'
     )
-
-    return categoryKeywords
   }
 
   get isDevEnv() {
