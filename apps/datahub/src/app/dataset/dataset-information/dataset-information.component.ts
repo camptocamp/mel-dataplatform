@@ -47,7 +47,7 @@ export class DatasetInformationComponent {
   get isDevEnv() {
     return (
       window.location.hostname ===
-      'mel.integration.apps.gs-fr-prod.camptocamp.com'
+      'mel-integration.apps.prod.gs-platform-fr.camptocamp.cloud'
     )
   }
 
