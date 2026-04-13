@@ -39,7 +39,7 @@
     "@ngrx/store-devtools": "18.1.1",
     "@ngx-translate/core": "~16.0.4",
     "@nx/angular": "21.0.0",
-    "@vendure/ngx-translate-extract": "^9.0.3",
+    "@vendure/ngx-translate-extract": "~9.4.2",
     "geonetwork-ui": "2.7.5-dev.efd24f2bd",
     "rxjs": "7.8.1",
     "tippy.js": "^6.3.7",
