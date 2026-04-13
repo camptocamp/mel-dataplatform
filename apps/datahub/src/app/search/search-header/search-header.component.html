@@ -1,15 +1,16 @@
 <div class="bg-beige relative">
   <div class="pt-[68px] mel-container-lg mx-auto">
-    <div
-      class="mb-8 top-0"
-      *ngIf="translatedBannerMessage$ | async as bannerMessage"
-    >
-      <mel-datahub-application-banner
-        [message]="bannerMessage"
-        class="mel-container-banner absolute top-0 left-0 right-0"
-        [type]="bannerType"
-      ></mel-datahub-application-banner>
-    </div>
+    @if (translatedBannerMessage$ | async; as bannerMessage) {
+      <div
+        class="mb-8 top-0"
+        >
+        <mel-datahub-application-banner
+          [message]="bannerMessage"
+          class="mel-container-banner absolute top-0 left-0 right-0"
+          [type]="bannerType"
+        ></mel-datahub-application-banner>
+      </div>
+    }
     <div class="px-5">
       <h1 class="flex mel-page-title md:mb-12" translate="">
         mel.datahub.search.title
@@ -18,9 +19,9 @@
       <div class="mel-title-line"></div>
       <div class="mel-section-title">
         {{
-          (hasFavorites$ | async)
-            ? ('mel.searchpage.subtitle.favorites' | translate)
-            : ('mel.homepage.public.datasets' | translate)
+        (hasFavorites$ | async)
+        ? ('mel.searchpage.subtitle.favorites' | translate)
+        : ('mel.homepage.public.datasets' | translate)
         }}
       </div>
     </div>
