@@ -1,13 +1,32 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core'
-import { MdViewFacade } from 'geonetwork-ui'
-import { DatasetServiceDistribution } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
+import { matCloseOutline } from '@ng-icons/material-icons/outline'
+import { TranslateDirective } from '@ngx-translate/core'
+import { DatasetServiceDistribution, MdViewFacade } from 'geonetwork-ui'
+import { MelCarouselComponent } from 'libs/mel/src/lib/carousel/carousel.component'
 import { Observable } from 'rxjs'
+import { MelApiCardComponent } from './api-card/api-card.component'
+import { ApiFormComponent } from './api-form/api-form.component'
 
 @Component({
   selector: 'mel-datahub-dataset-apis',
   templateUrl: './dataset-apis.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    NgIconComponent,
+    TranslateDirective,
+    MelCarouselComponent,
+    MelApiCardComponent,
+    ApiFormComponent,
+  ],
+  providers: [
+    provideIcons({
+      matCloseOutline,
+    }),
+  ],
 })
 export class DatasetApisComponent implements OnInit {
   maxHeight = '0px'

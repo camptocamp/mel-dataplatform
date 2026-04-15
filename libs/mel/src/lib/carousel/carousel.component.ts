@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common'
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -10,6 +11,7 @@ import { CarouselComponent } from 'geonetwork-ui'
   templateUrl: './carousel.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
 })
 export class MelCarouselComponent
   extends CarouselComponent

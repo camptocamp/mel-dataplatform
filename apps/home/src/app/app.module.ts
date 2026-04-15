@@ -1,34 +1,36 @@
+import { provideHttpClient } from '@angular/common/http'
 import { importProvidersFrom, isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
-import { AppComponent } from './app.component'
-import {
-  FeatureSearchModule,
-  LOGIN_URL,
-  provideGn4,
-  provideRepositoryUrl,
-  ThemeService,
-  TRANSLATE_DEFAULT_CONFIG,
-  Gn4PlatformService,
-  SearchStateContainerDirective,
-} from 'geonetwork-ui'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MelEmbeddedTranslateLoader, MelModule } from '@mel-dataplatform/mel'
+import { EffectsModule } from '@ngrx/effects'
+import { StoreModule } from '@ngrx/store'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import {
   TranslateLoader,
   TranslateModule,
   TranslateService,
 } from '@ngx-translate/core'
-import { StoreModule } from '@ngrx/store'
-import { EffectsModule } from '@ngrx/effects'
-import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MelModule, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
+import {
+  FeatureSearchModule,
+  Gn4PlatformService,
+  LOGIN_URL,
+  provideGn4,
+  provideRepositoryUrl,
+  SearchStateContainerDirective,
+  ThemeService,
+  TRANSLATE_DEFAULT_CONFIG,
+} from 'geonetwork-ui'
+import { AppComponent } from './app.component'
 import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { HomePageComponent } from './home/home-page/home-page.component'
-import { provideHttpClient } from '@angular/common/http'
 
 @NgModule({
-  declarations: [AppComponent, HomeHeaderComponent, HomePageComponent],
+  declarations: [AppComponent],
   imports: [
     MelModule,
+    HomeHeaderComponent,
+    HomePageComponent,
     BrowserModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({

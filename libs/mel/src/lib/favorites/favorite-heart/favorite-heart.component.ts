@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,6 +14,7 @@ import { HeartToggleComponent } from '../heart-toggle/heart-toggle.component'
   templateUrl: './favorite-heart.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, HeartToggleComponent],
 })
 export class FavoriteHeartComponent extends FavoriteStarComponent {
   @ViewChild(HeartToggleComponent, { read: ElementRef })

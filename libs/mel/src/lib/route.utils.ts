@@ -1,4 +1,4 @@
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import { CatalogRecord } from 'geonetwork-ui'
 
 export const DATAHUB_ROOT = '/catalogue'
 export const DATAHUB_ROUTE_DATASET = 'dataset'

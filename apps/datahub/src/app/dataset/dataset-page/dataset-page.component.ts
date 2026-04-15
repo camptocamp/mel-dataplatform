@@ -1,16 +1,38 @@
+import { CommonModule } from '@angular/common'
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { ErrorType, MdViewFacade, RouterFacade } from 'geonetwork-ui'
 import {
   CatalogRecord,
+  ErrorComponent,
+  ErrorType,
   Keyword,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+  MdViewFacade,
+  RouterFacade,
+} from 'geonetwork-ui'
+import { ResultsCardLastCreatedComponent } from 'libs/mel/src/lib/results-list-item/results-card-last-created/results-card-last-created.component'
 import { combineLatest, filter, map, startWith } from 'rxjs'
+import { DatasetApisComponent } from '../dataset-apis/dataset-apis.component'
+import { DatasetFeatureCatalogComponent } from '../dataset-feature-catalog/dataset-feature-catalog.component'
+import { DatasetHeaderComponent } from '../dataset-header/dataset-header.component'
+import { DatasetLinksComponent } from '../dataset-links/dataset-links.component'
+import { DatasetVisualisationComponent } from '../dataset-visualisation/dataset-visualisation.component'
+import { TranslateDirective } from '@ngx-translate/core'
 
 @Component({
   selector: 'mel-datahub-dataset-page',
   templateUrl: './dataset-page.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    TranslateDirective,
+    ErrorComponent,
+    DatasetHeaderComponent,
+    DatasetVisualisationComponent,
+    DatasetLinksComponent,
+    DatasetApisComponent,
+    DatasetFeatureCatalogComponent,
+    ResultsCardLastCreatedComponent,
+  ],
 })
 export class DatasetPageComponent {
   displayMap$ = combineLatest([

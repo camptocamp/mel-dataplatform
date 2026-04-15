@@ -3,7 +3,7 @@
   class="overflow-hidden transition-[max-height] duration-300 mb-8 relative"
   [ngClass]="isExpanded || !showToggleButton ? 'ease-in' : 'ease-out'"
   [style.maxHeight]="maxHeight"
-  >
+>
   <ng-content></ng-content>
   @if (showToggleButton && !isExpanded) {
     <div

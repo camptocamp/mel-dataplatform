@@ -4,18 +4,20 @@ import {
   Input,
   Optional,
 } from '@angular/core'
-import { TranslateService } from '@ngx-translate/core'
-import { RouterFacade } from 'geonetwork-ui'
+import { NgIconComponent } from '@ng-icons/core'
 import {
-  CatalogRecord,
-  Keyword,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+  TranslateDirective,
+  TranslatePipe,
+  TranslateService,
+} from '@ngx-translate/core'
+import { CatalogRecord, Keyword, RouterFacade } from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-dataset-information',
   templateUrl: './dataset-information.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIconComponent, TranslateDirective, TranslatePipe],
 })
 export class DatasetInformationComponent {
   @Input() record: Partial<CatalogRecord>

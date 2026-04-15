@@ -1,20 +1,18 @@
 import { Component, Input, OnDestroy, OnInit, Optional } from '@angular/core'
 import { Store } from '@ngrx/store'
 import {
+  CatalogRecord,
   FIELDS_BRIEF,
   FavoritesService,
+  FieldFilters,
+  Keyword,
   RouterFacade,
   SearchFacade,
   SearchService,
   SearchState,
 } from 'geonetwork-ui'
-import {
-  CatalogRecord,
-  Keyword,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
-import { FieldFilters } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
 
 @Component({
   selector: 'mel-datahub-results-list',
