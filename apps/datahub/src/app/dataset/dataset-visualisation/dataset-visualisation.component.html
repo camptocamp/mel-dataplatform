@@ -3,11 +3,11 @@
   [ngClass]="
     (selectedView$ | async) === 'map' ? 'mb-52 sm:mb-72' : 'mb-72 sm:mb-80'
   "
-  >
+>
   <div
     class="flex flex-col gap-8 overflow-visible sm:pt-5"
     style="height: 512px"
-    >
+  >
     <div class="flex flex-col">
       <div class="pb-2 gap-1">
         <div class="inline-flex bg-primary h-1 w-16"></div>
@@ -18,11 +18,13 @@
     @if (displayDatavizConfig$ | async) {
       <mel-datahub-button
         data-cy="save-dataviz-config-btn"
-        label="{{ 'record.metadata.preview.config.' + savingStatus | translate }}"
+        label="{{
+          'record.metadata.preview.config.' + savingStatus | translate
+        }}"
         [class.opacity-50]="savingStatus === 'saved'"
         (click)="saveDatavizConfig()"
         [disabled]="savingStatus === 'saving'"
-        >
+      >
       </mel-datahub-button>
     }
     <mat-tab-group
@@ -32,7 +34,7 @@
       mat-stretch-tabs="false"
       mat-align-tabs="start"
       [disableRipple]="true"
-      >
+    >
       <ng-template #dataViewShare>
         <gn-ui-data-view-share
           class="mb-6 px-4 hidden sm:block"

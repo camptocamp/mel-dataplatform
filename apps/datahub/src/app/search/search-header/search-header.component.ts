@@ -1,20 +1,31 @@
+import { CommonModule } from '@angular/common'
 import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
+  CatalogRecord,
   FavoritesService,
+  Gn4PlatformService,
   RouterFacade,
   SearchFacade,
   SearchService,
-  Gn4PlatformService,
+  SortByField,
 } from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
-import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
-import { map, distinctUntilChanged } from 'rxjs'
+import { MelApplicationBannerComponent } from 'libs/mel/src/lib/application-banner/application-banner.component'
+import { ResultsListCarouselComponent } from 'libs/mel/src/lib/results-list/results-list-carousel/results-list-carousel.component'
+import { distinctUntilChanged, map } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-search-header',
   templateUrl: './search-header.component.html',
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    TranslateDirective,
+    TranslatePipe,
+    MelApplicationBannerComponent,
+    ResultsListCarouselComponent,
+  ],
 })
 export class SearchHeaderComponent {
   private previousFilters: any = {}
