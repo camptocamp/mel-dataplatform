@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -6,6 +7,18 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core'
+import { MatTab, MatTabGroup } from '@angular/material/tabs'
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
+import {
+  DataService,
+  DatasetOnlineResource,
+  DataViewShareComponent,
+  DatavizConfigModel,
+  getIsMobile,
+  MdViewFacade,
+  PlatformServiceInterface,
+} from 'geonetwork-ui'
+import { MelButtonComponent } from 'libs/mel/src/lib/button/button.component'
 import {
   BehaviorSubject,
   catchError,
@@ -17,14 +30,8 @@ import {
   switchMap,
   take,
 } from 'rxjs'
-import {
-  DataService,
-  getIsMobile,
-  MdViewFacade,
-  PlatformServiceInterface,
-} from 'geonetwork-ui'
-import { DatasetOnlineResource } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
-import { DatavizConfigModel } from 'geonetwork-ui/libs/common/domain/src/lib/model/dataviz/dataviz-configuration.model'
+import { MelDataViewComponent } from './data-view/data-view.component'
+import { MelMapViewComponent } from './map-view/map-view.component'
 
 @Component({
   selector: 'mel-datahub-dataset-visualisation',
@@ -38,6 +45,17 @@ import { DatavizConfigModel } from 'geonetwork-ui/libs/common/domain/src/lib/mod
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    MatTabGroup,
+    MatTab,
+    TranslateDirective,
+    TranslatePipe,
+    DataViewShareComponent,
+    MelButtonComponent,
+    MelMapViewComponent,
+    MelDataViewComponent,
+  ],
 })
 export class DatasetVisualisationComponent implements OnInit, OnDestroy {
   @Input()

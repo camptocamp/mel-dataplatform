@@ -1,6 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
-import { RouterFacade, SearchService } from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
+import {
+  CatalogRecord,
+  ContentGhostComponent,
+  MarkdownParserComponent,
+  RouterFacade,
+  SearchService,
+} from 'geonetwork-ui'
+import { MelButtonComponent } from 'libs/mel/src/lib/button/button.component'
+import { FavoriteHeartComponent } from 'libs/mel/src/lib/favorites/favorite-heart/favorite-heart.component'
+import { TextExpandComponent } from 'libs/mel/src/lib/text-expand/text-expand.component'
+import { DatasetInformationComponent } from '../dataset-information/dataset-information.component'
 
 @Component({
   selector: 'mel-datahub-dataset-header',
@@ -11,6 +21,16 @@ import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/re
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ContentGhostComponent,
+    TranslateDirective,
+    TranslatePipe,
+    MarkdownParserComponent,
+    MelButtonComponent,
+    FavoriteHeartComponent,
+    TextExpandComponent,
+    DatasetInformationComponent,
+  ],
 })
 export class DatasetHeaderComponent {
   @Input() record: Partial<CatalogRecord>

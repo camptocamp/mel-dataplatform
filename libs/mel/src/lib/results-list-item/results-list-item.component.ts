@@ -1,8 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import {
-  CatalogRecord,
-  Keyword,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+import { CatalogRecord, Keyword } from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-results-list-item',

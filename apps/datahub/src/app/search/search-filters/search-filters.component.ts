@@ -1,7 +1,12 @@
+import { SlicePipe } from '@angular/common'
 import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { marker } from '@biesbjerg/ngx-translate-extract-marker'
-import { RouterFacade } from 'geonetwork-ui'
 import { getOptionalSearchConfig } from '@mel-dataplatform/mel'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
+import { matExpandLess, matExpandMore } from '@ng-icons/material-icons/baseline'
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
+import { RouterFacade } from 'geonetwork-ui'
+import { MelFilterDropdownComponent } from './filter-dropdown/filter-dropdown.component'
 
 marker('mel.datahub.search.filters.topic')
 marker('mel.datahub.search.filters.categoryKeyword')
@@ -25,6 +30,19 @@ marker('mel.datahub.search.filters.revisionYear')
   templateUrl: './search-filters.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    SlicePipe,
+    NgIconComponent,
+    TranslateDirective,
+    TranslatePipe,
+    MelFilterDropdownComponent,
+  ],
+  providers: [
+    provideIcons({
+      matExpandLess,
+      matExpandMore,
+    }),
+  ],
 })
 export class SearchFiltersComponent {
   constructor(private routerFacade: RouterFacade) {}

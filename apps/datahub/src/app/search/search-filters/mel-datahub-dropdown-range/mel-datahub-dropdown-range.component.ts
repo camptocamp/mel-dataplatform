@@ -12,13 +12,40 @@ import {
   Output,
   ViewChild,
 } from '@angular/core'
-import { Choice, propagateToDocumentOnly } from 'geonetwork-ui'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
+import {
+  matClose,
+  matExpandLess,
+  matExpandMore,
+} from '@ng-icons/material-icons/baseline'
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
+import {
+  Choice,
+  propagateToDocumentOnly,
+  TextInputComponent,
+} from 'geonetwork-ui'
+import { MelButtonComponent } from 'libs/mel/src/lib/button/button.component'
 
 @Component({
   selector: 'mel-datahub-dropdown-range',
   templateUrl: './mel-datahub-dropdown-range.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CdkOverlayOrigin,
+    NgIconComponent,
+    TranslateDirective,
+    TranslatePipe,
+    TextInputComponent,
+    MelButtonComponent,
+  ],
+  providers: [
+    provideIcons({
+      matClose,
+      matExpandLess,
+      matExpandMore,
+    }),
+  ],
 })
 export class MelDatahubDropdownRangeComponent {
   lowValue = ''
