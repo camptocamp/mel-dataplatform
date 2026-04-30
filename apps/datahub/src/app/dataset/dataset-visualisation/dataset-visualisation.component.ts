@@ -8,6 +8,7 @@ import {
   OnInit,
 } from '@angular/core'
 import { MatTabsModule } from '@angular/material/tabs'
+import { MelButtonComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
   DataService,
@@ -18,7 +19,6 @@ import {
   MdViewFacade,
   PlatformServiceInterface,
 } from 'geonetwork-ui'
-import { MelButtonComponent } from 'libs/mel/src/lib/button/button.component'
 import {
   BehaviorSubject,
   catchError,

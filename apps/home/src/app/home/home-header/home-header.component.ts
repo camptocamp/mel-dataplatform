@@ -5,6 +5,10 @@ import {
   DATAHUB_ROUTE_SEARCH,
   goFromHomeToRecord,
   goFromHomeToSearch,
+  MelApplicationBannerComponent,
+  MelButtonComponent,
+  MelFuzzySearchComponent,
+  ResultsListCarouselComponent,
 } from '@mel-dataplatform/mel'
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
@@ -13,10 +17,6 @@ import {
   SearchService,
   SortByField,
 } from 'geonetwork-ui'
-import { MelApplicationBannerComponent } from 'libs/mel/src/lib/application-banner/application-banner.component'
-import { MelButtonComponent } from 'libs/mel/src/lib/button/button.component'
-import { MelFuzzySearchComponent } from 'libs/mel/src/lib/fuzzy-search/fuzzy-search.component'
-import { ResultsListCarouselComponent } from 'libs/mel/src/lib/results-list/results-list-carousel/results-list-carousel.component'
 
 @Component({
   selector: 'mel-datahub-home-header',

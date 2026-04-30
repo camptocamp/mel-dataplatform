@@ -4,10 +4,10 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core'
 import { matCloseOutline } from '@ng-icons/material-icons/outline'
 import { TranslateDirective } from '@ngx-translate/core'
 import { DatasetServiceDistribution, MdViewFacade } from 'geonetwork-ui'
-import { MelCarouselComponent } from 'libs/mel/src/lib/carousel/carousel.component'
 import { Observable } from 'rxjs'
 import { MelApiCardComponent } from './api-card/api-card.component'
 import { ApiFormComponent } from './api-form/api-form.component'
+import { MelCarouselComponent } from '@mel-dataplatform/mel'
 
 @Component({
   selector: 'mel-datahub-dataset-apis',

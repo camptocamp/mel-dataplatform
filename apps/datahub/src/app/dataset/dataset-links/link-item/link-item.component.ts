@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
-import { formatColors } from '@mel-dataplatform/mel'
+import { formatColors, MelButtonComponent } from '@mel-dataplatform/mel'
 import { DownloadItemComponent } from 'geonetwork-ui'
-import { MelButtonComponent } from 'libs/mel/src/lib/button/button.component'
 
 @Component({
   selector: 'mel-datahub-link-item',

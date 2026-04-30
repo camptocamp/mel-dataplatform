@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { FavoriteHeartComponent, MelButtonComponent, TextExpandComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
   CatalogRecord,
@@ -7,9 +8,6 @@ import {
   RouterFacade,
   SearchService,
 } from 'geonetwork-ui'
-import { MelButtonComponent } from 'libs/mel/src/lib/button/button.component'
-import { FavoriteHeartComponent } from 'libs/mel/src/lib/favorites/favorite-heart/favorite-heart.component'
-import { TextExpandComponent } from 'libs/mel/src/lib/text-expand/text-expand.component'
 import { DatasetInformationComponent } from '../dataset-information/dataset-information.component'
 
 @Component({

@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
+import { MelPaginationButtonsComponent, ResultsListGridComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective } from '@ngx-translate/core'
 import {
   SearchFacade,
   SearchService,
   SpinningLoaderComponent,
 } from 'geonetwork-ui'
-import { MelPaginationButtonsComponent } from 'libs/mel/src/lib/pagination-buttons/pagination-buttons.component'
-import { ResultsListGridComponent } from 'libs/mel/src/lib/results-list/results-list-grid/results-list-grid.component'
 
 @Component({
   selector: 'mel-datahub-search-results',

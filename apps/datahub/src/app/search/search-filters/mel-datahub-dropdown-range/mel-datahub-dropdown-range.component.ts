@@ -13,6 +13,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core'
+import { MelButtonComponent } from '@mel-dataplatform/mel'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
 import {
   matClose,
@@ -25,7 +26,6 @@ import {
   propagateToDocumentOnly,
   TextInputComponent,
 } from 'geonetwork-ui'
-import { MelButtonComponent } from 'libs/mel/src/lib/button/button.component'
 
 @Component({
   selector: 'mel-datahub-dropdown-range',

@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   Component,
 } from '@angular/core'
+import { MelExternalViewerButtonComponent } from '@mel-dataplatform/mel'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
 import { matClose } from '@ng-icons/material-icons/baseline'
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
@@ -15,7 +16,6 @@ import {
   MapViewComponent,
   PopupAlertComponent,
 } from 'geonetwork-ui'
-import { MelExternalViewerButtonComponent } from 'libs/mel/src/lib/external-viewer-button/external-viewer-button.component'
 
 @Component({
   selector: 'mel-datahub-map-view',

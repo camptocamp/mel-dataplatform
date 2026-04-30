@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { CatalogRecord, RouterFacade } from 'geonetwork-ui'
-import { MelFuzzySearchComponent } from 'libs/mel/src/lib/fuzzy-search/fuzzy-search.component'
-import { SearchFiltersComponent } from '../search-filters/search-filters.component'
+import { MelFuzzySearchComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective } from '@ngx-translate/core'
+import { CatalogRecord, RouterFacade } from 'geonetwork-ui'
+import { SearchFiltersComponent } from '../search-filters/search-filters.component'
 
 @Component({
   selector: 'mel-datahub-search-form',

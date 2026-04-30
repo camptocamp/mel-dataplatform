@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
+import { MelApplicationBannerComponent, ResultsListCarouselComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
   CatalogRecord,
@@ -11,8 +12,6 @@ import {
   SearchStateContainerDirective,
   SortByField,
 } from 'geonetwork-ui'
-import { MelApplicationBannerComponent } from 'libs/mel/src/lib/application-banner/application-banner.component'
-import { ResultsListCarouselComponent } from 'libs/mel/src/lib/results-list/results-list-carousel/results-list-carousel.component'
 import { distinctUntilChanged, map } from 'rxjs'
 
 @Component({
