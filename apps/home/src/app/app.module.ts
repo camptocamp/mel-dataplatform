@@ -2,7 +2,7 @@ import { provideHttpClient } from '@angular/common/http'
 import { importProvidersFrom, isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MelEmbeddedTranslateLoader, MelModule } from '@mel-dataplatform/mel'
+import { MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
@@ -21,16 +21,13 @@ import {
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
 } from 'geonetwork-ui'
+import { MelDatahubFooterComponent } from 'libs/mel/src/lib/footer/mel-datahub-footer.component'
 import { AppComponent } from './app.component'
-import { HomeHeaderComponent } from './home/home-header/home-header.component'
 import { HomePageComponent } from './home/home-page/home-page.component'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    MelModule,
-    HomeHeaderComponent,
-    HomePageComponent,
     BrowserModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({
@@ -56,6 +53,8 @@ import { HomePageComponent } from './home/home-page/home-page.component'
       connectInZone: true,
     }),
     SearchStateContainerDirective,
+    HomePageComponent,
+    MelDatahubFooterComponent,
   ],
   providers: [
     provideHttpClient(),
