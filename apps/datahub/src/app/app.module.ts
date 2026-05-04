@@ -1,5 +1,10 @@
 import { provideHttpClient } from '@angular/common/http'
-import { importProvidersFrom, isDevMode, NgModule } from '@angular/core'
+import {
+  importProvidersFrom,
+  isDevMode,
+  NgModule,
+  provideNgReflectAttributes,
+} from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule } from '@angular/router'
@@ -84,6 +89,7 @@ import { MelFieldsService } from './search/service/fields.service'
     MelDatahubFooterComponent,
   ],
   providers: [
+    !environment.production && provideNgReflectAttributes(),
     provideHttpClient(),
     importProvidersFrom(FeatureSearchModule),
     provideGn4(),
