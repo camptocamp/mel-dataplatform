@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core'
 import {
   DataService,
   DatasetDownloadDistribution,
   DatasetServiceDistribution,
-  MdViewFacade,
   getFileFormat,
   getLinkPriority,
+  MdViewFacade,
 } from 'geonetwork-ui'
 import { catchError, combineLatest, map, of, switchMap } from 'rxjs'
 import { MelLinksListComponent } from './links-list/links-list.component'
@@ -19,11 +19,10 @@ import { MelLinksListComponent } from './links-list/links-list.component'
   imports: [CommonModule, MelLinksListComponent],
 })
 export class DatasetLinksComponent {
+  public facade: MdViewFacade = inject(MdViewFacade)
+  private dataService: DataService = inject(DataService)
+
   @Input() section: string
-  constructor(
-    public facade: MdViewFacade,
-    private dataService: DataService
-  ) {}
 
   error: string = null
 

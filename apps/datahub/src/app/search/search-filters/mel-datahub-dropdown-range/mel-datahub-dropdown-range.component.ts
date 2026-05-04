@@ -9,6 +9,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   Output,
   ViewChild,
@@ -49,6 +50,8 @@ import {
   ],
 })
 export class MelDatahubDropdownRangeComponent {
+  private scrollStrategies = inject(ScrollStrategyOptions)
+
   lowValue = ''
   highValue = ''
   @Input() choices: Choice[]
@@ -83,8 +86,6 @@ export class MelDatahubDropdownRangeComponent {
   get hasSelectedChoices() {
     return this.selected.length > 0
   }
-
-  constructor(private scrollStrategies: ScrollStrategyOptions) {}
 
   openOverlay() {
     this.overlayWidth =

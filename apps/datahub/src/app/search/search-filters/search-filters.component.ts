@@ -1,5 +1,5 @@
 import { SlicePipe } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { marker } from '@biesbjerg/ngx-translate-extract-marker'
 import { getOptionalSearchConfig } from '@mel-dataplatform/mel'
 import { NgIconComponent, provideIcons } from '@ng-icons/core'
@@ -45,7 +45,8 @@ marker('mel.datahub.search.filters.revisionYear')
   ],
 })
 export class SearchFiltersComponent {
-  constructor(private routerFacade: RouterFacade) {}
+  private routerFacade: RouterFacade = inject(RouterFacade)
+
   displayCount = 3
   searchConfig = (
     getOptionalSearchConfig().ADVANCED_FILTERS || [

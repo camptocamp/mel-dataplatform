@@ -22,14 +22,14 @@ import {
   ],
 })
 export class SearchResultsComponent {
+  protected searchFacade = inject(SearchFacade)
+  protected searchService = inject(SearchService)
+
   pageSize = 18
   totalPages_: number
   currentPage_: number
 
-  constructor(
-    protected searchFacade: SearchFacade,
-    protected searchService: SearchService
-  ) {
+  constructor() {
     this.searchFacade.setPageSize(this.pageSize)
     this.searchFacade.currentPage$.subscribe((page) => {
       this.currentPage_ = page

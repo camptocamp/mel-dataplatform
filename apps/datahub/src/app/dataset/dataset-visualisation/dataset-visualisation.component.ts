@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  inject,
   Input,
   OnDestroy,
   OnInit,
@@ -57,6 +58,11 @@ import { MelMapViewComponent } from './map-view/map-view.component'
   ],
 })
 export class DatasetVisualisationComponent implements OnInit, OnDestroy {
+  public mdViewFacade = inject(MdViewFacade)
+  private dataService: DataService = inject(DataService)
+  private platformServiceInterface: PlatformServiceInterface = inject(PlatformServiceInterface)
+  private cdr: ChangeDetectorRef = inject(ChangeDetectorRef)
+
   @Input()
   set recordUuid(value: string) {
     this.recordUuid$.next(value)
@@ -150,13 +156,6 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
       return isAdmin && isPublished
     })
   )
-
-  constructor(
-    public mdViewFacade: MdViewFacade,
-    private dataService: DataService,
-    private platformServiceInterface: PlatformServiceInterface,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.subscription = combineLatest([

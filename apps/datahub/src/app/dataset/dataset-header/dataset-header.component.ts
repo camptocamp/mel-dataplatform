@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core'
 import { FavoriteHeartComponent, MelButtonComponent, TextExpandComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
@@ -31,14 +31,12 @@ import { DatasetInformationComponent } from '../dataset-information/dataset-info
   ],
 })
 export class DatasetHeaderComponent {
+  protected routerFacade = inject(RouterFacade)
+  private searchService = inject(SearchService)
+
   @Input() record: Partial<CatalogRecord>
 
   @Input() incomplete: boolean
-
-  constructor(
-    protected routerFacade: RouterFacade,
-    private searchService: SearchService
-  ) {}
 
   fieldReady(propName: string) {
     return !this.incomplete || propName in this.record

@@ -1,15 +1,14 @@
-import { Component, Input, OnDestroy, OnInit, Optional } from '@angular/core'
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import {
   CatalogRecord,
-  FIELDS_BRIEF,
   FavoritesService,
   FieldFilters,
+  FIELDS_BRIEF,
   Keyword,
   RouterFacade,
   SearchFacade,
-  SearchService,
-  SearchState,
+  SearchService
 } from 'geonetwork-ui'
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
@@ -19,6 +18,12 @@ import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
   template: '',
 })
 export class ResultsListComponent implements OnInit, OnDestroy {
+  protected searchService = inject(SearchService)
+  protected searchFacade = inject(SearchFacade)
+  protected routerFacade = inject(RouterFacade, { optional: true })
+  protected favoritesService = inject(FavoritesService)
+  protected store = inject(Store)
+
   @Input() set favoritesOnly(value: boolean) {
     this.favoritesOnlyValue = value
     this.searchFacade.setFavoritesOnly(value)
@@ -39,14 +44,6 @@ export class ResultsListComponent implements OnInit, OnDestroy {
       this.searchFacade.updateFilters(this.producerOnlyFilter)
     }
   }
-
-  constructor(
-    protected searchService: SearchService,
-    protected searchFacade: SearchFacade,
-    @Optional() protected routerFacade: RouterFacade,
-    protected favoritesService: FavoritesService,
-    protected store: Store<SearchState>
-  ) {}
 
   ngOnInit() {
     this.searchFacade

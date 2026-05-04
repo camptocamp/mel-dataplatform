@@ -29,17 +29,15 @@ import { distinctUntilChanged, map } from 'rxjs'
   ],
 })
 export class SearchHeaderComponent {
+  public routerFacade = inject(RouterFacade)
+  private searchService = inject(SearchService)
+  public favoritesService = inject(FavoritesService)
+  protected searchFacade = inject(SearchFacade)
+  private platformService = inject(Gn4PlatformService)
+
   private previousFilters: any = {}
   bannerKey = 'application-banner'
   bannerType = 'secondary'
-
-  constructor(
-    public routerFacade: RouterFacade,
-    private searchService: SearchService,
-    public favoritesService: FavoritesService,
-    protected searchFacade: SearchFacade,
-    private platformService: Gn4PlatformService
-  ) {}
 
   translatedBannerMessage$ = this.platformService.translateKey(this.bannerKey)
 

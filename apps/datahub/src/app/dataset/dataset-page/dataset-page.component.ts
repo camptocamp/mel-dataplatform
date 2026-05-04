@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { ResultsCardLastCreatedComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective } from '@ngx-translate/core'
 import {
@@ -35,6 +35,9 @@ import { DatasetVisualisationComponent } from '../dataset-visualisation/dataset-
   ],
 })
 export class DatasetPageComponent {
+  public facade: MdViewFacade = inject(MdViewFacade)
+  protected routerFacade: RouterFacade = inject(RouterFacade)
+
   displayMap$ = combineLatest([
     this.facade.mapApiLinks$,
     this.facade.geoDataLinksWithGeometry$,
@@ -78,11 +81,6 @@ export class DatasetPageComponent {
     filter(Boolean)
   )
   errorTypes = ErrorType
-
-  constructor(
-    public facade: MdViewFacade,
-    protected routerFacade: RouterFacade
-  ) {}
 
   onInfoKeywordClick(keyword: Keyword) {
     this.routerFacade.updateSearch({ q: keyword.label })

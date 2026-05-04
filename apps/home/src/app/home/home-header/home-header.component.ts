@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import {
   DATAHUB_ROOT,
   DATAHUB_ROUTE_SEARCH,
@@ -44,14 +44,12 @@ import {
   ],
 })
 export class HomeHeaderComponent {
+  private searchService = inject(SearchService)
+  private platformService = inject(Gn4PlatformService)
+
   HREF_ROUTE_SEARCH = `${DATAHUB_ROOT}/${DATAHUB_ROUTE_SEARCH}`
   bannerKey = 'application-banner'
   bannerType = 'secondary'
-
-  constructor(
-    private searchService: SearchService,
-    private platformService: Gn4PlatformService
-  ) {}
 
   translatedBannerMessage$ = this.platformService.translateKey(this.bannerKey)
 

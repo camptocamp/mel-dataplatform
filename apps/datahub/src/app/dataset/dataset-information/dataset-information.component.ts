@@ -1,8 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
-  Optional,
+  inject,
+  Input
 } from '@angular/core'
 import { NgIconComponent } from '@ng-icons/core'
 import {
@@ -20,13 +20,11 @@ import { CatalogRecord, Keyword, RouterFacade } from 'geonetwork-ui'
   imports: [NgIconComponent, TranslateDirective, TranslatePipe],
 })
 export class DatasetInformationComponent {
+  public translateService = inject(TranslateService)
+  protected routerFacade = inject(RouterFacade, { optional: true })
+
   @Input() record: Partial<CatalogRecord>
   iconsUrl = 'assets/icons/'
-
-  constructor(
-    public translateService: TranslateService,
-    @Optional() protected routerFacade: RouterFacade
-  ) {}
 
   get lastUpdate() {
     return this.record?.resourceUpdated?.toLocaleDateString(
