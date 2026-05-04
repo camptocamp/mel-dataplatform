@@ -4,7 +4,8 @@ import {
   inject,
   Input,
 } from '@angular/core'
-import { NgIconComponent } from '@ng-icons/core'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
+import { matOpenInNew } from '@ng-icons/material-icons/baseline'
 import {
   TranslateDirective,
   TranslatePipe,
@@ -18,6 +19,11 @@ import { CatalogRecord, Keyword, RouterFacade } from 'geonetwork-ui'
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIconComponent, TranslateDirective, TranslatePipe],
+  providers: [
+    provideIcons({
+      matOpenInNew,
+    }),
+  ],
 })
 export class DatasetInformationComponent {
   public translateService = inject(TranslateService)
