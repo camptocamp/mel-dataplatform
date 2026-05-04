@@ -1,7 +1,10 @@
-import { Injectable, Injector } from '@angular/core'
+import { Injectable } from '@angular/core'
 import { marker } from '@biesbjerg/ngx-translate-extract-marker'
-import { FieldsService, SimpleSearchField } from 'geonetwork-ui'
-import { TranslatedSearchField } from 'geonetwork-ui'
+import {
+  FieldsService,
+  SimpleSearchField,
+  TranslatedSearchField,
+} from 'geonetwork-ui'
 
 marker('search.filters.categoryKeyword')
 marker('search.filters.qualityScore')

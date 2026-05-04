@@ -2,7 +2,10 @@ import { provideHttpClient } from '@angular/common/http'
 import { importProvidersFrom, isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MelDatahubFooterComponent, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
+import {
+  MelDatahubFooterComponent,
+  MelEmbeddedTranslateLoader,
+} from '@mel-dataplatform/mel'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'

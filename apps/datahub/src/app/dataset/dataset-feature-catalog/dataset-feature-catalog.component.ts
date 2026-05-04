@@ -1,6 +1,11 @@
 import { ConnectedPosition, OverlayModule } from '@angular/cdk/overlay'
 import { CommonModule } from '@angular/common'
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core'
 import { TranslateDirective } from '@ngx-translate/core'
 import {
   DatasetFeatureCatalog,

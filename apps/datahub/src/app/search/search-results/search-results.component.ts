@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common'
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
-import { MelPaginationButtonsComponent, ResultsListGridComponent } from '@mel-dataplatform/mel'
+import {
+  MelPaginationButtonsComponent,
+  ResultsListGridComponent,
+} from '@mel-dataplatform/mel'
 import { TranslateDirective } from '@ngx-translate/core'
 import {
   SearchFacade,

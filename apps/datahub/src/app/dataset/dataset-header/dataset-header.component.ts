@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core'
-import { FavoriteHeartComponent, MelButtonComponent, TextExpandComponent } from '@mel-dataplatform/mel'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core'
+import {
+  FavoriteHeartComponent,
+  MelButtonComponent,
+  TextExpandComponent,
+} from '@mel-dataplatform/mel'
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
   CatalogRecord,

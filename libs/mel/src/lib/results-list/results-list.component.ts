@@ -8,7 +8,7 @@ import {
   Keyword,
   RouterFacade,
   SearchFacade,
-  SearchService
+  SearchService,
 } from 'geonetwork-ui'
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'

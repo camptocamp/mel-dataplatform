@@ -60,7 +60,9 @@ import { MelMapViewComponent } from './map-view/map-view.component'
 export class DatasetVisualisationComponent implements OnInit, OnDestroy {
   public mdViewFacade = inject(MdViewFacade)
   private dataService: DataService = inject(DataService)
-  private platformServiceInterface: PlatformServiceInterface = inject(PlatformServiceInterface)
+  private platformServiceInterface: PlatformServiceInterface = inject(
+    PlatformServiceInterface
+  )
   private cdr: ChangeDetectorRef = inject(ChangeDetectorRef)
 
   @Input()

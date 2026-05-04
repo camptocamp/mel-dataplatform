@@ -3,7 +3,10 @@ import { importProvidersFrom, isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule } from '@angular/router'
-import { MelDatahubFooterComponent, MelEmbeddedTranslateLoader } from '@mel-dataplatform/mel'
+import {
+  MelDatahubFooterComponent,
+  MelEmbeddedTranslateLoader,
+} from '@mel-dataplatform/mel'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
@@ -27,7 +30,7 @@ import {
   SearchRouterContainerDirective,
   ThemeService,
   TRANSLATE_DEFAULT_CONFIG,
-  WEB_COMPONENT_EMBEDDER_URL
+  WEB_COMPONENT_EMBEDDER_URL,
 } from 'geonetwork-ui'
 import { environment } from '../environments/environment'
 import { AppComponent } from './app.component'

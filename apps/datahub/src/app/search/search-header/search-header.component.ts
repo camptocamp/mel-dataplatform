@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common'
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
-import { MelApplicationBannerComponent, ResultsListCarouselComponent } from '@mel-dataplatform/mel'
+import {
+  MelApplicationBannerComponent,
+  ResultsListCarouselComponent,
+} from '@mel-dataplatform/mel'
 import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
   CatalogRecord,

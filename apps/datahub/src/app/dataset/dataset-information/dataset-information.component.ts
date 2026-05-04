@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  Input
+  Input,
 } from '@angular/core'
 import { NgIconComponent } from '@ng-icons/core'
 import {
