@@ -64,7 +64,7 @@
     "@nx/angular:component": {
       "style": "css",
       "changeDetection": "OnPush",
-      "standalone": false,
+      "standalone": true,
       "inlineStyle": true,
       "skipTests": true,
       "nameAndDirectoryFormat": "as-provided",
