@@ -1,21 +1,38 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { SearchFacade, SearchService } from 'geonetwork-ui'
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
+import {
+  MelPaginationButtonsComponent,
+  ResultsListGridComponent,
+} from '@mel-dataplatform/mel'
+import { TranslateDirective } from '@ngx-translate/core'
+import {
+  SearchFacade,
+  SearchService,
+  SpinningLoaderComponent,
+} from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-search-results',
   templateUrl: './search-results.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    TranslateDirective,
+    SpinningLoaderComponent,
+    ResultsListGridComponent,
+    MelPaginationButtonsComponent,
+  ],
 })
 export class SearchResultsComponent {
+  protected searchFacade = inject(SearchFacade)
+  protected searchService = inject(SearchService)
+
   pageSize = 18
   totalPages_: number
   currentPage_: number
 
-  constructor(
-    protected searchFacade: SearchFacade,
-    protected searchService: SearchService
-  ) {
+  constructor() {
     this.searchFacade.setPageSize(this.pageSize)
     this.searchFacade.currentPage$.subscribe((page) => {
       this.currentPage_ = page

@@ -1,8 +1,8 @@
 name: CI
 
 env:
-  NODE_VERSION: 20.18.1
-  GN_UI_VERSION: 2.7.x
+  NODE_VERSION: 20.19.0
+  GN_UI_VERSION: v2.9.0
 
 on:
   push:
@@ -89,7 +89,11 @@ jobs:
           path: 'backend/geonetwork-ui'
           ref: ${{ env.GN_UI_VERSION }}
       - name: Build the gn-ui backend
-        run: sudo docker compose -f backend/geonetwork-ui/support-services/docker-compose.yml up -d init
+        env:
+          GEONETWORK_VERSION: 4.4.8
+          ELASTICSEARCH_VERSION: 8.14.3
+          ES_XPACK_PARAMETER_PREFIX: ''
+        run: docker compose -f backend/geonetwork-ui/support-services/docker-compose.yml up --quiet-pull init
 
       - name: Install dependencies
         run: npm i

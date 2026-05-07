@@ -1,28 +1,33 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  Input,
+} from '@angular/core'
 import {
   DataService,
-  MdViewFacade,
-  getFileFormat,
-  getLinkPriority,
-} from 'geonetwork-ui'
-import {
   DatasetDownloadDistribution,
   DatasetServiceDistribution,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+  getFileFormat,
+  getLinkPriority,
+  MdViewFacade,
+} from 'geonetwork-ui'
 import { catchError, combineLatest, map, of, switchMap } from 'rxjs'
+import { MelLinksListComponent } from './links-list/links-list.component'
 
 @Component({
   selector: 'mel-datahub-dataset-links',
   templateUrl: './dataset-links.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, MelLinksListComponent],
 })
 export class DatasetLinksComponent {
+  public facade: MdViewFacade = inject(MdViewFacade)
+  private dataService: DataService = inject(DataService)
+
   @Input() section: string
-  constructor(
-    public facade: MdViewFacade,
-    private dataService: DataService
-  ) {}
 
   error: string = null
 

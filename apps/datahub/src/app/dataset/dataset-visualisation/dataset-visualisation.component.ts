@@ -1,11 +1,25 @@
+import { CommonModule } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  inject,
   Input,
   OnDestroy,
   OnInit,
 } from '@angular/core'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MelButtonComponent } from '@mel-dataplatform/mel'
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
+import {
+  DataService,
+  DatasetOnlineResource,
+  DataViewShareComponent,
+  DatavizConfigModel,
+  getIsMobile,
+  MdViewFacade,
+  PlatformServiceInterface,
+} from 'geonetwork-ui'
 import {
   BehaviorSubject,
   catchError,
@@ -17,14 +31,8 @@ import {
   switchMap,
   take,
 } from 'rxjs'
-import {
-  DataService,
-  getIsMobile,
-  MdViewFacade,
-  PlatformServiceInterface,
-} from 'geonetwork-ui'
-import { DatasetOnlineResource } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
-import { DatavizConfigModel } from 'geonetwork-ui/libs/common/domain/src/lib/model/dataviz/dataviz-configuration.model'
+import { MelDataViewComponent } from './data-view/data-view.component'
+import { MelMapViewComponent } from './map-view/map-view.component'
 
 @Component({
   selector: 'mel-datahub-dataset-visualisation',
@@ -38,8 +46,25 @@ import { DatavizConfigModel } from 'geonetwork-ui/libs/common/domain/src/lib/mod
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    MatTabsModule,
+    TranslateDirective,
+    TranslatePipe,
+    DataViewShareComponent,
+    MelButtonComponent,
+    MelMapViewComponent,
+    MelDataViewComponent,
+  ],
 })
 export class DatasetVisualisationComponent implements OnInit, OnDestroy {
+  public mdViewFacade = inject(MdViewFacade)
+  private dataService: DataService = inject(DataService)
+  private platformServiceInterface: PlatformServiceInterface = inject(
+    PlatformServiceInterface
+  )
+  private cdr: ChangeDetectorRef = inject(ChangeDetectorRef)
+
   @Input()
   set recordUuid(value: string) {
     this.recordUuid$.next(value)
@@ -133,13 +158,6 @@ export class DatasetVisualisationComponent implements OnInit, OnDestroy {
       return isAdmin && isPublished
     })
   )
-
-  constructor(
-    public mdViewFacade: MdViewFacade,
-    private dataService: DataService,
-    private platformServiceInterface: PlatformServiceInterface,
-    private cdr: ChangeDetectorRef
-  ) {}
 
   ngOnInit(): void {
     this.subscription = combineLatest([

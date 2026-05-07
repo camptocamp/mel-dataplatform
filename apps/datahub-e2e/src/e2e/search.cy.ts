@@ -8,7 +8,7 @@ describe('search', () => {
     it('should display the number of result hits', () => {
       cy.get('[data-cy="searchResults"]').should(
         'include.text',
-        'Ensemble des données: 28'
+        'Ensemble des données: 33'
       )
     })
     it('should display the footer', () => {
@@ -105,7 +105,7 @@ describe('search', () => {
         cy.get('mel-datahub-filter-dropdown').as('filters')
         cy.get('@filters').first().click()
         getFilterOptions()
-        cy.get('@options').eq(1).click()
+        cy.get('@options').eq(2).click()
         cy.get('mel-datahub-carousel')
           .find('mel-datahub-results-card-last-created')
           .should('have.length', 10)
@@ -171,13 +171,13 @@ describe('search', () => {
       })
       it('should not display the last created cards when the producer filter is activated', () => {
         cy.get('mel-datahub-filter-dropdown').first().click()
-        cy.get('[id^=dropdown-multiselect-] label').first().click()
+        cy.get('[id^=dropdown-multiselect-] label').eq(1).click()
         cy.url().should('include', 'producerOrg=DREAL')
         cy.get('mel-datahub-results-card-favorite').should('have.length', 1)
       })
       it('should display the filtered cards by producer when the last favorite card is deleted', () => {
         cy.get('mel-datahub-filter-dropdown').first().click()
-        cy.get('[id^=dropdown-multiselect-] label').first().click()
+        cy.get('[id^=dropdown-multiselect-] label').eq(1).click()
         cy.get('body').click()
         cy.get('@favoriteCard')
           .find('mel-datahub-heart-toggle')
@@ -185,8 +185,8 @@ describe('search', () => {
           .find('mel-datahub-button')
           .first()
           .click()
-        cy.get('mel-datahub-results-card-favorite').should('have.length', 0)
         cy.get('mel-datahub-results-card-last-created').should('have.length', 1)
+        cy.get('mel-datahub-results-card-favorite').should('not.exist')
       })
     })
   })
@@ -231,7 +231,7 @@ describe('search', () => {
     it('should filter the results when selecting a filter value (producer)', () => {
       cy.get('@filters').first().click()
       getFilterOptions()
-      cy.get('@options').eq(1).click()
+      cy.get('@options').eq(2).click()
       cy.get('@result-cards').should('have.length', 2)
       cy.get('@result-cards')
         .first()
@@ -244,10 +244,10 @@ describe('search', () => {
     it('should filter the results when selecting multiple filter values (producer)', () => {
       cy.get('@filters').first().click()
       getFilterOptions()
-      cy.get('@options').eq(1).click()
+      cy.get('@options').eq(2).click()
       cy.get('body').click()
       cy.get('@filters').first().click()
-      cy.get('@options').first().click()
+      cy.get('@options').eq(1).click()
       cy.get('mel-datahub-results-card-search').should('have.length', 3)
     })
     it('should filter the results when executing a search', () => {
@@ -262,10 +262,10 @@ describe('search', () => {
     it('should combine search input and filters (producer)', () => {
       cy.get('mel-datahub-autocomplete input').type('test')
       cy.get('mel-datahub-autocomplete').find('button').eq(1).click()
-      cy.get('@result-cards').should('have.length', 3)
+      cy.get('@result-cards').should('have.length', 7)
       cy.get('@filters').first().click()
       getFilterOptions()
-      cy.get('@options').eq(1).click()
+      cy.get('@options').eq(2).click()
       cy.get('@result-cards').should('have.length', 1)
       cy.get('@result-cards')
         .first()
@@ -275,10 +275,10 @@ describe('search', () => {
     it('should combine search input and filters and display a message if no results found', () => {
       cy.get('mel-datahub-autocomplete input').type('test')
       cy.get('mel-datahub-autocomplete').find('button').eq(1).click()
-      cy.get('@result-cards').should('have.length', 3)
+      cy.get('@result-cards').should('have.length', 7)
       cy.get('@filters').first().click()
       getFilterOptions()
-      cy.get('@options').first().click()
+      cy.get('@options').eq(1).click()
       cy.get('[data-cy=searchResults]').should(
         'have.text',
         ' Aucune correspondance. '

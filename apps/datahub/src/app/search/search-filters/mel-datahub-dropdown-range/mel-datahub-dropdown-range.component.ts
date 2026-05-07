@@ -1,6 +1,7 @@
 import {
   CdkOverlayOrigin,
   ConnectedPosition,
+  OverlayModule,
   ScrollStrategyOptions,
 } from '@angular/cdk/overlay'
 import {
@@ -8,19 +9,49 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  inject,
   Input,
   Output,
   ViewChild,
 } from '@angular/core'
-import { Choice, propagateToDocumentOnly } from 'geonetwork-ui'
+import { MelButtonComponent } from '@mel-dataplatform/mel'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
+import {
+  matClose,
+  matExpandLess,
+  matExpandMore,
+} from '@ng-icons/material-icons/baseline'
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
+import {
+  Choice,
+  propagateToDocumentOnly,
+  TextInputComponent,
+} from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-dropdown-range',
   templateUrl: './mel-datahub-dropdown-range.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    OverlayModule,
+    NgIconComponent,
+    TranslateDirective,
+    TranslatePipe,
+    TextInputComponent,
+    MelButtonComponent,
+  ],
+  providers: [
+    provideIcons({
+      matClose,
+      matExpandLess,
+      matExpandMore,
+    }),
+  ],
 })
 export class MelDatahubDropdownRangeComponent {
+  private scrollStrategies = inject(ScrollStrategyOptions)
+
   lowValue = ''
   highValue = ''
   @Input() choices: Choice[]
@@ -55,8 +86,6 @@ export class MelDatahubDropdownRangeComponent {
   get hasSelectedChoices() {
     return this.selected.length > 0
   }
-
-  constructor(private scrollStrategies: ScrollStrategyOptions) {}
 
   openOverlay() {
     this.overlayWidth =

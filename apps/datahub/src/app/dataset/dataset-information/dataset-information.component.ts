@@ -1,30 +1,36 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
   Input,
-  Optional,
 } from '@angular/core'
-import { TranslateService } from '@ngx-translate/core'
-import { RouterFacade } from 'geonetwork-ui'
+import { NgIconComponent, provideIcons } from '@ng-icons/core'
+import { matOpenInNew } from '@ng-icons/material-icons/baseline'
 import {
-  CatalogRecord,
-  Keyword,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+  TranslateDirective,
+  TranslatePipe,
+  TranslateService,
+} from '@ngx-translate/core'
+import { CatalogRecord, Keyword, RouterFacade } from 'geonetwork-ui'
 
 @Component({
   selector: 'mel-datahub-dataset-information',
   templateUrl: './dataset-information.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgIconComponent, TranslateDirective, TranslatePipe],
+  providers: [
+    provideIcons({
+      matOpenInNew,
+    }),
+  ],
 })
 export class DatasetInformationComponent {
+  public translateService = inject(TranslateService)
+  protected routerFacade = inject(RouterFacade, { optional: true })
+
   @Input() record: Partial<CatalogRecord>
   iconsUrl = 'assets/icons/'
-
-  constructor(
-    public translateService: TranslateService,
-    @Optional() protected routerFacade: RouterFacade
-  ) {}
 
   get lastUpdate() {
     return this.record?.resourceUpdated?.toLocaleDateString(

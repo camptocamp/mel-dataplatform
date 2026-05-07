@@ -5,13 +5,16 @@ import {
   Input,
   Output,
 } from '@angular/core'
+import { TranslatePipe } from '@ngx-translate/core'
 import { propagateToDocumentOnly } from 'geonetwork-ui'
+import { MelButtonComponent } from '../../button/button.component'
 
 @Component({
   selector: 'mel-datahub-heart-toggle',
   templateUrl: './heart-toggle.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TranslatePipe, MelButtonComponent],
 })
 export class HeartToggleComponent {
   @Input() toggled!: boolean

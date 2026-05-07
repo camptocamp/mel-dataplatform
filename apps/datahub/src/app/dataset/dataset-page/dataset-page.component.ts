@@ -1,18 +1,43 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { ErrorType, MdViewFacade, RouterFacade } from 'geonetwork-ui'
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
+import { ResultsCardLastCreatedComponent } from '@mel-dataplatform/mel'
+import { TranslateDirective } from '@ngx-translate/core'
 import {
   CatalogRecord,
+  ErrorComponent,
+  ErrorType,
   Keyword,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
+  MdViewFacade,
+  RouterFacade,
+} from 'geonetwork-ui'
 import { combineLatest, filter, map, startWith } from 'rxjs'
+import { DatasetApisComponent } from '../dataset-apis/dataset-apis.component'
+import { DatasetFeatureCatalogComponent } from '../dataset-feature-catalog/dataset-feature-catalog.component'
+import { DatasetHeaderComponent } from '../dataset-header/dataset-header.component'
+import { DatasetLinksComponent } from '../dataset-links/dataset-links.component'
+import { DatasetVisualisationComponent } from '../dataset-visualisation/dataset-visualisation.component'
 
 @Component({
   selector: 'mel-datahub-dataset-page',
   templateUrl: './dataset-page.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    TranslateDirective,
+    ErrorComponent,
+    DatasetHeaderComponent,
+    DatasetVisualisationComponent,
+    DatasetLinksComponent,
+    DatasetApisComponent,
+    DatasetFeatureCatalogComponent,
+    ResultsCardLastCreatedComponent,
+  ],
 })
 export class DatasetPageComponent {
+  public facade: MdViewFacade = inject(MdViewFacade)
+  protected routerFacade: RouterFacade = inject(RouterFacade)
+
   displayMap$ = combineLatest([
     this.facade.mapApiLinks$,
     this.facade.geoDataLinksWithGeometry$,
@@ -56,11 +81,6 @@ export class DatasetPageComponent {
     filter(Boolean)
   )
   errorTypes = ErrorType
-
-  constructor(
-    public facade: MdViewFacade,
-    protected routerFacade: RouterFacade
-  ) {}
 
   onInfoKeywordClick(keyword: Keyword) {
     this.routerFacade.updateSearch({ q: keyword.label })

@@ -1,26 +1,29 @@
-import { Component, Input, OnDestroy, OnInit, Optional } from '@angular/core'
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import {
-  FIELDS_BRIEF,
+  CatalogRecord,
   FavoritesService,
+  FieldFilters,
+  FIELDS_BRIEF,
+  Keyword,
   RouterFacade,
   SearchFacade,
   SearchService,
-  SearchState,
 } from 'geonetwork-ui'
-import {
-  CatalogRecord,
-  Keyword,
-} from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
-import { FieldFilters } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
 
 @Component({
   selector: 'mel-datahub-results-list',
   template: '',
 })
 export class ResultsListComponent implements OnInit, OnDestroy {
+  protected searchService = inject(SearchService)
+  protected searchFacade = inject(SearchFacade)
+  protected routerFacade = inject(RouterFacade, { optional: true })
+  protected favoritesService = inject(FavoritesService)
+  protected store = inject(Store)
+
   @Input() set favoritesOnly(value: boolean) {
     this.favoritesOnlyValue = value
     this.searchFacade.setFavoritesOnly(value)
@@ -41,14 +44,6 @@ export class ResultsListComponent implements OnInit, OnDestroy {
       this.searchFacade.updateFilters(this.producerOnlyFilter)
     }
   }
-
-  constructor(
-    protected searchService: SearchService,
-    protected searchFacade: SearchFacade,
-    @Optional() protected routerFacade: RouterFacade,
-    protected favoritesService: FavoritesService,
-    protected store: Store<SearchState>
-  ) {}
 
   ngOnInit() {
     this.searchFacade

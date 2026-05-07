@@ -1,33 +1,46 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import {
+  MelApplicationBannerComponent,
+  ResultsListCarouselComponent,
+} from '@mel-dataplatform/mel'
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
+import {
+  CatalogRecord,
   FavoritesService,
+  Gn4PlatformService,
   RouterFacade,
   SearchFacade,
   SearchService,
-  Gn4PlatformService,
+  SearchStateContainerDirective,
+  SortByField,
 } from 'geonetwork-ui'
-import { CatalogRecord } from 'geonetwork-ui/libs/common/domain/src/lib/model/record'
-import { SortByField } from 'geonetwork-ui/libs/common/domain/src/lib/model/search'
-import { map, distinctUntilChanged } from 'rxjs'
+import { distinctUntilChanged, map } from 'rxjs'
 
 @Component({
   selector: 'mel-datahub-search-header',
   templateUrl: './search-header.component.html',
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    TranslateDirective,
+    TranslatePipe,
+    SearchStateContainerDirective,
+    MelApplicationBannerComponent,
+    ResultsListCarouselComponent,
+  ],
 })
 export class SearchHeaderComponent {
+  public routerFacade = inject(RouterFacade)
+  private searchService = inject(SearchService)
+  public favoritesService = inject(FavoritesService)
+  protected searchFacade = inject(SearchFacade)
+  private platformService = inject(Gn4PlatformService)
+
   private previousFilters: any = {}
   bannerKey = 'application-banner'
   bannerType = 'secondary'
-
-  constructor(
-    public routerFacade: RouterFacade,
-    private searchService: SearchService,
-    public favoritesService: FavoritesService,
-    protected searchFacade: SearchFacade,
-    private platformService: Gn4PlatformService
-  ) {}
 
   translatedBannerMessage$ = this.platformService.translateKey(this.bannerKey)
 
