@@ -94,7 +94,9 @@ describe('search', () => {
         cy.get('[id^=dropdown-multiselect-] label').as('options')
       }
       beforeEach(() => {
-        cy.visit('/search?producerOrg=Métropole%20Européenne%20de%20Lille')
+        cy.visit(
+          '/search?producerOrg=M%C3%A9tropole%20Europ%C3%A9enne%20de%20Lille'
+        )
       })
       it('should display the last created cards filtered by producer', () => {
         cy.get('mel-datahub-carousel')
@@ -141,6 +143,7 @@ describe('search', () => {
           .find('mel-datahub-button')
           .first()
           .click()
+        cy.wait('@addFavoriteRequest')
         cy.get('mel-datahub-results-card-favorite').as('favoriteCard')
       })
       it('should display the correct subtitle', () => {
@@ -178,7 +181,9 @@ describe('search', () => {
       it('should display the filtered cards by producer when the last favorite card is deleted', () => {
         cy.get('mel-datahub-filter-dropdown').first().click()
         cy.get('[id^=dropdown-multiselect-] label').eq(1).click()
-        cy.get('body').click()
+        cy.url().should('include', 'producerOrg=DREAL')
+        cy.get('mel-datahub-results-card-favorite').should('have.length', 1)
+        cy.get('body').click('bottomLeft')
         cy.get('@favoriteCard')
           .find('mel-datahub-heart-toggle')
           .first()
@@ -299,7 +304,7 @@ describe('search', () => {
         getFilterOptions()
         cy.get('@options').eq(1).click()
         cy.get('@result-cards').should('have.length', 3)
-        cy.get('body').click()
+        cy.get('body').click('bottomLeft')
         cy.get('[data-cy=filterResetBtn]').click()
         cy.get('@result-cards').should('have.length', 18)
       })
