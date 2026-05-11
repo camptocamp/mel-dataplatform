@@ -60,7 +60,10 @@ describe('search', () => {
         .find('mel-datahub-results-card-last-created')
         .first()
         .find('h1')
-        .should('not.be.empty')
+        .should(
+          'include.text',
+          " Aléa de débordement de cours d'eau de la Lys "
+        )
 
       cy.get('.mel-carousel-step-dot').should('exist')
 
