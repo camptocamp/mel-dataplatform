@@ -90,7 +90,7 @@ import { setCacheExpiryDuration } from '@camptocamp/ogc-client'
     MelDatahubFooterComponent,
   ],
   providers: [
-    !environment.production && provideNgReflectAttributes(),
+    provideNgReflectAttributes(),
     provideHttpClient(),
     importProvidersFrom(FeatureSearchModule),
     provideGn4(),
