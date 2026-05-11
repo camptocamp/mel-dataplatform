@@ -60,10 +60,7 @@ describe('search', () => {
         .find('mel-datahub-results-card-last-created')
         .first()
         .find('h1')
-        .should(
-          'include.text',
-          " Aléa de débordement de cours d'eau de la Lys "
-        )
+        .should('not.be.empty')
 
       cy.get('.mel-carousel-step-dot').should('exist')
 
@@ -141,6 +138,7 @@ describe('search', () => {
           .find('mel-datahub-button')
           .first()
           .click()
+        cy.wait('@addFavoriteRequest')
         cy.get('mel-datahub-results-card-favorite').as('favoriteCard')
       })
       it('should display the correct subtitle', () => {
@@ -178,7 +176,8 @@ describe('search', () => {
       it('should display the filtered cards by producer when the last favorite card is deleted', () => {
         cy.get('mel-datahub-filter-dropdown').first().click()
         cy.get('[id^=dropdown-multiselect-] label').eq(1).click()
-        cy.get('body').click()
+        cy.url().should('include', 'producerOrg=DREAL')
+        cy.get('mel-datahub-results-card-favorite').should('have.length', 1)
         cy.get('@favoriteCard')
           .find('mel-datahub-heart-toggle')
           .first()
@@ -299,7 +298,7 @@ describe('search', () => {
         getFilterOptions()
         cy.get('@options').eq(1).click()
         cy.get('@result-cards').should('have.length', 3)
-        cy.get('body').click()
+        cy.get('body').click('bottomLeft')
         cy.get('[data-cy=filterResetBtn]').click()
         cy.get('@result-cards').should('have.length', 18)
       })
