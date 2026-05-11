@@ -91,7 +91,9 @@ describe('search', () => {
         cy.get('[id^=dropdown-multiselect-] label').as('options')
       }
       beforeEach(() => {
-        cy.visit('/search?producerOrg=Métropole%20Européenne%20de%20Lille')
+        cy.visit(
+          '/search?producerOrg=M%C3%A9tropole%20Europ%C3%A9enne%20de%20Lille'
+        )
       })
       it('should display the last created cards filtered by producer', () => {
         cy.get('mel-datahub-carousel')
@@ -178,6 +180,7 @@ describe('search', () => {
         cy.get('[id^=dropdown-multiselect-] label').eq(1).click()
         cy.url().should('include', 'producerOrg=DREAL')
         cy.get('mel-datahub-results-card-favorite').should('have.length', 1)
+        cy.get('body').click('bottomLeft')
         cy.get('@favoriteCard')
           .find('mel-datahub-heart-toggle')
           .first()
