@@ -225,7 +225,10 @@ describe('datasets', () => {
           cy.get('mel-datahub-api-form')
             .find('a')
             .invoke('attr', 'href')
-            .should('eq', `${win.location.origin}/data/swagger-ui/index.html`)
+            .should(
+              'eq',
+              `${win.location.origin}/geoserver/ogc/features/v1/openapi`
+            )
         })
       })
       it('should open the api form', () => {
