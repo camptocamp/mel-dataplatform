@@ -31,6 +31,6 @@ import {
 })
 export class ApiFormComponent extends RecordApiFormComponent {
   get swaggerUrl() {
-    return `${window.location.origin}/data/swagger-ui/index.html`
+    return `${window.location.origin}/geoserver/ogc/features/v1/openapi`
   }
 }
