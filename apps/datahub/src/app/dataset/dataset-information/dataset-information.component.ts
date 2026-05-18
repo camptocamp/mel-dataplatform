@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,13 +13,15 @@ import {
   TranslateService,
 } from '@ngx-translate/core'
 import { CatalogRecord, Keyword, RouterFacade } from 'geonetwork-ui'
+import { map } from 'rxjs'
+import { GeorchestraPlatformService } from '../../platform/georchestra-platform.service'
 
 @Component({
   selector: 'mel-datahub-dataset-information',
   templateUrl: './dataset-information.component.html',
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIconComponent, TranslateDirective, TranslatePipe],
+  imports: [AsyncPipe, NgIconComponent, TranslateDirective, TranslatePipe],
   providers: [
     provideIcons({
       matOpenInNew,
@@ -28,6 +31,7 @@ import { CatalogRecord, Keyword, RouterFacade } from 'geonetwork-ui'
 export class DatasetInformationComponent {
   public translateService = inject(TranslateService)
   protected routerFacade = inject(RouterFacade, { optional: true })
+  private georchestraPlatformService = inject(GeorchestraPlatformService)
 
   @Input() record: Partial<CatalogRecord>
   iconsUrl = 'assets/icons/'
@@ -50,11 +54,15 @@ export class DatasetInformationComponent {
     )
   }
 
-  get isDevEnv() {
-    return (
-      window.location.hostname ===
-      'mel.integration.apps.gs-fr-prod.camptocamp.com'
-    )
+  get displayLandingPage$() {
+    return this.georchestraPlatformService
+      .getMyRoles()
+      .pipe(
+        map(
+          (roles) =>
+            roles.includes('ROLE_SUPERUSER') || roles.includes('ROLE_MEL')
+        )
+      )
   }
 
   onKeywordClick(query: string, keyword: Keyword) {

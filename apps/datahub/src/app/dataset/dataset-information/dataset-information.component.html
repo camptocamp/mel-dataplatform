@@ -58,7 +58,7 @@
         <span>{{ record.ownerOrganization?.name }}</span>
       </div>
     }
-    @if (isDevEnv) {
+    @if (displayLandingPage$ | async) {
       <div class="flex flex-row gap-1">
         <a
           class="underline text-gray-2 text-sm"
