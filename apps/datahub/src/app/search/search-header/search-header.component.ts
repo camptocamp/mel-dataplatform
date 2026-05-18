@@ -8,7 +8,7 @@ import { TranslateDirective, TranslatePipe } from '@ngx-translate/core'
 import {
   CatalogRecord,
   FavoritesService,
-  Gn4PlatformService,
+  PlatformServiceInterface,
   RouterFacade,
   SearchFacade,
   SearchService,
@@ -36,7 +36,7 @@ export class SearchHeaderComponent {
   private searchService = inject(SearchService)
   public favoritesService = inject(FavoritesService)
   protected searchFacade = inject(SearchFacade)
-  private platformService = inject(Gn4PlatformService)
+  private platformService = inject(PlatformServiceInterface)
 
   private previousFilters: any = {}
   bannerKey = 'application-banner'
