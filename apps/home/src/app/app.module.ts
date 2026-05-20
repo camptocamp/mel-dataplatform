@@ -16,7 +16,6 @@ import {
 } from '@ngx-translate/core'
 import {
   FeatureSearchModule,
-  Gn4PlatformService,
   LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
@@ -67,7 +66,6 @@ import { HomePageComponent } from './home/home-page/home-page.component'
       provide: LOGIN_URL,
       useFactory: () => '${current_url}?login',
     },
-    Gn4PlatformService,
   ],
   bootstrap: [AppComponent],
 })

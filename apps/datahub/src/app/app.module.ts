@@ -8,6 +8,7 @@ import {
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { RouterModule } from '@angular/router'
+import { setCacheExpiryDuration } from '@camptocamp/ogc-client'
 import {
   MelDatahubFooterComponent,
   MelEmbeddedTranslateLoader,
@@ -28,7 +29,6 @@ import {
   FeatureSearchModule,
   FieldsService,
   GEONETWORK_UI_VERSION,
-  Gn4PlatformService,
   LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
@@ -40,9 +40,9 @@ import {
 import { environment } from '../environments/environment'
 import { AppComponent } from './app.component'
 import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component'
+import { GeorchestraPlatformService } from './platform/georchestra-platform.service'
 import { SearchPageComponent } from './search/search-page/search-page.component'
 import { MelFieldsService } from './search/service/fields.service'
-import { setCacheExpiryDuration } from '@camptocamp/ogc-client'
 
 @NgModule({
   declarations: [AppComponent],
@@ -114,7 +114,7 @@ import { setCacheExpiryDuration } from '@camptocamp/ogc-client'
       useFactory: () => true,
     },
     { provide: FieldsService, useClass: MelFieldsService },
-    Gn4PlatformService,
+    GeorchestraPlatformService,
   ],
   bootstrap: [AppComponent],
 })
