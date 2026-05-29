@@ -40,7 +40,6 @@ import {
 import { environment } from '../environments/environment'
 import { AppComponent } from './app.component'
 import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component'
-import { GeorchestraPlatformService } from './platform/georchestra-platform.service'
 import { SearchPageComponent } from './search/search-page/search-page.component'
 import { MelFieldsService } from './search/service/fields.service'
 
@@ -114,7 +113,6 @@ import { MelFieldsService } from './search/service/fields.service'
       useFactory: () => true,
     },
     { provide: FieldsService, useClass: MelFieldsService },
-    GeorchestraPlatformService,
   ],
   bootstrap: [AppComponent],
 })
