@@ -130,7 +130,5 @@ export class AppModule {
       'white',
       'Lato'
     )
-
-    setCacheExpiryDuration(-1)
   }
 }
