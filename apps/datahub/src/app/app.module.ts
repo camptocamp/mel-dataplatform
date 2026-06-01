@@ -42,7 +42,6 @@ import { AppComponent } from './app.component'
 import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.component'
 import { SearchPageComponent } from './search/search-page/search-page.component'
 import { MelFieldsService } from './search/service/fields.service'
-import { setCacheExpiryDuration } from '@camptocamp/ogc-client'
 
 @NgModule({
   declarations: [AppComponent],
