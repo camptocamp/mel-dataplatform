@@ -196,6 +196,67 @@ describe('search', () => {
     })
   })
 
+  describe('search form sort-by', () => {
+    const RELEVANCY = 'desc,_score'
+    const MOST_RECENT =
+      'desc,revisionDateForResource,desc,publicationDateForResource,desc,creationDateForResource'
+    const POPULARITY = 'desc,userSavedCount'
+
+    const sortByTrigger = () =>
+      cy.get('mel-datahub-search-form gn-ui-sort-by button').first()
+    const openSortBy = () => sortByTrigger().click()
+    const selectSortOption = (value: string) => {
+      openSortBy()
+      cy.get(`[role=listbox] button[data-cy-value="${value}"]`).click()
+    }
+
+    it('should default to sorting by relevancy', () => {
+      sortByTrigger().should('contain.text', 'Pertinence')
+    })
+
+    it('should offer the relevancy, most-recent and popularity options', () => {
+      openSortBy()
+      cy.get('[role=listbox] button[data-cy-value]')
+        .then(($opts) =>
+          $opts.toArray().map((b) => b.getAttribute('data-cy-value'))
+        )
+        .should('eql', [RELEVANCY, MOST_RECENT, POPULARITY])
+      // relevancy is the active option by default
+      cy.get(`[role=listbox] button[data-cy-value="${RELEVANCY}"]`).should(
+        'have.attr',
+        'data-cy-active',
+        'true'
+      )
+    })
+
+    it('should sort by popularity and reflect it in the url and the button', () => {
+      selectSortOption(POPULARITY)
+      cy.url().should('include', '_sort=-userSavedCount')
+      sortByTrigger().should('contain.text', 'Popularité')
+    })
+
+    it('should sort by most recent and reflect it in the url and the button', () => {
+      selectSortOption(MOST_RECENT)
+      // commas may be url-encoded, so only assert the unambiguous first segment
+      cy.url().should('include', '_sort=-revisionDateForResource')
+      sortByTrigger().should('contain.text', 'Plus récent')
+    })
+
+    it('should reorder the search results when the sort criteria changes', () => {
+      cy.get('mel-datahub-results-card-search h1')
+        .first()
+        .invoke('text')
+        .then((relevancyFirstCard) => {
+          selectSortOption(POPULARITY)
+          cy.url().should('include', '_sort=-userSavedCount')
+          cy.get('mel-datahub-results-card-search h1')
+            .first()
+            .invoke('text')
+            .should('not.eq', relevancyFirstCard)
+        })
+    })
+  })
+
   describe('search form and results', () => {
     const getFilterOptions = () => {
       cy.get('[id^=dropdown-multiselect-] label').as('options')
