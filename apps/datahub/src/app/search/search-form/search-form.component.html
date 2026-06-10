@@ -6,7 +6,9 @@
     </h2>
     <p class="text-[17px]" translate="">mel.datahub.search.form.description</p>
   </div>
-  <div class="flex flex-row justify-between gap-2 flex-wrap lg:flex-nowrap">
+  <div
+    class="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:justify-between lg:gap-2"
+  >
     <mel-datahub-search-filters></mel-datahub-search-filters>
     <gn-ui-sort-by
       class="text-sm"
@@ -14,7 +16,7 @@
       [style.--gn-ui-button-height]="'40px'"
     ></gn-ui-sort-by>
     <mel-datahub-fuzzy-search
-      class="w-[253px] text-[14px] pointer-events-auto"
+      class="w-full text-[14px] pointer-events-auto lg:min-w-[253px] lg:w-auto"
       (itemSelected)="onFuzzySearchSelection($event)"
       [autoFocus]="false"
     ></mel-datahub-fuzzy-search>
