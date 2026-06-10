@@ -1,4 +1,4 @@
-<div class="flex flex-row gap-5">
+<div class="flex flex-row gap-5 text-sm">
   <div class="flex flex-row">
     @if (displayCount < searchConfig.length) {
       <div class="flex gap-2 flex-wrap lg:flex-nowrap">
@@ -10,7 +10,7 @@
         }
       </div>
     } @else {
-      <div class="flex flex-wrap gap-2 w-[640px]">
+      <div class="flex flex-wrap gap-2 w-[496px]">
         @for (filter of searchConfig; track filter.fieldName) {
           <mel-datahub-filter-dropdown
             [fieldName]="filter.fieldName"

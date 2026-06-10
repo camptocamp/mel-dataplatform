@@ -60,7 +60,7 @@
     @apply bg-gray-8 flex flex-col justify-between rounded-lg border border-gray-6 filter cursor-pointer hover:drop-shadow-lg;
   }
   .mel-primary-button {
-    @apply h-11 flex justify-center items-center gap-2 text-white text-[15px] font-extrabold leading-[18px] py-2 px-[18px] rounded border bg-primary hover:bg-primary-dark;
+    @apply h-11 flex justify-center items-center gap-2 text-white text-sm font-extrabold leading-[18px] py-2 px-[18px] rounded border bg-primary hover:bg-primary-dark;
   }
   .mel-primary-button:disabled {
     @apply bg-primary-light;
@@ -79,9 +79,6 @@
   }
   .mel-social-media-button {
     @apply inline-flex items-center justify-center w-10 h-10 bg-primary rounded-full cursor-pointer hover:bg-primary-dark;
-  }
-  .mel-fuzzy-search {
-    @apply w-[309px] text-[17px] pointer-events-auto;
   }
   .card-icon {
     @apply text-primary group-hover:text-primary-dark transition-colors transition-opacity;
