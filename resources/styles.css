@@ -198,6 +198,17 @@ gn-ui-copy-text-button div textarea {
   @apply bg-white rounded-l !important;
 }
 
+/* Custom styles for gn-ui-sort-by component that cannot be overriden via CSS vars */
+gn-ui-sort-by .gn-ui-btn-outline {
+  border-color: #7c7c7c;
+}
+gn-ui-sort-by .gn-ui-btn-outline ng-icon {
+  @apply text-primary opacity-100;
+}
+.overlay-container {
+  @apply rounded-none;
+}
+
 /** No margin for first markdown child/heading, that cannot be detected by getBoundingClientRect()
     => can be removed after next gn-ui update **/
 .markdown-body :first-child {
