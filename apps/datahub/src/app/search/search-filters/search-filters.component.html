@@ -21,13 +21,13 @@
     }
   </div>
   <div
-    class="flex flex-row items-start gap-4 -ml-[2px] sm:mt-2 justify-start sm:justify-between sm:w-60"
+    class="flex flex-row items-start gap-4 -ml-[2px] sm:mt-2 justify-start sm:w-60"
   >
     @if (displayCount !== searchConfig.length) {
       <button
         data-cy="filterExpandBtn"
         type="button"
-        class="flex flex-row mel-simple-button"
+        class="flex flex-row mel-simple-button min-w-[115px]"
         (click)="showAll()"
         translate
       >
