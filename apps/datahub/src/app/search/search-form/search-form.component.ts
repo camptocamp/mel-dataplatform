@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core'
 import { MelFuzzySearchComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective } from '@ngx-translate/core'
-import { CatalogRecord, RouterFacade } from 'geonetwork-ui'
+import { CatalogRecord, RouterFacade, SortByComponent } from 'geonetwork-ui'
 import { SearchFiltersComponent } from '../search-filters/search-filters.component'
 
 @Component({
@@ -13,6 +13,7 @@ import { SearchFiltersComponent } from '../search-filters/search-filters.compone
     TranslateDirective,
     SearchFiltersComponent,
     MelFuzzySearchComponent,
+    SortByComponent,
   ],
 })
 export class SearchFormComponent {
