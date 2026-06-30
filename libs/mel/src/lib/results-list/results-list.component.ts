@@ -53,6 +53,11 @@ export class ResultsListComponent implements OnInit, OnDestroy {
         'changeDate',
         'allKeywords',
       ])
+      .setSortBy([
+        ['desc', 'revisionDateForResource'],
+        ['desc', 'publicationDateForResource'],
+        ['desc', 'creationDateForResource'],
+      ])
       .setPageSize(this.numberOfResults)
     this.subscriptions = this.favoritesService.myFavoritesUuid$.subscribe(
       () => {

@@ -62,7 +62,7 @@ describe('search', () => {
         .find('h1')
         .should(
           'include.text',
-          " Aléa de débordement de cours d'eau de la Lys "
+          ' Zones de collecte de déchets en porte à porte - par flux de collecte, jour et horaire de tournée '
         )
 
       cy.get('.mel-carousel-step-dot').should('exist')
