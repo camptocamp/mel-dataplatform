@@ -54,7 +54,6 @@ export class ResultsListComponent implements OnInit, OnDestroy {
         'allKeywords',
       ])
       .setPageSize(this.numberOfResults)
-      .setSortBy(['desc', 'createDate'])
     this.subscriptions = this.favoritesService.myFavoritesUuid$.subscribe(
       () => {
         if (this.favoritesOnlyValue) this.searchFacade.setFavoritesOnly(true)
