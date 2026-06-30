@@ -95,6 +95,7 @@
   "mel.searchpage.subtitle.favorites": "Favorite datasets",
   "mel.tooltip.url.copy": "Copy",
   "record.externalViewer.open": "Open in the external map viewer",
+  "results.sortBy.qualityScore": "Metadata quality",
   "search.filters.categoryKeyword": "Categories",
   "search.filters.qualityScore": "Quality score",
   "search.filters.territories": "Territories"

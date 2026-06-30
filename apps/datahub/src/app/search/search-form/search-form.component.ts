@@ -3,6 +3,9 @@ import { MelFuzzySearchComponent } from '@mel-dataplatform/mel'
 import { TranslateDirective } from '@ngx-translate/core'
 import { CatalogRecord, RouterFacade, SortByComponent } from 'geonetwork-ui'
 import { SearchFiltersComponent } from '../search-filters/search-filters.component'
+import { marker } from '@biesbjerg/ngx-translate-extract-marker'
+
+marker('results.sortBy.qualityScore')
 
 @Component({
   selector: 'mel-datahub-search-form',
