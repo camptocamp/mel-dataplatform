@@ -201,6 +201,7 @@ describe('search', () => {
     const MOST_RECENT =
       'desc,revisionDateForResource,desc,publicationDateForResource,desc,creationDateForResource'
     const POPULARITY = 'desc,userSavedCount'
+    const QUALITY_SCORE = 'desc,qualityScore'
 
     const sortByTrigger = () =>
       cy.get('mel-datahub-search-form gn-ui-sort-by button').first()
@@ -211,18 +212,18 @@ describe('search', () => {
     }
 
     it('should default to sorting by relevancy', () => {
-      sortByTrigger().should('contain.text', 'Pertinence')
+      sortByTrigger().should('contain.text', ' Plus récent ')
     })
 
-    it('should offer the relevancy, most-recent and popularity options', () => {
+    it('should offer the relevancy, most-recent, popularity and quality score options', () => {
       openSortBy()
       cy.get('[role=listbox] button[data-cy-value]')
         .then(($opts) =>
           $opts.toArray().map((b) => b.getAttribute('data-cy-value'))
         )
-        .should('eql', [RELEVANCY, MOST_RECENT, POPULARITY])
+        .should('eql', [RELEVANCY, MOST_RECENT, POPULARITY, QUALITY_SCORE])
       // relevancy is the active option by default
-      cy.get(`[role=listbox] button[data-cy-value="${RELEVANCY}"]`).should(
+      cy.get(`[role=listbox] button[data-cy-value="${MOST_RECENT}"]`).should(
         'have.attr',
         'data-cy-active',
         'true'
