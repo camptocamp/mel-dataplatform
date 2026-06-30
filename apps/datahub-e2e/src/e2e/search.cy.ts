@@ -255,6 +255,22 @@ describe('search', () => {
             .should('not.eq', relevancyFirstCard)
         })
     })
+
+    it('should keep the scroll position when the search query params change', () => {
+      cy.get('mel-datahub-results-card-search').should('have.length', 18)
+      cy.scrollTo('bottom')
+      cy.window().its('scrollY').should('be.greaterThan', 0)
+
+      sortByTrigger().click({ force: true, scrollBehavior: false })
+      cy.get(`[role=listbox] button[data-cy-value="${POPULARITY}"]`).click({
+        force: true,
+        scrollBehavior: false,
+      })
+      cy.url().should('include', '_sort=-userSavedCount')
+
+      // the page did not jump back to the top
+      cy.window().its('scrollY').should('be.greaterThan', 0)
+    })
   })
 
   describe('search form and results', () => {

@@ -4,6 +4,7 @@ import {
   inject,
   Input,
 } from '@angular/core'
+import { Router } from '@angular/router'
 import {
   FavoriteHeartComponent,
   MelButtonComponent,
@@ -15,9 +16,9 @@ import {
   ContentGhostComponent,
   MarkdownParserComponent,
   RouterFacade,
-  SearchService,
 } from 'geonetwork-ui'
 import { DatasetInformationComponent } from '../dataset-information/dataset-information.component'
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'mel-datahub-dataset-header',
@@ -41,7 +42,8 @@ import { DatasetInformationComponent } from '../dataset-information/dataset-info
 })
 export class DatasetHeaderComponent {
   protected routerFacade = inject(RouterFacade)
-  private searchService = inject(SearchService)
+  private router = inject(Router)
+  private location = inject(Location)
 
   @Input() record: Partial<CatalogRecord>
 
@@ -59,7 +61,11 @@ export class DatasetHeaderComponent {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
   }
 
-  back() {
-    this.searchService.updateFilters({})
+  back(): void {
+    if (this.router.lastSuccessfulNavigation?.previousNavigation) {
+      this.location.back()
+    } else {
+      this.router.navigateByUrl('/search')
+    }
   }
 }

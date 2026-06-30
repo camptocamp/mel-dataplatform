@@ -7,7 +7,7 @@ import {
 } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { RouterModule } from '@angular/router'
+import { Router, RouterModule } from '@angular/router'
 import { setCacheExpiryDuration } from '@camptocamp/ogc-client'
 import {
   MelDatahubFooterComponent,
@@ -29,6 +29,7 @@ import {
   FeatureSearchModule,
   FieldsService,
   GEONETWORK_UI_VERSION,
+  handleScrollOnNavigation,
   LOGIN_URL,
   provideGn4,
   provideRepositoryUrl,
@@ -43,6 +44,7 @@ import { DatasetPageComponent } from './dataset/dataset-page/dataset-page.compon
 import { GeorchestraPlatformService } from './platform/georchestra-platform.service'
 import { SearchPageComponent } from './search/search-page/search-page.component'
 import { MelFieldsService } from './search/service/fields.service'
+import { ViewportScroller } from '@angular/common'
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,7 +53,7 @@ import { MelFieldsService } from './search/service/fields.service'
     BrowserAnimationsModule,
     RouterModule.forRoot([], {
       initialNavigation: 'enabledBlocking',
-      scrollPositionRestoration: 'enabled',
+      scrollPositionRestoration: 'disabled',
     }),
     StoreModule.forRoot(
       {},
@@ -119,7 +121,15 @@ import { MelFieldsService } from './search/service/fields.service'
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(translate: TranslateService) {
+  constructor(
+    translate: TranslateService,
+    private router: Router,
+    private viewportScroller: ViewportScroller
+  ) {
+    // Disable automatic scroll restoration to avoid race conditions
+    this.viewportScroller.setHistoryScrollRestoration('manual')
+    handleScrollOnNavigation(this.router, this.viewportScroller)
+
     translate.setDefaultLang('fr')
     translate.use('fr')
 
