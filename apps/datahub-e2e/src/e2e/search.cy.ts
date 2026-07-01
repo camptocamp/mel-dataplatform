@@ -131,13 +131,13 @@ describe('search', () => {
     describe('User logged in', () => {
       beforeEach(() => {
         cy.login()
+        cy.clearFavorites()
         cy.visit('/search')
         cy.intercept('PUT', '**/geonetwork/srv/api/userselections/**').as(
           'addFavoriteRequest'
         )
-        cy.clearFavorites()
         cy.get('mel-datahub-results-card-search')
-          .eq(4)
+          .eq(3)
           .find('mel-datahub-heart-toggle')
           .first()
           .find('mel-datahub-button')
@@ -155,7 +155,10 @@ describe('search', () => {
       it('should display record results in favorite cards', () => {
         cy.get('mel-datahub-results-card-favorite')
           .find('h1')
-          .should('have.text', ' Leitungskataster Fernwärme AEW Energie AG ')
+          .should(
+            'have.text',
+            ' SCoT (Schéma de cohérence territoriale) en région Hauts-de-France '
+          )
 
         cy.get('.mel-carousel-step-dot').should('not.exist')
 
@@ -201,6 +204,7 @@ describe('search', () => {
     const MOST_RECENT =
       'desc,revisionDateForResource,desc,publicationDateForResource,desc,creationDateForResource'
     const POPULARITY = 'desc,userSavedCount'
+    const QUALITY_SCORE = 'desc,qualityScore'
 
     const sortByTrigger = () =>
       cy.get('mel-datahub-search-form gn-ui-sort-by button').first()
@@ -211,18 +215,18 @@ describe('search', () => {
     }
 
     it('should default to sorting by relevancy', () => {
-      sortByTrigger().should('contain.text', 'Pertinence')
+      sortByTrigger().should('contain.text', ' Plus récent ')
     })
 
-    it('should offer the relevancy, most-recent and popularity options', () => {
+    it('should offer the relevancy, most-recent, popularity and quality score options', () => {
       openSortBy()
       cy.get('[role=listbox] button[data-cy-value]')
         .then(($opts) =>
           $opts.toArray().map((b) => b.getAttribute('data-cy-value'))
         )
-        .should('eql', [RELEVANCY, MOST_RECENT, POPULARITY])
+        .should('eql', [RELEVANCY, MOST_RECENT, POPULARITY, QUALITY_SCORE])
       // relevancy is the active option by default
-      cy.get(`[role=listbox] button[data-cy-value="${RELEVANCY}"]`).should(
+      cy.get(`[role=listbox] button[data-cy-value="${MOST_RECENT}"]`).should(
         'have.attr',
         'data-cy-active',
         'true'
@@ -254,6 +258,22 @@ describe('search', () => {
             .invoke('text')
             .should('not.eq', relevancyFirstCard)
         })
+    })
+
+    it('should keep the scroll position when the search query params change', () => {
+      cy.get('mel-datahub-results-card-search').should('have.length', 18)
+      cy.scrollTo('bottom')
+      cy.window().its('scrollY').should('be.greaterThan', 0)
+
+      sortByTrigger().click({ force: true, scrollBehavior: false })
+      cy.get(`[role=listbox] button[data-cy-value="${POPULARITY}"]`).click({
+        force: true,
+        scrollBehavior: false,
+      })
+      cy.url().should('include', '_sort=-userSavedCount')
+
+      // the page did not jump back to the top
+      cy.window().its('scrollY').should('be.greaterThan', 0)
     })
   })
 

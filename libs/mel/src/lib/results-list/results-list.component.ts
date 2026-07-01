@@ -9,9 +9,18 @@ import {
   RouterFacade,
   SearchFacade,
   SearchService,
+  SortByField,
 } from 'geonetwork-ui'
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
+
+const SORT_BY_RESOURCE_DATE: SortByField = [
+  ['desc', 'revisionDateForResource'],
+  ['desc', 'publicationDateForResource'],
+  ['desc', 'creationDateForResource'],
+]
+
+const SORT_BY_METADATA_DATE: SortByField = [['desc', 'createDate']]
 
 @Component({
   selector: 'mel-datahub-results-list',
@@ -32,6 +41,14 @@ export class ResultsListComponent implements OnInit, OnDestroy {
     }
   }
   favoritesOnlyValue = false
+  @Input() set sortBy(value: 'resourceDate' | 'metadataDate') {
+    if (value === 'resourceDate') {
+      this.sortByValue = SORT_BY_RESOURCE_DATE
+    } else if (value === 'metadataDate') {
+      this.sortByValue = SORT_BY_METADATA_DATE
+    }
+  }
+  sortByValue: SortByField = SORT_BY_METADATA_DATE
   @Input() numberOfResults = 10
   subscriptions: Subscription
   producerOnlyFilter = {}
@@ -54,7 +71,7 @@ export class ResultsListComponent implements OnInit, OnDestroy {
         'allKeywords',
       ])
       .setPageSize(this.numberOfResults)
-      .setSortBy(['desc', 'createDate'])
+      .setSortBy(this.sortByValue)
     this.subscriptions = this.favoritesService.myFavoritesUuid$.subscribe(
       () => {
         if (this.favoritesOnlyValue) this.searchFacade.setFavoritesOnly(true)

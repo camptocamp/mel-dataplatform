@@ -95,6 +95,7 @@
   "mel.searchpage.subtitle.favorites": "Jeux de données suivis",
   "mel.tooltip.url.copy": "Copier l'URL racine",
   "record.externalViewer.open": "Ouvrir dans le visualiseur externe",
+  "results.sortBy.qualityScore": "Qualité des métadonnées",
   "search.filters.categoryKeyword": "Mot clé",
   "search.filters.qualityScore": "Score de qualité",
   "search.filters.territories": "Territoires"
