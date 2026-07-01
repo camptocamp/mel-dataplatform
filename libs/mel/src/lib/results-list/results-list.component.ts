@@ -14,13 +14,13 @@ import {
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
 
-const SORT_BY_DATA: SortByField = [
+const SORT_BY_RESOURCE_DATE: SortByField = [
   ['desc', 'revisionDateForResource'],
   ['desc', 'publicationDateForResource'],
   ['desc', 'creationDateForResource'],
 ]
 
-const SORT_BY_METADATA: SortByField = [['desc', 'createDate']]
+const SORT_BY_METADATA_DATE: SortByField = [['desc', 'createDate']]
 
 @Component({
   selector: 'mel-datahub-results-list',
@@ -41,14 +41,14 @@ export class ResultsListComponent implements OnInit, OnDestroy {
     }
   }
   favoritesOnlyValue = false
-  @Input() set sortBy(value: 'data' | 'metadata') {
-    if (value === 'data') {
-      this.sortByValue = SORT_BY_DATA
-    } else if (value === 'metadata') {
-      this.sortByValue = SORT_BY_METADATA
+  @Input() set sortBy(value: 'resourceDate' | 'metadataDate') {
+    if (value === 'resourceDate') {
+      this.sortByValue = SORT_BY_RESOURCE_DATE
+    } else if (value === 'metadataDate') {
+      this.sortByValue = SORT_BY_METADATA_DATE
     }
   }
-  sortByValue: SortByField = SORT_BY_METADATA
+  sortByValue: SortByField = SORT_BY_METADATA_DATE
   @Input() numberOfResults = 10
   subscriptions: Subscription
   producerOnlyFilter = {}
