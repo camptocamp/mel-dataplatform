@@ -131,13 +131,13 @@ describe('search', () => {
     describe('User logged in', () => {
       beforeEach(() => {
         cy.login()
+        cy.clearFavorites()
         cy.visit('/search')
         cy.intercept('PUT', '**/geonetwork/srv/api/userselections/**').as(
           'addFavoriteRequest'
         )
-        cy.clearFavorites()
         cy.get('mel-datahub-results-card-search')
-          .eq(4)
+          .eq(3)
           .find('mel-datahub-heart-toggle')
           .first()
           .find('mel-datahub-button')
@@ -155,7 +155,10 @@ describe('search', () => {
       it('should display record results in favorite cards', () => {
         cy.get('mel-datahub-results-card-favorite')
           .find('h1')
-          .should('have.text', ' Leitungskataster Fernwärme AEW Energie AG ')
+          .should(
+            'have.text',
+            ' SCoT (Schéma de cohérence territoriale) en région Hauts-de-France '
+          )
 
         cy.get('.mel-carousel-step-dot').should('not.exist')
 

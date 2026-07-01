@@ -102,34 +102,22 @@ Cypress.Commands.add(
  * This will most likely fail if the user is not logged in!
  */
 Cypress.Commands.add('clearFavorites', () => {
-  cy.request({
-    url: '/geonetwork/srv/api/me',
-    headers: { accept: 'application/json' },
-  })
-    .its('body')
-    .its('id')
-    .as('myId')
-
-  cy.window().then(function () {
-    cy.request({
-      url: `/geonetwork/srv/api/userselections/0/${this['myId']}`,
+  return cy
+    .request({
+      url: '/geonetwork/srv/api/me',
       headers: { accept: 'application/json' },
     })
-      .its('body')
-      .as('favoritesId')
-  })
-
-  return cy
-    .getCookie('XSRF-TOKEN')
-    .its('value')
-    .then(function (token) {
-      const favoritesId = this['favoritesId'] || []
-      cy.request({
-        url: `/geonetwork/srv/api/userselections/0/${
-          this['myId']
-        }?uuid=${favoritesId.join('&uuid=')}`,
-        method: 'DELETE',
-        headers: { accept: 'application/json', 'X-XSRF-TOKEN': token },
+    .its('body.id')
+    .then((myId) => {
+      cy.getCookie('XSRF-TOKEN').then((cookie) => {
+        cy.request({
+          url: `/geonetwork/srv/api/userselections/0/${myId}`,
+          method: 'DELETE',
+          headers: {
+            accept: 'application/json',
+            'X-XSRF-TOKEN': cookie.value,
+          },
+        })
       })
     })
 })
