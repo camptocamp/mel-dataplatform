@@ -14,13 +14,9 @@ import {
 import { Subscription } from 'rxjs'
 import { goFromHomeToRecord, goFromHomeToSearch } from '../route.utils'
 
-const SORT_BY_RESOURCE_DATE: SortByField = [
-  ['desc', 'revisionDateForResource'],
-  ['desc', 'publicationDateForResource'],
-  ['desc', 'creationDateForResource'],
-]
+const SORT_BY_RESOURCE_DATE: SortByField = ['desc', 'resourceDate.date']
 
-const SORT_BY_METADATA_DATE: SortByField = [['desc', 'createDate']]
+const SORT_BY_METADATA_DATE: SortByField = ['desc', 'createDate']
 
 @Component({
   selector: 'mel-datahub-results-list',

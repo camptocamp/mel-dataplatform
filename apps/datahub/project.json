@@ -28,7 +28,10 @@
             "output": "assets/configuration/"
           }
         ],
-        "styles": ["resources/styles.css"],
+        "styles": [
+          "resources/styles.css",
+          "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+        ],
         "scripts": [],
         "preserveSymlinks": true,
         "allowedCommonJsDependencies": [

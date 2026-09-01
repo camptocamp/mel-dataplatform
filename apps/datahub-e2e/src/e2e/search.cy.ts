@@ -132,12 +132,12 @@ describe('search', () => {
       beforeEach(() => {
         cy.login()
         cy.clearFavorites()
-        cy.visit('/search')
+        cy.visit('/search?_sort=-_score&q=scot')
         cy.intercept('PUT', '**/geonetwork/srv/api/userselections/**').as(
           'addFavoriteRequest'
         )
         cy.get('mel-datahub-results-card-search')
-          .eq(3)
+          .first()
           .find('mel-datahub-heart-toggle')
           .first()
           .find('mel-datahub-button')
@@ -201,8 +201,7 @@ describe('search', () => {
 
   describe('search form sort-by', () => {
     const RELEVANCY = 'desc,_score'
-    const MOST_RECENT =
-      'desc,revisionDateForResource,desc,publicationDateForResource,desc,creationDateForResource'
+    const MOST_RECENT = 'desc,resourceDate.date'
     const POPULARITY = 'desc,userSavedCount'
     const QUALITY_SCORE = 'desc,qualityScore'
 
@@ -214,7 +213,7 @@ describe('search', () => {
       cy.get(`[role=listbox] button[data-cy-value="${value}"]`).click()
     }
 
-    it('should default to sorting by relevancy', () => {
+    it('should default to sorting by most recent', () => {
       sortByTrigger().should('contain.text', ' Plus récent ')
     })
 
@@ -225,12 +224,18 @@ describe('search', () => {
           $opts.toArray().map((b) => b.getAttribute('data-cy-value'))
         )
         .should('eql', [RELEVANCY, MOST_RECENT, POPULARITY, QUALITY_SCORE])
-      // relevancy is the active option by default
+      // most-recent is the active option by default
       cy.get(`[role=listbox] button[data-cy-value="${MOST_RECENT}"]`).should(
         'have.attr',
         'data-cy-active',
         'true'
       )
+    })
+
+    it('should sort by relevancy and reflect it in the url and the button', () => {
+      selectSortOption(RELEVANCY)
+      cy.url().should('include', '_sort=-_score')
+      sortByTrigger().should('contain.text', 'Pertinence')
     })
 
     it('should sort by popularity and reflect it in the url and the button', () => {
@@ -239,24 +244,23 @@ describe('search', () => {
       sortByTrigger().should('contain.text', 'Popularité')
     })
 
-    it('should sort by most recent and reflect it in the url and the button', () => {
-      selectSortOption(MOST_RECENT)
-      // commas may be url-encoded, so only assert the unambiguous first segment
-      cy.url().should('include', '_sort=-revisionDateForResource')
-      sortByTrigger().should('contain.text', 'Plus récent')
+    it('should sort by quality score and reflect it in the url and the button', () => {
+      selectSortOption(QUALITY_SCORE)
+      cy.url().should('include', '_sort=-qualityScore')
+      sortByTrigger().should('contain.text', 'Qualité')
     })
 
     it('should reorder the search results when the sort criteria changes', () => {
       cy.get('mel-datahub-results-card-search h1')
         .first()
         .invoke('text')
-        .then((relevancyFirstCard) => {
+        .then((mostRecentFirstCard) => {
           selectSortOption(POPULARITY)
           cy.url().should('include', '_sort=-userSavedCount')
           cy.get('mel-datahub-results-card-search h1')
             .first()
             .invoke('text')
-            .should('not.eq', relevancyFirstCard)
+            .should('not.eq', mostRecentFirstCard)
         })
     })
 

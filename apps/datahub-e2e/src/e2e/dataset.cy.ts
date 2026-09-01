@@ -267,9 +267,18 @@ describe('datasets', () => {
           .first()
           .should('have.attr', 'download', '')
       })
-      it('should contain download attribute with filename for json files', () => {
+      it('should contain download attribute with filename for geojson files', () => {
         cy.get('[data-cy="download-button"]')
           .eq(2)
+          .should(
+            'have.attr',
+            'download',
+            'insee:rectangles_200m_menage_erbm.geojson'
+          )
+      })
+      it('should contain download attribute with filename for json files', () => {
+        cy.get('[data-cy="download-button"]')
+          .eq(3)
           .should(
             'have.attr',
             'download',
