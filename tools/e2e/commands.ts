@@ -126,7 +126,7 @@ Cypress.Commands.add('interceptDataset', (id) => {
   cy.fixture(`datasets/${id}.json`).then((fixtureData) => {
     cy.intercept(
       'POST',
-      `/geonetwork/srv/api/search/records/_search?bucket=bucket&relatedType=fcats&relatedType=hassources`,
+      `/geonetwork/srv/api/search/records/_search?bucket=bucket&relatedType=fcats&relatedType=hassources&relatedType=siblings&relatedType=associated`,
       (req) => {
         if (req.body.query?.ids?.values.includes(id)) {
           req.reply({
