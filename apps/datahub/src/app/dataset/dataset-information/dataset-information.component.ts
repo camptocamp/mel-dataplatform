@@ -47,10 +47,8 @@ export class DatasetInformationComponent {
   }
 
   get displayCategories() {
-    return this.record?.keywords?.filter(
-      (keyword) =>
-        keyword.thesaurus?.id ===
-        'geonetwork.thesaurus.external.theme.thesaurus_mot_cle_thematique_categories'
+    return this.record?.keywords?.filter((keyword) =>
+      keyword.thesaurus?.id.endsWith('thesaurus_mot_cle_thematique_categories')
     )
   }
 
